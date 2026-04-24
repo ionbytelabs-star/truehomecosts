@@ -12,6 +12,10 @@ export function DataSources({ sourceKeys }: DataSourcesProps) {
   return (
     <div className="rounded-3xl border border-line bg-white p-5">
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Data sources</p>
+      <p className="mt-2 max-w-prose text-sm text-muted">
+        These are the primary public sources used for official-rate items and reference checks on this page.
+        Estimate-led costs elsewhere on the site remain planning ranges rather than government charges.
+      </p>
       <ul className="mt-3 grid gap-2 text-sm text-muted">
         {sourceKeys.map((key) => (
           <li key={key}>

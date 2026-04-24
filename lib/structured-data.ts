@@ -8,6 +8,7 @@ export function websiteSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
+    inLanguage: "en-GB",
     publisher: {
       "@type": "Organization",
       name: siteConfig.name
@@ -21,8 +22,10 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
+    logo: absoluteUrl("/icon.svg"),
     email: siteConfig.email,
-    description: siteConfig.description
+    description: siteConfig.description,
+    areaServed: "GB"
   };
 }
 
@@ -44,6 +47,7 @@ export function webpageSchema({
     description,
     url: absoluteUrl(path),
     keywords,
+    inLanguage: "en-GB",
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,
@@ -72,6 +76,7 @@ export function articleSchema({
     description,
     keywords,
     dateModified,
+    inLanguage: "en-GB",
     mainEntityOfPage: absoluteUrl(path),
     author: {
       "@type": "Organization",
@@ -80,7 +85,11 @@ export function articleSchema({
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
-      url: siteConfig.url
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/icon.svg")
+      }
     }
   };
 }

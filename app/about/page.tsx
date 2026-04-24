@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Disclaimer } from "@/components/Disclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
-import { webpageSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "About TrueHomeCosts",
@@ -22,6 +24,12 @@ export default function AboutPage() {
             "Why TrueHomeCosts exists and how the site approaches UK home-buying costs in a practical, independent way.",
           path: "/about"
         })}
+      />
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" }
+        ])}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
       <PageIntro
@@ -65,6 +73,25 @@ export default function AboutPage() {
               TrueHomeCosts is not a lender, broker, law firm or regulated financial adviser. It does not
               replace personal advice from a solicitor, tax specialist or mortgage professional when a real
               transaction is on the line.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Useful places to start</h2>
+            <p>
+              If you are using the site for planning, the most practical starting point is usually the{" "}
+              <Link href="/#calculator" className="underline hover:text-brand-deep">
+                homepage calculator
+              </Link>
+              , followed by the guides on{" "}
+              <Link href="/hidden-costs-buying-house" className="underline hover:text-brand-deep">
+                hidden buying costs
+              </Link>{" "}
+              and{" "}
+              <Link href="/how-much-money-needed-buy-house" className="underline hover:text-brand-deep">
+                how much cash you need to buy a house
+              </Link>
+              .
             </p>
           </section>
 

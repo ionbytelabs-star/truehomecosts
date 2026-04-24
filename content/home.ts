@@ -1,6 +1,6 @@
 import type { CalculatorInput } from "@/lib/calculator";
 
-import type { GuideSection } from "@/content/types";
+import type { AtGlanceItem, GuideSection } from "@/content/types";
 
 export const homeKeywords = [
   "true cost of buying a house UK",
@@ -18,17 +18,46 @@ export const homePageFaqs = [
   {
     question: "Does the calculator include stamp duty or regional property tax?",
     answer:
-      "Yes. The calculator estimates SDLT for England and Northern Ireland, LBTT for Scotland, and LTT for Wales using central tax data files."
+      "Yes. The calculator estimates SDLT for England and Northern Ireland, LBTT for Scotland, and LTT for Wales using central tax data files. That means the tax logic is kept in one place rather than scattered across the site."
   },
   {
     question: "Are all of the figures official?",
     answer:
-      "No. Property tax and HMLR fees use official published bands where relevant. Legal fees, surveys, moving costs and similar items are planning estimates."
+      "No. Property tax and HMLR fees use official published bands where relevant. Legal fees, surveys, moving costs and similar items are planning estimates, so they should be treated as guidance rather than fixed charges."
   },
   {
     question: "Can I use the calculator for second homes?",
     answer:
-      "Yes. Choose the additional property option to include the relevant higher-rate treatment for the selected nation."
+      "Yes. Choose the additional property option to include the relevant higher-rate treatment for the selected nation. It is a practical way to compare a mainstream move with a second-home or additional-property budget."
+  },
+  {
+    question: "When do buyers usually pay solicitor fees and stamp duty in the UK?",
+    answer:
+      "Solicitors often ask for some money on account early in the process and collect the final balance before or on completion. Stamp duty or the relevant regional property tax is usually handled by the solicitor around completion using money already collected from you."
+  },
+  {
+    question: "What costs do buyers most often forget beyond the deposit?",
+    answer:
+      "Commonly missed costs include searches, survey fees, telegraphic transfer charges, mortgage fees, moving costs, initial insurance and the first wave of setup spending after completion. Those lines are exactly why a deposit-only budget often feels too low."
+  }
+] as const;
+
+export const homeAtGlance: AtGlanceItem[] = [
+  {
+    label: "Typical cost range",
+    value: "Buyers should budget for the deposit plus several thousand pounds of extra upfront costs, with the exact total changing by nation, buyer type and property complexity."
+  },
+  {
+    label: "Usually applies when",
+    value: "You are planning a residential purchase in England and Northern Ireland, Scotland or Wales and want the full upfront cash picture rather than a deposit-only target."
+  },
+  {
+    label: "Status",
+    value: "Property tax and relevant HMLR fee bands use centrally maintained official data. Legal fees, surveys, mortgage costs, moving, insurance and furnishing are estimate-led planning ranges."
+  },
+  {
+    label: "What buyers should check",
+    value: "Confirm the tax position for your nation and buyer type, then sense-check the estimate-led costs against real quotes from your solicitor, lender and surveyor."
   }
 ] as const;
 
@@ -91,6 +120,14 @@ export const homepageGuideLinks = [
   "first-time-buyer-costs"
 ] as const;
 
+export const homepagePriceGuideLinks = [
+  "cost-to-buy-250k-house",
+  "cost-to-buy-300k-house",
+  "cost-to-buy-350k-house",
+  "cost-to-buy-400k-house",
+  "cost-to-buy-500k-house"
+] as const;
+
 export const homeSections: GuideSection[] = [
   {
     title: "What does the true cost of buying a house in the UK actually include?",
@@ -140,6 +177,24 @@ export const homeSections: GuideSection[] = [
       "On this homepage, property tax and relevant registration fee data are drawn from central data files so they can be updated in one place. Legal fees, searches, surveys, mortgage costs, moving budgets, insurance allowances and furnishing allowances are estimate-led assumptions that can be edited centrally too.",
       "That separation matters for trust. Buyers should not confuse a realistic planning estimate with an official government charge, and they should not ignore the estimate-led side simply because it is less exact."
     ]
+  },
+  {
+    title: "When do buying costs usually show up in the process?",
+    paragraphs: [
+      "Some buyers search for the total upfront cost buying property UK because they want one number. In practice, the better way to think about it is as a timeline of cash calls. Some costs appear before exchange, some gather on the completion statement, and others sit in the first few days after move-in.",
+      "The earlier costs often include survey work, initial solicitor money and some lender-related fees. The heaviest concentration is usually closer to exchange and completion, when the deposit balance, tax and final legal statement need to be settled. Then the move-in layer arrives with removals, locks, cleaning, insurance and immediate setup costs.",
+      "Understanding that timing helps buyers avoid a common trap: having enough money overall but not enough accessible money at the point the transaction needs it."
+    ],
+    table: {
+      caption: "Simple timing guide for the true buying cost",
+      columns: ["Stage", "Typical costs", "Why it matters"],
+      rows: [
+        ["Before or just after offer", "Broker costs, lender valuation, early legal spend", "These costs can be spent before the deal is guaranteed"],
+        ["Before exchange", "Searches, survey and legal follow-up", "This is where hidden costs become more visible"],
+        ["Completion stage", "Deposit balance, tax, registration and final legal fees", "Usually the largest single cash demand"],
+        ["Move-in week", "Removals, locks, cleaning, insurance and setup", "Still part of the true buying budget"]
+      ]
+    }
   },
   {
     title: "What buyers most often forget when budgeting upfront costs",

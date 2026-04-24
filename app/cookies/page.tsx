@@ -2,7 +2,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageIntro } from "@/components/PageIntro";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
-import { webpageSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Cookie Policy",
@@ -20,6 +20,12 @@ export default function CookiesPage() {
           description: "Cookie policy for TrueHomeCosts.",
           path: "/cookies"
         })}
+      />
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Cookie Policy", path: "/cookies" }
+        ])}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Cookie policy" }]} />
       <PageIntro
@@ -54,6 +60,11 @@ export default function CookiesPage() {
             policy and any consent mechanism should be updated to reflect that change clearly.
           </p>
         </section>
+
+        <p className="text-sm text-muted">
+          The current build remains a lightweight static site with a client-side calculator and no live ad or
+          analytics scripts.
+        </p>
       </section>
     </>
   );

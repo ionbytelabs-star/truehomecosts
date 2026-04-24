@@ -5,7 +5,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
-import { webpageSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Contact",
@@ -23,6 +23,12 @@ export default function ContactPage() {
           description: "Contact information for TrueHomeCosts.",
           path: "/contact"
         })}
+      />
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" }
+        ])}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       <PageIntro
@@ -51,6 +57,10 @@ export default function ContactPage() {
           If you want to go back to the main tool, head back to the{" "}
           <Link href="/#calculator" className="underline hover:text-brand-deep">
             homepage calculator
+          </Link>
+          {" "}or read the{" "}
+          <Link href="/hidden-costs-buying-house" className="underline hover:text-brand-deep">
+            hidden costs guide
           </Link>
           .
         </p>

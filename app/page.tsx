@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { AtAGlance } from "@/components/AtAGlance";
 import { CalculatorForm } from "@/components/CalculatorForm";
 import { ContentSection } from "@/components/ContentSection";
 import { DataSources } from "@/components/DataSources";
@@ -8,15 +9,25 @@ import { Disclaimer } from "@/components/Disclaimer";
 import { ExampleScenarios } from "@/components/ExampleScenarios";
 import { FAQSection } from "@/components/FAQSection";
 import { Hero } from "@/components/Hero";
+import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { StructuredData } from "@/components/StructuredData";
-import { homeKeywords, homePageFaqs, homepageGuideLinks, homeScenarioInputs, homeSections } from "@/content/home";
+import { guideMap } from "@/content/guides";
+import {
+  homeAtGlance,
+  homeKeywords,
+  homePageFaqs,
+  homepageGuideLinks,
+  homepagePriceGuideLinks,
+  homeScenarioInputs,
+  homeSections
+} from "@/content/home";
 import { buildMetadata } from "@/lib/metadata";
 import { calculateUpfrontCosts } from "@/lib/calculator";
 import { faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Buying a house costs UK calculator",
+  title: "True cost of buying a house UK calculator",
   description:
     "Estimate the true cost of buying a house in the UK with a fast calculator covering deposit, SDLT or regional property tax, legal fees, searches, surveys, mortgage fees and optional moving costs.",
   path: "/",
@@ -34,7 +45,7 @@ export default function HomePage() {
     <>
       <StructuredData
         data={webpageSchema({
-          title: "Buying a house costs UK calculator",
+          title: "True cost of buying a house UK calculator",
           description:
             "Estimate the true cost of buying a house in the UK with deposit, property tax and the hidden extras buyers often miss.",
           path: "/",
@@ -78,6 +89,18 @@ export default function HomePage() {
       <section className="shell section-gap pt-0">
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
           <div className="space-y-8">
+            <AtAGlance items={[...homeAtGlance]} />
+            <RateTypeSplit
+              officialItems={["SDLT, LBTT or LTT bands", "published HMLR fee bands where relevant"]}
+              estimateItems={[
+                "solicitor and conveyancing fees",
+                "searches",
+                "surveys",
+                "mortgage costs",
+                "moving costs",
+                "insurance and furnishing allowances"
+              ]}
+            />
             <ExampleScenarios scenarios={scenarios} />
 
             {homeSections.map((section) => (
@@ -144,6 +167,24 @@ export default function HomePage() {
                 <Link href="/first-time-buyer-costs" className="link-chip">
                   First-time buyer costs
                 </Link>
+              </div>
+            </section>
+
+            <section className="space-y-4">
+              <div className="space-y-2">
+                <p className="eyebrow">Price-specific guides</p>
+                <h2 className="font-serif text-3xl text-text">Start with the purchase price you are actually targeting</h2>
+                <p className="max-w-prose text-muted">
+                  These guides are written around common UK price points so buyers can compare deposits, tax
+                  treatment and hidden costs without relying on generic averages.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {homepagePriceGuideLinks.map((slug) => (
+                  <Link key={slug} href={`/${slug}`} className="link-chip">
+                    {guideMap[slug]?.h1 ?? slug}
+                  </Link>
+                ))}
               </div>
             </section>
 

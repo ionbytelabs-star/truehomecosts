@@ -5,6 +5,11 @@ export type FAQItem = {
   answer: string;
 };
 
+export type AtGlanceItem = {
+  label: string;
+  value: string;
+};
+
 export type GuideSection = {
   title: string;
   intro?: string;
@@ -27,10 +32,15 @@ export type GuidePageContent = {
   intro: string;
   directAnswer: string;
   updatedLabel: string;
+  atGlance: AtGlanceItem[];
   sections: GuideSection[];
   faqs: FAQItem[];
   relatedGuides: string[];
   sourceKeys: SourceKey[];
   ctaTitle: string;
   ctaText: string;
+  officialItems: string[];
+  estimateItems: string[];
+  mistakes: string[];
+  checklist: string[];
 };

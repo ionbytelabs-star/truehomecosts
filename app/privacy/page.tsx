@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageIntro } from "@/components/PageIntro";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
-import { webpageSchema } from "@/lib/structured-data";
+import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
@@ -20,6 +22,12 @@ export default function PrivacyPage() {
           description: "Privacy policy for the TrueHomeCosts static site and calculator.",
           path: "/privacy"
         })}
+      />
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" }
+        ])}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy policy" }]} />
       <PageIntro
@@ -61,6 +69,14 @@ export default function PrivacyPage() {
             those are added later, this policy should be updated before deployment.
           </p>
         </section>
+
+        <p className="text-sm text-muted">
+          For general information about the site itself, visit the{" "}
+          <Link href="/about" className="underline hover:text-brand-deep">
+            about page
+          </Link>
+          .
+        </p>
       </section>
     </>
   );

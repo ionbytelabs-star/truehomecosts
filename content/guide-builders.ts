@@ -3,7 +3,7 @@ import { formatCurrency } from "@/lib/format";
 import { buyerTypeLabels, jurisdictionLabels } from "@/lib/site";
 import type { SourceKey } from "@/lib/source-links";
 
-import type { FAQItem, GuidePageContent, GuideSection } from "./types";
+import type { AtGlanceItem, FAQItem, GuidePageContent, GuideSection } from "./types";
 
 type TableRow = [string, string, string];
 
@@ -55,7 +55,7 @@ function sentenceList(items: string[]): string {
 function generatedLongSections(config: LongGuideConfig): GuideSection[] {
   return [
     {
-      title: `What pushes ${config.topicLabel} up or down?`,
+      title: `What usually pushes ${config.topicLabel} up or down?`,
       paragraphs: [
         `${config.topicLabel} is rarely one fixed number because buyers do not all make the same choices or buy the same kind of property. The biggest swings usually come from ${sentenceList(
           config.costDrivers
@@ -92,7 +92,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
       }
     },
     {
-      title: "Worked examples buyers can use as a sense-check",
+      title: "What do worked examples show buyers in practice?",
       paragraphs: [
         `Worked examples are useful because they turn abstract cost categories into a number you can compare with your own savings position. They are not a substitute for your solicitor's completion statement, but they do show how quickly smaller lines can add up once deposit, tax, legal work, searches, surveys and practical extras are considered together.`,
         `The exact figures on your purchase will move with the quotes you receive, the nation you are buying in, and whether the property is a straightforward freehold purchase or something more complex. Even so, benchmarking against realistic examples is one of the quickest ways to see whether your plan is broadly on track or undercooked.`,
@@ -122,7 +122,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
       ]
     },
     {
-      title: "Common mistakes buyers make with this part of the budget",
+      title: "What do buyers most often get wrong on this part of the budget?",
       paragraphs: [
         `The biggest mistake is usually not that buyers ignore ${config.topicLabel} completely. It is that they acknowledge it in theory, then budget too narrowly in practice. People often use the cheapest quote they have seen online, assume it applies to their transaction, and treat anything above that as bad luck rather than normal variation.`,
         `Another common issue is treating the deposit as the real objective and every other cost as secondary. In reality, buyers who hit their target deposit but leave no room for the surrounding costs can still end up feeling short of cash just when the purchase becomes legally serious.`,
@@ -131,7 +131,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
       bullets: config.mistakes
     },
     {
-      title: "How to budget more safely without overstretching",
+      title: "How can you budget more safely without overstretching?",
       paragraphs: [
         `A good rule is to hold separate pots for deposit, transaction costs, and move-in resilience. That makes it far easier to see whether your buying budget really works. It also stops you from treating every available pound as exchange money when some of it is needed for searches, surveys, legal work or immediate setup costs.`,
         `It is also worth running the same purchase through more than one scenario. Use a lower-cost planning case to understand the best realistic outcome, an average case for day-to-day planning, and a higher-cost case to see how exposed you would be if the property or transaction proves less straightforward than expected.`,
@@ -145,7 +145,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
       ]
     },
     {
-      title: "How to use this page with the homepage calculator",
+      title: "How should you use this page with the homepage calculator?",
       paragraphs: [
         `This page is designed to explain the moving parts in plain English. The calculator on the homepage is there to turn those moving parts into a quick headline number. Used together, they give you both the overview and the detail: the calculator shows the total, while the guide helps you understand why the total changes.`,
         `A sensible way to use the tool is to start with your likely purchase price, choose the right nation and buyer type, and then switch the assumption level between low, average and high. After that, turn optional items such as moving, insurance or furnishing on and off so you can see the difference between a bare-minimum legal budget and a more realistic move-in budget.`,
@@ -153,7 +153,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
       ]
     },
     {
-      title: "Checklist before you rely on a number",
+      title: "What should you check before you rely on a number?",
       paragraphs: [
         `Before exchange or any major commitment, buyers should move from generic planning into evidence-based checking. That means confirming the official charges, reading the solicitor's completion statement carefully, and making sure the timing of each payment still matches the cash you actually have available.`,
         `It also means treating this page as an informational guide, not as a substitute for transaction-specific professional advice. The closer you get to exchange and completion, the more the exact property and the exact paperwork matter.`
@@ -163,7 +163,55 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
   ];
 }
 
+function buildAtGlance(config: LongGuideConfig): AtGlanceItem[] {
+  const workedExample = config.workedExampleRows[0]?.[1] ?? "Varies by price, property and buyer type";
+
+  return [
+    {
+      label: "Typical cost range",
+      value: workedExample
+    },
+    {
+      label: "Usually applies when",
+      value: config.buyerContext
+    },
+    {
+      label: "Status",
+      value: `Official items include ${sentenceList(config.officialItems)}. Estimate-led items include ${sentenceList(config.estimateItems)}.`
+    },
+    {
+      label: "Buyers should check",
+      value: sentenceList(config.checklist.slice(0, 2))
+    }
+  ];
+}
+
+function generatedFaqs(config: LongGuideConfig): FAQItem[] {
+  return [
+    {
+      question: `What does ${config.topicLabel} usually include?`,
+      answer: `${config.topicLabel} usually includes ${sentenceList(config.estimateItems)} alongside any official-rate items that apply. Buyers should budget for the full chain of costs rather than one headline fee on its own.`
+    },
+    {
+      question: "Which parts of the total are official and which parts are estimated?",
+      answer: `The official or published-reference side usually includes ${sentenceList(config.officialItems)}. The estimate-led side usually includes ${sentenceList(config.estimateItems)}, so those numbers should be treated as planning ranges rather than fixed charges.`
+    },
+    {
+      question: "When do buyers usually have to pay these costs?",
+      answer: `Some costs can arrive early, especially once an offer is accepted and the legal work starts. The biggest cash demand usually lands closer to exchange or completion, so buyers should track both the total and the timing.`
+    },
+    {
+      question: "How can buyers sense-check the number before relying on it?",
+      answer: `${config.checklist[0]}. ${config.checklist[1]}. Once real quotes and paperwork arrive, compare them with the planning number rather than assuming the earliest estimate is exact.`
+    }
+  ];
+}
+
 export function createLongGuide(config: LongGuideConfig): GuidePageContent {
+  const mergedFaqs = [...config.faqs, ...generatedFaqs(config)].filter(
+    (faq, index, array) => array.findIndex((entry) => entry.question === faq.question) === index
+  );
+
   return {
     slug: config.slug,
     title: config.title,
@@ -173,12 +221,17 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     intro: config.intro,
     directAnswer: config.directAnswer,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
+    atGlance: buildAtGlance(config),
     sections: [...config.sections, ...generatedLongSections(config)],
-    faqs: config.faqs,
+    faqs: mergedFaqs,
     relatedGuides: config.relatedGuides,
     sourceKeys: config.sourceKeys,
     ctaTitle: config.ctaTitle,
-    ctaText: config.ctaText
+    ctaText: config.ctaText,
+    officialItems: config.officialItems,
+    estimateItems: config.estimateItems,
+    mistakes: config.mistakes,
+    checklist: config.checklist
   };
 }
 
@@ -187,6 +240,8 @@ function scenarioResult(input: CalculatorInput) {
 }
 
 export function createPriceGuide(price: number): GuidePageContent {
+  const pricePoints = [250_000, 300_000, 350_000, 400_000, 450_000, 500_000];
+  const currentIndex = pricePoints.indexOf(price);
   const slug = `cost-to-buy-${price / 1000}k-house`;
   const formattedPrice = formatCurrency(price);
   const keywords = [
@@ -266,6 +321,13 @@ export function createPriceGuide(price: number): GuidePageContent {
           : "Bigger deposit often reduces borrowing pressure and rate sensitivity"
   ]);
 
+  const neighbouringPriceGuides = [
+    pricePoints[currentIndex - 1],
+    pricePoints[currentIndex + 1]
+  ]
+    .filter((value): value is number => typeof value === "number")
+    .map((value) => `cost-to-buy-${value / 1000}k-house`);
+
   return createLongGuide({
     slug,
     title: `Cost to Buy a ${price / 1000}k House in the UK`,
@@ -276,7 +338,7 @@ export function createPriceGuide(price: number): GuidePageContent {
     directAnswer: `For a ${formattedPrice} house in the UK, the true upfront cost is the deposit plus the extra buying costs around it. On top of the purchase price, buyers often need cash for property tax, solicitor fees, search fees, surveys, mortgage charges, registration costs and a sensible contingency.`,
     sections: [
       {
-        title: `What makes up the cost to buy a ${formattedPrice} house?`,
+        title: `How much does it cost to buy a ${formattedPrice} house in the UK?`,
         paragraphs: [
           `A ${formattedPrice} purchase sits in an awkward middle ground where the deposit is already significant, but the non-deposit costs are large enough to matter properly as well. That means the buying budget needs to be treated as a full transaction budget, not as a deposit target with a few extras bolted on later.`,
           `The core lines are the same as on most residential purchases: deposit, SDLT or regional property tax, legal fees, searches, survey costs, mortgage fees, registration charges and a working buffer. What changes at this price point is that the property is often more likely to attract a fuller survey, higher moving costs, or more variation in tax depending on the nation and buyer type.`,
@@ -284,7 +346,7 @@ export function createPriceGuide(price: number): GuidePageContent {
         ]
       },
       {
-        title: "Deposit options at this price",
+        title: `How much deposit do you need for a ${formattedPrice} house?`,
         paragraphs: [
           `The deposit is still the biggest single cash line for most buyers, but it should not swallow the rest of the budget. At ${formattedPrice}, even a modest change in deposit percentage can move the required cash by many thousands of pounds, so it is worth checking how much flexibility you really want after completion.`,
           `A larger deposit can help with mortgage pricing and resilience, but there is no prize for putting every available pound into the deposit if it leaves you exposed on surveys, fees, moving costs or the first month of ownership.`
@@ -296,14 +358,14 @@ export function createPriceGuide(price: number): GuidePageContent {
         }
       },
       {
-        title: "Example totals by nation and buyer type",
+        title: `How does the tax change on a ${formattedPrice} house in England, Scotland and Wales?`,
         paragraphs: [
           `The same headline property price can produce very different upfront totals once nation and buyer type are factored in. Tax treatment is the main reason, but not the only one. Buyers should think in terms of complete scenarios, not one universal UK total.`,
           `The examples below use the TrueHomeCosts calculator with average assumptions and a 10% deposit for owner-occupier examples. The additional-property example uses a 25% deposit because that is a more common planning assumption for second-home or similar purchases.`
         ],
         table: {
-          caption: `Illustrative upfront totals for a ${formattedPrice} purchase`,
-          columns: ["Scenario", "Estimated total upfront cash", "What stands out"],
+          caption: `Illustrative upfront totals and tax effects for a ${formattedPrice} purchase`,
+          columns: ["Scenario", "Estimated total upfront cash", "What changes the result"],
           rows: [
             [
               `England / NI first-time buyer, 10% deposit`,
@@ -334,7 +396,23 @@ export function createPriceGuide(price: number): GuidePageContent {
         }
       },
       {
-        title: `How first-time buyers, home movers and second-home buyers differ at ${formattedPrice}`,
+        title: `What extra costs apply beyond the deposit on a ${formattedPrice} house?`,
+        paragraphs: [
+          `The deposit is the largest line, but it is not the only line that matters at ${formattedPrice}. Buyers should still budget for solicitor fees, searches, surveys, lender-related charges, registration fees, telegraphic transfer fees and a practical contingency for the smaller items that show up late in the process.`,
+          `This is where many price-specific searches go wrong. A buyer looks at a ${formattedPrice} property, works out the deposit, and assumes the rest will be marginal. In practice, the non-deposit total can still be several thousand pounds and can move up further if the property is older, leasehold, unusual or being bought as an additional property.`,
+          `For a realistic planning number, it is usually better to think in three pots: deposit, transaction costs and move-in resilience. That gives you a much clearer answer to the question "what extra costs apply beyond the deposit?" than a tax-only estimate ever can.`
+        ],
+        bullets: [
+          "Solicitor and conveyancing fees",
+          "Search bundles and follow-up checks",
+          "Survey or inspection costs",
+          "Mortgage product, valuation or broker charges",
+          "Registration fees and bank transfer costs",
+          "Moving, locks, cleaning, insurance and setup costs"
+        ]
+      },
+      {
+        title: `How do first-time buyers, home movers and second-home buyers differ at ${formattedPrice}?`,
         paragraphs: [
           `First-time buyers looking at a ${formattedPrice} home are often balancing two goals at once: keeping the deposit achievable while not underestimating the non-deposit costs. Reliefs may help with property tax depending on the nation and the price, but the rest of the buying budget still needs to stand up.`,
           `Home movers at this level may already own furniture and may have more transaction experience, but they can still face chain pressure, overlapping costs and practical moving spend that first-time buyers do not always carry in the same way.`,
@@ -364,7 +442,7 @@ export function createPriceGuide(price: number): GuidePageContent {
       "how-much-money-needed-buy-house",
       "stamp-duty-explained",
       "hidden-costs-buying-house",
-      "cost-of-owning-home-uk"
+      ...neighbouringPriceGuides
     ],
     sourceKeys: ["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"],
     ctaTitle: `Try your own ${formattedPrice} scenario`,
