@@ -1,0 +1,187 @@
+import Link from "next/link";
+
+import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { CalculatorForm } from "@/components/CalculatorForm";
+import { ContentSection } from "@/components/ContentSection";
+import { DataSources } from "@/components/DataSources";
+import { Disclaimer } from "@/components/Disclaimer";
+import { ExampleScenarios } from "@/components/ExampleScenarios";
+import { FAQSection } from "@/components/FAQSection";
+import { Hero } from "@/components/Hero";
+import { RelatedGuides } from "@/components/RelatedGuides";
+import { StructuredData } from "@/components/StructuredData";
+import { homeKeywords, homePageFaqs, homepageGuideLinks, homeScenarioInputs, homeSections } from "@/content/home";
+import { buildMetadata } from "@/lib/metadata";
+import { calculateUpfrontCosts } from "@/lib/calculator";
+import { faqPageSchema, webpageSchema } from "@/lib/structured-data";
+
+export const metadata = buildMetadata({
+  title: "Buying a house costs UK calculator",
+  description:
+    "Estimate the true cost of buying a house in the UK with a fast calculator covering deposit, SDLT or regional property tax, legal fees, searches, surveys, mortgage fees and optional moving costs.",
+  path: "/",
+  keywords: [...homeKeywords]
+});
+
+const scenarios = homeScenarioInputs.map((scenario) => ({
+  title: scenario.title,
+  summary: scenario.summary,
+  result: calculateUpfrontCosts(scenario.input)
+}));
+
+export default function HomePage() {
+  return (
+    <>
+      <StructuredData
+        data={webpageSchema({
+          title: "Buying a house costs UK calculator",
+          description:
+            "Estimate the true cost of buying a house in the UK with deposit, property tax and the hidden extras buyers often miss.",
+          path: "/",
+          keywords: [...homeKeywords]
+        })}
+      />
+      <StructuredData data={faqPageSchema(homePageFaqs.map((faq) => ({ ...faq })))} />
+
+      <Hero />
+
+      <section className="shell pb-8">
+        <div className="surface grid gap-5 p-5 sm:p-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-4">
+            <p className="eyebrow">Direct answer</p>
+            <h2 className="font-serif text-3xl text-text">What is the true cost of buying a house in the UK?</h2>
+            <p className="max-w-prose text-text">
+              The true cost of buying a house in the UK is your deposit plus the extra upfront costs that sit
+              around it. That usually means property tax, conveyancing fees, searches, survey costs, mortgage
+              fees, registration charges and a practical buffer for the smaller items that appear around
+              exchange, completion and move-in week.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-line bg-[#f8fbfa] p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Why buyers use this site</p>
+            <ul className="mt-4 grid gap-3 text-sm text-muted">
+              <li>Clear split between official published rates and planning estimates</li>
+              <li>UK English, GBP formatting and UK-specific tax treatment</li>
+              <li>Calculator-first homepage with worked examples for common purchase prices</li>
+              <li>Static, lightweight build with no login, database or CMS</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <CalculatorForm />
+
+      <section className="shell pb-8">
+        <AdPlaceholder label="Ad placeholder below calculator results" />
+      </section>
+
+      <section className="shell section-gap pt-0">
+        <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+          <div className="space-y-8">
+            <ExampleScenarios scenarios={scenarios} />
+
+            {homeSections.map((section) => (
+              <ContentSection key={section.title} title={section.title}>
+                {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {section.bullets ? (
+                  <ul className="grid gap-2 pl-5 text-text">
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet} className="list-disc">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.table ? (
+                  <div className="overflow-hidden rounded-3xl border border-line">
+                    <div className="border-b border-line bg-panel-strong px-5 py-4 text-sm font-medium text-text">
+                      {section.table.caption}
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full text-left text-sm">
+                        <thead className="bg-[#f7f8f4] text-muted">
+                          <tr>
+                            {section.table.columns.map((column) => (
+                              <th key={column} className="px-4 py-3 font-medium">
+                                {column}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row) => (
+                            <tr key={row.join("-")} className="border-t border-line">
+                              {row.map((cell) => (
+                                <td key={cell} className="px-4 py-3 align-top text-text/90">
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : null}
+              </ContentSection>
+            ))}
+
+            <section className="space-y-4">
+              <div className="space-y-2">
+                <p className="eyebrow">Useful next reads</p>
+                <h2 className="font-serif text-3xl text-text">Key guides that answer the next question</h2>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/hidden-costs-buying-house" className="link-chip">
+                  Hidden costs of buying a house UK
+                </Link>
+                <Link href="/how-much-money-needed-buy-house" className="link-chip">
+                  How much money do I need?
+                </Link>
+                <Link href="/stamp-duty-explained" className="link-chip">
+                  Stamp duty explained
+                </Link>
+                <Link href="/first-time-buyer-costs" className="link-chip">
+                  First-time buyer costs
+                </Link>
+              </div>
+            </section>
+
+            <FAQSection items={homePageFaqs.map((faq) => ({ ...faq }))} />
+            <RelatedGuides slugs={[...homepageGuideLinks]} />
+            <DataSources sourceKeys={["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"]} />
+            <Disclaimer />
+          </div>
+
+          <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+            <div className="surface p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Quick note</p>
+              <p className="mt-3 text-sm text-muted">
+                This calculator is designed for residential purchases and general planning. Leasehold, new-build,
+                cash purchases, unusual titles and complex chains can change the real number.
+              </p>
+            </div>
+            <div className="surface p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Internal links</p>
+              <div className="mt-4 grid gap-2 text-sm">
+                <Link href="/mortgage-fees-costs" className="underline hover:text-brand-deep">
+                  Mortgage fees and costs
+                </Link>
+                <Link href="/moving-costs-uk" className="underline hover:text-brand-deep">
+                  Moving costs UK
+                </Link>
+                <Link href="/insurance-costs-uk" className="underline hover:text-brand-deep">
+                  Insurance costs UK
+                </Link>
+                <Link href="/regional-property-costs-uk" className="underline hover:text-brand-deep">
+                  Regional property costs UK
+                </Link>
+              </div>
+            </div>
+            <Disclaimer />
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -1,0 +1,124 @@
+import { absoluteUrl } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name
+    }
+  };
+}
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    email: siteConfig.email,
+    description: siteConfig.description
+  };
+}
+
+export function webpageSchema({
+  title,
+  description,
+  path,
+  keywords
+}: {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: absoluteUrl(path),
+    keywords,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url
+    }
+  };
+}
+
+export function articleSchema({
+  headline,
+  description,
+  path,
+  keywords,
+  dateModified = "2026-04-23"
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    keywords,
+    dateModified,
+    mainEntityOfPage: absoluteUrl(path),
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url
+    }
+  };
+}
+
+export function faqPageSchema(
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+}
+
+export function breadcrumbSchema(
+  items: Array<{
+    name: string;
+    path: string;
+  }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path)
+    }))
+  };
+}

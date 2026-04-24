@@ -1,0 +1,14 @@
+:root {
+  --canvas: #f5f4ee;
+  --panel: #ffffff;
+  --panel-strong: #eef6f4;
+  --text: #173032;
+  --muted: #587174;
+  --line: #d8e2de;
+  --brand: #0d7a6f;
+  --brand-deep: #08554d;
+  --brand-soft: #d7efe9;
+  --accent: #f0b55a;
+  --success: #0f8c67;
+  --warning: #a9591c;
+}

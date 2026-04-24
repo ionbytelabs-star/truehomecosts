@@ -1,0 +1,36 @@
+import type { SourceKey } from "@/lib/source-links";
+
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+export type GuideSection = {
+  title: string;
+  intro?: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  table?: {
+    caption?: string;
+    columns: string[];
+    rows: string[][];
+  };
+  callout?: string;
+};
+
+export type GuidePageContent = {
+  slug: string;
+  title: string;
+  description: string;
+  keywords: string[];
+  h1: string;
+  intro: string;
+  directAnswer: string;
+  updatedLabel: string;
+  sections: GuideSection[];
+  faqs: FAQItem[];
+  relatedGuides: string[];
+  sourceKeys: SourceKey[];
+  ctaTitle: string;
+  ctaText: string;
+};
