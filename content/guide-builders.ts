@@ -57,11 +57,11 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
     {
       title: `What usually pushes ${config.topicLabel} up or down?`,
       paragraphs: [
-        `${config.topicLabel} is rarely one fixed number because buyers do not all make the same choices or buy the same kind of property. The biggest swings usually come from ${sentenceList(
+        `Two buyers can look at a similar property and still end up with noticeably different totals. On this part of the budget, the main pressure points are usually ${sentenceList(
           config.costDrivers
-        )}. A modern freehold home in straightforward legal condition can be much easier to budget for than an older leasehold flat, a second home, or a purchase where the lender, surveyor or solicitor flags extra work.`,
-        `That is why broad online averages can mislead. A quote or calculator result is most useful when it is treated as a planning range rather than a promise. If you only budget for the lowest plausible version of the total, even a small shift in one or two lines can make the whole purchase feel tighter than expected.`,
-        `A practical budget starts by separating the unavoidable elements from the flexible ones. Work out the official charges and the known must-pay items first, then stress-test the softer market costs at a low, average and high level. That approach gives you a much clearer view of whether the purchase still feels comfortable once the transaction becomes real.`
+        )}. A straightforward freehold purchase is often easier to cost than an older home, a leasehold flat, an additional property or a purchase where the solicitor, lender or surveyor uncovers extra work.`,
+        `That is why headline averages only get you so far. They are useful for early planning, but they are not a promise. If you budget only for the cheapest version of the total, even a modest change in one or two lines can leave the whole purchase feeling tighter than it should.`,
+        `A steadier approach is to split the budget into firm charges and softer estimate-led items. Lock in the official costs first, then stress-test the more variable lines at low, average and high levels so you can see whether the purchase still feels manageable once real quotes start arriving.`
       ],
       bullets: config.costDrivers
     },
@@ -81,9 +81,9 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
     {
       title: "How do buyer type, property type and location change the picture?",
       paragraphs: [
-        `${config.buyerContext} can materially alter the total. A first-time buyer may benefit from reliefs or have fewer belongings to move, but may also need more help with surveys, furnishing and mortgage setup. A home mover may face a cleaner move-in setup but still needs to budget for removals, overlap costs and the practical reality of coordinating a chain.`,
-        `Property type matters too. Older homes, leasehold flats, unusual construction, new-build purchases and second homes all change the risk profile. Those differences can affect legal work, survey depth, lender requirements, insurance costs and the size of the contingency that feels sensible.`,
-        `Regional rules then add another layer. Tax treatment differs across England and Northern Ireland, Scotland and Wales, and some official registration systems or local fee patterns vary too. Buyers should treat location as part of the core cost model rather than as a footnote.`
+        `${config.buyerContext} can change the numbers more than people expect. A first-time buyer may get relief on tax or have less to move, but may also need more help with surveys, furnishing and mortgage setup. A home mover may own the basics already, yet still face chain pressure, removals and overlap costs.`,
+        `The property itself matters just as much. Older homes, leasehold flats, unusual construction, new-build purchases and second homes all bring different levels of legal, survey and insurance complexity. That is often where a tidy-looking budget starts to drift.`,
+        `Location then changes the official side of the picture. England and Northern Ireland, Scotland and Wales do not use the same property tax rules, and some fee patterns can vary too. Buyers should treat location as a core part of the calculation rather than a detail to check at the end.`
       ],
       table: {
         caption: config.comparisonCaption,
@@ -124,9 +124,9 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
     {
       title: "What do buyers most often get wrong on this part of the budget?",
       paragraphs: [
-        `The biggest mistake is usually not that buyers ignore ${config.topicLabel} completely. It is that they acknowledge it in theory, then budget too narrowly in practice. People often use the cheapest quote they have seen online, assume it applies to their transaction, and treat anything above that as bad luck rather than normal variation.`,
-        `Another common issue is treating the deposit as the real objective and every other cost as secondary. In reality, buyers who hit their target deposit but leave no room for the surrounding costs can still end up feeling short of cash just when the purchase becomes legally serious.`,
-        `The safer mindset is to build around resilience. If a survey is fuller than expected, the solicitor flags a title issue, the lender's product carries a fee, or the move costs a little more than planned, the transaction should still work without panic.`
+        `The usual problem is not that buyers have never heard of ${config.topicLabel}. It is that they budget for the neatest version of it. People often pick the lowest online quote they can find, assume it will apply to their purchase, and then treat every higher figure as an unpleasant surprise rather than ordinary variation.`,
+        `Another common slip is putting all the focus on the deposit and treating the surrounding costs as small change. In practice, buyers who reach their deposit target but leave no room for the rest of the process can still feel short of cash just when the purchase becomes serious.`,
+        `A safer plan leaves room for ordinary friction. If the survey needs to be upgraded, the solicitor uncovers an extra issue, the lender charges a product fee or the move costs more than expected, the budget should still hold together.`
       ],
       bullets: config.mistakes
     },

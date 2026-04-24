@@ -11,6 +11,7 @@ import { FAQSection } from "@/components/FAQSection";
 import { Hero } from "@/components/Hero";
 import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
 import { guideMap } from "@/content/guides";
 import {
@@ -115,37 +116,7 @@ export default function HomePage() {
                     ))}
                   </ul>
                 ) : null}
-                {section.table ? (
-                  <div className="overflow-hidden rounded-3xl border border-line">
-                    <div className="border-b border-line bg-panel-strong px-5 py-4 text-sm font-medium text-text">
-                      {section.table.caption}
-                    </div>
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full text-left text-sm">
-                        <thead className="bg-[#f7f8f4] text-muted">
-                          <tr>
-                            {section.table.columns.map((column) => (
-                              <th key={column} className="px-4 py-3 font-medium">
-                                {column}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {section.table.rows.map((row) => (
-                            <tr key={row.join("-")} className="border-t border-line">
-                              {row.map((cell) => (
-                                <td key={cell} className="px-4 py-3 align-top text-text/90">
-                                  {cell}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                ) : null}
+                {section.table ? <ResponsiveTable {...section.table} /> : null}
               </ContentSection>
             ))}
 
@@ -219,7 +190,6 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <Disclaimer />
           </aside>
         </div>
       </section>

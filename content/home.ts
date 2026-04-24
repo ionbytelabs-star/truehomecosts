@@ -229,11 +229,11 @@ export const homeSections: GuideSection[] = [
     ]
   },
   {
-    title: "How this site supports SEO, AEO and AI-style extraction",
+    title: "Why this calculator gives a fuller answer than stamp duty tools",
     paragraphs: [
-      "This homepage and the guide pages are built so the information is easy to extract, cite and compare. That means short direct answers near the top, strong section headings, realistic examples, FAQ sections and a clear split between official rates and estimates.",
-      "That structure helps ordinary users, but it also helps search engines, answer engines and generative systems understand what the page is trying to say without wading through filler. The aim is not hype. It is clarity.",
-      "For buyers, the benefit is simple: the page behaves more like a practical reference than a sales funnel."
+      "A stamp duty tool can be useful, but it only answers one part of the question. Buyers still need to budget for the deposit, conveyancing, searches, surveys, mortgage fees, moving costs, insurance and a sensible buffer for the items that tend to appear late in the process.",
+      "This calculator is built to show that bigger picture. It keeps official charges separate from estimate-led costs, which helps you see what is set by published rules and what is still a planning allowance that may move once quotes arrive.",
+      "You can change the property price, location, buyer type and cost assumptions so the result reflects the purchase you are actually considering. The aim is to give you a fuller upfront cost picture before you commit to an offer or rely on a deposit-only number."
     ]
   }
 ];
