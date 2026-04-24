@@ -15,34 +15,7 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
         </p>
       </div>
 
-      <div className="grid gap-3 p-4 md:hidden" aria-label="Cost breakdown">
-        {items.map((item) => (
-          <article key={item.key} className="rounded-2xl border border-line bg-white p-4">
-            <div className="flex items-start justify-between gap-3">
-              <h4 className="text-base font-semibold text-text">{item.label}</h4>
-              <span
-                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
-                  item.sourceType === "official" ? "bg-brand-soft text-brand-deep" : "bg-[#f5efe5] text-warning"
-                }`}
-              >
-                {item.sourceType === "official" ? "Official / direct" : "Estimate"}
-              </span>
-            </div>
-            <dl className="mt-4 grid gap-3 text-sm">
-              <div className="grid gap-1">
-                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">Amount</dt>
-                <dd className="font-semibold text-text">{formatCurrency(item.value)}</dd>
-              </div>
-              <div className="grid gap-1">
-                <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">Why it is here</dt>
-                <dd className="text-text/90">{item.detail}</dd>
-              </div>
-            </dl>
-          </article>
-        ))}
-      </div>
-
-      <div className="hidden overflow-x-auto md:block">
+      <div className="overflow-x-auto">
         <table className="min-w-full text-left">
           <caption className="sr-only">
             Cost breakdown showing the item name, whether it is an official charge or an estimate, the amount,
@@ -50,16 +23,18 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           </caption>
           <thead className="bg-[#f7f8f4] text-sm text-muted">
             <tr>
-              <th scope="col" className="px-6 py-3 font-medium">Cost</th>
-              <th scope="col" className="px-6 py-3 font-medium">Type</th>
-              <th scope="col" className="px-6 py-3 font-medium">Amount</th>
-              <th scope="col" className="px-6 py-3 font-medium">Why it is here</th>
+              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Cost</th>
+              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Type</th>
+              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Amount</th>
+              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Why it is here</th>
             </tr>
           </thead>
           <tbody>
             {items.map((item) => (
               <tr key={item.key} className="border-t border-line align-top">
-                <th scope="row" className="px-6 py-4 font-medium text-text">{item.label}</th>
+                <th scope="row" className="px-6 py-4 font-medium text-text">
+                  <span className="block min-w-[10rem]">{item.label}</span>
+                </th>
                 <td className="px-6 py-4 text-sm text-muted">
                   <span
                     className={`inline-flex rounded-full px-3 py-1 ${
@@ -71,8 +46,10 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
                     {item.sourceType === "official" ? "Official / direct" : "Estimate"}
                   </span>
                 </td>
-                <td className="px-6 py-4 font-semibold text-text">{formatCurrency(item.value)}</td>
-                <td className="px-6 py-4 text-sm text-muted">{item.detail}</td>
+                <td className="px-6 py-4 font-semibold text-text whitespace-nowrap">{formatCurrency(item.value)}</td>
+                <td className="px-6 py-4 text-sm text-muted">
+                  <span className="block min-w-[14rem]">{item.detail}</span>
+                </td>
               </tr>
             ))}
           </tbody>

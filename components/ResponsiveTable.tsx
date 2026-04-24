@@ -13,30 +13,13 @@ export function ResponsiveTable({ caption, columns, rows }: ResponsiveTableProps
         </div>
       ) : null}
 
-      <div className="grid gap-3 p-3 md:hidden" aria-label={caption ?? "Table data"}>
-        {rows.map((row) => (
-          <article key={row.join("-")} className="rounded-2xl border border-line bg-white p-4">
-            <dl className="grid gap-3">
-              {row.map((cell, index) => (
-                <div key={`${columns[index]}-${cell}`} className="grid gap-1">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">
-                    {columns[index]}
-                  </dt>
-                  <dd className="text-sm text-text/90">{cell}</dd>
-                </div>
-              ))}
-            </dl>
-          </article>
-        ))}
-      </div>
-
-      <div className="hidden overflow-x-auto md:block">
+      <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
           {caption ? <caption className="sr-only">{caption}</caption> : null}
           <thead className="bg-[#f7f8f4] text-muted">
             <tr>
               {columns.map((column) => (
-                <th key={column} scope="col" className="px-4 py-3 font-medium">
+                <th key={column} scope="col" className="px-4 py-3 font-medium whitespace-nowrap">
                   {column}
                 </th>
               ))}
@@ -47,12 +30,12 @@ export function ResponsiveTable({ caption, columns, rows }: ResponsiveTableProps
               <tr key={row.join("-")} className="border-t border-line align-top">
                 {row.map((cell, index) =>
                   index === 0 ? (
-                    <th key={cell} scope="row" className="px-4 py-3 font-medium text-text">
-                      {cell}
+                    <th key={`${row[0]}-${index}`} scope="row" className="px-4 py-3 font-medium text-text">
+                      <span className="block min-w-[10rem]">{cell}</span>
                     </th>
                   ) : (
-                    <td key={cell} className="px-4 py-3 text-text/90">
-                      {cell}
+                    <td key={`${row[0]}-${index}`} className="px-4 py-3 text-text/90">
+                      <span className="block min-w-[12rem]">{cell}</span>
                     </td>
                   )
                 )}
