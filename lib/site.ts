@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "TrueHomeCosts",
   domain: "truehomecosts.co.uk",
-  url: "https://www.truehomecosts.co.uk",
+  url: "https://truehomecosts.co.uk",
   email: "hello@truehomecosts.co.uk",
   description:
     "TrueHomeCosts helps UK buyers estimate the full upfront cash needed to buy a home, from deposit and property tax to surveys, legal fees, moving costs and practical buffers.",
