@@ -40,6 +40,18 @@ export function RateTypeSplit({ officialItems, estimateItems }: RateTypeSplitPro
           </ul>
         </div>
       </div>
+
+      <div className="mt-5 rounded-3xl border border-line bg-white p-4">
+        <h3 className="text-lg font-semibold text-text">How labels are used across the site</h3>
+        <div className="mt-3 grid gap-3 text-sm text-text/90 md:grid-cols-2">
+          <p><strong>Official charge:</strong> based on published tax bands or fee scales.</p>
+          <p><strong>Lender charge:</strong> fees tied to mortgage products, valuations or broker work.</p>
+          <p><strong>Solicitor/conveyancing estimate:</strong> legal work and disbursement planning ranges.</p>
+          <p><strong>Market estimate:</strong> surveys, moving, furnishing or other provider-led costs.</p>
+          <p><strong>Optional cost:</strong> useful for planning, but not required on every purchase.</p>
+          <p><strong>Situation-dependent cost:</strong> applies only to some properties or buyer types.</p>
+        </div>
+      </div>
     </section>
   );
 }

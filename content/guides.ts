@@ -33,7 +33,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Many buyers can quote their deposit target but cannot tell you what the solicitor, surveyor, lender and moving day will add to the final bill. This guide brings those hidden costs together so you can budget for the full purchase rather than the marketing version of it.",
     directAnswer:
-      "The hidden costs of buying a house in the UK usually include solicitor fees, conveyancing disbursements, search fees, survey costs, mortgage charges, telegraphic transfer fees, registration fees, indemnity policies and practical move-in spending. These costs can add several thousand pounds on top of the deposit and tax.",
+      "For a mainstream UK purchase, hidden buying costs often add roughly £2,500 to £7,500 on top of the deposit, and more complex purchases can push comfortably beyond that. Older homes, leasehold flats, fuller surveys, extra legal checks and moving-day costs are the usual reasons the non-deposit total drifts from a few thousand pounds into five figures.",
     sections: [
       {
         title: "Why hidden buying costs catch people out",
@@ -191,7 +191,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Most buyers start with the deposit, but the better question is how much cash you need overall to get from accepted offer to completed move. That total is often much higher than people first expect.",
     directAnswer:
-      "In the UK, the money needed to buy a house is your deposit plus the upfront costs around it. That usually means property tax where it applies, solicitor fees, searches, surveys, mortgage charges, registration fees and a buffer for the practical costs that appear before and after completion.",
+      "In practice, the money needed to buy a house in the UK is the deposit plus roughly £3,000 to £10,000 or more of extra costs, depending on property price, location, buyer type and how involved the transaction becomes. A buyer putting 10% down on a £300,000 home might therefore need £30,000 for the deposit and several thousand pounds more for tax, legal work, survey costs, mortgage fees, moving and a buffer.",
     sections: [
       {
         title: "Start with the deposit, but do not stop there",
@@ -367,7 +367,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Most buyers still say stamp duty as a catch-all phrase, but the UK does not have one single system. The rules depend on where the property is, whether you are a first-time buyer, and whether the purchase counts as an additional property.",
     directAnswer:
-      "There is no single UK-wide stamp duty rate. England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT. The amount you pay depends on the property price, the nation, your buyer status and whether the purchase is an additional property.",
+      "There is no single UK-wide stamp duty figure: England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. On a £300,000 purchase, the tax can be nil, modest or materially higher depending on the nation, whether the buyer is a first-time buyer or mover, and whether the purchase counts as an additional property.",
     sections: [
       {
         title: "England and Northern Ireland: how SDLT works",
@@ -532,7 +532,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "First-time buyers usually know they need a deposit, but the real challenge is understanding the rest of the cash needed to get from offer accepted to move-in day without feeling stretched.",
     directAnswer:
-      "First-time buyer costs in the UK usually include the deposit, property tax where relevant, solicitor fees, searches, surveys, mortgage costs and a move-in buffer. First-time buyer relief can help with tax, but it does not remove the other costs of buying a first home.",
+      "Most first-time buyers need the deposit plus roughly £3,000 to £8,000 or more for the rest of the purchase, depending on price, location, survey choice and how much they need to spend after completion. Tax relief can help at some price points, but it does not remove the need for a separate savings pot for legal work, searches, mortgage setup and move-in basics.",
     sections: [
       {
         title: "The first-time buyer journey, step by step",
@@ -689,7 +689,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "The mortgage interest rate is only part of the story. Mortgage costs can also include broker fees, lender product fees, valuation charges and later charges such as early repayment fees or exit fees.",
     directAnswer:
-      "Mortgage fees in the UK can include broker fees, advice fees, booking fees, arrangement fees, valuation charges and later fees such as early repayment charges or exit fees. Some are optional, some are avoidable, and some depend heavily on the lender and product you choose.",
+      "Mortgage fees in the UK can range from nothing at all on a fee-light deal to around £2,500 or more if you use a paid broker, pick a product with a sizeable arrangement fee or pay lender valuation costs yourself. Some of those charges are paid upfront and some can be added to the loan, so the real question is not just how much they cost but how they affect both day-one cash and long-term borrowing.",
     sections: [
       {
         title: "Mortgage broker fees and mortgage advice cost in the UK",
@@ -830,7 +830,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Moving costs are often dismissed as a separate issue from buying costs, but for most households they land so close to completion that they should be budgeted together.",
     directAnswer:
-      "Moving costs in the UK can include removals, packing services, storage, Royal Mail redirection, lock changes, cleaning, broadband setup and utility connection or activation fees. They are not always on the solicitor's statement, but they still affect the true cost of getting into your new home.",
+      "Moving costs in the UK often start around a few hundred pounds for a small local move and can rise into the low thousands once you add a larger property, packing help, storage, cleaning or longer-distance removals. They do not sit on the solicitor's statement, but they still shape how much cash you need in completion week and the first few days after you move in.",
     sections: [
       {
         title: "Removal company costs for a typical UK move",
@@ -968,7 +968,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Insurance is often treated as a separate household matter, but some policies need to be arranged around exchange or completion and can affect whether the purchase runs smoothly.",
     directAnswer:
-      "Insurance costs for UK home buyers can include buildings insurance, optional life insurance, mortgage protection and landlord insurance for buy-to-let purchases. Some cover is strongly expected by lenders, while other cover is optional but sensible for risk planning.",
+      "Buildings insurance for a mainstream home often starts in the low hundreds per year and is commonly arranged before exchange or completion on a mortgaged purchase, while life insurance or mortgage protection is optional and can add a further monthly cost depending on age, health and cover level. The key distinction is that buildings cover is often part of getting the purchase safely over the line, whereas the other policies are risk-management choices for the household.",
     sections: [
       {
         title: "Buildings insurance cost for a UK first-time buyer",
@@ -1092,7 +1092,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Leasehold purchases can look straightforward on the listing price and then become more complicated once the building paperwork, management charges and future works are understood.",
     directAnswer:
-      "Leasehold costs in the UK can include service charge, ground rent where it still exists, management pack or notice fees, deed fees and reserve or sinking fund contributions. These sit on top of the normal legal and tax costs of buying.",
+      "Leasehold buyers often face several hundred pounds to a few thousand pounds of extra upfront administration on top of the normal buying costs, and they also need to understand the ongoing service charge, reserve fund and major-works risk before exchange. That is why a leasehold flat can look affordable on the asking price but still need more due diligence and a stronger cash buffer than a comparable freehold purchase.",
     sections: [
       {
         title: "Service charge and ground rent costs on a UK leasehold purchase",
@@ -1228,7 +1228,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Not every property cost is a soft estimate. Some buying charges come from published tax bands or fee scales, which makes them easier to verify and budget for with confidence.",
     directAnswer:
-      "Official home-buying charges in the UK can include SDLT, LBTT or LTT, HM Land Registry fees in England and Wales, and later costs such as council tax. Other buying costs, such as surveys and removals, are market-based rather than fixed official charges.",
+      "Property taxes and fees in the UK include official charges such as SDLT, LBTT or LTT plus registration fees that can range from tens to hundreds of pounds, while survey, legal and moving lines remain estimate-led. Buyers should therefore separate the published charges from the market-priced ones so the fixed side can be verified and the softer side can be budgeted with a sensible buffer.",
     sections: [
       {
         title: "Land Registry fees and HMLR registration fees in 2026",
@@ -1360,7 +1360,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Schemes can change how buyers get onto the ladder, but they do not remove the need to understand the cash costs around the purchase. In many cases they simply change where the pressure sits.",
     directAnswer:
-      "Home-buying schemes in the UK can reduce barriers to entry or create alternative ownership routes, but they still involve legal fees, mortgage costs, valuations, admin charges and ongoing obligations. Buyers should always test the full cost rather than relying on the scheme headline alone.",
+      "Home-buying schemes can lower the initial barrier, but they do not make the rest of the costs disappear. Buyers still need to budget for legal work, mortgage costs and, in some cases, valuation fees, staircasing costs, admin charges or later equity-loan charges that can run from the hundreds into the low thousands depending on the route used.",
     sections: [
       {
         title: "Right to Buy upfront costs in the UK",
@@ -1490,7 +1490,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "The same house price can lead to a meaningfully different upfront total depending on where the property sits. Tax treatment is the biggest reason, but legal and market differences matter too.",
     directAnswer:
-      "Regional property costs vary across the UK because England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT. The tax bands, relief rules and higher-rate treatment are not the same, so buyers should not assume one national example applies everywhere.",
+      "Regional property costs vary because England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT, and those systems do not produce the same answer at the same price. A £300,000 purchase can therefore lead to a different tax bill, and a different upfront cash target, depending on which nation the property sits in and what type of buyer you are.",
     sections: [
       {
         title: "England and Northern Ireland overview",
@@ -1614,7 +1614,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Furnishing is often treated as a lifestyle choice rather than a housing cost, but for many first homes it is one of the biggest reasons the first month after completion feels tighter than expected.",
     directAnswer:
-      "The cost of furnishing a first home in the UK can range from a lean essentials budget to several thousand pounds if you need beds, seating, white goods, curtains and kitchen basics quickly. The right budget depends on what you already own and how fast you need the home to become fully functional.",
+      "Furnishing a first home in the UK can often be kept to roughly £800 to £2,000 for an essentials-first setup, but it can rise to £4,500 or more if you need several rooms, key appliances and window coverings quickly. The practical budgeting question is not what the home might look like one day, but what you need in place for the first week and first month after completion.",
     sections: [
       {
         title: "Essentials versus non-essentials",
@@ -1746,7 +1746,7 @@ export const guides: GuidePageContent[] = [
     intro:
       "Buying a home is the first financial hurdle, but ownership has its own rhythm of regular bills, maintenance and periodic larger costs. Buyers who only plan for completion day can still feel caught short once the first few months of ownership begin.",
     directAnswer:
-      "The ongoing cost of owning a home in the UK usually includes mortgage payments, council tax, utilities, insurance, maintenance, repairs and sometimes service charge or ground rent. The monthly cost of owning a home is therefore much more than the mortgage alone.",
+      "The ongoing cost of owning a home usually means the mortgage plus council tax, utilities, insurance and a maintenance allowance, with leasehold or estate charges added where relevant. For many households, the non-mortgage running costs alone still run to several hundred pounds a month before any major repair bill arrives, which is why ownership budgeting needs to go beyond the mortgage payment.",
     sections: [
       {
         title: "Mortgage, council tax and utilities",

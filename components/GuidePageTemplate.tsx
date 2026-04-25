@@ -13,6 +13,7 @@ import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
+import { TrustSignals } from "@/components/TrustSignals";
 import { guideMap } from "@/content/guides";
 import type { GuidePageContent } from "@/content/types";
 import { getStrategicGuideSlugs, headingToId } from "@/lib/guide-links";
@@ -32,6 +33,9 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     title: section.title
   }));
   const strategicLinks = getStrategicGuideSlugs(guide.slug);
+  const combinedGuideLinks = Array.from(new Set([...guide.relatedGuides, ...strategicLinks])).filter(
+    (slug) => slug !== guide.slug
+  );
 
   return (
     <>
@@ -69,8 +73,33 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
       <div className="shell grid gap-8 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
+          <TrustSignals updatedLabel={guide.updatedLabel} sourceKeys={guide.sourceKeys} />
           <AtAGlance items={guide.atGlance} />
           <RateTypeSplit officialItems={guide.officialItems} estimateItems={guide.estimateItems} />
+          <section className="surface p-5">
+            <p className="eyebrow">Plan the full picture</p>
+            <h2 className="mt-3 font-serif text-3xl text-text">Use this guide with the right follow-up pages</h2>
+            <p className="mt-3 max-w-prose text-muted">
+              Start with the{" "}
+              <Link href="/#calculator" className="underline hover:text-brand-deep">
+                homepage calculator
+              </Link>{" "}
+              to test your own numbers, then compare this topic with{" "}
+              {combinedGuideLinks.slice(0, 4).map((slug, index) => (
+                <span key={slug}>
+                  <Link href={`/${slug}`} className="underline hover:text-brand-deep">
+                    {guideMap[slug]?.h1 ?? slug}
+                  </Link>
+                  {index < Math.min(combinedGuideLinks.length, 4) - 2
+                    ? ", "
+                    : index === Math.min(combinedGuideLinks.length, 4) - 2
+                      ? " and "
+                      : ""}
+                </span>
+              ))}
+              .
+            </p>
+          </section>
 
           {guide.sections.map((section, index) => (
             <div key={section.title} className="space-y-8">
@@ -120,7 +149,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           </section>
 
           <FAQSection items={guide.faqs} />
-          <RelatedGuides slugs={guide.relatedGuides} />
+          <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />
           <DataSources sourceKeys={guide.sourceKeys} />
           <Disclaimer />
         </article>
@@ -132,7 +161,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
               <Link href="/#calculator" className="link-chip justify-center">
                 Use the calculator
               </Link>
-              {strategicLinks.slice(0, 4).map((slug) => (
+              {combinedGuideLinks.slice(0, 4).map((slug) => (
                 <Link key={slug} href={`/${slug}`} className="link-chip justify-center">
                   {guideMap[slug]?.h1 ?? "Related guide"}
                 </Link>
@@ -149,7 +178,6 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
               ))}
             </div>
           </div>
-          <Disclaimer />
         </aside>
       </div>
     </>

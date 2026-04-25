@@ -117,7 +117,9 @@ export const homepageGuideLinks = [
   "hidden-costs-buying-house",
   "how-much-money-needed-buy-house",
   "stamp-duty-explained",
-  "first-time-buyer-costs"
+  "first-time-buyer-costs",
+  "mortgage-fees-costs",
+  "moving-costs-uk"
 ] as const;
 
 export const homepagePriceGuideLinks = [

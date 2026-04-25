@@ -5,11 +5,28 @@ type CostBreakdownTableProps = {
   items: BreakdownLine[];
 };
 
+const breakdownTypeLabels: Record<string, string> = {
+  deposit: "Buyer cash contribution",
+  "property-tax": "Official charge",
+  solicitors: "Solicitor / conveyancing estimate",
+  searches: "Solicitor / conveyancing estimate",
+  survey: "Market estimate",
+  "mortgage-fees": "Lender charge",
+  "land-registry": "Official charge",
+  "telegraphic-transfer": "Solicitor / conveyancing estimate",
+  moving: "Optional cost",
+  insurance: "Optional cost",
+  furnishing: "Optional cost",
+  contingency: "Situation-dependent cost"
+};
+
 export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
   return (
-    <div className="surface overflow-hidden">
+    <div className="surface overflow-hidden" role="region" aria-labelledby="cost-breakdown-title">
       <div className="border-b border-line px-6 py-4">
-        <h3 className="font-serif text-2xl text-text">Cost breakdown</h3>
+        <h3 id="cost-breakdown-title" className="font-serif text-2xl text-text">
+          Cost breakdown
+        </h3>
         <p className="mt-1 text-sm text-muted">
           Official-rate lines are separated from planning estimates so you can see what is fixed and what may move.
         </p>
@@ -43,10 +60,12 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
                         : "bg-[#f5efe5] text-warning"
                     }`}
                   >
-                    {item.sourceType === "official" ? "Official / direct" : "Estimate"}
+                    {breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate")}
                   </span>
                 </td>
-                <td className="px-6 py-4 font-semibold text-text whitespace-nowrap">{formatCurrency(item.value)}</td>
+                <td className="px-6 py-4 font-semibold text-text whitespace-nowrap tabular-nums">
+                  {formatCurrency(item.value)}
+                </td>
                 <td className="px-6 py-4 text-sm text-muted">
                   <span className="block min-w-[14rem]">{item.detail}</span>
                 </td>

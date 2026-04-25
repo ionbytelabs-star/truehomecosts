@@ -6,7 +6,11 @@ type ResponsiveTableProps = {
 
 export function ResponsiveTable({ caption, columns, rows }: ResponsiveTableProps) {
   return (
-    <div className="overflow-hidden rounded-3xl border border-line">
+    <div
+      role="region"
+      aria-label={caption ?? "Guide data table"}
+      className="overflow-hidden rounded-3xl border border-line"
+    >
       {caption ? (
         <div className="border-b border-line bg-panel-strong px-5 py-4 text-sm font-medium text-text">
           {caption}

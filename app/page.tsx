@@ -13,6 +13,7 @@ import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
+import { TrustSignals } from "@/components/TrustSignals";
 import { guideMap } from "@/content/guides";
 import {
   homeAtGlance,
@@ -63,10 +64,10 @@ export default function HomePage() {
             <p className="eyebrow">Direct answer</p>
             <h2 className="font-serif text-3xl text-text">What is the true cost of buying a house in the UK?</h2>
             <p className="max-w-prose text-text">
-              The true cost of buying a house in the UK is your deposit plus the extra upfront costs that sit
-              around it. That usually means property tax, conveyancing fees, searches, survey costs, mortgage
-              fees, registration charges and a practical buffer for the smaller items that appear around
-              exchange, completion and move-in week.
+              The true cost of buying a house in the UK is your deposit plus the extra upfront costs around it.
+              For many mainstream purchases, those extra buying costs run from a few thousand pounds to well
+              over £10,000 before you even count the deposit, depending on the property price, location, buyer
+              type, survey choice and moving plans.
             </p>
           </div>
           <div className="rounded-3xl border border-line bg-[#f8fbfa] p-5">
@@ -90,6 +91,7 @@ export default function HomePage() {
       <section className="shell section-gap pt-0">
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
           <div className="space-y-8">
+            <TrustSignals updatedLabel="Updated for 2026" sourceKeys={["sdlt", "lbtt", "ltt", "hmlr"]} />
             <AtAGlance items={[...homeAtGlance]} />
             <RateTypeSplit
               officialItems={["SDLT, LBTT or LTT bands", "published HMLR fee bands where relevant"]}
@@ -137,6 +139,12 @@ export default function HomePage() {
                 </Link>
                 <Link href="/first-time-buyer-costs" className="link-chip">
                   First-time buyer costs
+                </Link>
+                <Link href="/mortgage-fees-costs" className="link-chip">
+                  Mortgage fees UK
+                </Link>
+                <Link href="/moving-costs-uk" className="link-chip">
+                  Moving costs UK
                 </Link>
               </div>
             </section>
