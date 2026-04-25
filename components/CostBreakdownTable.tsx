@@ -28,21 +28,24 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           Cost breakdown
         </h3>
         <p className="mt-1 text-sm text-muted">
-          Official-rate lines are separated from planning estimates so you can see what is fixed and what may move.
+          The table below shows the current calculator result by cost item, separating official charges from
+          lender, conveyancing, market and optional estimates so the total is easier to sense-check.
         </p>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-left">
-          <caption className="sr-only">
-            Cost breakdown showing the item name, whether it is an official charge or an estimate, the amount,
-            and why it is included.
+      <div
+        tabIndex={0}
+        className="overflow-x-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-deep/30"
+      >
+        <table className="min-w-full border-collapse text-left">
+          <caption className="caption-top border-b border-line bg-panel-strong px-6 py-4 text-left text-sm font-medium text-text">
+            Calculator result breakdown for the current property price, jurisdiction and buyer type
           </caption>
           <thead className="bg-[#f7f8f4] text-sm text-muted">
             <tr>
               <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Cost</th>
               <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Type</th>
-              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Amount</th>
+              <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap text-right">Amount</th>
               <th scope="col" className="px-6 py-3 font-medium whitespace-nowrap">Why it is here</th>
             </tr>
           </thead>
@@ -63,7 +66,7 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
                     {breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate")}
                   </span>
                 </td>
-                <td className="px-6 py-4 font-semibold text-text whitespace-nowrap tabular-nums">
+                <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
                   {formatCurrency(item.value)}
                 </td>
                 <td className="px-6 py-4 text-sm text-muted">
@@ -74,6 +77,9 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           </tbody>
         </table>
       </div>
+      <p className="border-t border-line bg-[#fcfcf9] px-6 py-3 text-xs text-muted">
+        On smaller screens, scroll sideways to read the amount and explanation columns in full.
+      </p>
     </div>
   );
 }

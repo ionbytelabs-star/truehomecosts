@@ -147,6 +147,8 @@ export const homeSections: GuideSection[] = [
       "The optional toggles matter because not every buyer wants the same definition of upfront cost. Some people want the bare minimum needed to complete legally. Others want the truer all-in figure that includes moving, insurance and furnishing. Both views are valid, but they answer different questions."
     ],
     table: {
+      summary:
+        "The table below explains what each major calculator input or output area does so buyers can see why the result goes beyond a simple stamp duty figure.",
       caption: "What the calculator covers",
       columns: ["Input or output area", "What it does", "Why it matters"],
       rows: [
@@ -188,6 +190,8 @@ export const homeSections: GuideSection[] = [
       "Understanding that timing helps buyers avoid a common trap: having enough money overall but not enough accessible money at the point the transaction needs it."
     ],
     table: {
+      summary:
+        "The table below shows when the main buying costs usually appear, helping buyers plan not just the total but the order in which the money is likely to be needed.",
       caption: "Simple timing guide for the true buying cost",
       columns: ["Stage", "Typical costs", "Why it matters"],
       rows: [

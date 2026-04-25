@@ -7,6 +7,21 @@ import type { AtGlanceItem, FAQItem, GuidePageContent, GuideSection } from "./ty
 
 type TableRow = [string, string, string];
 
+const breakdownTypeLabels: Record<string, string> = {
+  deposit: "Buyer cash contribution",
+  "property-tax": "Official charge",
+  solicitors: "Solicitor / conveyancing estimate",
+  searches: "Solicitor / conveyancing estimate",
+  survey: "Market estimate",
+  "mortgage-fees": "Lender charge",
+  "land-registry": "Official charge",
+  "telegraphic-transfer": "Solicitor / conveyancing estimate",
+  moving: "Optional cost",
+  insurance: "Optional cost",
+  furnishing: "Optional cost",
+  contingency: "Situation-dependent cost"
+};
+
 type LongGuideConfig = {
   slug: string;
   title: string;
@@ -51,6 +66,58 @@ function sentenceList(items: string[]): string {
   }
 
   return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+}
+
+function describeTable(sectionTitle: string, columns: string[], topicLabel: string, caption?: string): string {
+  const title = sectionTitle.toLowerCase();
+
+  if (title.includes("when do") || title.includes("timing")) {
+    return `The table below shows when ${topicLabel} usually becomes payable, which costs tend to appear at each stage, and why the timing matters for cash planning.`;
+  }
+
+  if (title.includes("worked examples") || title.includes("examples")) {
+    return `The table below gives worked examples so buyers can compare likely outcomes, not just read the cost categories in isolation.`;
+  }
+
+  if (title.includes("buyer type") || title.includes("location") || title.includes("comparison")) {
+    return `The table below compares how ${topicLabel} can shift across different buyer, property or location scenarios, so the differences are easier to scan.`;
+  }
+
+  if (columns.some((column) => /deposit/i.test(column))) {
+    return `The table below compares deposit levels and related planning notes so buyers can see how different deposit choices affect the upfront cash target.`;
+  }
+
+  if (columns.some((column) => /rate|band/i.test(column))) {
+    return `The table below lists the relevant official bands and rates for this topic, so the published charge can be checked more easily.`;
+  }
+
+  if (columns.some((column) => /fee|fees|cost|amount|cash|tax|price/i.test(column))) {
+    return `The table below summarises the main costs for ${topicLabel}, showing how the figures or ranges are grouped and what each line is there to explain.`;
+  }
+
+  if (caption) {
+    return `The table below shows ${caption.charAt(0).toLowerCase()}${caption.slice(1)} so the key figures can be read row by row.`;
+  }
+
+  return `The table below organises the key information for ${topicLabel} into rows and columns so it is easier to compare.`;
+}
+
+function addTableSummaries(sections: GuideSection[], topicLabel: string): GuideSection[] {
+  return sections.map((section) => {
+    if (!section.table) {
+      return section;
+    }
+
+    return {
+      ...section,
+      table: {
+        ...section.table,
+        summary:
+          section.table.summary ??
+          describeTable(section.title, section.table.columns, topicLabel, section.table.caption)
+      }
+    };
+  });
 }
 
 function generatedLongSections(config: LongGuideConfig): GuideSection[] {
@@ -100,6 +167,8 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
         `If your own numbers look lower than every realistic example you can find, that is often a sign that something has been missed rather than a sign that your purchase is uniquely cheap.`
       ],
       table: {
+        summary:
+          "The table below gives example scenarios so buyers can compare realistic outcomes and see how the same topic can feel very different across price points and property types.",
         caption: config.workedExampleCaption,
         columns: ["Example", "Likely outcome", "What to notice"],
         rows: config.workedExampleRows
@@ -227,7 +296,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     directAnswer: config.directAnswer,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
     atGlance: buildAtGlance(config),
-    sections: [...config.sections, ...generatedLongSections(config)],
+    sections: addTableSummaries([...config.sections, ...generatedLongSections(config)], config.topicLabel),
     faqs: mergedFaqs,
     relatedGuides: config.relatedGuides,
     sourceKeys: config.sourceKeys,
@@ -535,6 +604,14 @@ export function createPriceGuide(price: number): GuidePageContent {
   const fivePercentDeposit = formatCurrency(Math.round(price * 0.05));
   const tenPercentDeposit = formatCurrency(Math.round(price * 0.1));
   const twentyPercentDeposit = formatCurrency(Math.round(price * 0.2));
+  const extraCostRows = englandMover.breakdown
+    .filter((item) => item.key !== "deposit")
+    .map((item) => [
+      item.label,
+      breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate"),
+      formatCurrency(item.value),
+      item.detail
+    ]);
 
   return createLongGuide({
     slug,
@@ -585,6 +662,7 @@ export function createPriceGuide(price: number): GuidePageContent {
           `A larger deposit can help with mortgage pricing and resilience, but there is no prize for putting every available pound into the deposit if it leaves you exposed on surveys, fees, moving costs or the first month of ownership.`
         ],
         table: {
+          summary: `The table below compares common deposit levels on a ${formattedPrice} purchase so buyers can see the cash commitment before any tax, legal or moving costs are added.`,
           caption: `Deposit examples for a ${formattedPrice} purchase`,
           columns: ["Deposit level", "Cash needed", "Planning note"],
           rows: depositRows
@@ -603,7 +681,13 @@ export function createPriceGuide(price: number): GuidePageContent {
           "Survey or inspection costs",
           "Mortgage product or valuation charges",
           "Moving, locks, cleaning and setup spending"
-        ]
+        ],
+        table: {
+          summary: `The table below shows a mainstream extra-cost breakdown for a ${formattedPrice} purchase, separating official charges from estimate-led and optional items so buyers can see what sits beyond the deposit.`,
+          caption: `Example extra buying costs beyond the deposit on a ${formattedPrice} purchase`,
+          columns: ["Extra cost item", "Type", "Example amount", "Why it matters"],
+          rows: extraCostRows
+        }
       },
       {
         title: `How this changes for first-time buyers at ${formattedPrice}`,
@@ -624,6 +708,7 @@ export function createPriceGuide(price: number): GuidePageContent {
           `The examples below use the TrueHomeCosts calculator with average assumptions and a 10% deposit for owner-occupier examples. The additional-property example uses a 25% deposit because that is a more common planning assumption for second-home or similar purchases.`
         ],
         table: {
+          summary: `The table below compares how the same ${formattedPrice} price point can behave across England and Northern Ireland, Scotland and Wales, with an additional-property example to show how buyer type changes the total again.`,
           caption: `Illustrative upfront totals and tax effects for a ${formattedPrice} purchase`,
           columns: ["Scenario", "Estimated total upfront cash", "What changes the result"],
           rows: [

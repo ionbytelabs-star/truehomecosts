@@ -52,13 +52,13 @@ export const guides: GuidePageContent[] = [
         ],
         table: {
           caption: "Common legal and disbursement lines buyers see on a purchase",
-          columns: ["Cost line", "Typical planning range", "What it usually covers"],
+          columns: ["Cost line", "Type", "Typical planning range", "What it usually covers"],
           rows: [
-            ["Solicitor legal fee", "£950 to £1,950+", "The lawyer's work on the transaction"],
-            ["Search pack", "£180 to £430", "Local authority, drainage and environmental searches"],
-            ["Telegraphic transfer fee", "£25 to £55", "Secure transfer of completion funds"],
-            ["Registration fee", "£20 to £500+", "Official registration or filing fee"],
-            ["ID, AML or admin checks", "Usually modest but variable", "Compliance checks carried out by the firm"]
+            ["Solicitor legal fee", "Solicitor / conveyancing estimate", "£950 to £1,950+", "The lawyer's work on the transaction"],
+            ["Search pack", "Solicitor / conveyancing estimate", "£180 to £430", "Local authority, drainage and environmental searches"],
+            ["Telegraphic transfer fee", "Solicitor / conveyancing estimate", "£25 to £55", "Secure transfer of completion funds"],
+            ["Registration fee", "Official charge", "£20 to £500+", "Official registration or filing fee"],
+            ["ID, AML or admin checks", "Situation-dependent cost", "Usually modest but variable", "Compliance checks carried out by the firm"]
           ]
         }
       },
@@ -708,12 +708,12 @@ export const guides: GuidePageContent[] = [
         ],
         table: {
           caption: "Common upfront mortgage fee types",
-          columns: ["Fee type", "Is it always charged?", "What to think about"],
+          columns: ["Fee type", "Type", "Can it be added to the loan?", "What to think about"],
           rows: [
-            ["Broker fee", "No", "Check the service and whether the market search is broad enough"],
-            ["Booking or application fee", "No", "Can reserve the product but may not be refundable"],
-            ["Arrangement fee", "No", "Compare it against the rate benefit and the likely loan term"],
-            ["Valuation fee", "No", "Some lenders include a basic valuation, some do not"]
+            ["Broker fee", "Lender charge", "Usually no", "Check the service and whether the market search is broad enough"],
+            ["Booking or application fee", "Lender charge", "Usually no", "Can reserve the product but may not be refundable"],
+            ["Arrangement fee", "Lender charge", "Sometimes yes", "Compare it against the rate benefit and the likely loan term"],
+            ["Valuation fee", "Lender charge", "Usually no", "Some lenders include a basic valuation, some do not"]
           ]
         }
       },
@@ -865,13 +865,13 @@ export const guides: GuidePageContent[] = [
         ],
         table: {
           caption: "Moving cost categories buyers often underestimate",
-          columns: ["Category", "Typical range pattern", "Why it matters"],
+          columns: ["Category", "Type", "Typical planning range", "What affects it"],
           rows: [
-            ["Removal company", "Hundreds to low thousands", "Usually the biggest moving-day cost"],
-            ["Packing service", "Adds to the removal quote", "Useful when time or complexity is high"],
-            ["Storage", "Weekly or monthly cost plus logistics", "Important if dates do not line up neatly"],
-            ["Mail redirection", "Smaller fixed cost", "Easy to forget but practical"],
-            ["Locks, cleaning, broadband and setup", "Often smaller individual costs", "Together they materially change the move-in week total"]
+            ["Removal company", "Market estimate", "About £600 to £2,000+", "Property size, distance, access and timing"],
+            ["Packing service", "Optional cost", "Often adds a few hundred pounds or more", "Volume of contents and how much help is needed"],
+            ["Storage", "Situation-dependent cost", "Weekly or monthly charge plus transport", "Whether dates overlap or the new home is not ready"],
+            ["Mail redirection", "Optional cost", "Smaller fixed cost", "Useful if post may still go to the old address"],
+            ["Locks, cleaning, broadband and setup", "Optional cost", "Often from tens into the low hundreds per line", "How much needs doing immediately after completion"]
           ]
         }
       }
@@ -1000,7 +1000,18 @@ export const guides: GuidePageContent[] = [
           "Insurance rarely dominates the total upfront buying budget in the same way that deposit or tax can, but it matters because it appears at a time when cash is often already under strain. A modest allowance for the first premium or setup cost can prevent a small but awkward surprise.",
           "The safest approach is to ask what cover needs to exist before completion, what can wait until after move-in, and what optional cover the household is likely to want soon afterwards.",
           "That turns insurance from a vague future worry into a manageable line in the plan."
-        ]
+        ],
+        table: {
+          caption: "Common insurance types buyers compare around purchase time",
+          columns: ["Policy type", "Type", "When buyers usually consider it", "Typical cost pattern"],
+          rows: [
+            ["Buildings insurance", "Market estimate", "Often before exchange or completion on a mortgaged purchase", "Annual premium often starts in the low hundreds"],
+            ["Contents insurance", "Optional cost", "Usually around move-in or shortly after", "Varies with cover level and contents value"],
+            ["Life insurance", "Optional cost", "Often reviewed once the mortgage offer is in place", "Monthly premium varies by age, health and cover amount"],
+            ["Mortgage or income protection", "Optional cost", "Considered where the mortgage depends on one or two incomes", "Monthly premium varies widely with policy design"],
+            ["Landlord insurance", "Market estimate", "Before tenancy use on a buy-to-let purchase", "Usually priced differently from owner-occupier cover"]
+          ]
+        }
       }
     ],
     faqs: [
@@ -1111,12 +1122,12 @@ export const guides: GuidePageContent[] = [
         ],
         table: {
           caption: "Typical leasehold extras buyers should watch",
-          columns: ["Leasehold cost", "Why it appears", "Budget effect"],
+          columns: ["Leasehold cost", "Type", "Why it appears", "Budget effect"],
           rows: [
-            ["Management information and pack fees", "Building paperwork and solicitor checks", "Can add hundreds of pounds to the process"],
-            ["Notice fees", "Formal notice to landlord or agent", "Often modest individually but still real"],
-            ["Deed or certificate fees", "Lease-specific compliance", "Another example of buyer-facing admin that freehold buyers may not see"],
-            ["Reserve or service-charge adjustments", "Apportionments around completion", "Can affect immediate post-completion cash flow"]
+            ["Management information and pack fees", "Situation-dependent cost", "Building paperwork and solicitor checks", "Can add hundreds of pounds to the process"],
+            ["Notice fees", "Situation-dependent cost", "Formal notice to landlord or agent", "Often modest individually but still real"],
+            ["Deed or certificate fees", "Situation-dependent cost", "Lease-specific compliance", "Another example of buyer-facing admin that freehold buyers may not see"],
+            ["Reserve or service-charge adjustments", "Situation-dependent cost", "Apportionments around completion", "Can affect immediate post-completion cash flow"]
           ]
         }
       },
@@ -1239,14 +1250,14 @@ export const guides: GuidePageContent[] = [
         ],
         table: {
           caption: "Selected HMLR electronic Scale 1 fees used by the site",
-          columns: ["Transaction value", "Fee", "Why buyers care"],
+          columns: ["Transaction value", "Type", "Fee", "Why buyers care"],
           rows: [
-            ["Up to £80,000", "£20", "Shows how low-value transfers are charged"],
-            ["£80,001 to £100,000", "£40", "Early jump in the fee scale"],
-            ["£100,001 to £200,000", "£100", "Relevant to many mainstream purchases"],
-            ["£200,001 to £500,000", "£150", "Common owner-occupier band"],
-            ["£500,001 to £1 million", "£295", "Higher-value band"],
-            ["Over £1 million", "£500", "Top band in the calculator dataset"]
+            ["Up to £80,000", "Official charge", "£20", "Shows how low-value transfers are charged"],
+            ["£80,001 to £100,000", "Official charge", "£40", "Early jump in the fee scale"],
+            ["£100,001 to £200,000", "Official charge", "£100", "Relevant to many mainstream purchases"],
+            ["£200,001 to £500,000", "Official charge", "£150", "Common owner-occupier band"],
+            ["£500,001 to £1 million", "Official charge", "£295", "Higher-value band"],
+            ["Over £1 million", "Official charge", "£500", "Top band in the calculator dataset"]
           ]
         }
       },

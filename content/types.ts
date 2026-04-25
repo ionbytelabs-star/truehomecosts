@@ -16,6 +16,7 @@ export type GuideSection = {
   paragraphs?: string[];
   bullets?: string[];
   table?: {
+    summary?: string;
     caption?: string;
     columns: string[];
     rows: string[][];
