@@ -52,25 +52,17 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           <tbody>
             {items.map((item) => (
               <tr key={item.key} className="border-t border-line align-top">
-                <th scope="row" className="px-6 py-4 font-medium text-text">
-                  <span className="block min-w-[10rem]">{item.label}</span>
+                <th scope="row" className="min-w-[10rem] px-6 py-4 font-medium text-text">
+                  {item.label}
                 </th>
                 <td className="px-6 py-4 text-sm text-muted">
-                  <span
-                    className={`inline-flex rounded-full px-3 py-1 ${
-                      item.sourceType === "official"
-                        ? "bg-brand-soft text-brand-deep"
-                        : "bg-[#f5efe5] text-warning"
-                    }`}
-                  >
-                    {breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate")}
-                  </span>
+                  {breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate")}
                 </td>
                 <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
                   {formatCurrency(item.value)}
                 </td>
-                <td className="px-6 py-4 text-sm text-muted">
-                  <span className="block min-w-[14rem]">{item.detail}</span>
+                <td className="min-w-[14rem] px-6 py-4 text-sm text-muted">
+                  {item.detail}
                 </td>
               </tr>
             ))}

@@ -26,6 +26,8 @@ import {
 } from "@/content/home";
 import { buildMetadata } from "@/lib/metadata";
 import { calculateUpfrontCosts } from "@/lib/calculator";
+import { defaultCalculatorInput } from "@/lib/default-calculator-input";
+import { formatCurrency } from "@/lib/format";
 import { faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
@@ -41,6 +43,23 @@ const scenarios = homeScenarioInputs.map((scenario) => ({
   summary: scenario.summary,
   result: calculateUpfrontCosts(scenario.input)
 }));
+
+const defaultHomepageResult = calculateUpfrontCosts(defaultCalculatorInput);
+
+const homepageBreakdownTypeLabels: Record<string, string> = {
+  deposit: "Buyer cash contribution",
+  "property-tax": "Official charge",
+  solicitors: "Solicitor / conveyancing estimate",
+  searches: "Solicitor / conveyancing estimate",
+  survey: "Market estimate",
+  "mortgage-fees": "Lender charge",
+  "land-registry": "Official charge",
+  "telegraphic-transfer": "Solicitor / conveyancing estimate",
+  moving: "Optional cost",
+  insurance: "Optional cost",
+  furnishing: "Optional cost",
+  contingency: "Situation-dependent cost"
+};
 
 export default function HomePage() {
   return (
@@ -83,6 +102,35 @@ export default function HomePage() {
       </section>
 
       <CalculatorForm />
+
+      <section className="shell pb-8">
+        <div className="surface p-5">
+          <div className="space-y-2">
+            <p className="eyebrow">Default example breakdown</p>
+            <h2 className="font-serif text-3xl text-text">How the default homepage example is built</h2>
+            <p className="max-w-prose text-muted">
+              The table below shows the default calculator setup for a £300,000 first-time buyer purchase in
+              England and Northern Ireland with a 10% deposit. It separates official charges from estimate-led
+              costs so the live homepage exposes a clear semantic example in static HTML as well as in the
+              interactive calculator.
+            </p>
+          </div>
+          <div className="mt-5">
+            <ResponsiveTable
+              summary="The table below shows the current default homepage cost breakdown, with one row per cost item and clear headers for type, amount and reason."
+              caption="Homepage default cost breakdown example"
+              columns={["Cost item", "Type", "Amount", "Why it applies"]}
+              rows={defaultHomepageResult.breakdown.map((item) => [
+                item.label,
+                homepageBreakdownTypeLabels[item.key] ??
+                  (item.sourceType === "official" ? "Official charge" : "Estimate"),
+                formatCurrency(item.value),
+                item.detail
+              ])}
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="shell pb-8">
         <AdPlaceholder label="Ad placeholder below calculator results" />

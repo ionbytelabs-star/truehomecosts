@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 import { CostBreakdownTable } from "@/components/CostBreakdownTable";
 import { ResultsCard } from "@/components/ResultsCard";
 import { calculateUpfrontCosts, type CalculatorInput, type DepositMode } from "@/lib/calculator";
+import { defaultCalculatorInput } from "@/lib/default-calculator-input";
 import { formatCurrency } from "@/lib/format";
 import {
   assumptionLevelLabels,
@@ -15,22 +16,9 @@ import {
   type Jurisdiction
 } from "@/lib/site";
 
-const defaultInput: CalculatorInput = {
-  propertyPrice: 300_000,
-  jurisdiction: "england-ni",
-  buyerType: "first-time-buyer",
-  depositMode: "percentage",
-  depositPercentage: 10,
-  depositAmount: 30_000,
-  assumptionLevel: "average",
-  includeMoving: true,
-  includeFurnishing: false,
-  includeInsurance: true
-};
-
 export function CalculatorForm() {
   const titleId = useId();
-  const [input, setInput] = useState<CalculatorInput>(defaultInput);
+  const [input, setInput] = useState<CalculatorInput>(defaultCalculatorInput);
   const result = calculateUpfrontCosts(input);
   const toggleOptions: Array<{
     key: "includeMoving" | "includeFurnishing" | "includeInsurance";

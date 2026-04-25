@@ -10,7 +10,13 @@ function isNumericColumn(header: string | undefined): boolean {
     return false;
   }
 
-  return /(amount|rate|fee|fees|deposit|cash|total|tax|cost|price|value)/i.test(header);
+  const normalised = header.trim().toLowerCase();
+
+  if (/(item|type|why|what|note|notes|covers|scenario|category|band|nation)/i.test(normalised)) {
+    return false;
+  }
+
+  return /^(amount|rate|fee|fees|deposit|cash|total|tax|price|value)$/.test(normalised);
 }
 
 function looksNumericValue(value: string | undefined): boolean {
@@ -85,29 +91,23 @@ export function ResponsiveTable({ caption, columns, rows, summary }: ResponsiveT
                 <tr key={row.join("-")} className="border-t border-line align-top">
                   {row.map((cell, index) =>
                     index === 0 ? (
-                      <th
-                        key={`${row[0]}-${index}`}
-                        scope="row"
-                        className="bg-white px-4 py-3 font-medium text-text"
-                      >
-                        <span className="block min-w-[11rem]">{cell}</span>
-                      </th>
-                    ) : (
+                    <th
+                      key={`${row[0]}-${index}`}
+                      scope="row"
+                      className="min-w-[11rem] bg-white px-4 py-3 font-medium text-text"
+                    >
+                      {cell}
+                    </th>
+                  ) : (
                       <td
                         key={`${row[0]}-${index}`}
                         className={`px-4 py-3 text-text/90 ${
                           isNumericColumn(columns[index]) || looksNumericValue(cell)
-                            ? "text-right tabular-nums whitespace-nowrap"
-                            : "text-left"
+                            ? "min-w-[8rem] text-right tabular-nums whitespace-nowrap"
+                            : "min-w-[12rem] text-left"
                         }`}
                       >
-                        <span
-                          className={`block ${
-                            isNumericColumn(columns[index]) ? "min-w-[8rem]" : "min-w-[12rem]"
-                          }`}
-                        >
-                          {cell}
-                        </span>
+                        {cell}
                       </td>
                     )
                   )}
