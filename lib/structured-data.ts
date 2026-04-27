@@ -6,7 +6,7 @@ export function websiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
-    url: siteConfig.url,
+    url: absoluteUrl("/"),
     description: siteConfig.description,
     inLanguage: "en-GB",
     publisher: {

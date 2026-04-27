@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StructuredData } from "@/components/StructuredData";
 import "@/app/globals.css";
+import { absoluteUrl } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   alternates: {
-    canonical: siteConfig.url
+    canonical: absoluteUrl("/")
   }
 };
 
