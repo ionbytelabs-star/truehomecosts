@@ -56,6 +56,30 @@ export function webpageSchema({
   };
 }
 
+export function calculatorApplicationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "TrueHomeCosts UK House Buying Cost Calculator",
+    url: absoluteUrl("/"),
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Any",
+    inLanguage: "en-GB",
+    description:
+      "A browser-based UK house buying cost calculator for estimating deposit, property tax, legal fees, survey costs, mortgage fees, moving costs and total upfront cash needed.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "GBP"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url
+    }
+  };
+}
+
 export function articleSchema({
   headline,
   description,

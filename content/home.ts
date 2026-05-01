@@ -6,39 +6,52 @@ export const homeKeywords = [
   "true cost of buying a house UK",
   "buying a house costs UK calculator",
   "total upfront cost buying property UK",
-  "upfront costs buying a house UK"
+  "upfront costs buying a house UK",
+  "cost of buying a house calculator UK",
+  "house buying costs UK",
+  "UK property buying costs calculator"
 ] as const;
 
 export const homePageFaqs = [
   {
-    question: "How much cash do I really need to buy a house in the UK?",
+    question: "How much money do I need to buy a house in the UK?",
     answer:
-      "You usually need more than the deposit. Most buyers also need cash for property tax, legal fees, searches, a survey, mortgage costs and a sensible buffer."
+      "You usually need your deposit plus the extra upfront costs needed to complete and move in. Those extra costs often include property tax, solicitor fees, searches, surveys, mortgage fees, moving costs and a cash buffer."
   },
   {
-    question: "Does the calculator include stamp duty or regional property tax?",
+    question: "What upfront costs do you pay when buying a house?",
     answer:
-      "Yes. The calculator estimates SDLT for England and Northern Ireland, LBTT for Scotland, and LTT for Wales using central tax data files. That means the tax logic is kept in one place rather than scattered across the site."
+      "The main upfront costs are the deposit, stamp duty or regional property tax, solicitor and conveyancing fees, searches, survey costs, mortgage fees, insurance, removals and initial setup spending."
   },
   {
-    question: "Are all of the figures official?",
+    question: "Is stamp duty included in the calculator?",
     answer:
-      "No. Property tax and HMLR fees use official published bands where relevant. Legal fees, surveys, moving costs and similar items are planning estimates, so they should be treated as guidance rather than fixed charges."
+      "Yes. The calculator estimates SDLT for England and Northern Ireland, LBTT for Scotland, and LTT for Wales. It keeps tax separate from estimate-led costs so buyers can see which parts are official-rate items."
   },
   {
-    question: "Can I use the calculator for second homes?",
+    question: "Do first-time buyers have lower buying costs?",
     answer:
-      "Yes. Choose the additional property option to include the relevant higher-rate treatment for the selected nation. It is a practical way to compare a mainstream move with a second-home or additional-property budget."
+      "Sometimes. First-time buyers may pay less property tax in some UK nations and may have smaller moving costs, but they still need to budget for legal fees, searches, surveys, mortgage costs and move-in spending."
   },
   {
-    question: "When do buyers usually pay solicitor fees and stamp duty in the UK?",
+    question: "What costs are often forgotten when buying a house?",
     answer:
-      "Solicitors often ask for some money on account early in the process and collect the final balance before or on completion. Stamp duty or the relevant regional property tax is usually handled by the solicitor around completion using money already collected from you."
+      "Buyers often forget searches, survey upgrades, telegraphic transfer fees, mortgage product fees, removals, locks, insurance and the first wave of setup costs after completion."
   },
   {
-    question: "What costs do buyers most often forget beyond the deposit?",
+    question: "How much should I budget for solicitor fees and surveys?",
     answer:
-      "Commonly missed costs include searches, survey fees, telegraphic transfer charges, mortgage fees, moving costs, initial insurance and the first wave of setup spending after completion. Those lines are exactly why a deposit-only budget often feels too low."
+      "A straightforward purchase may need around £950 to £1,950 or more for legal work, with disbursements on top. Surveys can range from the mid-hundreds to £2,000 or more depending on the property and report level."
+  },
+  {
+    question: "Is the calculator financial advice?",
+    answer:
+      "No. The calculator is an informational planning tool. It is not financial, mortgage, legal or tax advice, and buyers should check important figures with the right professional or official source."
+  },
+  {
+    question: "Does the calculator work for England, Scotland, Wales and Northern Ireland?",
+    answer:
+      "Yes. It supports England and Northern Ireland, Scotland and Wales, with separate property tax logic for SDLT, LBTT and LTT."
   }
 ] as const;
 
@@ -67,10 +80,10 @@ export const homeScenarioInputs: Array<{
   input: CalculatorInput;
 }> = [
   {
-    title: "£250,000 first-time buyer in England",
-    summary: "Shows how a buyer can still need several thousand pounds beyond a 10% deposit, even when first-time buyer SDLT relief reduces tax.",
+    title: "£200,000 first-time buyer",
+    summary: "Shows how a lower-price first purchase can still need legal, survey, mortgage and moving money beyond the deposit.",
     input: {
-      propertyPrice: 250_000,
+      propertyPrice: 200_000,
       jurisdiction: "england-ni",
       buyerType: "first-time-buyer",
       depositMode: "percentage",
@@ -82,11 +95,11 @@ export const homeScenarioInputs: Array<{
     }
   },
   {
-    title: "£300,000 home mover in Scotland",
-    summary: "Illustrates the combined effect of deposit, Scottish LBTT, survey and legal costs on a mainstream move-up purchase.",
+    title: "£300,000 home mover",
+    summary: "Illustrates a mainstream move where deposit, tax, survey choice and removals can all affect the cash needed before completion.",
     input: {
       propertyPrice: 300_000,
-      jurisdiction: "scotland",
+      jurisdiction: "england-ni",
       buyerType: "home-mover",
       depositMode: "percentage",
       depositPercentage: 10,
@@ -97,21 +110,39 @@ export const homeScenarioInputs: Array<{
     }
   },
   {
-    title: "£400,000 buyer in Wales with move-in budget",
-    summary: "Useful for seeing how LTT, moving costs and optional furnishing can change the all-in target on a mid-market family purchase.",
+    title: "£450,000 additional property buyer",
+    summary: "Highlights how a second home or additional property can need a larger deposit assumption and higher-rate tax treatment.",
     input: {
-      propertyPrice: 400_000,
-      jurisdiction: "wales",
-      buyerType: "home-mover",
+      propertyPrice: 450_000,
+      jurisdiction: "england-ni",
+      buyerType: "additional-property",
       depositMode: "percentage",
-      depositPercentage: 10,
+      depositPercentage: 25,
       assumptionLevel: "average",
       includeMoving: true,
-      includeFurnishing: true,
+      includeFurnishing: false,
       includeInsurance: true
     }
   }
 ] as const;
+
+export const homeCostSummaryTable = {
+  summary:
+    "The table below summarises common UK house buying costs. Ranges are planning estimates unless the item is an official tax or published fee, and the exact total changes by property price, nation and buyer type.",
+  caption: "Typical UK upfront house buying cost summary",
+  columns: ["Cost item", "Typical UK planning range", "Notes"],
+  rows: [
+    ["Deposit", "Usually 5% to 20%+ of the price", "The largest cash item for most buyers and separate from fees"],
+    ["Stamp duty / property tax", "£0 to five figures+", "Official SDLT, LBTT or LTT depends on nation, price and buyer type"],
+    ["Solicitor / conveyancing fees", "About £950 to £1,950+", "Estimate for legal work before disbursements and property-specific extras"],
+    ["Searches and disbursements", "About £180 to £430+", "Covers local authority, drainage, environmental and related checks"],
+    ["Survey", "About £400 to £2,000+", "Market estimate depending on report level, age and condition"],
+    ["Mortgage fees", "£0 to £2,500+", "May include broker, product, booking or valuation charges"],
+    ["Moving costs", "About £300 to £2,000+", "Depends on distance, property size, packing and storage needs"],
+    ["Insurance", "Often low hundreds per year+", "Buildings cover is commonly arranged around exchange or completion"],
+    ["Furnishing / setup buffer", "About £800 to £4,500+", "Optional but useful for first homes, essentials and move-in gaps"]
+  ]
+} as const;
 
 export const homepageGuideLinks = [
   "hidden-costs-buying-house",
@@ -119,7 +150,10 @@ export const homepageGuideLinks = [
   "stamp-duty-explained",
   "first-time-buyer-costs",
   "mortgage-fees-costs",
-  "moving-costs-uk"
+  "moving-costs-uk",
+  "insurance-costs-uk",
+  "leasehold-costs-uk",
+  "cost-of-owning-home-uk"
 ] as const;
 
 export const homepagePriceGuideLinks = [

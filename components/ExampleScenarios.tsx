@@ -16,7 +16,11 @@ export function ExampleScenarios({ scenarios }: ExampleScenariosProps) {
     <section className="space-y-5">
       <div className="space-y-2">
         <p className="eyebrow">Worked examples</p>
-        <h2 className="font-serif text-3xl text-text">Example scenarios</h2>
+        <h2 className="font-serif text-3xl text-text">Example UK house buying cost scenarios</h2>
+        <p className="max-w-prose text-muted">
+          These planning examples show how deposit, property tax and estimate-led costs can combine. They are
+          not universal quotes, but they help explain why the total cash needed can be higher than buyers expect.
+        </p>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">

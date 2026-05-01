@@ -1,8 +1,8 @@
 type ResponsiveTableProps = {
   summary?: string;
   caption?: string;
-  columns: string[];
-  rows: string[][];
+  columns: readonly string[];
+  rows: readonly (readonly string[])[];
 };
 
 function isNumericColumn(header: string | undefined): boolean {
@@ -27,7 +27,7 @@ function looksNumericValue(value: string | undefined): boolean {
   return /^£?\d|^\d+%|^\d[\d,.\s]*(to|-|–)/.test(value.trim());
 }
 
-function listColumns(columns: string[]): string {
+function listColumns(columns: readonly string[]): string {
   if (columns.length === 0) {
     return "the key figures";
   }
@@ -43,7 +43,7 @@ function listColumns(columns: string[]): string {
   return `${columns.slice(0, -1).join(", ")}, and ${columns[columns.length - 1]}`;
 }
 
-function defaultSummary(caption?: string, columns: string[] = []): string | undefined {
+function defaultSummary(caption?: string, columns: readonly string[] = []): string | undefined {
   if (!caption) {
     return undefined;
   }

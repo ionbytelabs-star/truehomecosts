@@ -71,7 +71,8 @@ export function CalculatorForm() {
               Buying a house costs UK calculator
             </h2>
             <p className="text-muted">
-              Estimate the total upfront cost of buying property in the UK, not just the deposit.
+              Use the calculator to estimate the total upfront cash needed before completion. Adjust the
+              property price, location, buyer type, deposit and optional costs to see how the total changes.
             </p>
           </div>
 

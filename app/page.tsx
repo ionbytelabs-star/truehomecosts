@@ -17,6 +17,7 @@ import { TrustSignals } from "@/components/TrustSignals";
 import { guideMap } from "@/content/guides";
 import {
   homeAtGlance,
+  homeCostSummaryTable,
   homeKeywords,
   homePageFaqs,
   homepageGuideLinks,
@@ -28,12 +29,12 @@ import { buildMetadata } from "@/lib/metadata";
 import { calculateUpfrontCosts } from "@/lib/calculator";
 import { defaultCalculatorInput } from "@/lib/default-calculator-input";
 import { formatCurrency } from "@/lib/format";
-import { faqPageSchema, webpageSchema } from "@/lib/structured-data";
+import { calculatorApplicationSchema, faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "True cost of buying a house UK calculator",
+  title: "True Cost of Buying a House UK Calculator | Full Cost Breakdown 2026",
   description:
-    "Estimate the true cost of buying a house in the UK with a fast calculator covering deposit, SDLT or regional property tax, legal fees, searches, surveys, mortgage fees and optional moving costs.",
+    "Use this UK house buying cost calculator to estimate your deposit, stamp duty or regional property tax, solicitor fees, surveys, mortgage costs, moving costs and total upfront cash needed.",
   path: "/",
   keywords: [...homeKeywords]
 });
@@ -66,13 +67,14 @@ export default function HomePage() {
     <>
       <StructuredData
         data={webpageSchema({
-          title: "True cost of buying a house UK calculator",
+          title: "True Cost of Buying a House UK Calculator",
           description:
-            "Estimate the true cost of buying a house in the UK with deposit, property tax and the hidden extras buyers often miss.",
+            "Estimate the total upfront cost of buying a house in the UK with deposit, property tax, legal fees, survey costs, mortgage fees, moving costs and a cash buffer.",
           path: "/",
           keywords: [...homeKeywords]
         })}
       />
+      <StructuredData data={calculatorApplicationSchema()} />
       <StructuredData data={faqPageSchema(homePageFaqs.map((faq) => ({ ...faq })))} />
 
       <Hero />
@@ -83,10 +85,16 @@ export default function HomePage() {
             <p className="eyebrow">Direct answer</p>
             <h2 className="font-serif text-3xl text-text">What is the true cost of buying a house in the UK?</h2>
             <p className="max-w-prose text-text">
-              The true cost of buying a house in the UK is your deposit plus the extra upfront costs around it.
-              For many mainstream purchases, those extra buying costs run from a few thousand pounds to well
-              over £10,000 before you even count the deposit, depending on the property price, location, buyer
-              type, survey choice and moving plans.
+              The true cost of buying a house in the UK is usually the deposit plus the extra upfront costs
+              needed to complete the purchase and move in.
+            </p>
+            <p className="max-w-prose text-text">
+              These costs can include stamp duty or regional property tax, solicitor fees, searches, surveys,
+              mortgage fees, removals, insurance and a sensible cash buffer.
+            </p>
+            <p className="max-w-prose text-text">
+              For many buyers, the non-deposit costs can run from a few thousand pounds to well over £10,000,
+              depending on the property price, UK nation, buyer type and how much help is needed during the move.
             </p>
           </div>
           <div className="rounded-3xl border border-line bg-[#f8fbfa] p-5">
@@ -99,6 +107,10 @@ export default function HomePage() {
             </ul>
           </div>
         </div>
+      </section>
+
+      <section className="shell pb-8">
+        <ResponsiveTable {...homeCostSummaryTable} />
       </section>
 
       <CalculatorForm />
@@ -174,13 +186,16 @@ export default function HomePage() {
               <div className="space-y-2">
                 <p className="eyebrow">Useful next reads</p>
                 <h2 className="font-serif text-3xl text-text">Key guides that answer the next question</h2>
+                <p className="max-w-prose text-muted">
+                  Use these guides to go deeper into the house buying costs that sit behind the calculator result.
+                </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link href="/hidden-costs-buying-house" className="link-chip">
-                  Hidden costs of buying a house UK
+                  Hidden costs of buying a house
                 </Link>
                 <Link href="/how-much-money-needed-buy-house" className="link-chip">
-                  How much money do I need?
+                  How much money you need to buy a house
                 </Link>
                 <Link href="/stamp-duty-explained" className="link-chip">
                   Stamp duty explained
@@ -192,7 +207,16 @@ export default function HomePage() {
                   Mortgage fees UK
                 </Link>
                 <Link href="/moving-costs-uk" className="link-chip">
-                  Moving costs UK
+                  Moving costs in the UK
+                </Link>
+                <Link href="/insurance-costs-uk" className="link-chip">
+                  Insurance costs for home buyers
+                </Link>
+                <Link href="/leasehold-costs-uk" className="link-chip">
+                  Leasehold buying costs
+                </Link>
+                <Link href="/cost-of-owning-home-uk" className="link-chip">
+                  Ongoing cost of owning a home
                 </Link>
               </div>
             </section>
@@ -218,6 +242,15 @@ export default function HomePage() {
             <FAQSection items={homePageFaqs.map((faq) => ({ ...faq }))} />
             <RelatedGuides slugs={[...homepageGuideLinks]} />
             <DataSources sourceKeys={["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"]} />
+            <section className="rounded-3xl border border-warning/20 bg-[#fff4eb] p-5 text-sm text-text">
+              <p className="font-semibold uppercase tracking-[0.16em] text-warning">Last updated: 2026</p>
+              <p className="mt-2">
+                Figures are planning estimates unless marked as official-rate items. Tax bands, registration
+                fees and market prices can change, and the site is informational only. It is not financial,
+                mortgage, legal or tax advice, so buyers should verify important figures with the relevant
+                professional or official source before making decisions.
+              </p>
+            </section>
             <Disclaimer />
           </div>
 

@@ -6,16 +6,16 @@ export function Hero() {
           <p className="eyebrow">UK home buying cost calculator</p>
           <div className="space-y-3">
             <h1 className="font-serif text-5xl leading-tight text-text sm:text-6xl">
-              See the true cost of buying a home in seconds
+              True Cost of Buying a House UK Calculator
             </h1>
             <p className="max-w-prose text-xl text-muted">
-              No signup. No estate agent fluff. Just real numbers.
+              Estimate the total upfront cost of buying a home, including your deposit, stamp duty or regional
+              property tax, legal fees, surveys, mortgage costs, moving costs and a practical buffer.
             </p>
           </div>
           <p className="max-w-prose text-lg text-text/90">
-            TrueHomeCosts helps you estimate the total upfront cost of buying property in the UK, including
-            deposit, property tax, legal fees, searches, surveys, mortgage costs, moving costs and a buffer
-            for the items buyers often forget.
+            Use the calculator to build a plain-English UK property buying cost estimate before you commit to
+            a purchase price or rely on a deposit-only savings target.
           </p>
         </div>
 
