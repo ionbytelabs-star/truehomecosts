@@ -68,7 +68,7 @@ export function CalculatorForm() {
           <div className="space-y-3">
             <p className="eyebrow">Calculator</p>
             <h2 id={titleId} className="font-serif text-3xl text-text">
-              Buying a house costs UK calculator
+              House buying costs calculator for the UK
             </h2>
             <p className="text-muted">
               Use the calculator to estimate the total upfront cash needed before completion. Adjust the

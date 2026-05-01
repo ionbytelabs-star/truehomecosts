@@ -4,11 +4,11 @@ import type { AtGlanceItem, GuideSection } from "@/content/types";
 
 export const homeKeywords = [
   "true cost of buying a house UK",
-  "buying a house costs UK calculator",
-  "total upfront cost buying property UK",
-  "upfront costs buying a house UK",
-  "cost of buying a house calculator UK",
-  "house buying costs UK",
+  "UK house buying costs calculator",
+  "total upfront cost of buying property in the UK",
+  "upfront costs when buying a house in the UK",
+  "cost of buying a house calculator for the UK",
+  "house buying costs in the UK",
   "UK property buying costs calculator"
 ] as const;
 
@@ -44,7 +44,7 @@ export const homePageFaqs = [
       "A straightforward purchase may need around £950 to £1,950 or more for legal work, with disbursements on top. Surveys can range from the mid-hundreds to £2,000 or more depending on the property and report level."
   },
   {
-    question: "Is the calculator financial advice?",
+    question: "Is this calculator financial advice?",
     answer:
       "No. The calculator is an informational planning tool. It is not financial, mortgage, legal or tax advice, and buyers should check important figures with the right professional or official source."
   },
@@ -80,8 +80,9 @@ export const homeScenarioInputs: Array<{
   input: CalculatorInput;
 }> = [
   {
-    title: "£200,000 first-time buyer",
-    summary: "Shows how a lower-price first purchase can still need legal, survey, mortgage and moving money beyond the deposit.",
+    title: "£200,000 first-time buyer (England)",
+    summary:
+      "Assumes a 10% deposit for a first-time buyer in England. At this price, a qualifying first-time buyer would typically have no stamp duty to pay, but legal fees, searches, a survey, mortgage costs, insurance, removals and a buffer can still take the total upfront cash well beyond the deposit.",
     input: {
       propertyPrice: 200_000,
       jurisdiction: "england-ni",
@@ -95,8 +96,9 @@ export const homeScenarioInputs: Array<{
     }
   },
   {
-    title: "£300,000 home mover",
-    summary: "Illustrates a mainstream move where deposit, tax, survey choice and removals can all affect the cash needed before completion.",
+    title: "£300,000 home mover (England)",
+    summary:
+      "Assumes a 10% deposit for a home mover in England. Stamp duty may be part of the completion budget, and realistic solicitor fees, searches, survey work, mortgage charges, removals and a contingency mean the total upfront cash needed can be noticeably higher than the deposit alone.",
     input: {
       propertyPrice: 300_000,
       jurisdiction: "england-ni",
@@ -110,8 +112,9 @@ export const homeScenarioInputs: Array<{
     }
   },
   {
-    title: "£450,000 additional property buyer",
-    summary: "Highlights how a second home or additional property can need a larger deposit assumption and higher-rate tax treatment.",
+    title: "£450,000 additional property buyer (England)",
+    summary:
+      "Assumes a 25% deposit for an additional property buyer in England. Higher-rate stamp duty can make the tax line significant, and legal fees, mortgage costs, survey checks, insurance, removals and a sensible buffer can push the upfront cash requirement much higher than a standard move.",
     input: {
       propertyPrice: 450_000,
       jurisdiction: "england-ni",
@@ -170,7 +173,7 @@ export const homeSections: GuideSection[] = [
     paragraphs: [
       "The true cost of buying a house in the UK is not just the deposit and not just the purchase price. It is the total upfront cash needed to get from accepted offer to completion and move-in without being caught short by the fees and practical costs that appear around the legal process.",
       "For most buyers, that total includes the deposit, property tax, solicitor or conveyancing fees, search fees, survey costs, mortgage fees, registration charges and a sensible contingency. Depending on the household, it may also include moving costs, initial insurance and furnishing.",
-      "This is why a buying a house costs UK calculator is useful only if it goes beyond the headline tax calculation. Buyers need a joined-up view of the whole transaction, not just one or two lines in isolation."
+      "This is why a UK house buying costs calculator is useful only if it goes beyond the headline tax calculation. Buyers need a joined-up view of the whole transaction, not just one or two lines in isolation."
     ]
   },
   {
@@ -197,7 +200,7 @@ export const homeSections: GuideSection[] = [
   {
     title: "Why the total changes across the UK",
     paragraphs: [
-      "The same property price can create a different total upfront cost buying property UK depending on the nation where the property sits. England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT. Those systems do not share the same thresholds or relief rules.",
+      "The same property price can create a different total upfront cost of buying a property in the UK depending on the nation where the property sits. England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT. Those systems do not share the same thresholds or relief rules.",
       "Buyer type matters too. A first-time buyer can face a different tax position from a home mover, and an additional-property buyer can face a significantly heavier total because both deposit expectations and higher-rate tax treatment may change at the same time.",
       "That is why the calculator asks for location and buyer type before giving the result. Without those two pieces of information, the number is too vague to be useful."
     ],
@@ -219,7 +222,7 @@ export const homeSections: GuideSection[] = [
   {
     title: "When do buying costs usually show up in the process?",
     paragraphs: [
-      "Some buyers search for the total upfront cost buying property UK because they want one number. In practice, the better way to think about it is as a timeline of cash calls. Some costs appear before exchange, some gather on the completion statement, and others sit in the first few days after move-in.",
+      "Some buyers want to know the total upfront cost of buying a property in the UK because they want one number. In practice, the better way to think about it is as a timeline of cash calls. Some costs appear before exchange, some gather on the completion statement, and others sit in the first few days after move-in.",
       "The earlier costs often include survey work, initial solicitor money and some lender-related fees. The heaviest concentration is usually closer to exchange and completion, when the deposit balance, tax and final legal statement need to be settled. Then the move-in layer arrives with removals, locks, cleaning, insurance and immediate setup costs.",
       "Understanding that timing helps buyers avoid a common trap: having enough money overall but not enough accessible money at the point the transaction needs it."
     ],
@@ -239,7 +242,7 @@ export const homeSections: GuideSection[] = [
   {
     title: "What buyers most often forget when budgeting upfront costs",
     paragraphs: [
-      "Upfront costs buying a house UK often feels like a deposit conversation until the transaction becomes real. Then the forgotten lines appear: searches, survey fees, telegraphic transfer fees, mortgage product fees, moving costs, lock changes, cleaning, broadband setup or furnishing. None of those is unusual. The problem is simply that they are rarely shown together at the start.",
+      "Upfront costs when buying a house in the UK often feel like a deposit conversation until the transaction becomes real. Then the forgotten lines appear: searches, survey fees, telegraphic transfer fees, mortgage product fees, moving costs, lock changes, cleaning, broadband setup or furnishing. None of those is unusual. The problem is simply that they are rarely shown together at the start.",
       "This is why many buyers feel they are close to ready, then suddenly feel stretched when the offer is accepted. It is not always because the purchase changed. Often it is because the real buying budget finally became visible.",
       "The homepage is designed to reduce that shock by showing the full structure before the transaction reaches that stressful stage."
     ],

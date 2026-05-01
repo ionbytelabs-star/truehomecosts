@@ -63,7 +63,7 @@ export function calculatorApplicationSchema() {
     name: "TrueHomeCosts UK House Buying Cost Calculator",
     url: absoluteUrl("/"),
     applicationCategory: "FinanceApplication",
-    operatingSystem: "Any",
+    operatingSystem: "Web",
     inLanguage: "en-GB",
     description:
       "A browser-based UK house buying cost calculator for estimating deposit, property tax, legal fees, survey costs, mortgage fees, moving costs and total upfront cash needed.",
