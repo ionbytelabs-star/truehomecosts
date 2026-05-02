@@ -651,7 +651,9 @@ export function createPriceGuide(price: number): GuidePageContent {
         {
           title: "Typical total upfront cash needed",
           paragraphs: [
-            "Typical total upfront cash needed: £28,000–£40,000+ depending on buyer type, location and assumptions."
+            "Most buyers should expect to need their deposit plus £3,000 to £10,000+ in additional upfront costs.",
+            "Typical total upfront cash needed for a £250,000 house:",
+            "£28,000–£40,000+ depending on buyer type, location and assumptions."
           ]
         },
         {
@@ -670,6 +672,8 @@ export function createPriceGuide(price: number): GuidePageContent {
         { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
         { href: "/moving-costs-uk", label: "moving costs in the UK" }
       ],
+      contextualLinksSentence:
+        "Use the true cost of buying a house calculator, review the hidden costs of buying a house, and check stamp duty explained, mortgage fees and costs, and moving costs in the UK to compare this estimate with your full buying budget.",
       trustReviewedText:
         "Updated for 2026 where the property tax rules and planning ranges on this £250,000 page have been reviewed for budgeting use.",
       updatedLabel: "Updated for 2026",

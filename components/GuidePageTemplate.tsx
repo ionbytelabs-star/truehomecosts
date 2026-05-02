@@ -94,22 +94,26 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             {guide.contextualLinks ? (
               <section className="space-y-3">
                 <h2 className="font-serif text-3xl text-text">Useful next checks</h2>
-                <p className="max-w-prose text-text/95">
-                  Use the{" "}
-                  {guide.contextualLinks.map((link, index) => (
-                    <span key={link.href}>
-                      <Link href={link.href} className="underline hover:text-brand-deep">
-                        {link.label}
-                      </Link>
-                      {index < guide.contextualLinks!.length - 2
-                        ? ", "
-                        : index === guide.contextualLinks!.length - 2
-                          ? " and "
-                          : ""}
-                    </span>
-                  ))}{" "}
-                  to compare the hidden costs on this page with your full buying budget.
-                </p>
+                {guide.contextualLinksSentence ? (
+                  <p className="max-w-prose text-text/95">{guide.contextualLinksSentence}</p>
+                ) : (
+                  <p className="max-w-prose text-text/95">
+                    Use the{" "}
+                    {guide.contextualLinks.map((link, index) => (
+                      <span key={link.href}>
+                        <Link href={link.href} className="underline hover:text-brand-deep">
+                          {link.label}
+                        </Link>
+                        {index < guide.contextualLinks!.length - 2
+                          ? ", "
+                          : index === guide.contextualLinks!.length - 2
+                            ? " and "
+                            : ""}
+                      </span>
+                    ))}{" "}
+                    to compare the hidden costs on this page with your full buying budget.
+                  </p>
+                )}
               </section>
             ) : null}
           </div>
