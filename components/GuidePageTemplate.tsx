@@ -118,7 +118,11 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
       <div className="shell grid gap-8 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
-          <TrustSignals updatedLabel={guide.updatedLabel} sourceKeys={guide.sourceKeys} />
+          <TrustSignals
+            updatedLabel={guide.updatedLabel}
+            sourceKeys={guide.sourceKeys}
+            reviewedText={guide.trustReviewedText}
+          />
           <AtAGlance items={guide.atGlance} />
           <RateTypeSplit officialItems={guide.officialItems} estimateItems={guide.estimateItems} />
           <section className="surface p-5">

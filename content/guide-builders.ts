@@ -35,6 +35,7 @@ type LongGuideConfig = {
     href: string;
     label: string;
   }>;
+  trustReviewedText?: string;
   updatedLabel?: string;
   atGlance?: AtGlanceItem[];
   sections: GuideSection[];
@@ -53,6 +54,7 @@ type LongGuideConfig = {
   workedExampleRows: TableRow[];
   officialItems: string[];
   estimateItems: string[];
+  estimateMethodNote?: string;
   mistakes: string[];
   checklist: string[];
 };
@@ -186,9 +188,10 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
         `For this topic, the official or near-official side includes ${sentenceList(
           config.officialItems
         )}. Those are the lines buyers should cross-check directly against the relevant authority or current solicitor paperwork before relying on the result.`,
-        `The estimate-based side includes ${sentenceList(
-          config.estimateItems
-        )}. Those numbers are still useful for planning, especially early in the process, but they should be treated as ranges. That is why TrueHomeCosts separates official-rate logic from editable assumption data in the codebase and clearly labels estimate lines in the calculator output.`
+        config.estimateMethodNote ??
+          `The estimate-based side includes ${sentenceList(
+            config.estimateItems
+          )}. Those numbers are still useful for planning, especially early in the process, but they should be treated as ranges. That is why TrueHomeCosts separates official-rate logic from editable assumption data in the codebase and clearly labels estimate lines in the calculator output.`
       ],
       bullets: [
         `Official or published-reference items: ${sentenceList(config.officialItems)}`,
@@ -301,6 +304,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     directAnswer: config.directAnswer,
     introSections: config.introSections,
     contextualLinks: config.contextualLinks,
+    trustReviewedText: config.trustReviewedText,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
     atGlance: buildAtGlance(config),
     sections: addTableSummaries([...config.sections, ...generatedLongSections(config)], config.topicLabel),

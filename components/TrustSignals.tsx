@@ -3,9 +3,10 @@ import { sourceLinks, type SourceKey } from "@/lib/source-links";
 type TrustSignalsProps = {
   updatedLabel: string;
   sourceKeys?: SourceKey[];
+  reviewedText?: string;
 };
 
-export function TrustSignals({ updatedLabel, sourceKeys = [] }: TrustSignalsProps) {
+export function TrustSignals({ updatedLabel, sourceKeys = [], reviewedText }: TrustSignalsProps) {
   const hasOfficialSources = sourceKeys.length > 0;
 
   return (
@@ -20,7 +21,9 @@ export function TrustSignals({ updatedLabel, sourceKeys = [] }: TrustSignalsProp
       <ul className="mt-4 grid gap-3 text-sm text-text/90 md:grid-cols-2">
         <li className="rounded-2xl border border-line bg-white p-4">
           <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">Reviewed</span>
-          <span className="mt-2 block">{updatedLabel} where the underlying rates and assumptions are maintained in the codebase.</span>
+          <span className="mt-2 block">
+            {reviewedText ?? `${updatedLabel} where the underlying rates and assumptions are maintained in the codebase.`}
+          </span>
         </li>
         <li className="rounded-2xl border border-line bg-white p-4">
           <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep">How to read the figures</span>

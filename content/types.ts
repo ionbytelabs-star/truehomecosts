@@ -37,6 +37,7 @@ export type GuidePageContent = {
     href: string;
     label: string;
   }>;
+  trustReviewedText?: string;
   updatedLabel: string;
   atGlance: AtGlanceItem[];
   sections: GuideSection[];

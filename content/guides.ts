@@ -239,30 +239,72 @@ export const guides: GuidePageContent[] = [
     slug: "how-much-money-needed-buy-house",
     title: "How Much Money Do I Need to Buy a House in the UK?",
     description:
-      "Work out how much money you need to buy a house in the UK, including deposit, upfront costs, pre-exchange costs, solicitor fees, property tax and the cash needed after an offer is accepted.",
+      "Work out how much money you need to buy a house in the UK, including the deposit, upfront fees, property tax, legal costs, surveys, mortgage charges, moving costs and a practical buffer.",
     keywords: [
       "how much money do I need to buy a house UK",
+      "how much money needed to buy house UK",
       "how much savings needed to buy a house UK",
       "how much cash do you need to buy a house UK",
+      "upfront costs buying a house UK",
       "what do you pay upfront when buying a house UK",
       "costs before exchange of contracts UK",
       "costs before buying a house UK",
       "when do you pay stamp duty UK",
       "when do you pay solicitor fees UK",
-      "costs after offer accepted UK house"
+      "costs after offer accepted UK house",
+      "deposit and fees to buy a house UK"
     ],
     h1: "How much money do I need to buy a house in the UK?",
     intro:
-      "Most buyers start with the deposit, but the better question is how much cash you need overall to get from accepted offer to completed move. That total is often much higher than people first expect.",
+      "Use this guide to plan the deposit, fees and timing of the money needed from offer accepted through to completion and moving in.",
     directAnswer:
-      "In practice, the money needed to buy a house in the UK is the deposit plus roughly £3,000 to £10,000 or more of extra costs, depending on property price, location, buyer type and how involved the transaction becomes. A buyer putting 10% down on a £300,000 home might therefore need £30,000 for the deposit and several thousand pounds more for tax, legal work, survey costs, mortgage fees, moving and a buffer.",
+      "The money needed to buy a house in the UK is your deposit plus all upfront purchase costs. These can include stamp duty or regional property tax, solicitor fees, searches, surveys, mortgage fees, registration fees, moving costs and a sensible cash buffer. Many buyers need their deposit plus several thousand pounds more, with the final amount depending on property price, buyer type, location and transaction complexity.",
+    introSections: [
+      {
+        title: "Typical money needed to buy a house in the UK",
+        bullets: [
+          "Deposit: often 5% to 20% of the property price",
+          "Stamp duty or regional property tax where applicable",
+          "Solicitor and conveyancing fees",
+          "Searches and conveyancing disbursements",
+          "Survey and valuation costs",
+          "Mortgage arrangement or broker fees",
+          "Registration and transfer fees",
+          "Moving and setup buffer"
+        ]
+      },
+      {
+        title: "Example savings target for a £300,000 house",
+        paragraphs: [
+          "A buyer using a 10% deposit on a £300,000 house would need £30,000 for the deposit, then several thousand pounds more for the extra upfront costs around the purchase.",
+          "Those extra costs may include property tax, solicitor fees, searches, a survey, mortgage charges, moving costs and a setup buffer. The realistic savings target is therefore higher than the deposit alone, and the final number should be checked against real quotes before you rely on it."
+        ],
+        bullets: [
+          "10% deposit: £30,000",
+          "Extra upfront costs: several thousand pounds more",
+          "Typical extras: property tax, legal fees, searches, survey, mortgage charges, moving costs and setup buffer"
+        ],
+        callout:
+          "These figures are planning estimates based on typical UK buying costs and should not be treated as fixed quotes."
+      }
+    ],
+    contextualLinks: [
+      { href: "/#calculator", label: "true cost of buying a house calculator" },
+      { href: "/hidden-costs-buying-house", label: "hidden costs of buying a house" },
+      { href: "/stamp-duty-explained", label: "stamp duty explained" },
+      { href: "/first-time-buyer-costs", label: "first-time buyer costs" },
+      { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
+      { href: "/moving-costs-uk", label: "moving costs in the UK" }
+    ],
+    trustReviewedText:
+      "Updated for 2026 where the relevant property tax rules, fee ranges and buying-cost assumptions have been reviewed for planning use.",
     sections: [
       {
-        title: "Start with the deposit, but do not stop there",
+        title: "How much deposit do you need to buy a house in the UK?",
         paragraphs: [
-          "How much savings needed to buy a house UK is not the same question as how big a deposit you can save. The deposit is usually the biggest single line, but it is only part of the cash picture. Buyers who hit a deposit target and stop there often discover that the surrounding buying costs still need several thousand pounds of their own money.",
-          "At modest purchase prices, the gap between deposit-only thinking and full-budget thinking can already be painful. At higher prices, that gap becomes even more obvious because both tax and other professional costs can start to rise.",
-          "The practical answer is to think in pots: deposit pot, transaction-cost pot and move-in buffer. If your savings plan does not separate those, it is easy to feel on track until the legal process starts and the extra bills appear."
+          "Many buyers need a deposit of 5% to 20% of the property price, depending on the mortgage, lender, buyer type and affordability position.",
+          "A 5% deposit can be enough for some buyers, but it leaves less equity and may limit mortgage choice. A 10% deposit is a common planning benchmark, while 15% or 20% can give more breathing room if the buyer can reach it without draining the rest of their savings.",
+          "The important point is that the deposit is not the full savings target. Buyers should keep a separate fee pot for legal work, survey costs, mortgage charges, moving costs and tax where applicable."
         ],
         table: {
           caption: "Deposit examples on common house prices",
@@ -275,11 +317,11 @@ export const guides: GuidePageContent[] = [
         }
       },
       {
-        title: "What do you pay upfront when buying a house in the UK?",
+        title: "How much extra money do you need beyond the deposit?",
         paragraphs: [
-          "The upfront costs buying a house UK are the payments tied to getting the transaction over the line. Some are paid before you are legally committed, such as survey costs or certain lender charges. Others are paid on or around completion, such as the deposit balance, tax, registration fees and the final legal bill.",
-          "That timing matters because costs before exchange of contracts UK are riskier in one sense: they are usually sunk if the deal collapses. Buyers should still expect them, but they should not confuse them with the money that only becomes due once the transaction is certain.",
-          "In other words, the total buying budget is not a single payment date. It is a chain of payments that builds toward completion."
+          "Beyond the deposit, many buyers need several thousand pounds more for upfront costs when buying a house in the UK.",
+          "That extra money can cover solicitor and conveyancing fees, searches, conveyancing disbursements, survey costs, valuation fees, a mortgage arrangement fee or broker fee, registration fees and moving costs. If property tax applies, that can be one of the largest non-deposit lines.",
+          "The exact amount depends on the property and location. Use the guide to hidden costs of buying a house to understand the smaller lines that can appear after an offer is accepted."
         ],
         bullets: [
           "Deposit",
@@ -293,19 +335,19 @@ export const guides: GuidePageContent[] = [
         ]
       },
       {
-        title: "When do you pay stamp duty and solicitor fees in the UK?",
+        title: "When do you need the money during the buying process?",
         paragraphs: [
-          "When do you pay stamp duty UK is a common concern because buyers often know it is due around completion but not exactly how it appears in the process. In most normal transactions, the solicitor handles the filing and payment shortly after completion, with the money collected from you on the completion statement just beforehand.",
-          "When do you pay solicitor fees UK is more flexible. Some firms ask for money on account at the start, some charge for searches as they are ordered, and all will expect final settlement before or on completion. The legal bill therefore tends to be spread across the process rather than appearing only at the end.",
-          "This is one more reason to keep accessible cash rather than tying every available pound into the deposit plan."
+          "You need some money shortly after offer accepted, more before exchange of contracts, and the largest amount around completion.",
+          "Survey fees, mortgage valuation costs and initial solicitor money can be needed before the purchase is legally secure. Search fees and other legal outlays may follow while conveyancing is under way.",
+          "The deposit balance, property tax, registration costs and final legal bill usually appear on the completion statement. If you are wondering when you pay stamp duty in the UK, the money is normally collected by the solicitor around completion where tax applies."
         ]
       },
       {
         title: "Costs after offer accepted on a UK house purchase",
         paragraphs: [
-          "Once an offer is accepted, the tone changes. The purchase stops being a hypothetical budget and starts becoming a sequence of decisions that trigger real spend. Survey choice, solicitor instruction, mortgage application costs and search fees all become concrete rather than theoretical.",
-          "Many buyers are surprised that so many costs after offer accepted UK house arrive before the transaction feels secure. That is normal. It is also why a buyer can lose money even when they walk away for good reasons.",
-          "The right response is not to avoid those costs altogether, but to plan them from the start and keep a buffer for the possibility that the first property you progress does not become the property you complete on."
+          "Once an offer is accepted, the purchase stops being a rough idea and starts becoming a sequence of decisions that trigger real spend. Survey choice, solicitor instruction, mortgage application costs and search fees all become concrete.",
+          "Many buyers are surprised by how many costs after offer accepted on a UK house purchase arrive before the transaction feels secure. That is normal, but it means the fee pot needs to be ready before you feel close to completion.",
+          "Tax should be checked early too. Stamp duty bands, regional property tax rules and first-time buyer relief can all change the completion budget, even though the payment is usually handled later through the solicitor."
         ],
         table: {
           caption: "Typical timing of buying costs",
@@ -332,7 +374,9 @@ export const guides: GuidePageContent[] = [
             ["£300,000 home mover in Scotland", "£30,000 at 10%", "Several thousand plus LBTT", "Tax and survey choice both matter"],
             ["£400,000 buyer in Wales", "£40,000 at 10%", "Higher legal, tax and move-in totals", "The real cash need is well above the deposit alone"]
           ]
-        }
+        },
+        callout:
+          "Most buyers need more than the deposit. A safer savings target allows for legal fees, searches, surveys, mortgage charges, tax where applicable, moving costs and a buffer for early ownership expenses."
       }
     ],
     faqs: [
@@ -361,7 +405,8 @@ export const guides: GuidePageContent[] = [
       "hidden-costs-buying-house",
       "stamp-duty-explained",
       "first-time-buyer-costs",
-      "mortgage-fees-costs"
+      "mortgage-fees-costs",
+      "moving-costs-uk"
     ],
     sourceKeys: ["sdlt", "lbtt", "ltt", "hmlr"],
     ctaTitle: "Turn a rough target into a real figure",
@@ -398,6 +443,8 @@ export const guides: GuidePageContent[] = [
     ],
     officialItems: ["property tax", "published registration fees where relevant"],
     estimateItems: ["legal quotes", "survey costs", "search fees", "mortgage charges", "moving and furnishing budgets"],
+    estimateMethodNote:
+      "The estimate-based side includes legal quotes, survey costs, search fees, mortgage charges, moving costs and setup budgets. These numbers are useful for planning, but they should be treated as ranges until your solicitor, lender, surveyor and moving quotes confirm the exact figures.",
     mistakes: [
       "Setting a deposit goal without a separate fee pot",
       "Assuming all buying costs land only on completion day",
