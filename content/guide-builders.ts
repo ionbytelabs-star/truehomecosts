@@ -614,6 +614,7 @@ export function createPriceGuide(price: number): GuidePageContent {
   const extraMax = Math.max(...ownerOccupierExtras);
   const fivePercentDeposit = formatCurrency(Math.round(price * 0.05));
   const tenPercentDeposit = formatCurrency(Math.round(price * 0.1));
+  const fifteenPercentDeposit = formatCurrency(Math.round(price * 0.15));
   const twentyPercentDeposit = formatCurrency(Math.round(price * 0.2));
   const extraCostRows = englandMover.breakdown
     .filter((item) => item.key !== "deposit")
@@ -731,6 +732,213 @@ export function createPriceGuide(price: number): GuidePageContent {
       ctaTitle: "Try your own £250,000 scenario",
       ctaText:
         "Use the calculator to test a £250,000 purchase with your own deposit, buyer type and location instead of relying on one fixed estimate.",
+      officialItems: ["property tax for the relevant UK nation", "published registration fee scales where applicable"],
+      estimateItems: ["legal fees", "surveys", "mortgage fees", "moving costs", "setup buffer"],
+      mistakes: [
+        "Using only the deposit as the target",
+        "Assuming buyer type does not change the tax line",
+        "Forgetting surveys, legal fees and moving costs",
+        "Treating a planning estimate as if it were a fixed quote"
+      ],
+      checklist: [
+        "Confirm the tax position for your nation and buyer type",
+        "Check that the deposit still leaves room for fees and a buffer",
+        "Sense-check survey, mortgage and moving assumptions",
+        "Use the calculator again if the property or assumptions change"
+      ]
+    };
+  }
+
+  const streamlinedPricePageConfig: Record<
+    number,
+    {
+      intro: string;
+      taxRange: string;
+      totalRange: string;
+      extraRange: string;
+      trustText: string;
+      bestFit: string;
+      varyParagraphs: string[];
+    }
+  > = {
+    300_000: {
+      intro:
+        "This page gives a quick £300,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      taxRange: "£0–£7,500 depending on buyer type",
+      totalRange: "£34,000–£48,000+",
+      extraRange: "£4,000 to £18,000+",
+      trustText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £300,000 page have been reviewed for budgeting use.",
+      bestFit:
+        "Useful for first-time buyers, home movers and buyers comparing how a £300,000 budget changes across the UK.",
+      varyParagraphs: [
+        "At £300,000, the buyer type can swing the total more than many people expect. A first-time buyer may face a much lighter tax line than a home mover or additional-property buyer, so the same headline price can lead to a very different cash target.",
+        "SDLT, LBTT and LTT also create different outcomes across the UK. Survey choice, property condition, mortgage fees and moving costs then add another layer, which is why a £300,000 purchase should be treated as a full budget exercise rather than a deposit-only target."
+      ]
+    },
+    350_000: {
+      intro:
+        "This page gives a quick £350,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      taxRange: "£0–£12,500 depending on buyer type",
+      totalRange: "£39,000–£55,000+",
+      extraRange: "£4,000 to £20,000+",
+      trustText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £350,000 page have been reviewed for budgeting use.",
+      bestFit:
+        "Useful for first-time buyers, home movers and buyers comparing how a £350,000 budget changes across the UK.",
+      varyParagraphs: [
+        "At £350,000, the gap between a straightforward owner-occupier purchase and a more expensive version of the same move can widen quickly. First-time buyers, home movers and additional-property buyers can all land on noticeably different totals once tax treatment is taken into account.",
+        "Regional tax differences between SDLT, LBTT and LTT matter here, but so do the practical choices. A fuller survey, a more worn property, mortgage fees and heavier moving costs can all push a £350,000 purchase beyond the neatest early estimate."
+      ]
+    },
+    400_000: {
+      intro:
+        "This page gives a quick £400,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      taxRange: "£0–£17,500 depending on buyer type",
+      totalRange: "£45,000–£65,000+",
+      extraRange: "£5,000 to £25,000+",
+      trustText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £400,000 page have been reviewed for budgeting use.",
+      bestFit:
+        "Useful for first-time buyers, home movers and buyers comparing how a £400,000 budget changes across the UK.",
+      varyParagraphs: [
+        "At £400,000, the total can move more sharply because buyer type and tax treatment start to matter more in cash terms. A first-time buyer, home mover and additional-property buyer can all approach the same property price with very different upfront obligations.",
+        "The nation you buy in still changes the official tax line through SDLT, LBTT or LTT, but surveys, property condition, mortgage fees and moving costs also become more meaningful at this level. That makes a realistic buffer more important than it was on a smaller purchase."
+      ]
+    },
+    450_000: {
+      intro:
+        "This page gives a quick £450,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      taxRange: "£0–£22,500 depending on buyer type",
+      totalRange: "£51,000–£75,000+",
+      extraRange: "£6,000 to £30,000+",
+      trustText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £450,000 page have been reviewed for budgeting use.",
+      bestFit:
+        "Useful for first-time buyers, home movers and buyers comparing how a £450,000 budget changes across the UK.",
+      varyParagraphs: [
+        "At £450,000, the total is more sensitive to buyer type because the tax differences begin to carry real weight. A first-time buyer may still see a very different outcome from a home mover, while an additional-property purchase can look much heavier again.",
+        "Differences between SDLT, LBTT and LTT are still central, but they are not the whole story. Survey choice, property condition, mortgage fees and moving costs can all push a £450,000 purchase higher than buyers expect if they budget only for the headline deposit."
+      ]
+    },
+    500_000: {
+      intro:
+        "This page gives a quick £500,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      taxRange: "£0–£30,000+ depending on buyer type",
+      totalRange: "£58,000–£85,000+",
+      extraRange: "£8,000 to £35,000+",
+      trustText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £500,000 page have been reviewed for budgeting use.",
+      bestFit:
+        "Useful for first-time buyers, home movers and buyers comparing how a £500,000 budget changes across the UK.",
+      varyParagraphs: [
+        "At £500,000, buyer type can change the total dramatically because the tax stakes and deposit expectations are both much higher. A first-time buyer, home mover and additional-property buyer can all see very different upfront numbers even when the property price is identical.",
+        "Regional tax differences between SDLT, LBTT and LTT remain important, but so do survey standards, property condition, mortgage fees and moving costs. On a £500,000 purchase, even ordinary variation across those lines can add up quickly."
+      ]
+    }
+  };
+
+  const streamlinedConfig = streamlinedPricePageConfig[price];
+
+  if (streamlinedConfig) {
+    return {
+      slug,
+      title: `Cost to Buy a ${price / 1000}k House in the UK`,
+      description: `Estimate the cost to buy a ${formattedPrice} house in the UK, including deposit, property tax, legal fees, surveys, mortgage costs, moving costs and the extra cash buyers usually need.`,
+      keywords,
+      h1: `Cost to buy a ${formattedPrice} house in the UK`,
+      intro: streamlinedConfig.intro,
+      directAnswer: `The total cost to buy a ${formattedPrice} house in the UK is the deposit plus all upfront costs needed to complete the purchase. A buyer using a 10% deposit would need around ${tenPercentDeposit} for the deposit, plus several thousand pounds more for legal fees, surveys, mortgage costs, moving and setup.`,
+      introSections: [
+        {
+          title: `Typical cost breakdown for a ${formattedPrice} house`,
+          bullets: [
+            `10% deposit: ${tenPercentDeposit}`,
+            `Stamp duty or property tax: ${streamlinedConfig.taxRange}`,
+            "Legal fees: ~£800–£1,800",
+            "Surveys: £300–£1,000+",
+            "Mortgage fees: £0–£2,000+",
+            "Moving and setup costs: £500–£2,500+"
+          ],
+          callout:
+            "Deposit, property tax, legal fees, surveys, mortgage costs and moving and setup are the main lines buyers usually need to cover."
+        },
+        {
+          title: "Typical total upfront cash needed",
+          paragraphs: [
+            `Typical total upfront cash needed for a ${formattedPrice} house:`,
+            `${streamlinedConfig.totalRange} depending on buyer type, location and assumptions.`,
+            `Most buyers should expect their deposit plus ${streamlinedConfig.extraRange} in additional upfront costs.`
+          ]
+        },
+        {
+          title: "Why the total cost can vary",
+          paragraphs: [
+            ...streamlinedConfig.varyParagraphs,
+            "Use the true cost of buying a house calculator to personalise this estimate based on your deposit, buyer type and location."
+          ]
+        }
+      ],
+      contextualLinks: [
+        { href: "/#calculator", label: "true cost of buying a house calculator" },
+        { href: "/hidden-costs-buying-house", label: "hidden costs of buying a house" },
+        { href: "/stamp-duty-explained", label: "stamp duty explained" },
+        { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
+        { href: "/moving-costs-uk", label: "moving costs in the UK" }
+      ],
+      contextualLinksSentence:
+        "Use the true cost of buying a house calculator, review the hidden costs of buying a house, and check stamp duty explained, mortgage fees and costs, and moving costs in the UK to compare this estimate with your full buying budget.",
+      trustReviewedText: streamlinedConfig.trustText,
+      updatedLabel: "Updated for 2026",
+      atGlance: [
+        {
+          label: "Typical total upfront cash needed",
+          value: `About ${streamlinedConfig.totalRange} on a ${formattedPrice} purchase, depending on deposit size, buyer type, tax treatment and moving assumptions.`
+        },
+        {
+          label: "Example 10% deposit",
+          value: `A 10% deposit is ${tenPercentDeposit} before legal fees, surveys, mortgage costs and moving are added.`
+        },
+        {
+          label: "Best fit",
+          value: streamlinedConfig.bestFit
+        },
+        {
+          label: "Buyers should check",
+          value: "Property tax treatment, survey scope, mortgage charges, moving costs and whether the property is simple or more complex."
+        }
+      ],
+      sections: [],
+      faqs: [
+        {
+          question: `How much deposit do I need for a ${formattedPrice} house?`,
+          answer: `A 10% deposit is ${tenPercentDeposit}. A 5% deposit would be ${fivePercentDeposit}, a 15% deposit would be ${fifteenPercentDeposit}, and a 20% deposit would be ${twentyPercentDeposit}, so the right target depends on mortgage options and how much cash you still need for fees.`
+        },
+        {
+          question: "What are the extra costs beyond the deposit?",
+          answer:
+            "The extra costs usually include legal fees, surveys, mortgage costs, property tax where it applies, and moving and setup spending. Buyers should treat those separately from the deposit rather than assuming they will stay small."
+        },
+        {
+          question: `Do first-time buyers pay stamp duty on a ${formattedPrice} house?`,
+          answer:
+            "That depends on the nation, the current rules and the buyer's exact situation. First-time buyers may face a lighter tax position than home movers or additional-property buyers, but SDLT, LBTT and LTT do not all work the same way."
+        },
+        {
+          question: "How much savings should I have in total?",
+          answer: `A practical planning target is about ${streamlinedConfig.totalRange} in total upfront cash on a ${formattedPrice} purchase, depending on buyer type, location and assumptions. That range is a planning estimate, not a guaranteed quote.`
+        }
+      ],
+      relatedGuides: [
+        "hidden-costs-buying-house",
+        "stamp-duty-explained",
+        "mortgage-fees-costs",
+        "moving-costs-uk",
+        "how-much-money-needed-buy-house"
+      ],
+      sourceKeys: ["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"],
+      ctaTitle: `Try your own ${formattedPrice} scenario`,
+      ctaText: `Use the calculator to test a ${formattedPrice} purchase with your own deposit, buyer type and location instead of relying on one fixed estimate.`,
       officialItems: ["property tax for the relevant UK nation", "published registration fee scales where applicable"],
       estimateItems: ["legal fees", "surveys", "mortgage fees", "moving costs", "setup buffer"],
       mistakes: [
