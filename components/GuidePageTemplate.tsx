@@ -17,6 +17,12 @@ import { TrustSignals } from "@/components/TrustSignals";
 import { guideMap } from "@/content/guides";
 import type { GuidePageContent } from "@/content/types";
 import { getStrategicGuideSlugs, headingToId } from "@/lib/guide-links";
+import {
+  guidePagesForPopularExamples,
+  nearbyPriceGuideMap,
+  popularBuyingCostExampleSlugs,
+  priceGuideLabelMap
+} from "@/lib/price-guide-links";
 import { articleSchema, breadcrumbSchema, faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
 type GuidePageTemplateProps = {
@@ -36,6 +42,8 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
   const combinedGuideLinks = Array.from(new Set([...guide.relatedGuides, ...strategicLinks])).filter(
     (slug) => slug !== guide.slug
   );
+  const nearbyPriceLinks = nearbyPriceGuideMap[guide.slug] ?? [];
+  const showPopularExamples = guidePagesForPopularExamples.has(guide.slug);
 
   return (
     <>
@@ -200,6 +208,39 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
               Go to the calculator
             </Link>
           </section>
+
+          {nearbyPriceLinks.length > 0 ? (
+            <section className="surface p-5">
+              <h2 className="font-serif text-3xl text-text">Compare nearby property prices</h2>
+              <p className="mt-3 max-w-prose text-muted">
+                If you are budgeting around this price point, it can help to compare nearby price points because
+                deposit size, tax treatment and total upfront cash can change quickly.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {nearbyPriceLinks.map((slug) => (
+                  <Link key={slug} href={`/${slug}`} className="link-chip">
+                    {priceGuideLabelMap[slug] ?? slug}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {showPopularExamples ? (
+            <section className="surface p-5">
+              <h2 className="font-serif text-3xl text-text">Popular buying-cost examples</h2>
+              <p className="mt-3 max-w-prose text-muted">
+                See how the deposit and extra costs change at common UK property prices.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {popularBuyingCostExampleSlugs.map((slug) => (
+                  <Link key={slug} href={`/${slug}`} className="link-chip">
+                    {priceGuideLabelMap[slug] ?? slug}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <FAQSection items={guide.faqs} />
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />

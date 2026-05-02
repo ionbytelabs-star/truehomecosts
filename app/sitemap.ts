@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { guideSummaries } from "@/content/guides";
 import { absoluteUrl } from "@/lib/metadata";
+import { priceGuideSlugs } from "@/lib/price-guide-links";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -13,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const now = new Date();
+  const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
+  const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));
 
   return [
     ...staticRoutes.map((route) => ({
@@ -23,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...guideSummaries.map((guide) => ({
       url: absoluteUrl(guide.slug),
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8
+    })),
+    ...staticPriceRoutes.map((slug) => ({
+      url: absoluteUrl(slug),
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8

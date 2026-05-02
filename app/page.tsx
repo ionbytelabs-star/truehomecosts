@@ -29,6 +29,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { calculateUpfrontCosts } from "@/lib/calculator";
 import { defaultCalculatorInput } from "@/lib/default-calculator-input";
 import { formatCurrency } from "@/lib/format";
+import { priceGuideLinks } from "@/lib/price-guide-links";
 import { calculatorApplicationSchema, faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
@@ -323,16 +324,15 @@ export default function HomePage() {
             <section className="space-y-4">
               <div className="space-y-2">
                 <p className="eyebrow">Price-specific guides</p>
-                <h2 className="font-serif text-3xl text-text">Start with the purchase price you are actually targeting</h2>
+                <h2 className="font-serif text-3xl text-text">Explore buying costs by property price</h2>
                 <p className="max-w-prose text-muted">
-                  These guides are written around common UK price points so buyers can compare deposits, tax
-                  treatment and hidden costs without relying on generic averages.
+                  Compare estimated deposit, fees and upfront cash needed at common UK property prices.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                {homepagePriceGuideLinks.map((slug) => (
-                  <Link key={slug} href={`/${slug}`} className="link-chip">
-                    {guideMap[slug]?.h1 ?? slug}
+                {priceGuideLinks.map((link) => (
+                  <Link key={link.slug} href={`/${link.slug}`} className="link-chip">
+                    {link.label}
                   </Link>
                 ))}
               </div>
