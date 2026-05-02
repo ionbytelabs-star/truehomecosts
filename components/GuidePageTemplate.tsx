@@ -44,6 +44,29 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
   );
   const nearbyPriceLinks = nearbyPriceGuideMap[guide.slug] ?? [];
   const showPopularExamples = guidePagesForPopularExamples.has(guide.slug);
+  const crossSiteNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
+    "how-much-money-needed-buy-house": {
+      before:
+        "Once you have worked out the upfront cost of buying, the next step is planning how the mortgage might feel after completion, including ",
+      anchor: "whether future overpayments could help reduce the balance faster",
+      after: "."
+    },
+    "cost-to-buy-300k-house": {
+      before:
+        "After completion, some buyers also look at ",
+      anchor: "whether overpaying their mortgage could reduce interest over time",
+      after:
+        ", but that should only come after the purchase costs and emergency buffer are covered."
+    },
+    "cost-to-buy-400k-house": {
+      before:
+        "After completion, some buyers also look at ",
+      anchor: "whether overpaying their mortgage could reduce interest over time",
+      after:
+        ", but that should only come after the purchase costs and emergency buffer are covered."
+    }
+  };
+  const crossSiteNote = crossSiteNoteBySlug[guide.slug];
 
   return (
     <>
@@ -204,6 +227,18 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           <section className="surface p-5">
             <h2 className="font-serif text-3xl text-text">{guide.ctaTitle}</h2>
             <p className="mt-3 max-w-prose text-muted">{guide.ctaText}</p>
+            {crossSiteNote ? (
+              <p className="mt-3 max-w-prose text-sm text-muted">
+                {crossSiteNote.before}
+                <a
+                  href="https://mortgageoverpay.co.uk/"
+                  className="underline hover:text-brand-deep"
+                >
+                  {crossSiteNote.anchor}
+                </a>
+                {crossSiteNote.after}
+              </p>
+            ) : null}
             <Link href="/#calculator" className="mt-5 inline-flex rounded-full bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand-deep">
               Go to the calculator
             </Link>
