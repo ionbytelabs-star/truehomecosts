@@ -71,6 +71,51 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
         badge={guide.updatedLabel}
       />
 
+      {guide.introSections || guide.contextualLinks ? (
+        <section className="shell pb-8">
+          <div className="surface space-y-6 p-5 sm:p-6">
+            {guide.introSections?.map((section) => (
+              <ContentSection key={section.title} title={section.title}>
+                {section.intro ? <p>{section.intro}</p> : null}
+                {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                {section.bullets ? (
+                  <ul className="grid gap-2 pl-5 text-text">
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet} className="list-disc">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
+              </ContentSection>
+            ))}
+
+            {guide.contextualLinks ? (
+              <section className="space-y-3">
+                <h2 className="font-serif text-3xl text-text">Useful next checks</h2>
+                <p className="max-w-prose text-text/95">
+                  Use the{" "}
+                  {guide.contextualLinks.map((link, index) => (
+                    <span key={link.href}>
+                      <Link href={link.href} className="underline hover:text-brand-deep">
+                        {link.label}
+                      </Link>
+                      {index < guide.contextualLinks!.length - 2
+                        ? ", "
+                        : index === guide.contextualLinks!.length - 2
+                          ? " and "
+                          : ""}
+                    </span>
+                  ))}{" "}
+                  to compare the hidden costs on this page with your full buying budget.
+                </p>
+              </section>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
       <div className="shell grid gap-8 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
           <TrustSignals updatedLabel={guide.updatedLabel} sourceKeys={guide.sourceKeys} />

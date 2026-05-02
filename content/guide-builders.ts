@@ -30,6 +30,11 @@ type LongGuideConfig = {
   h1: string;
   intro: string;
   directAnswer: string;
+  introSections?: GuideSection[];
+  contextualLinks?: Array<{
+    href: string;
+    label: string;
+  }>;
   updatedLabel?: string;
   atGlance?: AtGlanceItem[];
   sections: GuideSection[];
@@ -294,6 +299,8 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     h1: config.h1,
     intro: config.intro,
     directAnswer: config.directAnswer,
+    introSections: config.introSections,
+    contextualLinks: config.contextualLinks,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
     atGlance: buildAtGlance(config),
     sections: addTableSummaries([...config.sections, ...generatedLongSections(config)], config.topicLabel),

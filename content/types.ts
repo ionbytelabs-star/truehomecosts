@@ -32,6 +32,11 @@ export type GuidePageContent = {
   h1: string;
   intro: string;
   directAnswer: string;
+  introSections?: GuideSection[];
+  contextualLinks?: Array<{
+    href: string;
+    label: string;
+  }>;
   updatedLabel: string;
   atGlance: AtGlanceItem[];
   sections: GuideSection[];

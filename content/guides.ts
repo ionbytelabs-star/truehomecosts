@@ -9,7 +9,9 @@ export const guides: GuidePageContent[] = [
     description:
       "A detailed guide to the hidden costs of buying a house in the UK, including solicitor fees, conveyancing disbursements, searches, surveys, transfer fees, indemnity policies and the practical extras buyers often miss.",
     keywords: [
+      "hidden costs buying house UK",
       "hidden costs of buying a house UK",
+      "extra costs buying property UK",
       "hidden fees when buying property UK",
       "unexpected costs buying a house UK",
       "buying house fees breakdown UK",
@@ -31,17 +33,78 @@ export const guides: GuidePageContent[] = [
     ],
     h1: "Hidden costs of buying a house in the UK",
     intro:
-      "Many buyers can quote their deposit target but cannot tell you what the solicitor, surveyor, lender and moving day will add to the final bill. This guide brings those hidden costs together so you can budget for the full purchase rather than the marketing version of it.",
+      "Hidden costs of buying a house in the UK are the additional upfront expenses beyond the deposit. These typically include solicitor fees, conveyancing disbursements, surveys, mortgage fees, moving costs and setup costs. Most buyers spend £3,000 to £10,000+ on these depending on the property, location and transaction complexity.",
     directAnswer:
-      "For a mainstream UK purchase, hidden buying costs often add roughly £2,500 to £7,500 on top of the deposit, and more complex purchases can push comfortably beyond that. Older homes, leasehold flats, fuller surveys, extra legal checks and moving-day costs are the usual reasons the non-deposit total drifts from a few thousand pounds into five figures.",
+      "The hidden costs UK house buyers most often miss are legal work, searches, surveys, mortgage charges, removals and the first setup costs after completion. They are planning estimates rather than fixed quotes, so the safest budget keeps a separate fee pot alongside the deposit.",
+    introSections: [
+      {
+        title: "Typical hidden costs when buying a house in the UK",
+        bullets: [
+          "Solicitor and conveyancing fees",
+          "Searches and disbursements",
+          "Survey costs",
+          "Mortgage arrangement and valuation fees",
+          "Moving costs",
+          "Insurance and setup costs"
+        ]
+      },
+      {
+        title: "Example hidden costs for a £300,000 property",
+        paragraphs: [
+          "For a £300,000 purchase, a buyer might plan for the following non-deposit costs before quotes are confirmed."
+        ],
+        bullets: [
+          "Legal fees: ~£1,200",
+          "Searches: ~£300",
+          "Survey: £400 to £800",
+          "Mortgage fees: £0 to £1,000+",
+          "Moving and setup: £500 to £2,000+"
+        ],
+        callout:
+          "These figures are planning estimates based on typical UK buying costs and should not be treated as fixed quotes."
+      }
+    ],
+    contextualLinks: [
+      { href: "/#calculator", label: "true cost of buying a house calculator" },
+      { href: "/how-much-money-needed-buy-house", label: "how much money you need to buy a house" },
+      { href: "/stamp-duty-explained", label: "stamp duty explained" },
+      { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
+      { href: "/moving-costs-uk", label: "moving costs in the UK" }
+    ],
     sections: [
+      {
+        title: "How much are hidden costs when buying a house in the UK?",
+        paragraphs: [
+          "Hidden costs are typically several thousand pounds on top of the deposit. For many mainstream purchases, £3,000 to £10,000+ is a sensible planning range before quotes are confirmed.",
+          "The lower end is more realistic for a simple freehold purchase with a lighter survey, modest moving needs and few legal complications. The upper end becomes more likely when the property is older, leasehold, further away, or needs fuller survey and legal checks.",
+          "These extra costs buying property UK buyers often forget are not all paid on one day. Some appear after offer accepted, some during conveyancing, and some immediately after move-in."
+        ]
+      },
+      {
+        title: "What hidden costs do first-time buyers miss?",
+        paragraphs: [
+          "First-time buyers often miss costs that sit outside the deposit and mortgage approval. Searches, conveyancing disbursements, survey upgrades, mortgage valuation fees, a mortgage arrangement fee, removals, insurance and first-week setup costs can all arrive before the purchase feels fully complete.",
+          "First-time buyer relief can reduce or remove some property tax in certain situations, but it does not remove the wider buying bill. Buyers still need to check stamp duty bands or regional property tax rules for their location and price point.",
+          "A simple way to avoid surprises is to hold a separate fee pot. That pot should sit alongside the deposit rather than being treated as spare money."
+        ]
+      },
+      {
+        title: "Why do hidden costs vary so much between purchases?",
+        paragraphs: [
+          "Hidden costs vary because no two purchases have the same legal, survey, lending and moving profile. A modern freehold home can be cheaper to investigate than an older house, a leasehold flat or a property with missing paperwork.",
+          "Location also matters. Property tax rules differ across England and Northern Ireland, Scotland and Wales, and search costs or moving costs can change by area and distance.",
+          "The buyer's choices matter too. Choosing a fuller survey, paying for packing, using storage, or selecting a mortgage product with an upfront fee can all change the final cash needed."
+        ]
+      },
       {
         title: "Why hidden buying costs catch people out",
         paragraphs: [
-          "Hidden costs are rarely hidden in the legal sense. The problem is that they appear in different places, at different times, and under labels that do not mean much to a buyer seeing them for the first time. Estate agent listings focus on the asking price. Mortgage illustrations focus on the loan. Solicitor quotes split legal work from disbursements. By the time all of those pieces are added together, the true total can look very different from the number the buyer had in mind when they booked the first viewing.",
-          "This is one reason the phrase hidden costs of buying a house UK is searched so often. Buyers know there must be more to the story than deposit plus stamp duty, but they do not always know what sits between the offer being accepted and the keys landing in their hand.",
+          "Hidden costs are rarely hidden in the legal sense. The problem is that they appear in different places, at different times, and under labels that do not mean much to a buyer seeing them for the first time. Listings focus on the asking price. Mortgage illustrations focus on the loan. Solicitor quotes split legal work from disbursements. By the time those pieces are added together, the true total can look very different from the first savings target.",
+          "This is why buyers ask about unexpected costs buying a house UK after they have already found a property. They know there must be more to the story than deposit plus stamp duty, but they do not always know what sits between the offer being accepted and the keys landing in their hand.",
           "The practical answer is to treat the purchase as a sequence of real cash calls rather than one single event. If a cost can be triggered by the transaction, it belongs in the transaction budget."
-        ]
+        ],
+        callout:
+          "Most buyers underestimate hidden costs because they focus on the deposit. In reality, legal fees, surveys, mortgage costs and moving expenses can add several thousand pounds to the upfront budget."
       },
       {
         title: "Solicitor fees and average conveyancing disbursements in the UK",
@@ -117,6 +180,7 @@ export const guides: GuidePageContent[] = [
     ],
     relatedGuides: [
       "how-much-money-needed-buy-house",
+      "stamp-duty-explained",
       "mortgage-fees-costs",
       "leasehold-costs-uk",
       "moving-costs-uk"
