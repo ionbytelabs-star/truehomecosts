@@ -82,19 +82,21 @@ export default function HomePage() {
       <section className="shell pb-8">
         <div className="surface grid gap-5 p-5 sm:p-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
-            <p className="eyebrow">Direct answer</p>
-            <h2 className="font-serif text-3xl text-text">What is the true cost of buying a house in the UK?</h2>
+            <p className="eyebrow">Planning the full budget</p>
+            <h2 className="font-serif text-3xl text-text">What this calculator helps you include</h2>
             <p className="max-w-prose text-text">
-              The true cost of buying a house in the UK is usually the deposit plus the extra upfront costs
-              needed to complete the purchase and move in.
+              A deposit-only savings target can look comfortable until legal, tax, lender and moving costs are
+              added. This page brings those buying costs into one view so you can plan the cash needed before
+              completion more calmly.
             </p>
             <p className="max-w-prose text-text">
-              These costs can include stamp duty or regional property tax, solicitor fees, searches, surveys,
-              mortgage fees, removals, insurance and a sensible cash buffer.
+              The calculator separates official charges, such as stamp duty bands and registration fees, from
+              estimate-led items such as conveyancing disbursements, surveys, removals and a mortgage arrangement
+              fee where relevant.
             </p>
             <p className="max-w-prose text-text">
-              For many buyers, the non-deposit costs can run from a few thousand pounds to well over £10,000,
-              depending on the property price, UK nation, buyer type and how much help is needed during the move.
+              You can use the result as an early planning baseline, then refine it when real quotes arrive from
+              your solicitor, lender, surveyor or removal firm.
             </p>
           </div>
           <div className="rounded-3xl border border-line bg-[#f8fbfa] p-5">
@@ -103,7 +105,7 @@ export default function HomePage() {
               <li>Clear split between official published rates and planning estimates</li>
               <li>UK English, GBP formatting and UK-specific tax treatment</li>
               <li>Calculator-first homepage with worked examples for common purchase prices</li>
-              <li>Static, lightweight build with no login, database or CMS</li>
+              <li>No signup needed and no sales-led wording</li>
             </ul>
           </div>
         </div>
@@ -111,6 +113,33 @@ export default function HomePage() {
 
       <section className="shell pb-8">
         <ResponsiveTable {...homeCostSummaryTable} />
+      </section>
+
+      <section className="shell pb-8">
+        <div className="surface p-5 sm:p-6">
+          <div className="max-w-3xl space-y-3">
+            <p className="eyebrow">Before you calculate</p>
+            <h2 className="font-serif text-3xl text-text">Who this UK house buying cost calculator is for</h2>
+            <p className="text-muted">
+              This calculator estimates the total upfront cash needed to buy a house in the UK. Adjust the
+              property price, deposit, buyer type and location to see how the overall cost changes.
+            </p>
+          </div>
+          <ul className="mt-5 grid gap-3 text-sm text-text sm:grid-cols-2">
+            <li className="rounded-2xl border border-line bg-white px-4 py-3">
+              First-time buyers planning deposit and upfront costs
+            </li>
+            <li className="rounded-2xl border border-line bg-white px-4 py-3">
+              Home movers budgeting for their next purchase
+            </li>
+            <li className="rounded-2xl border border-line bg-white px-4 py-3">
+              Buyers comparing costs across England, Scotland, Wales and Northern Ireland
+            </li>
+            <li className="rounded-2xl border border-line bg-white px-4 py-3">
+              Anyone trying to understand the full cost of buying a property in the UK
+            </li>
+          </ul>
+        </div>
       </section>
 
       <CalculatorForm />
@@ -123,8 +152,7 @@ export default function HomePage() {
             <p className="max-w-prose text-muted">
               The table below shows the default calculator setup for a £300,000 first-time buyer purchase in
               England and Northern Ireland with a 10% deposit. It separates official charges from estimate-led
-              costs so the live homepage exposes a clear semantic example in static HTML as well as in the
-              interactive calculator.
+              costs so you can see how the main buying costs are usually grouped before running your own figures.
             </p>
           </div>
           <div className="mt-5">
@@ -165,6 +193,10 @@ export default function HomePage() {
               ]}
             />
             <ExampleScenarios scenarios={scenarios} />
+            <p className="rounded-3xl border border-line bg-white px-5 py-4 text-sm text-muted">
+              These figures are designed to give a realistic planning estimate based on typical UK buying costs,
+              not a guaranteed quote.
+            </p>
 
             {homeSections.map((section) => (
               <ContentSection key={section.title} title={section.title}>
@@ -181,6 +213,71 @@ export default function HomePage() {
                 {section.table ? <ResponsiveTable {...section.table} /> : null}
               </ContentSection>
             ))}
+
+            <section className="space-y-5">
+              <article className="surface p-5">
+                <h2 className="font-serif text-3xl text-text">
+                  How much money do you really need to buy a house in the UK?
+                </h2>
+                <p className="mt-3 text-text">
+                  You usually need your deposit, property tax if it applies, legal fees, survey costs, lender
+                  charges, moving costs and a buffer for the first few weeks of ownership. The exact figure depends
+                  on the purchase price, buyer type, UK nation and whether the property is freehold, leasehold,
+                  older, new-build or complex.
+                </p>
+                <p className="mt-3 text-text">
+                  For a stage-by-stage view, read the guide to{" "}
+                  <Link href="/how-much-money-needed-buy-house" className="underline hover:text-brand-deep">
+                    how much money you need to buy a house
+                  </Link>
+                  .
+                </p>
+              </article>
+
+              <article className="surface p-5">
+                <h2 className="font-serif text-3xl text-text">
+                  What are the hidden costs of buying a house in the UK?
+                </h2>
+                <p className="mt-3 text-text">
+                  Hidden costs are usually the smaller lines that appear after buyers have focused on the deposit
+                  and stamp duty. They can include searches, conveyancing disbursements, bank transfer fees,
+                  survey upgrades, mortgage fees, indemnity policies, lock changes and moving-day setup costs.
+                </p>
+                <p className="mt-3 text-text">
+                  If you want a fuller checklist, see the guide to{" "}
+                  <Link href="/hidden-costs-buying-house" className="underline hover:text-brand-deep">
+                    hidden costs of buying a house
+                  </Link>{" "}
+                  and the breakdown of{" "}
+                  <Link href="/mortgage-fees-costs" className="underline hover:text-brand-deep">
+                    mortgage fees and costs
+                  </Link>
+                  .
+                </p>
+              </article>
+
+              <article className="surface p-5">
+                <h2 className="font-serif text-3xl text-text">
+                  Why can the total upfront cost be higher than expected?
+                </h2>
+                <p className="mt-3 text-text">
+                  The total can rise because several costs are not known with confidence at the start. A survey may
+                  lead to extra checks, the buyer may need a different mortgage product, removals can cost more than
+                  expected, and first-time buyer relief or higher-rate tax treatment may change the property tax line.
+                </p>
+                <p className="mt-3 text-text">
+                  To understand the tax side, use the guide to{" "}
+                  <Link href="/stamp-duty-explained" className="underline hover:text-brand-deep">
+                    stamp duty explained
+                  </Link>
+                  . For practical move-in costs, compare typical{" "}
+                  <Link href="/moving-costs-uk" className="underline hover:text-brand-deep">
+                    moving costs in the UK
+                  </Link>
+                  .
+                </p>
+              </article>
+            </section>
 
             <section className="space-y-4">
               <div className="space-y-2">
@@ -204,7 +301,7 @@ export default function HomePage() {
                   First-time buyer costs
                 </Link>
                 <Link href="/mortgage-fees-costs" className="link-chip">
-                  Mortgage fees UK
+                  Mortgage fees and costs
                 </Link>
                 <Link href="/moving-costs-uk" className="link-chip">
                   Moving costs in the UK
@@ -213,10 +310,10 @@ export default function HomePage() {
                   Insurance costs for home buyers
                 </Link>
                 <Link href="/leasehold-costs-uk" className="link-chip">
-                  Leasehold buying costs
+                  Leasehold costs in the UK
                 </Link>
                 <Link href="/cost-of-owning-home-uk" className="link-chip">
-                  Ongoing cost of owning a home
+                  Cost of owning a home in the UK
                 </Link>
               </div>
             </section>
@@ -269,13 +366,13 @@ export default function HomePage() {
                   Mortgage fees and costs
                 </Link>
                 <Link href="/moving-costs-uk" className="underline hover:text-brand-deep">
-                  Moving costs UK
+                  Moving costs in the UK
                 </Link>
                 <Link href="/insurance-costs-uk" className="underline hover:text-brand-deep">
-                  Insurance costs UK
+                  Insurance costs for home buyers
                 </Link>
                 <Link href="/regional-property-costs-uk" className="underline hover:text-brand-deep">
-                  Regional property costs UK
+                  Regional property costs in the UK
                 </Link>
               </div>
             </div>
