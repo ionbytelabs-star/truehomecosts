@@ -147,8 +147,10 @@ export default function HomePage() {
       <section className="shell pb-8">
         <div className="surface p-5">
           <div className="space-y-2">
-            <p className="eyebrow">Default example breakdown</p>
-            <h2 className="font-serif text-3xl text-text">How the default homepage example is built</h2>
+            <p className="eyebrow">Example breakdown</p>
+            <h2 className="font-serif text-3xl text-text">
+              How a typical £300,000 first-time buyer example breaks down
+            </h2>
             <p className="max-w-prose text-muted">
               The table below shows the default calculator setup for a £300,000 first-time buyer purchase in
               England and Northern Ireland with a 10% deposit. It separates official charges from estimate-led
@@ -157,8 +159,8 @@ export default function HomePage() {
           </div>
           <div className="mt-5">
             <ResponsiveTable
-              summary="The table below shows the current default homepage cost breakdown, with one row per cost item and clear headers for type, amount and reason."
-              caption="Homepage default cost breakdown example"
+              summary="The table below shows an example cost breakdown for a £300,000 first-time buyer, with one row per cost item and clear headers for type, amount and reason."
+              caption="Example cost breakdown for a £300,000 first-time buyer"
               columns={["Cost item", "Type", "Amount", "Why it applies"]}
               rows={defaultHomepageResult.breakdown.map((item) => [
                 item.label,
