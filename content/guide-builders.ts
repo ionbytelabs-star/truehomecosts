@@ -624,6 +624,124 @@ export function createPriceGuide(price: number): GuidePageContent {
       item.detail
     ]);
 
+  if (price === 250_000) {
+    return {
+      slug,
+      title: `Cost to Buy a ${price / 1000}k House in the UK`,
+      description:
+        "Estimate the cost to buy a £250,000 house in the UK, including deposit, property tax, legal fees, surveys, mortgage costs, moving costs and the extra cash buyers usually need.",
+      keywords,
+      h1: `Cost to buy a ${formattedPrice} house in the UK`,
+      intro:
+        "This page gives a quick £250,000 buying-cost estimate for buyers who want the deposit, extra fees and likely total cash target in one place.",
+      directAnswer:
+        "The total cost to buy a £250,000 house in the UK is the deposit plus all upfront costs needed to complete the purchase. A buyer using a 10% deposit would need around £25,000 for the deposit, plus several thousand pounds more for legal fees, surveys, mortgage costs, moving and setup.",
+      introSections: [
+        {
+          title: "Typical cost breakdown for a £250,000 house",
+          bullets: [
+            "10% deposit: £25,000",
+            "Stamp duty or property tax: £0–£2,500 depending on buyer type",
+            "Legal fees: ~£800–£1,800",
+            "Surveys: £300–£1,000+",
+            "Mortgage fees: £0–£2,000+",
+            "Moving and setup costs: £500–£2,000+"
+          ]
+        },
+        {
+          title: "Typical total upfront cash needed",
+          paragraphs: [
+            "Typical total upfront cash needed: £28,000–£40,000+ depending on buyer type, location and assumptions."
+          ]
+        },
+        {
+          title: "Why the total cost can vary",
+          paragraphs: [
+            "The total can change quickly because buyer type matters. A first-time buyer may pay little or no property tax at this price in some parts of the UK, while an additional-property buyer can face a much higher total.",
+            "Tax differences between SDLT, LBTT and LTT also matter, so the same £250,000 price can behave differently in England and Northern Ireland, Scotland and Wales. On top of that, survey choice, property condition, mortgage fees and moving costs can all shift the final number by more than buyers expect.",
+            "Use the true cost of buying a house calculator to personalise this estimate based on your deposit, buyer type and location."
+          ]
+        }
+      ],
+      contextualLinks: [
+        { href: "/#calculator", label: "true cost of buying a house calculator" },
+        { href: "/hidden-costs-buying-house", label: "hidden costs of buying a house" },
+        { href: "/stamp-duty-explained", label: "stamp duty explained" },
+        { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
+        { href: "/moving-costs-uk", label: "moving costs in the UK" }
+      ],
+      trustReviewedText:
+        "Updated for 2026 where the property tax rules and planning ranges on this £250,000 page have been reviewed for budgeting use.",
+      updatedLabel: "Updated for 2026",
+      atGlance: [
+        {
+          label: "Typical total upfront cash needed",
+          value: "About £28,000 to £40,000+ on a £250,000 purchase, depending on deposit size, buyer type, tax treatment and moving assumptions."
+        },
+        {
+          label: "Example 10% deposit",
+          value: "A 10% deposit is £25,000 before legal fees, surveys, mortgage costs and moving are added."
+        },
+        {
+          label: "Best fit",
+          value: "Useful for first-time buyers, home movers and buyers comparing how a £250,000 budget changes across the UK."
+        },
+        {
+          label: "Buyers should check",
+          value: "Property tax treatment, survey scope, mortgage charges, moving costs and whether the property is simple or more complex."
+        }
+      ],
+      sections: [],
+      faqs: [
+        {
+          question: "How much deposit do I need for a £250,000 house?",
+          answer:
+            "A 10% deposit is £25,000, while a 5% deposit is £12,500 and a 20% deposit is £50,000. The right deposit depends on mortgage options and how much cash you still need to keep back for fees and buffer."
+        },
+        {
+          question: "What are the extra costs beyond the deposit?",
+          answer:
+            "The extra costs usually include property tax where it applies, legal fees, surveys, mortgage charges, moving costs and setup spending. Buyers should treat those separately from the deposit rather than hoping they stay small."
+        },
+        {
+          question: "Do first-time buyers pay stamp duty on £250,000?",
+          answer:
+            "Some first-time buyers may pay no SDLT at this price in England and Northern Ireland, but the answer depends on the nation and buyer status. It is still worth checking the property tax position because SDLT, LBTT and LTT do not use the same rules."
+        },
+        {
+          question: "How much savings should I have in total?",
+          answer:
+            "A safer target is the deposit plus several thousand pounds more for the rest of the purchase. On a £250,000 house, many buyers will want roughly £28,000 to £40,000+ available depending on buyer type, location and assumptions."
+        }
+      ],
+      relatedGuides: [
+        "hidden-costs-buying-house",
+        "stamp-duty-explained",
+        "mortgage-fees-costs",
+        "moving-costs-uk",
+        "how-much-money-needed-buy-house"
+      ],
+      sourceKeys: ["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"],
+      ctaTitle: "Try your own £250,000 scenario",
+      ctaText:
+        "Use the calculator to test a £250,000 purchase with your own deposit, buyer type and location instead of relying on one fixed estimate.",
+      officialItems: ["property tax for the relevant UK nation", "published registration fee scales where applicable"],
+      estimateItems: ["legal fees", "surveys", "mortgage fees", "moving costs", "setup buffer"],
+      mistakes: [
+        "Using only the deposit as the target",
+        "Assuming buyer type does not change the tax line",
+        "Forgetting surveys, legal fees and moving costs",
+        "Treating a planning estimate as if it were a fixed quote"
+      ],
+      checklist: [
+        "Confirm the tax position for your nation and buyer type",
+        "Check that the deposit still leaves room for fees and a buffer",
+        "Sense-check survey, mortgage and moving assumptions",
+        "Use the calculator again if the property or assumptions change"
+      ]
+    };
+  }
+
   return createLongGuide({
     slug,
     title: `Cost to Buy a ${price / 1000}k House in the UK`,
