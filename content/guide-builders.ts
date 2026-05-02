@@ -646,12 +646,15 @@ export function createPriceGuide(price: number): GuidePageContent {
             "Surveys: £300–£1,000+",
             "Mortgage fees: £0–£2,000+",
             "Moving and setup costs: £500–£2,000+"
-          ]
+          ],
+          callout:
+            "Deposit, property tax, legal fees, surveys, mortgage costs and moving and setup are the main lines buyers usually need to cover."
         },
         {
           title: "Typical total upfront cash needed",
           paragraphs: [
             "Most buyers should expect to need their deposit plus £3,000 to £10,000+ in additional upfront costs.",
+            "Most buyers need around £28,000 to £40,000+ in total to buy a £250,000 house, depending on deposit size and upfront costs.",
             "Typical total upfront cash needed for a £250,000 house:",
             "£28,000–£40,000+ depending on buyer type, location and assumptions."
           ]
