@@ -653,10 +653,9 @@ export function createPriceGuide(price: number): GuidePageContent {
         {
           title: "Typical total upfront cash needed",
           paragraphs: [
-            "Most buyers should expect to need their deposit plus £3,000 to £10,000+ in additional upfront costs.",
-            "Most buyers need around £28,000 to £40,000+ in total to buy a £250,000 house, depending on deposit size and upfront costs.",
             "Typical total upfront cash needed for a £250,000 house:",
-            "£28,000–£40,000+ depending on buyer type, location and assumptions."
+            "£28,000–£40,000+ depending on buyer type, location and assumptions.",
+            "Most buyers should expect their deposit plus £3,000 to £10,000+ in additional upfront costs."
           ]
         },
         {
