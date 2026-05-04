@@ -191,7 +191,7 @@ function generatedLongSections(config: LongGuideConfig): GuideSection[] {
         config.estimateMethodNote ??
           `The estimate-based side includes ${sentenceList(
             config.estimateItems
-          )}. Those numbers are still useful for planning, especially early in the process, but they should be treated as ranges. That is why TrueHomeCosts separates official-rate logic from editable assumption data in the codebase and clearly labels estimate lines in the calculator output.`
+          )}. Those numbers are still useful for planning, especially early in the process, but they should be treated as ranges. That is why TrueHomeCosts separates official-rate logic from planning assumptions and clearly labels estimate lines in the calculator output.`
       ],
       bullets: [
         `Official or published-reference items: ${sentenceList(config.officialItems)}`,

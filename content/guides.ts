@@ -684,7 +684,7 @@ export const guides: GuidePageContent[] = [
       ["£500,000 purchase case", "The tax can become a significant budget line", "A larger price point deserves a fuller budget check"]
     ],
     officialItems: ["SDLT rates", "LBTT rates", "LTT rates", "published higher-rate treatment rules"],
-    estimateItems: ["the tax bands are official, but the wider buying costs around them are still estimates"],
+    estimateItems: ["the wider buying costs around the tax calculation, such as legal fees, surveys and moving costs"],
     trustReviewedText:
       "Updated for 2026 where the SDLT, LBTT and LTT rules used by the site are centrally maintained for planning purposes. Figures are guidance only, so buyers should check the final position with their solicitor or official sources before making decisions.",
     mistakes: [
