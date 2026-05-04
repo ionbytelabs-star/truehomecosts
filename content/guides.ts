@@ -459,33 +459,84 @@ export const guides: GuidePageContent[] = [
       "Stress-test the purchase at more than one cost assumption level"
     ]
   }),
-  createLongGuide({
+  (() => {
+    const guide = createLongGuide({
     slug: "stamp-duty-explained",
-    title: "Stamp Duty Explained for UK Buyers",
+    title: "Stamp Duty Explained UK",
     description:
-      "Understand stamp duty and UK property purchase tax in plain English, including SDLT, LBTT, LTT, first-time buyer treatment, second-home costs and the main 2026 differences by nation.",
+      "Stamp duty explained UK in plain English, including SDLT, LBTT, LTT, first-time buyer treatment, second-home costs and the main 2026 differences by nation.",
     keywords: [
-      "stamp duty calculator UK",
-      "how much stamp duty will I pay UK",
-      "stamp duty first time buyer UK",
-      "stamp duty first time buyer UK 2026",
-      "stamp duty second home UK calculator",
-      "buying second home costs UK",
-      "LBTT calculator Scotland 2026",
-      "LTT rates Wales 2026"
+      "stamp duty explained UK",
+      "how much is stamp duty UK",
+      "stamp duty UK calculator",
+      "stamp duty England Scotland Wales difference",
+      "SDLT explained UK",
+      "LBTT and LTT explained"
     ],
     h1: "Stamp duty explained: UK property tax in plain English",
     intro:
-      "Most buyers still say stamp duty as a catch-all phrase, but the UK does not have one single system. The rules depend on where the property is, whether you are a first-time buyer, and whether the purchase counts as an additional property.",
+      "Quick answer: stamp duty UK explained. Stamp duty is the property purchase tax buyers usually mean when they talk about buying in the UK, but the system changes by nation because England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. The final bill depends on the property price, buyer type and location, so a £300,000 purchase can produce no tax, a modest bill or a much heavier figure depending on the scenario.",
     directAnswer:
-      "There is no single UK-wide stamp duty figure: England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. On a £300,000 purchase, the tax can be nil, modest or materially higher depending on the nation, whether the buyer is a first-time buyer or mover, and whether the purchase counts as an additional property.",
+      "There is no single UK-wide stamp duty figure because England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. The tax is worked out in bands rather than one flat percentage, so the amount can change sharply when the property price, buyer type or location changes.",
+    introSections: [
+      {
+        title: "What is stamp duty UK?",
+        bullets: [
+          "Stamp duty UK is the property purchase tax buyers usually mean when buying in England and Northern Ireland.",
+          "SDLT is calculated in bands, not as a flat percentage on the whole property price.",
+          "Scotland uses LBTT instead of SDLT, with its own thresholds and rates.",
+          "Wales uses LTT, which means Welsh purchases should not be budgeted using SDLT examples.",
+          "First-time buyer relief and additional-property rules can change the final bill materially."
+        ]
+      },
+      {
+        title: "UK property tax systems at a glance",
+        intro:
+          "The table below compares the three residential property-tax systems buyers usually need to understand before they rely on a stamp duty example.",
+        table: {
+          caption: "Stamp duty, LBTT and LTT compared simply",
+          columns: ["System name", "Applies where", "Key difference", "First-time buyer treatment"],
+          rows: [
+            ["SDLT", "England and Northern Ireland", "Uses SDLT bands and separate higher-rate treatment for additional properties", "Relief may lower or remove SDLT for eligible first-time buyers"],
+            ["LBTT", "Scotland", "Uses Scottish bands and the Additional Dwelling Supplement for relevant extra properties", "First-time buyers get a different nil-rate threshold within LBTT"],
+            ["LTT", "Wales", "Uses Welsh rates and a separate higher residential structure", "No separate first-time buyer residential rate in the same way as SDLT"]
+          ]
+        }
+      },
+      {
+        title: "How much is stamp duty in the UK?",
+        paragraphs: [
+          "Stamp duty is usually calculated by applying different tax rates to different slices of the purchase price, not by charging one percentage on the whole figure.",
+          "A simple £300,000 example shows why buyers should use a proper tax calculation instead of assuming the top visible rate applies to everything."
+        ],
+        bullets: [
+          "The first part of the price may fall into a nil-rate band",
+          "The next slice may be taxed at a lower rate",
+          "Only the portion above the next threshold moves into the higher band",
+          "Buyer status and location can still change the total significantly"
+        ]
+      },
+      {
+        title: "Stamp duty examples by property price",
+        intro:
+          "These examples are planning summaries, not fixed quotes, but they show why a quick property-price comparison is so useful when you are budgeting.",
+        bullets: [
+          "£250,000: often £0 for an eligible first-time buyer in England, but buyer type and nation still matter",
+          "£300,000: can be nil, modest or clearly noticeable depending on the tax system and buyer status",
+          "£400,000: usually a point where the tax starts to feel more material in the full budget",
+          "£500,000: often a significant tax line, especially for home movers or additional-property buyers"
+        ],
+        callout:
+          "Use the true cost of buying a house calculator if you want the tax figure shown alongside deposit, legal fees, surveys and the rest of the buying budget rather than as a standalone tax estimate."
+      }
+    ],
     sections: [
       {
-        title: "England and Northern Ireland: how SDLT works",
+        title: "Stamp duty England (SDLT explained)",
         paragraphs: [
-          "SDLT is charged in slices rather than one flat percentage on the whole price. That means buyers asking how much stamp duty will I pay UK need to know where their price sits in the band structure, not just the top rate they have seen quoted in a headline.",
-          "For mainstream residential buyers, the nil-rate threshold and the bands above it determine how much of the purchase price is taxed at each level. That structure is central to why a calculator is more useful than a rough guess.",
-          "The same slice-based logic also explains why crossing a threshold does not suddenly mean the higher rate applies to the whole purchase price."
+          "SDLT is the system used in England and Northern Ireland, and it is the reason many buyers search for stamp duty explained UK even though the wider UK has more than one tax system. SDLT works in bands, which means different slices of the purchase price are taxed at different rates.",
+          "That matters because the answer to how much is stamp duty UK is never just one percentage. A buyer at £250,000, £300,000 or £400,000 can all face very different outcomes depending on whether they are a first-time buyer, home mover or additional-property buyer.",
+          "This is also why a rough headline rate is not enough. Once a price crosses into the next SDLT band, only the slice above that threshold moves to the higher rate, not the whole purchase price. Buyers comparing the cost to buy a £250,000 house or the cost to buy a £300,000 house often see the difference most clearly once tax is set inside the full budget rather than treated as a side note."
         ],
         table: {
           caption: "England and Northern Ireland SDLT bands used by the site",
@@ -500,76 +551,98 @@ export const guides: GuidePageContent[] = [
         }
       },
       {
-        title: "Stamp duty first-time buyer rules in 2026",
+        title: "Stamp duty Scotland (LBTT explained)",
         paragraphs: [
-          "Stamp duty first time buyer UK 2026 searches are common because relief rules matter hugely to affordability. In England and Northern Ireland, eligible first-time buyers can receive relief on purchases up to the relevant price limit, which lowers or removes SDLT compared with a standard home mover calculation.",
-          "That can make a major difference to the total upfront cash needed, but it should not be confused with a full exemption from buying costs. Relief changes the tax line, not the solicitor fee, survey, mortgage or moving budget.",
-          "Scotland also gives first-time buyers special treatment, but it does so differently through the LBTT threshold. Wales does not have a separate first-time buyer residential LTT rate in the same way."
+          "Scotland does not use SDLT. It uses LBTT, which has its own bands and its own first-time buyer treatment, so English stamp duty examples should not be copied onto a Scottish purchase.",
+          "This is where buyers often get caught out when they search for stamp duty UK calculator and assume every result uses the same tax logic. A £300,000 or £400,000 purchase in Scotland may not behave like the same price in England and Northern Ireland because LBTT thresholds are different.",
+          "LBTT also interacts with the Additional Dwelling Supplement for some additional-property purchases. That makes Scotland especially important to model separately if the buyer is not purchasing a main home in the standard way."
         ]
       },
       {
-        title: "Second-home and additional-property costs",
+        title: "Stamp duty Wales (LTT explained)",
         paragraphs: [
-          "Stamp duty second home UK calculator and buying second home costs UK are usually searches driven by surprise. Buyers often know there is an extra tax hit but underestimate how much it can change the all-in figure. In England and Northern Ireland, an additional-property surcharge is usually added on top of the standard SDLT calculation. Scotland applies the Additional Dwelling Supplement. Wales uses a separate higher residential LTT structure.",
-          "These differences are one reason second-home budgets should never be copied from standard owner-occupier examples. The deposit expectation may also be different, which means both the deposit and the tax can move against you at the same time.",
-          "If the purchase is meant to replace a main home, refund rules or exceptions may matter, but those are technical and timing-sensitive. Buyers should check the exact position rather than assuming higher rates definitely apply forever."
+          "Wales uses LTT rather than SDLT, which means the tax thresholds and rates are different again. Buyers looking for LBTT and LTT explained usually want to know whether Wales follows England closely; in practice, it should still be treated as its own calculation.",
+          "LTT can change the full buying budget more than expected because Welsh thresholds are not just a minor variation on SDLT. A purchase price that feels moderate in one nation can produce a noticeably different tax line in Wales.",
+          "This is one reason Welsh buyers should build the tax into their full moving budget early rather than assuming it can be checked at the last minute without affecting affordability. Buyers moving into higher price bands often find the difference especially clear when they compare the cost to buy a £450,000 house or the cost to buy a £500,000 house with the same price points elsewhere."
+        ]
+      },
+      {
+        title: "How first-time buyers and additional-property buyers change the tax",
+        paragraphs: [
+          "Buyer type is one of the biggest reasons stamp duty examples vary so much. An eligible first-time buyer may see relief or a lighter tax result, while a home mover usually pays the standard residential calculation and an additional-property buyer may face a noticeably heavier bill.",
+          "That means the same property price can give very different answers to the question how much stamp duty on £300k UK. A first-time buyer in England might face no SDLT at that level, a home mover could pay a standard tax amount, and a second-home buyer could pay materially more.",
+          "The same pattern applies across Scotland and Wales too, but through different rules. This is why SDLT explained UK, LBTT and LTT explained are best understood as separate systems that all respond to buyer status in different ways."
         ],
         table: {
-          caption: "How higher-rate treatment differs across the UK",
-          columns: ["Nation", "Higher-rate approach", "What buyers should notice"],
+          caption: "How buyer status changes the tax picture",
+          columns: ["Buyer type", "What usually changes", "Why it matters"],
           rows: [
-            ["England / Northern Ireland", "Additional-property surcharge on top of SDLT", "Second-home tax can rise sharply even at common price points"],
-            ["Scotland", "ADS added on top of LBTT", "Scottish additional-property budgets should not be based on SDLT examples"],
-            ["Wales", "Higher residential LTT bands", "The whole calculation uses a different higher-rate structure"]
+            ["First-time buyer", "Relief or different thresholds may apply in some nations", "The tax line can fall materially without changing the rest of the buying costs"],
+            ["Home mover", "Standard residential treatment usually applies", "A good benchmark for mainstream stamp duty planning"],
+            ["Additional-property buyer", "Higher-rate treatment may apply", "The tax can become one of the largest non-deposit lines in the budget"]
           ]
         }
       },
       {
-        title: "Scotland LBTT and Wales LTT in 2026",
+        title: "Want an exact figure?",
         paragraphs: [
-          "LBTT calculator Scotland 2026 and LTT rates Wales 2026 are useful searches because many buyers assume all UK property tax works the same way. It does not. Scotland uses its own thresholds, and Wales uses its own thresholds and rates too.",
-          "That means a purchase price that looks manageable in one nation can produce a noticeably different tax bill in another. Buyers moving across borders inside the UK often discover this late if they have only read England-focused stamp duty articles.",
-          "The cleanest approach is to calculate the tax using the nation where the property sits, then treat any cross-UK comparison as a separate exercise rather than relying on memory."
+          "A cleaner way to budget is to calculate the tax alongside the deposit, solicitor fees, survey, mortgage costs and moving budget rather than treating tax as a separate afterthought.",
+          "The true cost of buying a house calculator helps you test the property price, location and buyer type in one place so the tax figure sits inside the full upfront total, not beside it."
+        ],
+        callout:
+          "If you are comparing common price points, the worked buying-cost pages for £250,000, £300,000, £350,000, £400,000, £450,000 and £500,000 can help you see how tax changes as the purchase price moves."
+      },
+      {
+        title: "When do you pay stamp duty UK?",
+        paragraphs: [
+          "The buyer usually funds the tax through the solicitor around completion, rather than paying it casually at some later date. That is why stamp duty becomes a real cash-planning issue shortly before completion even if the estimate was discussed much earlier.",
+          "In practice, the amount is usually shown on the completion statement alongside the other final buying costs. Buyers should not assume there will be lots of spare time after completion to find the money, because the legal timing is usually tight.",
+          "This page is guidance only, so buyers should check the exact timing and amount with their solicitor or official sources before relying on any final figure."
         ]
       },
       {
         title: "Worked tax examples buyers can understand quickly",
         paragraphs: [
-          "Worked examples are useful because tax explanations can feel abstract until buyers see a real price point. The examples below are not designed to replace official checks, but they do show why the same property price does not generate the same tax everywhere in the UK.",
-          "They also show why first-time buyer status and additional-property status matter so much to the result."
+          "Examples work well on this topic because they show the practical gap between a headline search and a real transaction. Someone searching how much stamp duty do I pay on £250k or how much stamp duty on £300k UK usually wants a directionally correct answer before they move to a calculator.",
+          "The examples below are deliberately simple. They show how the price point, buyer type and nation can change the tax without pretending that one example replaces a proper calculation."
         ],
         table: {
           caption: "Illustrative property tax examples",
           columns: ["Scenario", "Illustrative result", "Why it matters"],
           rows: [
-            ["£250,000 first-time buyer in England", "£0 SDLT", "Relief can remove SDLT at this price point"],
-            ["£300,000 home mover in Scotland", "LBTT applies under Scottish bands", "A Scottish buyer should use LBTT logic, not SDLT assumptions"],
-            ["£400,000 home mover in Wales", "LTT applies under Welsh bands", "Wales uses a different main threshold and rate pattern"],
-            ["Additional property purchase", "Higher-rate treatment applies in each nation differently", "Second-home buyers need a dedicated calculation"]
+            ["£250,000 first-time buyer in England", "Often £0 SDLT", "A common example of first-time buyer relief changing the answer materially"],
+            ["£300,000 purchase", "May be nil, modest or higher depending on nation and buyer type", "Shows why a single UK-wide answer does not exist"],
+            ["£400,000 family move", "Moderate tax is often expected", "This is where the tax line becomes harder to treat as a side note"],
+            ["£500,000 purchase", "Often a significant tax bill", "Useful for buyers who need to stress-test the full upfront total"]
           ]
         }
       }
     ],
     faqs: [
       {
-        question: "Is stamp duty the same across the whole UK?",
+        question: "How much stamp duty do I pay on £250k?",
         answer:
-          "No. England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT."
+          "It depends on the nation and buyer type. An eligible first-time buyer in England may pay £0 SDLT at £250,000, while a different buyer type or a different UK nation can produce another result."
       },
       {
-        question: "Do first-time buyers pay stamp duty in 2026?",
+        question: "How much stamp duty on £300k UK?",
         answer:
-          "Sometimes. Relief exists in England, Northern Ireland and Scotland, but the rules differ. Wales does not have the same separate first-time buyer residential treatment."
+          "There is no single UK-wide answer. A £300,000 purchase may be nil, modest or more noticeable depending on whether the property is in England and Northern Ireland, Scotland or Wales and whether the buyer is a first-time buyer, mover or additional-property buyer."
       },
       {
-        question: "How do second-home costs change the tax bill?",
+        question: "Do first-time buyers pay stamp duty UK?",
         answer:
-          "Additional-property buyers usually face higher-rate treatment, but the exact method differs between SDLT, LBTT and LTT."
+          "Sometimes, but not always. Relief can reduce or remove the tax in some systems, but the answer depends on the nation, the purchase price and whether the buyer meets the relevant first-time buyer rules."
       },
       {
-        question: "When is stamp duty or equivalent property tax paid?",
+        question: "When do you pay stamp duty UK?",
         answer:
-          "It is usually handled by the solicitor around completion, with the money collected from the buyer shortly before completion."
+          "It is usually handled through the solicitor around completion. Buyers normally need the money ready as part of the final completion funds rather than treating it as a later bill."
+      },
+      {
+        question: "How is stamp duty calculated UK?",
+        answer:
+          "It is usually worked out in bands, with different slices of the purchase price taxed at different rates. The final answer also depends on the nation and the buyer type, so SDLT, LBTT and LTT should not be treated as interchangeable."
       }
     ],
     relatedGuides: [
@@ -578,10 +651,10 @@ export const guides: GuidePageContent[] = [
       "first-time-buyer-costs",
       "taxes-and-fees-uk"
     ],
-    sourceKeys: ["sdlt", "lbtt", "lbttAds", "ltt"],
+    sourceKeys: [],
     ctaTitle: "Check the tax within your full buying budget",
     ctaText:
-      "Run the calculator to estimate SDLT, LBTT or LTT alongside deposit and the other upfront costs buyers face.",
+      "Run the true cost of buying a house calculator to estimate SDLT, LBTT or LTT alongside deposit, legal fees, surveys and the other upfront costs buyers face.",
     topicLabel: "UK property purchase tax",
     buyerContext: "Jurisdiction, first-time buyer status and additional-property status",
     costDrivers: [
@@ -600,18 +673,20 @@ export const guides: GuidePageContent[] = [
     comparisonRows: [
       ["England / NI first-time buyer", "Relief may lower or remove SDLT at some price points", "Useful where affordability is tight"],
       ["England / NI home mover", "Standard SDLT bands apply", "A straightforward benchmark for mainstream moves"],
-      ["Scotland buyer", "LBTT thresholds and relief rules differ", "English examples cannot simply be reused"],
+      ["Scotland buyer", "LBTT thresholds and first-time buyer treatment differ", "English examples cannot simply be reused"],
       ["Wales buyer", "LTT thresholds differ and no separate first-time buyer residential rate applies in the same way", "Welsh buyers need Welsh calculations"]
     ],
     workedExampleCaption: "Practical property-tax examples buyers often compare",
     workedExampleRows: [
       ["£250,000 first-time buyer case", "May produce no SDLT in England", "Relief can materially change the all-in total"],
       ["£300,000 onward move case", "Property tax applies in each nation under different bands", "Cross-UK comparison matters"],
-      ["£400,000 family home case", "Tax becomes too large to ignore as a side note", "This is often where buyers feel the difference most sharply"],
-      ["Second-home case", "Higher-rate treatment dominates the tax line", "A dedicated second-home calculation is essential"]
+      ["£400,000 family home case", "Moderate tax is common", "This is often where buyers feel the difference more sharply"],
+      ["£500,000 purchase case", "The tax can become a significant budget line", "A larger price point deserves a fuller budget check"]
     ],
     officialItems: ["SDLT rates", "LBTT rates", "LTT rates", "published higher-rate treatment rules"],
-    estimateItems: ["none of the tax bands themselves, but related legal and practical costs around the purchase are still estimates"],
+    estimateItems: ["the tax bands are official, but the wider buying costs around them are still estimates"],
+    trustReviewedText:
+      "Updated for 2026 where the SDLT, LBTT and LTT rules used by the site are centrally maintained for planning purposes. Figures are guidance only, so buyers should check the final position with their solicitor or official sources before making decisions.",
     mistakes: [
       "Assuming one UK-wide stamp duty system exists",
       "Forgetting to check whether first-time buyer relief actually applies",
@@ -625,7 +700,13 @@ export const guides: GuidePageContent[] = [
       "Cross-check the final figure with the relevant official source before completion",
       "Include tax in the full buying budget, not as an afterthought"
     ]
-  }),
+    });
+
+    return {
+      ...guide,
+      faqs: guide.faqs.slice(0, 5)
+    };
+  })(),
   createLongGuide({
     slug: "first-time-buyer-costs",
     title: "First-Time Buyer Costs in the UK",

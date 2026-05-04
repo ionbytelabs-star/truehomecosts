@@ -118,6 +118,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                     ))}
                   </ul>
                 ) : null}
+                {section.table ? <ResponsiveTable {...section.table} /> : null}
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
               </ContentSection>
             ))}
