@@ -4,9 +4,9 @@ import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { AtAGlance } from "@/components/AtAGlance";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CalloutBox } from "@/components/CalloutBox";
+import { ContentTrustPanel } from "@/components/ContentTrustPanel";
 import { ContentSection } from "@/components/ContentSection";
 import { DataSources } from "@/components/DataSources";
-import { Disclaimer } from "@/components/Disclaimer";
 import { FAQSection } from "@/components/FAQSection";
 import { PageIntro } from "@/components/PageIntro";
 import { RateTypeSplit } from "@/components/RateTypeSplit";
@@ -278,10 +278,10 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             </section>
           ) : null}
 
+          <ContentTrustPanel />
           <FAQSection items={guide.faqs} />
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />
           <DataSources sourceKeys={guide.sourceKeys} />
-          <Disclaimer />
         </article>
 
         <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">

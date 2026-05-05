@@ -20,9 +20,11 @@ export const mainNav = [
 
 export const footerNav = [
   { href: "/about", label: "About" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/cookies", label: "Cookies" },
+  { href: "/methodology", label: "How estimates work" },
   { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/cookies", label: "Cookies" },
   { href: "/hidden-costs-buying-house", label: "Hidden costs guide" },
   { href: "/how-much-money-needed-buy-house", label: "How much cash do I need?" },
   { href: "/stamp-duty-explained", label: "Stamp duty explained" },

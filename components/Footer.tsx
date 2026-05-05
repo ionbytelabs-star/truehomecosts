@@ -11,8 +11,9 @@ export function Footer() {
           <h2 className="font-serif text-3xl text-text">Clearer property buying numbers, without the sales pitch.</h2>
           <p className="max-w-prose text-muted">
             TrueHomeCosts.co.uk exists to help UK buyers budget for the deposit, tax and extra costs that
-            get missed too often. The site is informational only and is not financial advice.
+            get missed too often. It is built for early planning, not quotes or personal recommendations.
           </p>
+          <p className="text-sm text-muted">Reviewed for 2026 where public rates and planning assumptions apply.</p>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
@@ -26,7 +27,7 @@ export function Footer() {
 
       <div className="border-t border-line/70">
         <div className="shell flex flex-col gap-2 py-4 text-sm text-muted md:flex-row md:items-center md:justify-between">
-          <p>© 2026 {siteConfig.name}. Built for local-first planning and Netlify deployment.</p>
+          <p>(c) 2026 {siteConfig.name}. General UK home-buying cost information.</p>
           <p>{siteConfig.email}</p>
         </div>
       </div>

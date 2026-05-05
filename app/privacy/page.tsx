@@ -9,7 +9,7 @@ import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Privacy Policy",
   description:
-    "Privacy policy for TrueHomeCosts, including what local calculator data is and is not collected on this static site.",
+    "Privacy policy for TrueHomeCosts, including calculator data, email contact and basic analytics on this static site.",
   path: "/privacy"
 });
 
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <StructuredData
         data={webpageSchema({
           title: "Privacy Policy",
-          description: "Privacy policy for the TrueHomeCosts static site and calculator.",
+          description: "Privacy policy for the TrueHomeCosts site and calculator.",
           path: "/privacy"
         })}
       />
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy policy" }]} />
       <PageIntro
         title="Privacy Policy"
-        description="This privacy policy explains what TrueHomeCosts currently does with data in this local-first static site build."
+        description="This privacy policy explains what TrueHomeCosts currently does with data."
         summary="TrueHomeCosts does not require an account, login or database. The calculator runs in the browser and does not need you to submit personal financial information to use it."
         badge="Plain-English policy"
       />
@@ -65,8 +65,9 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">Third-party services</h2>
           <p>
-            This build does not include analytics, ad scripts, live chat tools or embedded tracking pixels. If
-            those are added later, this policy should be updated before deployment.
+            The site currently loads a basic analytics script to understand broad site usage. It does not
+            include a login, CRM, live chat tool or live advertising scripts in this build. If new services are
+            added, this policy should be updated before deployment.
           </p>
         </section>
 

@@ -1,18 +1,44 @@
 import { absoluteUrl } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 
+const rootUrl = siteConfig.url;
+const organizationId = `${rootUrl}#organization`;
+const websiteId = `${rootUrl}#website`;
+const calculatorApplicationId = `${rootUrl}#calculator`;
+const representativeImageUrl = absoluteUrl("/og-image.svg");
+
+function canonicalUrl(path: string) {
+  return path === "/" ? rootUrl : absoluteUrl(path);
+}
+
+function webPageId(path: string) {
+  return `${canonicalUrl(path)}#webpage`;
+}
+
+function organizationReference() {
+  return {
+    "@type": "Organization",
+    "@id": organizationId
+  };
+}
+
+export function calculatorApplicationReference() {
+  return {
+    "@type": "WebApplication",
+    "@id": calculatorApplicationId
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: siteConfig.name,
-    url: absoluteUrl("/"),
+    url: rootUrl,
     description: siteConfig.description,
     inLanguage: "en-GB",
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name
-    }
+    publisher: organizationReference()
   };
 }
 
@@ -20,8 +46,9 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: siteConfig.name,
-    url: siteConfig.url,
+    url: rootUrl,
     logo: absoluteUrl("/icon.svg"),
     email: siteConfig.email,
     description: siteConfig.description,
@@ -33,26 +60,32 @@ export function webpageSchema({
   title,
   description,
   path,
-  keywords
+  keywords,
+  mainEntity
 }: {
   title: string;
   description: string;
   path: string;
   keywords?: string[];
+  mainEntity?: Record<string, unknown>;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": webPageId(path),
     name: title,
     description,
-    url: absoluteUrl(path),
+    url: canonicalUrl(path),
     keywords,
     inLanguage: "en-GB",
+    publisher: organizationReference(),
     isPartOf: {
       "@type": "WebSite",
+      "@id": websiteId,
       name: siteConfig.name,
-      url: siteConfig.url
-    }
+      url: rootUrl
+    },
+    ...(mainEntity ? { mainEntity } : {})
   };
 }
 
@@ -60,11 +93,14 @@ export function calculatorApplicationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": calculatorApplicationId,
     name: "TrueHomeCosts UK House Buying Cost Calculator",
-    url: absoluteUrl("/"),
+    url: rootUrl,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     inLanguage: "en-GB",
+    isAccessibleForFree: true,
+    browserRequirements: "Requires a modern web browser with JavaScript enabled.",
     description:
       "A browser-based UK house buying cost calculator for estimating deposit, property tax, legal fees, survey costs, mortgage fees, moving costs and total upfront cash needed.",
     offers: {
@@ -72,11 +108,7 @@ export function calculatorApplicationSchema() {
       price: "0",
       priceCurrency: "GBP"
     },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url
-    }
+    publisher: organizationReference()
   };
 }
 
@@ -93,23 +125,28 @@ export function articleSchema({
   keywords?: string[];
   dateModified?: string;
 }) {
+  const pageUrl = canonicalUrl(path);
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${pageUrl}#article`,
     headline,
     description,
     keywords,
     dateModified,
     inLanguage: "en-GB",
-    mainEntityOfPage: absoluteUrl(path),
-    author: {
-      "@type": "Organization",
-      name: siteConfig.name
+    image: representativeImageUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": webPageId(path)
     },
+    author: organizationReference(),
     publisher: {
       "@type": "Organization",
+      "@id": organizationId,
       name: siteConfig.name,
-      url: siteConfig.url,
+      url: rootUrl,
       logo: {
         "@type": "ImageObject",
         url: absoluteUrl("/icon.svg")
@@ -144,14 +181,17 @@ export function breadcrumbSchema(
     path: string;
   }>
 ) {
+  const currentPath = items[items.length - 1]?.path ?? "/";
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl(currentPath)}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: absoluteUrl(item.path)
+      item: canonicalUrl(item.path)
     }))
   };
 }

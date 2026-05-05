@@ -5,7 +5,6 @@ import { AtAGlance } from "@/components/AtAGlance";
 import { CalculatorForm } from "@/components/CalculatorForm";
 import { ContentSection } from "@/components/ContentSection";
 import { DataSources } from "@/components/DataSources";
-import { Disclaimer } from "@/components/Disclaimer";
 import { ExampleScenarios } from "@/components/ExampleScenarios";
 import { FAQSection } from "@/components/FAQSection";
 import { Hero } from "@/components/Hero";
@@ -30,7 +29,12 @@ import { calculateUpfrontCosts } from "@/lib/calculator";
 import { defaultCalculatorInput } from "@/lib/default-calculator-input";
 import { formatCurrency } from "@/lib/format";
 import { priceGuideLinks } from "@/lib/price-guide-links";
-import { calculatorApplicationSchema, faqPageSchema, webpageSchema } from "@/lib/structured-data";
+import {
+  calculatorApplicationReference,
+  calculatorApplicationSchema,
+  faqPageSchema,
+  webpageSchema
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "True Cost of Buying a House UK Calculator | Full Cost Breakdown 2026",
@@ -72,7 +76,8 @@ export default function HomePage() {
           description:
             "Estimate the total upfront cost of buying a house in the UK with deposit, property tax, legal fees, survey costs, mortgage fees, moving costs and a cash buffer.",
           path: "/",
-          keywords: [...homeKeywords]
+          keywords: [...homeKeywords],
+          mainEntity: calculatorApplicationReference()
         })}
       />
       <StructuredData data={calculatorApplicationSchema()} />
@@ -349,8 +354,18 @@ export default function HomePage() {
                 mortgage, legal or tax advice, so buyers should verify important figures with the relevant
                 professional or official source before making decisions.
               </p>
+              <p className="mt-2">
+                Read{" "}
+                <Link href="/methodology" className="underline hover:text-brand-deep">
+                  how the estimates work
+                </Link>
+                {" "}or learn more{" "}
+                <Link href="/about" className="underline hover:text-brand-deep">
+                  about TrueHomeCosts
+                </Link>
+                .
+              </p>
             </section>
-            <Disclaimer />
           </div>
 
           <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">

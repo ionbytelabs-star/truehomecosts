@@ -7,7 +7,7 @@ import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Cookie Policy",
   description:
-    "Cookie policy for TrueHomeCosts, explaining that this local-first static build does not currently load advertising or analytics cookies.",
+    "Cookie policy for TrueHomeCosts, explaining essential browser behaviour, analytics and ad placeholder status.",
   path: "/cookies"
 });
 
@@ -31,7 +31,7 @@ export default function CookiesPage() {
       <PageIntro
         title="Cookie Policy"
         description="This page explains the limited cookie position for the current TrueHomeCosts build."
-        summary="The current local-first static build does not include analytics scripts, ad scripts or a cookie banner because it does not currently place non-essential tracking cookies."
+        summary="The current build uses a browser-based calculator and loads a basic analytics script. It does not include live advertising scripts or personalised ad network tags."
         badge="Current build"
       />
 
@@ -39,31 +39,31 @@ export default function CookiesPage() {
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">Essential site behaviour</h2>
           <p>
-            The calculator works in the browser without a login and without relying on advertising or analytics
-            cookies. Any temporary browser behaviour is incidental to normal page use rather than a tracking
-            system.
+            The calculator works in the browser without a login or account. Calculator inputs are used to show
+            the result in the page rather than being submitted through a user account system.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-serif text-3xl text-text">Ad placeholders</h2>
+          <h2 className="font-serif text-3xl text-text">Analytics and ad placeholders</h2>
           <p>
-            The site includes labelled ad placeholder areas only. No live advertising scripts, ad network tags
-            or personalisation cookies are loaded in this build.
+            The site currently loads a basic analytics script to understand broad site usage. It also includes
+            labelled ad placeholder areas only. No live advertising scripts, ad network tags or personalised
+            advertising cookies are loaded in this build.
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">If cookies are added later</h2>
           <p>
-            If analytics, advertising or other non-essential tools are added before deployment, the cookie
-            policy and any consent mechanism should be updated to reflect that change clearly.
+            If advertising or other non-essential tools are added before deployment, the cookie policy and any
+            consent mechanism should be updated to reflect that change clearly.
           </p>
         </section>
 
         <p className="text-sm text-muted">
-          The current build remains a lightweight static site with a client-side calculator and no live ad or
-          analytics scripts.
+          The current build remains a lightweight static site with a client-side calculator and no live ad
+          network scripts.
         </p>
       </section>
     </>

@@ -10,7 +10,7 @@ import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "About TrueHomeCosts",
   description:
-    "Learn why TrueHomeCosts exists, how it stays independent, and why the site focuses on plain-English UK home-buying cost guidance rather than sales funnels.",
+    "Learn what TrueHomeCosts does, how UK home-buying cost estimates are built, and how official charges are separated from market estimates.",
   path: "/about"
 });
 
@@ -21,7 +21,7 @@ export default function AboutPage() {
         data={webpageSchema({
           title: "About TrueHomeCosts",
           description:
-            "Why TrueHomeCosts exists and how the site approaches UK home-buying costs in a practical, independent way.",
+            "What TrueHomeCosts does, who it is for, and how the site explains UK home-buying costs.",
           path: "/about"
         })}
       />
@@ -34,62 +34,103 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
       <PageIntro
         title="About TrueHomeCosts"
-        description="TrueHomeCosts exists to make UK home-buying costs easier to understand without sales pressure, lead forms or jargon."
-        summary="The site was built to answer a simple problem: too many buyers know the listing price and deposit, but not the full cash needed to complete and move in."
-        badge="Independent"
+        description="TrueHomeCosts explains the upfront costs of buying a home in the UK, from the deposit and property tax to legal fees, surveys, moving costs and practical setup costs."
+        summary="Most buyers know the listing price and the deposit. Fewer see the full cash picture before the transaction starts."
+        badge="Independent information"
       />
 
       <section className="shell grid gap-10 pb-16 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
           <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">About TrueHomeCosts</h2>
+            <p>
+              TrueHomeCosts is a UK home-buying cost information site. It brings the main upfront buying costs
+              into one place so buyers can build a more realistic budget before relying on a deposit-only target.
+            </p>
+            <p>
+              The site is for first-time buyers, home movers, additional-property buyers and anyone comparing
+              how costs can change across England, Northern Ireland, Scotland and Wales.
+            </p>
+          </section>
+
+          <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Why this site exists</h2>
             <p>
-              Many home-buying articles explain one fee in isolation. Buyers then have to stitch together tax,
-              legal costs, surveys, mortgage fees, moving costs and post-completion setup on their own. This
-              site puts those pieces in one place.
+              Most property websites focus on mortgages or listings. Very few explain the full cost of buying a
+              home in one place.
             </p>
             <p>
-              The aim is not to push a mortgage, a broker or an estate agent. It is to help people plan with
-              clearer numbers and fewer surprises.
-            </p>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">How the site is positioned</h2>
-            <p>
-              TrueHomeCosts is independent, UK-focused and practical. It separates official rates from market
-              estimates, explains where uncertainty sits, and uses plain English rather than finance-heavy
-              jargon.
-            </p>
-            <p>
-              The calculator runs client-side and the site is designed to stay lightweight, static and easy to
-              maintain.
+              A buyer can have the deposit ready and still be caught out by solicitor fees, searches, surveys,
+              tax, lender fees, removals, insurance and the first wave of setup costs. TrueHomeCosts was built
+              to show those lines together, in plain UK English, before the pressure of a live purchase.
             </p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">What the site is not</h2>
+            <h2 className="font-serif text-3xl text-text">How our cost estimates work</h2>
             <p>
-              TrueHomeCosts is not a lender, broker, law firm or regulated financial adviser. It does not
-              replace personal advice from a solicitor, tax specialist or mortgage professional when a real
-              transaction is on the line.
+              The calculator combines official-rate items with planning estimates. Property tax rules and some
+              registration fees use published sources where available. Variable costs, such as conveyancing,
+              searches, surveys, mortgage fees, removals, insurance and furnishing, are shown as indicative
+              planning ranges.
             </p>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">Useful places to start</h2>
             <p>
-              If you are using the site for planning, the most practical starting point is usually the{" "}
-              <Link href="/#calculator" className="underline hover:text-brand-deep">
-                homepage calculator
+              The result is not a quote. It is a way to test whether a purchase budget has enough room for the
+              costs that usually sit around the deposit. You can read the fuller explanation on{" "}
+              <Link href="/methodology" className="underline hover:text-brand-deep">
+                how our estimates work
               </Link>
-              , followed by the guides on{" "}
-              <Link href="/hidden-costs-buying-house" className="underline hover:text-brand-deep">
-                hidden buying costs
-              </Link>{" "}
-              and{" "}
-              <Link href="/how-much-money-needed-buy-house" className="underline hover:text-brand-deep">
-                how much cash you need to buy a house
+              .
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Official charges vs market estimates</h2>
+            <p>
+              Official charges are costs set by published rules or public fee tables, such as SDLT, LBTT, LTT
+              and relevant registration fees. These can still change when rules change, but they are not market
+              quotes.
+            </p>
+            <p>
+              Market estimates are different. A solicitor, surveyor, lender, removal firm or insurer can quote
+              more or less depending on the property, region, timing and buyer circumstances. The site keeps
+              those figures separate so buyers can see which numbers are fixed rules and which need checking
+              against real quotes.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Review and update process</h2>
+            <p>
+              Pages are reviewed when tax bands, official fee tables, calculator assumptions or linked source
+              pages need checking. The current guide set uses a shared fallback review note of April 2026 unless
+              a page carries a more specific reviewed label.
+            </p>
+            <p>
+              Official-rate data is maintained separately from estimate-led assumptions so changes can be made
+              without rewriting every page by hand.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Important note</h2>
+            <p>
+              TrueHomeCosts is not a lender, broker, law firm, tax adviser or regulated financial adviser. The
+              site is informational only and should not replace personal advice from a solicitor, lender, tax
+              specialist, mortgage professional or official source.
+            </p>
+            <p>
+              Useful places to start are the{" "}
+              <Link href="/#calculator" className="underline hover:text-brand-deep">
+                main calculator
+              </Link>
+              , the guide to{" "}
+              <Link href="/stamp-duty-explained" className="underline hover:text-brand-deep">
+                stamp duty and UK property tax
+              </Link>
+              , and the explanation of{" "}
+              <Link href="/methodology" className="underline hover:text-brand-deep">
+                how estimates are built
               </Link>
               .
             </p>
@@ -102,11 +143,18 @@ export default function AboutPage() {
           <div className="surface p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Built for</p>
             <ul className="mt-3 grid gap-2 text-sm text-muted">
-              <li>First-time buyers</li>
-              <li>Home movers</li>
-              <li>Second-home and additional-property planners</li>
-              <li>Anyone comparing the true upfront cost across UK nations</li>
+              <li>First-time buyers checking the full cash target</li>
+              <li>Home movers comparing purchase costs before making an offer</li>
+              <li>Additional-property buyers checking tax and fee pressure</li>
+              <li>Buyers comparing England, Northern Ireland, Scotland and Wales</li>
             </ul>
+          </div>
+          <div className="surface p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Review note</p>
+            <p className="mt-3 text-sm text-muted">
+              Shared guide review note: April 2026. Official-rate pages should be checked again when public
+              rates or fee tables change.
+            </p>
           </div>
         </aside>
       </section>
