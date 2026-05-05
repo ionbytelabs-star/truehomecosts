@@ -143,14 +143,15 @@ export default function AboutPage() {
               <Link href="/#calculator" className="underline hover:text-brand-deep">
                 main calculator
               </Link>
-              , the guide to{" "}
+              {" "}to estimate your total cash requirement, then use the{" "}
               <Link href="/stamp-duty-explained" className="underline hover:text-brand-deep">
-                stamp duty and UK property tax
+                stamp duty guide
               </Link>
-              , and the explanation of{" "}
+              {" "}and{" "}
               <Link href="/methodology" className="underline hover:text-brand-deep">
-                how estimates are built
+                methodology page
               </Link>
+              {" "}to understand how the numbers are built
               .
             </p>
           </section>
