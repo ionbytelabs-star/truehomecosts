@@ -34,15 +34,14 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
       <PageIntro
         title="About TrueHomeCosts"
-        description="TrueHomeCosts explains the upfront costs of buying a home in the UK, from the deposit and property tax to legal fees, surveys, moving costs and practical setup costs."
+        description="TrueHomeCosts is not a broker, lender or lead-generation site. It does not recommend products or providers. The focus is on explaining costs clearly so buyers can plan before speaking to professionals."
         summary="Most buyers know the listing price and the deposit. Fewer see the full cash picture before the transaction starts."
-        badge="Independent information"
+        badge="Cost guidance for UK buyers"
       />
 
       <section className="shell grid gap-10 pb-16 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">About TrueHomeCosts</h2>
             <p>
               TrueHomeCosts is a UK home-buying cost information site. It brings the main upfront buying costs
               into one place so buyers can build a more realistic budget before relying on a deposit-only target.
@@ -50,6 +49,10 @@ export default function AboutPage() {
             <p>
               The site is for first-time buyers, home movers, additional-property buyers and anyone comparing
               how costs can change across England, Northern Ireland, Scotland and Wales.
+            </p>
+            <p>
+              Reviewed and maintained by the TrueHomeCosts research team, using official UK sources and current
+              market cost ranges.
             </p>
           </section>
 
@@ -102,9 +105,9 @@ export default function AboutPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Review and update process</h2>
             <p>
-              Pages are reviewed when tax bands, official fee tables, calculator assumptions or linked source
-              pages need checking. The current guide set uses a shared fallback review note of April 2026 unless
-              a page carries a more specific reviewed label.
+              Pages are reviewed when tax rules, fee tables or assumptions change. Where a page does not show a
+              specific review date, it follows the current shared review cycle, April 2026 at the time of
+              writing.
             </p>
             <p>
               Official-rate data is maintained separately from estimate-led assumptions so changes can be made
@@ -115,12 +118,13 @@ export default function AboutPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Important note</h2>
             <p>
-              TrueHomeCosts is not a lender, broker, law firm, tax adviser or regulated financial adviser. The
-              site is informational only and should not replace personal advice from a solicitor, lender, tax
-              specialist, mortgage professional or official source.
+              TrueHomeCosts is built for early-stage planning, not quotes or recommendations. It brings
+              together deposit, tax and additional costs so buyers can understand the full cash requirement
+              before committing to a purchase. Reviewed for 2026 where public rates and planning assumptions
+              apply.
             </p>
             <p>
-              Useful places to start are the{" "}
+              Useful next pages are the{" "}
               <Link href="/#calculator" className="underline hover:text-brand-deep">
                 main calculator
               </Link>
@@ -152,8 +156,8 @@ export default function AboutPage() {
           <div className="surface p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Review note</p>
             <p className="mt-3 text-sm text-muted">
-              Shared guide review note: April 2026. Official-rate pages should be checked again when public
-              rates or fee tables change.
+              Current shared review cycle: April 2026. Official-rate pages should be checked again when public
+              rates, tax rules or fee tables change.
             </p>
           </div>
         </aside>
