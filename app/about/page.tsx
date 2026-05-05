@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Disclaimer } from "@/components/Disclaimer";
-import { PageIntro } from "@/components/PageIntro";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
@@ -32,12 +31,25 @@ export default function AboutPage() {
         ])}
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
-      <PageIntro
-        title="About TrueHomeCosts"
-        description="TrueHomeCosts is not a broker, lender or lead-generation site. It does not recommend products or providers. The focus is on explaining costs clearly so buyers can plan before speaking to professionals."
-        summary="Most buyers know the listing price and the deposit. Fewer see the full cash picture before the transaction starts."
-        badge="Cost guidance for UK buyers"
-      />
+      <section className="section-gap pb-6 pt-8">
+        <div className="shell space-y-4">
+          <p className="eyebrow">UK home-buying cost guidance</p>
+          <div className="space-y-2">
+            <h1 className="font-serif text-4xl text-text sm:text-5xl">About TrueHomeCosts</h1>
+            <p className="max-w-prose text-lg text-muted">
+              TrueHomeCosts is not a broker, lender or lead-generation site. It does not recommend products or
+              providers. The focus is on explaining costs clearly so buyers can plan before speaking to
+              professionals.
+            </p>
+          </div>
+          <div className="surface max-w-prose border-brand/20 bg-panel-strong p-4">
+            <p className="text-text">
+              Most buyers know the listing price and the deposit. Fewer see the full cash picture before the
+              transaction starts.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="shell grid gap-10 pb-16 lg:grid-cols-[1fr_320px]">
         <article className="space-y-8">
@@ -79,9 +91,9 @@ export default function AboutPage() {
             </p>
             <p>
               The result is not a quote. It is a way to test whether a purchase budget has enough room for the
-              costs that usually sit around the deposit. You can read the fuller explanation on{" "}
+              costs that usually sit around the deposit. See the full explanation of{" "}
               <Link href="/methodology" className="underline hover:text-brand-deep">
-                how our estimates work
+                how estimates are built
               </Link>
               .
             </p>
@@ -120,11 +132,14 @@ export default function AboutPage() {
             <p>
               TrueHomeCosts is built for early-stage planning, not quotes or recommendations. It brings
               together deposit, tax and additional costs so buyers can understand the full cash requirement
-              before committing to a purchase. Reviewed for 2026 where public rates and planning assumptions
-              apply.
+              before committing to a purchase.
             </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Useful next pages</h2>
             <p>
-              Useful next pages are the{" "}
+              Start with the{" "}
               <Link href="/#calculator" className="underline hover:text-brand-deep">
                 main calculator
               </Link>
@@ -152,13 +167,6 @@ export default function AboutPage() {
               <li>Additional-property buyers checking tax and fee pressure</li>
               <li>Buyers comparing England, Northern Ireland, Scotland and Wales</li>
             </ul>
-          </div>
-          <div className="surface p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Review note</p>
-            <p className="mt-3 text-sm text-muted">
-              Current shared review cycle: April 2026. Official-rate pages should be checked again when public
-              rates, tax rules or fee tables change.
-            </p>
           </div>
         </aside>
       </section>
