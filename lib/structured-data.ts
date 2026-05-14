@@ -5,7 +5,7 @@ const rootUrl = siteConfig.url;
 const organizationId = `${rootUrl}#organization`;
 const websiteId = `${rootUrl}#website`;
 const calculatorApplicationId = `${rootUrl}#calculator`;
-const representativeImageUrl = absoluteUrl("/og-image.svg");
+const representativeImageUrl = absoluteUrl("/og-image.png");
 
 function canonicalUrl(path: string) {
   return path === "/" ? rootUrl : absoluteUrl(path);

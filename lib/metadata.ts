@@ -33,7 +33,7 @@ export function buildMetadata({ title, description, path = "/", keywords }: Meta
       siteName: siteConfig.name,
       images: [
         {
-          url: absoluteUrl("/og-image.svg"),
+          url: absoluteUrl("/og-image.png"),
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} preview`
@@ -44,7 +44,7 @@ export function buildMetadata({ title, description, path = "/", keywords }: Meta
       card: "summary_large_image",
       title: `${title} | ${siteConfig.name}`,
       description,
-      images: [absoluteUrl("/og-image.svg")]
+      images: [absoluteUrl("/og-image.png")]
     }
   };
 }
