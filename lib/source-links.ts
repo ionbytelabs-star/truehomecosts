@@ -1,4 +1,28 @@
 export const sourceLinks = {
+  govUkSdltGuide: {
+    label: "GOV.UK Stamp Duty Land Tax guidance",
+    href: "https://www.gov.uk/stamp-duty-land-tax"
+  },
+  moneyHelperBuyingMoving: {
+    label: "MoneyHelper guide to buying and moving costs",
+    href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs"
+  },
+  moneyHelperHomeBuying: {
+    label: "MoneyHelper home buying guidance",
+    href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home"
+  },
+  revenueScotlandLbttGuide: {
+    label: "Revenue Scotland LBTT guidance",
+    href: "https://revenue.scot/taxes/land-buildings-transaction-tax"
+  },
+  govWalesLttGuide: {
+    label: "GOV.WALES Land Transaction Tax guidance",
+    href: "https://www.gov.wales/land-transaction-tax-return-guidance-contents"
+  },
+  fcaConsumers: {
+    label: "FCA consumer guidance on financial services and authorised firms",
+    href: "https://www.fca.org.uk/consumers"
+  },
   sdlt: {
     label: "HMRC SDLT residential property rates",
     href: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates"

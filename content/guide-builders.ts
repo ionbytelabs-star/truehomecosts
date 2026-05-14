@@ -41,6 +41,7 @@ type LongGuideConfig = {
   sections: GuideSection[];
   faqs: FAQItem[];
   relatedGuides: string[];
+  officialSourceKeys?: SourceKey[];
   sourceKeys: SourceKey[];
   ctaTitle: string;
   ctaText: string;
@@ -310,6 +311,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     sections: addTableSummaries([...config.sections, ...generatedLongSections(config)], config.topicLabel),
     faqs: mergedFaqs,
     relatedGuides: config.relatedGuides,
+    officialSourceKeys: config.officialSourceKeys,
     sourceKeys: config.sourceKeys,
     ctaTitle: config.ctaTitle,
     ctaText: config.ctaText,

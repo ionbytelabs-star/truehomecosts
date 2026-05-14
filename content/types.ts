@@ -44,6 +44,7 @@ export type GuidePageContent = {
   sections: GuideSection[];
   faqs: FAQItem[];
   relatedGuides: string[];
+  officialSourceKeys?: SourceKey[];
   sourceKeys: SourceKey[];
   ctaTitle: string;
   ctaText: string;

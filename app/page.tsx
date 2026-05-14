@@ -8,6 +8,7 @@ import { DataSources } from "@/components/DataSources";
 import { ExampleScenarios } from "@/components/ExampleScenarios";
 import { FAQSection } from "@/components/FAQSection";
 import { Hero } from "@/components/Hero";
+import { OfficialSources } from "@/components/OfficialSources";
 import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { ResponsiveTable } from "@/components/ResponsiveTable";
@@ -17,6 +18,7 @@ import { guideMap } from "@/content/guides";
 import {
   homeAtGlance,
   homeCostSummaryTable,
+  homeOfficialSourceKeys,
   homeKeywords,
   homePageFaqs,
   homepageGuideLinks,
@@ -343,6 +345,7 @@ export default function HomePage() {
               </div>
             </section>
 
+            <OfficialSources sourceKeys={[...homeOfficialSourceKeys]} />
             <FAQSection items={homePageFaqs.map((faq) => ({ ...faq }))} />
             <RelatedGuides slugs={[...homepageGuideLinks]} />
             <DataSources sourceKeys={["sdlt", "lbtt", "lbttAds", "ltt", "hmlr"]} />

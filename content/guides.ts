@@ -85,6 +85,7 @@ export const guides: GuidePageContent[] = [
         paragraphs: [
           "First-time buyers often miss costs that sit outside the deposit and mortgage approval. Searches, conveyancing disbursements, survey upgrades, mortgage valuation fees, a mortgage arrangement fee, removals, insurance and first-week setup costs can all arrive before the purchase feels fully complete.",
           "First-time buyer relief can reduce or remove some property tax in certain situations, but it does not remove the wider buying bill. Buyers still need to check stamp duty bands or regional property tax rules for their location and price point.",
+          "MoneyHelper provides consumer guidance on common home buying and moving costs, which can be useful when you want to sense-check whether your own fee list is missing the practical extras.",
           "A simple way to avoid surprises is to hold a separate fee pot. That pot should sit alongside the deposit rather than being treated as spare money."
         ]
       },
@@ -184,6 +185,11 @@ export const guides: GuidePageContent[] = [
       "mortgage-fees-costs",
       "leasehold-costs-uk",
       "moving-costs-uk"
+    ],
+    officialSourceKeys: [
+      "moneyHelperBuyingMoving",
+      "moneyHelperHomeBuying",
+      "govUkSdltGuide"
     ],
     sourceKeys: ["sdlt", "lbtt", "ltt", "hmlr"],
     ctaTitle: "See the hidden costs in one total",
@@ -408,6 +414,11 @@ export const guides: GuidePageContent[] = [
       "mortgage-fees-costs",
       "moving-costs-uk"
     ],
+    officialSourceKeys: [
+      "moneyHelperBuyingMoving",
+      "moneyHelperHomeBuying",
+      "govUkSdltGuide"
+    ],
     sourceKeys: ["sdlt", "lbtt", "ltt", "hmlr"],
     ctaTitle: "Turn a rough target into a real figure",
     ctaText:
@@ -534,7 +545,7 @@ export const guides: GuidePageContent[] = [
       {
         title: "Stamp duty England (SDLT explained)",
         paragraphs: [
-          "SDLT is the system used in England and Northern Ireland, and it is the reason many buyers search for stamp duty explained UK even though the wider UK has more than one tax system. SDLT works in bands, which means different slices of the purchase price are taxed at different rates.",
+          "SDLT is the system used in England and Northern Ireland, and it is the reason many buyers search for stamp duty explained UK even though the wider UK has more than one tax system. In England and Northern Ireland, Stamp Duty Land Tax is handled through HMRC and GOV.UK guidance. SDLT works in bands, which means different slices of the purchase price are taxed at different rates.",
           "That matters because the answer to how much is stamp duty UK is never just one percentage. A buyer at £250,000, £300,000 or £400,000 can all face very different outcomes depending on whether they are a first-time buyer, home mover or additional-property buyer.",
           "This is also why a rough headline rate is not enough. Once a price crosses into the next SDLT band, only the slice above that threshold moves to the higher rate, not the whole purchase price. Buyers comparing the cost to buy a £250,000 house or the cost to buy a £300,000 house often see the difference most clearly once tax is set inside the full budget rather than treated as a side note."
         ],
@@ -553,7 +564,7 @@ export const guides: GuidePageContent[] = [
       {
         title: "Stamp duty Scotland (LBTT explained)",
         paragraphs: [
-          "Scotland does not use SDLT. It uses LBTT, which has its own bands and its own first-time buyer treatment, so English stamp duty examples should not be copied onto a Scottish purchase.",
+          "Scotland does not use SDLT. It uses Land and Buildings Transaction Tax, usually shortened to LBTT, and it has its own bands and first-time buyer treatment, so English stamp duty examples should not be copied onto a Scottish purchase.",
           "This is where buyers often get caught out when they search for stamp duty UK calculator and assume every result uses the same tax logic. A £300,000 or £400,000 purchase in Scotland may not behave like the same price in England and Northern Ireland because LBTT thresholds are different.",
           "LBTT also interacts with the Additional Dwelling Supplement for some additional-property purchases. That makes Scotland especially important to model separately if the buyer is not purchasing a main home in the standard way."
         ]
@@ -650,6 +661,11 @@ export const guides: GuidePageContent[] = [
       "how-much-money-needed-buy-house",
       "first-time-buyer-costs",
       "taxes-and-fees-uk"
+    ],
+    officialSourceKeys: [
+      "govUkSdltGuide",
+      "revenueScotlandLbttGuide",
+      "govWalesLttGuide"
     ],
     sourceKeys: [],
     ctaTitle: "Check the tax within your full buying budget",
@@ -888,6 +904,7 @@ export const guides: GuidePageContent[] = [
         paragraphs: [
           "Mortgage broker fees UK and mortgage advice cost UK vary because brokers charge in different ways. Some charge the borrower directly. Others rely mainly on commission from the lender. Some do both. That means buyers should ask not only what the fee is, but what service they are receiving and whether the broker searches the wider market or a more limited panel.",
           "A broker fee is not automatically bad value. A paid adviser may still save a buyer money if they identify a product or structure that the buyer would otherwise have missed. The key is transparency rather than the assumption that fee-free automatically means better.",
+          "MoneyHelper publishes consumer guidance on home buying costs, while the FCA regulates mortgage advice, mortgage broking and other financial firms in the UK. That gives buyers a useful split between budgeting guidance and regulatory context.",
           "The important budgeting point is that broker fees are often one of the first mortgage-related cash costs buyers meet, so they belong in early transaction planning."
         ]
       },
@@ -953,6 +970,11 @@ export const guides: GuidePageContent[] = [
       "how-much-money-needed-buy-house",
       "first-time-buyer-costs",
       "insurance-costs-uk"
+    ],
+    officialSourceKeys: [
+      "moneyHelperBuyingMoving",
+      "moneyHelperHomeBuying",
+      "fcaConsumers"
     ],
     sourceKeys: [],
     ctaTitle: "Add mortgage costs to the bigger buying budget",
@@ -1029,6 +1051,7 @@ export const guides: GuidePageContent[] = [
         paragraphs: [
           "Removal company costs UK 3 bed house vary because removals are driven by volume, distance, access, packing level and timing. A straightforward local move where the buyer is mostly packed can be relatively modest. A larger chain move with awkward access, heavy furniture, packing help and overnight storage can cost far more.",
           "This is why the cheapest quote is not always the best budget anchor. A removal price that excludes packing, dismantling, parking complications or waiting time can look attractive until the moving day becomes more complex than the quote assumed.",
+          "MoneyHelper provides consumer guidance on buying and moving costs, which is helpful when you want to compare a removal quote with the wider move budget rather than judging the van price on its own.",
           "In practice, buyers should think about the move as a service package rather than a van price."
         ]
       },
@@ -1095,6 +1118,10 @@ export const guides: GuidePageContent[] = [
       "hidden-costs-buying-house",
       "insurance-costs-uk",
       "how-much-money-needed-buy-house"
+    ],
+    officialSourceKeys: [
+      "moneyHelperBuyingMoving",
+      "moneyHelperHomeBuying"
     ],
     sourceKeys: [],
     ctaTitle: "Add moving costs to the total, not just the to-do list",
@@ -1167,6 +1194,7 @@ export const guides: GuidePageContent[] = [
         paragraphs: [
           "Buildings insurance cost UK first time buyer is often the first insurance question because mortgage lenders commonly expect buildings cover to be in place. On many freehold purchases, buyers are advised to have cover from exchange rather than waiting until they physically move in.",
           "The amount depends on the property, the rebuild cost, claims history, location, flood risk and the terms of the policy. That is why insurance is harder to summarise with one universal quote than tax or registry fees.",
+          "MoneyHelper provides consumer guidance on the home-buying process, while the FCA regulates insurance firms and other financial services in the UK. Those two angles are useful when a buyer is weighing timing, cover type and affordability.",
           "Even so, it deserves a place in the budget because the timing can matter as much as the price."
         ]
       },
@@ -1232,6 +1260,10 @@ export const guides: GuidePageContent[] = [
       "mortgage-fees-costs",
       "hidden-costs-buying-house",
       "moving-costs-uk"
+    ],
+    officialSourceKeys: [
+      "moneyHelperHomeBuying",
+      "fcaConsumers"
     ],
     sourceKeys: [],
     ctaTitle: "Add insurance only if you want a truer all-in figure",

@@ -8,6 +8,7 @@ import { ContentTrustPanel } from "@/components/ContentTrustPanel";
 import { ContentSection } from "@/components/ContentSection";
 import { DataSources } from "@/components/DataSources";
 import { FAQSection } from "@/components/FAQSection";
+import { OfficialSources } from "@/components/OfficialSources";
 import { PageIntro } from "@/components/PageIntro";
 import { RateTypeSplit } from "@/components/RateTypeSplit";
 import { RelatedGuides } from "@/components/RelatedGuides";
@@ -278,6 +279,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             </section>
           ) : null}
 
+          <OfficialSources sourceKeys={guide.officialSourceKeys ?? []} />
           <ContentTrustPanel />
           <FAQSection items={guide.faqs} />
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />

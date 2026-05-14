@@ -159,6 +159,14 @@ export const homepageGuideLinks = [
   "cost-of-owning-home-uk"
 ] as const;
 
+export const homeOfficialSourceKeys = [
+  "moneyHelperBuyingMoving",
+  "moneyHelperHomeBuying",
+  "govUkSdltGuide",
+  "revenueScotlandLbttGuide",
+  "govWalesLttGuide"
+] as const;
+
 export const homepagePriceGuideLinks = [
   "cost-to-buy-250k-house",
   "cost-to-buy-300k-house",
@@ -202,6 +210,7 @@ export const homeSections: GuideSection[] = [
     paragraphs: [
       "The same property price can create a different total upfront cost of buying a property in the UK depending on the nation where the property sits. England and Northern Ireland use SDLT, Scotland uses LBTT, and Wales uses LTT. Those systems do not share the same thresholds or relief rules.",
       "Buyer type matters too. A first-time buyer can face a different tax position from a home mover, and an additional-property buyer can face a significantly heavier total because both deposit expectations and higher-rate tax treatment may change at the same time.",
+      "In England and Northern Ireland, Stamp Duty Land Tax is handled through HMRC and GOV.UK guidance. In Scotland, buyers use Land and Buildings Transaction Tax instead of SDLT, and in Wales, Land Transaction Tax applies instead.",
       "That is why the calculator asks for location and buyer type before giving the result. Without those two pieces of information, the number is too vague to be useful."
     ],
     bullets: [
