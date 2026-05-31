@@ -58,6 +58,8 @@ type LongGuideConfig = {
   estimateMethodNote?: string;
   mistakes: string[];
   checklist: string[];
+  includeGeneratedSections?: boolean;
+  includeGeneratedFaqs?: boolean;
 };
 
 function sentenceList(items: string[]): string {
@@ -291,9 +293,16 @@ function generatedFaqs(config: LongGuideConfig): FAQItem[] {
 }
 
 export function createLongGuide(config: LongGuideConfig): GuidePageContent {
-  const mergedFaqs = [...config.faqs, ...generatedFaqs(config)].filter(
+  const mergedFaqs = [
+    ...config.faqs,
+    ...(config.includeGeneratedFaqs === false ? [] : generatedFaqs(config))
+  ].filter(
     (faq, index, array) => array.findIndex((entry) => entry.question === faq.question) === index
   );
+  const sections = [
+    ...config.sections,
+    ...(config.includeGeneratedSections === false ? [] : generatedLongSections(config))
+  ];
 
   return {
     slug: config.slug,
@@ -308,7 +317,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     trustReviewedText: config.trustReviewedText,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
     atGlance: buildAtGlance(config),
-    sections: addTableSummaries([...config.sections, ...generatedLongSections(config)], config.topicLabel),
+    sections: addTableSummaries(sections, config.topicLabel),
     faqs: mergedFaqs,
     relatedGuides: config.relatedGuides,
     officialSourceKeys: config.officialSourceKeys,
