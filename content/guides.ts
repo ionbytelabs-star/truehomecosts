@@ -2002,6 +2002,16 @@ export const guides: GuidePageContent[] = [
       "The first year cost of buying a house includes the deposit, property tax, legal fees, mortgage fees, survey costs, moving costs, furnishing and setup costs, insurance and first-year ongoing ownership costs. The deposit is not the full cost of buying a house; it is only one part of the cash needed to complete, move in and run the home through year one.",
     introSections: [
       {
+        title: "First-year house buying costs at a glance",
+        bullets: [
+          "Costs start before completion, with surveys, searches, mortgage fees and early solicitor payments often due before the move.",
+          "Completion day is not the end of spending because the final balance, property tax and registration-style costs may all come together.",
+          "Moving costs and furnishing often arrive immediately after completion, just when cash can already feel stretched.",
+          "First-year ownership bills continue after completion, including council tax, utilities, insurance, maintenance and any service charge.",
+          "The deposit is only part of the total cash requirement, so the first year should be planned as a timeline rather than one payment."
+        ]
+      },
+      {
         title: "Upfront costs before completion",
         paragraphs: [
           "Before completion, buyers may need cash for broker or advice fees where applicable, mortgage product, application or booking fees if paid upfront, valuation fees where charged, survey costs and the initial payment on account to the solicitor or conveyancer.",
@@ -2052,8 +2062,6 @@ export const guides: GuidePageContent[] = [
       { href: "/leasehold-costs-uk", label: "leasehold costs" },
       { href: "/methodology", label: "how estimates work" }
     ],
-    contextualLinksSentence:
-      "Use the home buying cost calculator, then compare the first-year estimate with the hidden costs of buying a house, mortgage fees, moving costs, furnishing costs and ongoing costs of owning a home.",
     atGlance: [
       {
         label: "What this page covers",
@@ -2073,6 +2081,26 @@ export const guides: GuidePageContent[] = [
       }
     ],
     sections: [
+      {
+        title: "First-year cost timeline",
+        paragraphs: [
+          "The first year is easier to plan when it is split into stages. Some costs arrive before the purchase completes, while others appear after the keys are handed over.",
+          "The table below keeps the focus on timing, so buyers can see why the cost of buying a house in the first year is not just a completion-day calculation."
+        ],
+        table: {
+          summary:
+            "The table below shows a first-year house buying timeline, separating pre-completion, completion-day, move-in and ongoing ownership costs.",
+          caption: "First-year cost timeline for a UK home buyer",
+          columns: ["Stage", "Typical costs", "Why it matters"],
+          rows: [
+            ["Before completion", "Survey, mortgage fees, valuation fee where charged, solicitor account payment, searches and disbursements", "These costs can be paid before the purchase is legally complete, so buyers need cash ready early."],
+            ["Completion day", "Deposit balance, property tax where applicable, final legal balance, registration-style fees and lender fees not added to the mortgage", "This is usually the largest single cash point in the buying process."],
+            ["Moving-in period", "Removals, van hire, storage, cleaning, locksmiths, small repairs and immediate setup costs", "These costs may not appear on the solicitor statement but still affect the first-year budget."],
+            ["First month", "Council tax setup, utilities, water, broadband, insurance and essential furnishing", "Household bills begin quickly and can overlap with move-in spending."],
+            ["Months 2-12", "Ongoing bills, maintenance reserve, contents insurance, service charge or estate charge where relevant", "The first-year home ownership costs continue long after completion day."]
+          ]
+        }
+      },
       {
         title: "Example: first year cost of buying a £250k house",
         paragraphs: [
@@ -2095,7 +2123,25 @@ export const guides: GuidePageContent[] = [
             ["First-year non-mortgage ownership costs", "£7,200", "Council tax, utilities, insurance, maintenance and similar lines"],
             ["Estimated total excluding mortgage repayments", "£39,000", "Planning illustration, not a quote"]
           ]
-        }
+        },
+        tables: [
+          {
+            summary:
+              "This subtotal table groups the same £250,000 illustration into upfront buying costs, moving and furnishing, and first-year ownership costs.",
+            caption: "Summary subtotals for the £250,000 first-year example",
+            columns: ["Subtotal group", "Illustrative amount", "What is included"],
+            rows: [
+              ["Upfront buying costs subtotal", "£28,100", "Deposit, property tax assumption, legal / conveyancing, mortgage fees and survey"],
+              ["Moving and furnishing subtotal", "£3,700", "Moving costs plus furnishing / setup"],
+              ["First-year non-mortgage ownership costs", "£7,200", "Council tax, utilities, insurance, maintenance and similar ownership bills"],
+              ["Estimated first-year total excluding mortgage repayments", "£39,000", "Planning illustration only; mortgage repayments need to be added separately"]
+            ]
+          }
+        ],
+        afterParagraphs: [
+          "This example shows how a lower-price purchase can still need much more than the deposit alone. Moving, furnishing and the first year of household bills add a second layer of spending after the legal purchase costs.",
+          "Mortgage repayments are not included in the total, so buyers would still need to add their own expected monthly payment based on the loan, interest rate and term."
+        ]
       },
       {
         title: "Example: first year cost of buying a £350k house",
@@ -2119,7 +2165,25 @@ export const guides: GuidePageContent[] = [
             ["First-year non-mortgage ownership costs", "£8,400", "Council tax, utilities, insurance, maintenance and similar lines"],
             ["Estimated total excluding mortgage repayments", "£59,500", "Planning illustration, not a quote"]
           ]
-        }
+        },
+        tables: [
+          {
+            summary:
+              "This subtotal table groups the £350,000 illustration into the main first-year spending stages.",
+            caption: "Summary subtotals for the £350,000 first-year example",
+            columns: ["Subtotal group", "Illustrative amount", "What is included"],
+            rows: [
+              ["Upfront buying costs subtotal", "£46,000", "Deposit, property tax assumption, legal / conveyancing, mortgage fees and survey"],
+              ["Moving and furnishing subtotal", "£5,100", "Moving costs plus furnishing / setup"],
+              ["First-year non-mortgage ownership costs", "£8,400", "Council tax, utilities, insurance, maintenance and similar ownership bills"],
+              ["Estimated first-year total excluding mortgage repayments", "£59,500", "Planning illustration only; mortgage repayments need to be added separately"]
+            ]
+          }
+        ],
+        afterParagraphs: [
+          "The £350,000 illustration shows why the first-year cost can rise quickly once property tax and a bigger deposit are included. It also separates one-off move-in spending from the bills that keep running after completion.",
+          "A buyer with different tax treatment, a larger deposit or a more expensive move could land outside this illustration, so it should be treated as a planning example rather than an average."
+        ]
       },
       {
         title: "Example: first year cost of buying a £500k house",
@@ -2143,7 +2207,25 @@ export const guides: GuidePageContent[] = [
             ["First-year non-mortgage ownership costs", "£10,200", "Council tax, utilities, insurance, maintenance and similar lines"],
             ["Estimated total excluding mortgage repayments", "£86,900", "Planning illustration, not a quote"]
           ]
-        }
+        },
+        tables: [
+          {
+            summary:
+              "This subtotal table shows how the £500,000 illustration is split between purchase, move-in and first-year ownership costs.",
+            caption: "Summary subtotals for the £500,000 first-year example",
+            columns: ["Subtotal group", "Illustrative amount", "What is included"],
+            rows: [
+              ["Upfront buying costs subtotal", "£69,500", "Deposit, property tax assumption, legal / conveyancing, mortgage fees and survey"],
+              ["Moving and furnishing subtotal", "£7,200", "Moving costs plus furnishing / setup"],
+              ["First-year non-mortgage ownership costs", "£10,200", "Council tax, utilities, insurance, maintenance and similar ownership bills"],
+              ["Estimated first-year total excluding mortgage repayments", "£86,900", "Planning illustration only; mortgage repayments need to be added separately"]
+            ]
+          }
+        ],
+        afterParagraphs: [
+          "At £500,000, the first-year picture is more sensitive to tax treatment, survey choice, furnishing needs and whether the property has leasehold or estate charges. The deposit is still only the starting point.",
+          "Mortgage repayments could be a major additional cost in year one, so this example deliberately keeps them separate rather than pretending one repayment figure fits every buyer."
+        ]
       },
       {
         title: "What buyers often underestimate in the first year",
@@ -2167,39 +2249,40 @@ export const guides: GuidePageContent[] = [
       {
         question: "What is the first year cost of buying a house?",
         answer:
-          "It is the deposit, upfront purchase costs, completion-day costs, moving-in costs, furnishing or setup costs and the first year of ownership costs. Mortgage repayments should be modelled separately because they depend on the loan size, rate and term."
+          "The first year cost of buying a house is the total cash picture across the purchase and the first year of ownership. It includes the deposit, upfront costs of buying a house, completion-day costs, moving-in costs, furnishing or setup costs and first-year home ownership costs. Mortgage repayments should be modelled separately because they depend on the loan size, interest rate and term."
       },
       {
         question: "What costs do I pay before completion?",
         answer:
-          "Before completion, buyers may pay for surveys, mortgage-related fees, solicitor account payments, searches, ID checks and some conveyancing disbursements. Some of these costs can be spent before exchange."
+          "Before completion, buyers may pay for a survey, mortgage-related fees, valuation fees where charged, solicitor account payments, searches, ID checks and some conveyancing disbursements. These costs can be due before the purchase is legally complete, and some may be paid before exchange. That is why the first-year budget should start before completion day, not after it."
       },
       {
         question: "What do I pay on completion day?",
         answer:
-          "Completion-day costs usually include the deposit balance, property tax where applicable, the final solicitor or conveyancer balance, registration-style fees and any lender fees not added to the mortgage. Leasehold purchases may also have completion or notice fees."
+          "Completion-day costs usually include the deposit balance, property tax where applicable, the final solicitor or conveyancer balance, registration-style fees and any lender fees not added to the mortgage. Leasehold purchases may also include completion notices, administration charges or other building-related fees. Your solicitor's completion statement should show the final amounts before funds are sent."
       },
       {
         question: "Do first-year costs include mortgage payments?",
         answer:
-          "They can, but the examples on this page exclude mortgage repayments because they vary too much by loan size, rate and term. Buyers should add their own expected mortgage payments when building a personal first-year budget."
+          "They can if you are building a complete household budget, but the examples on this page exclude mortgage repayments because they vary too much by loan size, rate, term and product choice. Buyers should add their own expected mortgage payments separately. The non-mortgage figures still matter because council tax, utilities, insurance, maintenance and service charges can continue every month after completion."
       },
       {
         question: "How much should I budget for furnishing after buying a house?",
         answer:
-          "There is no single figure because it depends on what you already own and what the property includes. A useful approach is to separate essentials such as a bed, appliances and window coverings from non-urgent upgrades."
+          "There is no single safe figure because furnishing costs depend on what you already own, what the property includes and how quickly each room needs to be usable. A practical approach is to split essentials from upgrades. Beds, appliances, curtains or blinds, basic seating and cooking items may be needed quickly, while decorative furniture, garden items and room improvements can often be phased."
       },
       {
         question: "What costs do buyers often forget in the first year?",
         answer:
-          "Buyers often forget survey upgrades, bank transfer fees, locksmiths, cleaning, small repairs, furnishings, insurance renewals, maintenance and service charges. The first year can feel tight because several of these overlap with the first household bills."
+          "Buyers often forget survey upgrades, bank transfer fees, locksmiths, cleaning, small repairs, immediate furnishings, insurance renewals, maintenance and service charges. The first year can feel tight because several of these costs overlap with the first council tax, utility, broadband and insurance bills. This is why the cost of buying a house in the first year should include both transaction costs and ownership costs."
       },
       {
         question: "How can I estimate my own first-year buying cost?",
         answer:
-          "Start with the home buying cost calculator for the purchase total, then add moving, furnishing and first-year non-mortgage ownership costs. Check official tax and registration figures separately before relying on the result."
+          "Start with the home buying cost calculator to estimate the purchase total using your property price, nation, buyer type and deposit assumptions. Then add moving costs, furnishing costs and first-year non-mortgage ownership costs such as council tax, utilities, insurance and maintenance. Before relying on the result, check official tax and registration figures and confirm final costs with your solicitor, lender and insurer."
       }
     ],
+    showFaqAnswersExpanded: true,
     relatedGuides: [
       "hidden-costs-buying-house",
       "how-much-money-needed-buy-house",

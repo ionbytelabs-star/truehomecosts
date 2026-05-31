@@ -41,6 +41,7 @@ type LongGuideConfig = {
   atGlance?: AtGlanceItem[];
   sections: GuideSection[];
   faqs: FAQItem[];
+  showFaqAnswersExpanded?: boolean;
   relatedGuides: string[];
   officialSourceKeys?: SourceKey[];
   sourceKeys: SourceKey[];
@@ -321,6 +322,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     atGlance: buildAtGlance(config),
     sections: addTableSummaries(sections, config.topicLabel),
     faqs: mergedFaqs,
+    showFaqAnswersExpanded: config.showFaqAnswersExpanded,
     relatedGuides: config.relatedGuides,
     officialSourceKeys: config.officialSourceKeys,
     sourceKeys: config.sourceKeys,

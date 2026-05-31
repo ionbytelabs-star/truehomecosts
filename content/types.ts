@@ -21,6 +21,13 @@ export type GuideSection = {
     columns: string[];
     rows: string[][];
   };
+  tables?: Array<{
+    summary?: string;
+    caption?: string;
+    columns: string[];
+    rows: string[][];
+  }>;
+  afterParagraphs?: string[];
   callout?: string;
 };
 
@@ -43,6 +50,7 @@ export type GuidePageContent = {
   atGlance: AtGlanceItem[];
   sections: GuideSection[];
   faqs: FAQItem[];
+  showFaqAnswersExpanded?: boolean;
   relatedGuides: string[];
   officialSourceKeys?: SourceKey[];
   sourceKeys: SourceKey[];

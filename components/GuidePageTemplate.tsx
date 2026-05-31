@@ -120,6 +120,8 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                   </ul>
                 ) : null}
                 {section.table ? <ResponsiveTable {...section.table} /> : null}
+                {section.tables?.map((table) => <ResponsiveTable key={table.caption ?? table.summary} {...table} />)}
+                {section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
               </ContentSection>
             ))}
@@ -202,6 +204,8 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                   </ul>
                 ) : null}
                 {section.table ? <ResponsiveTable {...section.table} /> : null}
+                {section.tables?.map((table) => <ResponsiveTable key={table.caption ?? table.summary} {...table} />)}
+                {section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
               </ContentSection>
 
@@ -222,7 +226,9 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 </section>
               ) : null}
 
-              {index === 1 ? <AdPlaceholder label="Mid-content ad placeholder" /> : null}
+              {index === 1 && guide.slug !== "first-year-cost-buying-house-uk" ? (
+                <AdPlaceholder label="Mid-content ad placeholder" />
+              ) : null}
             </div>
           ))}
 
@@ -281,7 +287,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
           <OfficialSources sourceKeys={guide.officialSourceKeys ?? []} />
           <ContentTrustPanel />
-          <FAQSection items={guide.faqs} />
+          <FAQSection items={guide.faqs} defaultOpen={guide.showFaqAnswersExpanded} />
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />
           <DataSources sourceKeys={guide.sourceKeys} />
         </article>

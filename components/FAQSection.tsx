@@ -2,9 +2,10 @@ import type { FAQItem } from "@/content/types";
 
 type FAQSectionProps = {
   items: FAQItem[];
+  defaultOpen?: boolean;
 };
 
-export function FAQSection({ items }: FAQSectionProps) {
+export function FAQSection({ items, defaultOpen = false }: FAQSectionProps) {
   return (
     <section className="space-y-5">
       <div className="space-y-2">
@@ -14,7 +15,7 @@ export function FAQSection({ items }: FAQSectionProps) {
 
       <div className="grid gap-3">
         {items.map((faq) => (
-          <details key={faq.question} className="surface group p-4">
+          <details key={faq.question} className="surface group p-4" open={defaultOpen}>
             <summary className="cursor-pointer list-none pr-6 text-lg font-semibold text-text marker:hidden">
               {faq.question}
             </summary>
