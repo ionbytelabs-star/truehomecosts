@@ -1973,92 +1973,148 @@ export const guides: GuidePageContent[] = [
   }),
   createLongGuide({
     slug: "cost-of-owning-home-uk",
-    title: "Cost of Owning a Home in the UK",
+    title: "Ongoing Costs of Owning a Home in the UK (Monthly Cost Breakdown)",
     description:
-      "A guide to the ongoing cost of owning a home in the UK, including mortgage payments, council tax, insurance, utilities, maintenance and the monthly cost of running a home after buying it.",
-    keywords: ["ongoing costs owning a house UK", "monthly cost owning a home UK"],
-    h1: "Cost of owning a home in the UK",
+      "See the ongoing costs of owning a home in the UK, including mortgage payments, council tax, utilities, insurance, maintenance and leasehold charges.",
+    keywords: [
+      "ongoing costs of owning a home",
+      "cost of owning a home",
+      "monthly cost of owning a home",
+      "costs of owning a house",
+      "monthly costs of owning a house"
+    ],
+    h1: "Ongoing Costs of Owning a Home in the UK",
     intro:
-      "Buying a home is the first financial hurdle, but ownership has its own rhythm of regular bills, maintenance and periodic larger costs. Buyers who only plan for completion day can still feel caught short once the first few months of ownership begin.",
+      "The ongoing costs of owning a home in the UK are the regular bills, maintenance allowances and property-specific charges that continue after completion. Buyers who only plan for the purchase day can still feel caught short once mortgage payments, council tax, utilities, insurance and repairs start landing.",
     directAnswer:
-      "The ongoing cost of owning a home usually means the mortgage plus council tax, utilities, insurance and a maintenance allowance, with leasehold or estate charges added where relevant. For many households, the non-mortgage running costs alone still run to several hundred pounds a month before any major repair bill arrives, which is why ownership budgeting needs to go beyond the mortgage payment.",
+      "The monthly cost of owning a home usually includes the mortgage plus council tax, gas and electricity, water, broadband, insurance and a maintenance reserve. Mortgage payments vary too much to give one useful universal figure, but non-mortgage ownership costs can still add several hundred pounds a month depending on the property, local area and household usage.",
+    introSections: [
+      {
+        title: "Typical monthly costs of owning a home in the UK",
+        intro:
+          "The table below shows common monthly ownership costs for planning. These are estimate ranges, not fixed averages, and the mortgage line depends heavily on borrowing, rate, term and deposit.",
+        table: {
+          caption: "Typical monthly ownership cost planning ranges",
+          columns: ["Cost category", "Typical monthly planning range", "Notes"],
+          rows: [
+            ["Mortgage payment", "Varies too much for one range", "Usually the largest cost, driven by loan size, rate, term and deposit"],
+            ["Council tax", "About £100 to £300+", "Depends on council tax band, local authority and discounts or exemptions"],
+            ["Gas and electricity", "About £100 to £300+", "Usage, insulation, heating type and household size can change this quickly"],
+            ["Water", "About £25 to £70+", "Metered use, region and household size affect the monthly amount"],
+            ["Broadband / TV / phone", "About £30 to £100+", "Depends on package choices and whether TV services are included"],
+            ["Buildings insurance", "About £10 to £40+", "Often required by mortgage lenders, but cost depends on property risk"],
+            ["Contents insurance", "About £5 to £30+", "Optional but commonly used to protect belongings"],
+            ["Maintenance reserve", "About £100 to £300+", "A planning pot for repairs, servicing and replacement items"],
+            ["Service charge / estate charge where relevant", "£0 to £300+", "Applies mainly to leasehold flats and some managed estates"]
+          ]
+        }
+      }
+    ],
+    contextualLinks: [
+      { href: "/#calculator", label: "home buying cost calculator" },
+      { href: "/hidden-costs-buying-house", label: "hidden costs of buying a house" },
+      { href: "/mortgage-fees-costs", label: "mortgage fees" },
+      { href: "/insurance-costs-uk", label: "home insurance costs" },
+      { href: "/leasehold-costs-uk", label: "leasehold costs" },
+      { href: "/furnishing-costs-uk", label: "cost to furnish a house" },
+      { href: "/taxes-and-fees-uk", label: "property taxes and fees" }
+    ],
     sections: [
       {
         title: "Mortgage, council tax and utilities",
         paragraphs: [
-          "Monthly cost owning a home UK usually starts with the mortgage because that is the largest regular line for many households. But the mortgage payment is only the headline. Council tax, gas, electricity, water, broadband and other standing household bills form the core cost of simply occupying the property.",
+          "The monthly cost of owning a home in the UK usually starts with the mortgage because that is the largest regular line for many households. But the mortgage payment is only the headline. Council tax, gas, electricity, water, broadband and other household bills form the core cost of simply occupying the property.",
           "A buyer moving from a rental may find some of these familiar, but owner-occupation can still feel different because there is no landlord absorbing repair risk or arranging certain services in the background.",
-          "That is why affordability after completion should be modelled as a full running-cost picture rather than a mortgage-payment-only picture."
+          "That is why affordability after completion should be modelled as a full running-cost picture rather than a mortgage-payment-only picture. The cost of owning a home can feel very different once every direct debit, renewal and repair responsibility is included."
         ]
       },
       {
         title: "Maintenance, repairs and annual sinking costs",
         paragraphs: [
-          "Ongoing costs owning a house UK include the expenses that do not arrive monthly but still belong in annual planning. Boilers fail, roofs age, gutters need work, appliances die and small maintenance jobs steadily add up.",
+          "The ongoing costs of owning a house in the UK include expenses that do not arrive monthly but still belong in annual planning. Boilers fail, roofs age, gutters need work, appliances die and small maintenance jobs steadily add up.",
           "A practical owner budget therefore includes a maintenance reserve. The exact amount depends on property age and condition, but the principle is simple: if you own the home, repair responsibility usually sits with you.",
-          "This is one reason older homes can feel more affordable to buy than to keep."
+          "A cautious maintenance reserve might be a modest monthly amount for a newer, simpler property and more for an older or larger home. This is an estimate-led planning line, not a rule, but ignoring it is one of the easiest ways for ownership costs to surprise you."
         ]
       },
       {
         title: "Insurance, service charges and other ownership-specific costs",
         paragraphs: [
           "Buildings insurance, optional contents cover and, for leasehold owners, service charges and other building-related costs are part of the ownership picture too. They may not feel dramatic in isolation, but together they shape the real monthly and annual burden of the property.",
-          "Leasehold owners need to be especially careful because service charge can move over time and reserve fund issues may lead to larger costs later.",
-          "Owner-occupier budgeting therefore needs both a monthly lens and a periodic-cost lens."
+          "Leasehold owners need to be especially careful because service charge can move over time and reserve fund issues may lead to larger costs later. Managed estates can also carry estate charges, even where the property is freehold.",
+          "Owner-occupier budgeting therefore needs both a monthly lens and a periodic-cost lens. It is worth checking the home insurance costs, leasehold costs and property taxes before treating the mortgage payment as the full housing budget."
         ]
       },
       {
-        title: "Worked monthly ownership examples",
+        title: "Example monthly cost of owning a home",
         paragraphs: [
-          "A good ownership plan looks at the home as a system rather than a series of disconnected bills. Mortgage, council tax, utilities, insurance and maintenance reserve all belong on the same planning sheet.",
-          "The exact monthly figure varies too much by mortgage rate, household usage and property type for one universal number to be honest, but the structure is stable enough that buyers can still prepare intelligently."
+          "This illustration shows how non-mortgage monthly ownership costs can add up for a UK homeowner. It is not advice or an average; it is a simple planning example to show why the monthly cost of owning a home is more than the loan repayment.",
+          "In this example, the mortgage is not included because mortgage payments vary too much by borrowing, rate and term. The point is that council tax, utilities, insurance, maintenance and any optional service charge can still create a meaningful monthly total."
         ],
         table: {
-          caption: "Ongoing ownership cost categories",
-          columns: ["Category", "How it tends to appear", "Why it matters"],
+          caption: "Illustrative non-mortgage monthly ownership costs",
+          columns: ["Cost category", "Illustrative monthly amount", "Notes"],
           rows: [
-            ["Mortgage", "Monthly", "Usually the biggest fixed line"],
-            ["Council tax", "Monthly or by instalment plan", "Official local charge that starts quickly after move-in"],
-            ["Utilities and broadband", "Monthly", "Essential running cost rather than optional extra"],
-            ["Insurance", "Monthly or annual", "Protects the asset and household budget"],
-            ["Maintenance reserve", "Monthly saving for periodic costs", "The part many owners forget until something breaks"],
-            ["Service charge or similar", "Monthly, quarterly or annually", "Critical for flats and some estates"]
+            ["Council tax", "£180", "Example instalment for local authority tax"],
+            ["Utilities", "£180", "Gas and electricity combined for planning"],
+            ["Water", "£40", "Metered or regional billing can change this"],
+            ["Broadband", "£40", "Basic broadband and household connectivity"],
+            ["Insurance", "£35", "Buildings and contents combined as an illustration"],
+            ["Maintenance reserve", "£150", "Money set aside for repairs and servicing"],
+            ["Optional service charge", "£0 to £200+", "Only applies to some leasehold homes and managed estates"]
           ]
         }
+      },
+      {
+        title: "What homeowners often forget after completion",
+        paragraphs: [
+          "Many buyers focus hard on the purchase itself and then treat the first year of ownership as if it will run like renting. The costs of owning a house can feel different because repairs, maintenance choices, insurance renewals and service charge changes sit with the owner.",
+          "Furniture and setup spending can also continue after move-in. If the home needs curtains, appliances, flooring, garden tools or basic furnishings, the cost to furnish a house can overlap with the first few months of ownership.",
+          "The safest approach is to separate upfront buying costs from ongoing running costs. Use the home buying cost calculator for the purchase total, then use this page to sense-check the monthly costs of owning a house once the keys are yours."
+        ],
+        callout:
+          "The mortgage is usually the largest monthly ownership cost, but non-mortgage costs can still add up quickly if council tax, utilities, insurance, maintenance and leasehold charges are not planned separately."
       }
     ],
     faqs: [
       {
-        question: "What are the ongoing costs of owning a house in the UK?",
+        question: "What are the ongoing costs of owning a home?",
         answer:
-          "They usually include the mortgage, council tax, utilities, insurance, maintenance and repair costs, plus any leasehold or estate-related charges where relevant."
+          "The ongoing costs of owning a home usually include the mortgage, council tax, utilities, insurance, maintenance and repairs. Leasehold homes and some managed estates may also have service charges, ground rent or estate charges."
       },
       {
-        question: "Is the monthly cost of owning a home just the mortgage payment?",
+        question: "How much does it cost per month to own a house in the UK?",
         answer:
-          "No. Council tax, utilities, insurance and maintenance can materially change the real monthly figure."
+          "There is no single reliable monthly figure because mortgage payments, council tax bands, energy use and property type vary widely. A useful planning method is to list the mortgage separately, then add council tax, utilities, insurance, maintenance and any leasehold or estate charges."
       },
       {
-        question: "Should homeowners budget for maintenance every month?",
+        question: "What costs do homeowners often forget?",
         answer:
-          "Yes. Even if maintenance is not spent monthly, setting aside money each month is one of the safest ways to avoid repair shocks."
+          "Homeowners often forget irregular costs such as boiler servicing, repairs, appliance replacement, gutter work, insurance renewals and maintenance materials. Leasehold owners may also underestimate service charge changes or reserve-fund contributions."
       },
       {
-        question: "Do leasehold owners have higher ongoing housing costs?",
+        question: "How much should I budget for home maintenance?",
         answer:
-          "Often they can, because service charges and reserve-fund issues add another layer on top of ordinary owner costs."
+          "A maintenance budget is an estimate, not a fixed rule. Many owners set aside a monthly reserve, with older, larger or more complex homes usually needing a more cautious allowance than newer, simpler properties."
+      },
+      {
+        question: "Are ongoing home ownership costs higher for leasehold properties?",
+        answer:
+          "They can be higher because service charges, reserve funds, management fees and ground rent where applicable can sit on top of normal household bills. Buyers should check the leasehold costs before exchange and allow for possible changes over time."
       }
     ],
     relatedGuides: [
       "how-much-money-needed-buy-house",
-      "leasehold-costs-uk",
+      "hidden-costs-buying-house",
+      "mortgage-fees-costs",
       "insurance-costs-uk",
+      "leasehold-costs-uk",
+      "furnishing-costs-uk",
       "taxes-and-fees-uk"
     ],
     sourceKeys: ["councilTax"],
     ctaTitle: "Start with the upfront cost, then plan for ownership",
     ctaText:
-      "Use the homepage calculator for the buying total, then pair it with this guide so the monthly reality of ownership is not ignored.",
+      "Use the home buying cost calculator for the upfront purchase total, then pair it with this guide so the monthly reality of ownership is not ignored.",
     topicLabel: "ongoing ownership costs",
     buyerContext: "Mortgage size, property type, local tax band, utility use and maintenance demands",
     costDrivers: [
@@ -2089,19 +2145,21 @@ export const guides: GuidePageContent[] = [
       ["Leasehold flat", "Service charge shapes the monthly figure", "Demonstrates why tenure affects ownership as well as purchase"]
     ],
     officialItems: ["council tax bands and local-authority information"],
-    estimateItems: ["mortgage payment changes over time, utilities, insurance and maintenance costs"],
+    estimateItems: ["mortgage payment changes over time, utilities, insurance, maintenance costs and service charge planning"],
     mistakes: [
       "Assuming home ownership cost equals the mortgage payment",
       "Ignoring maintenance because it is irregular",
       "Forgetting service charge on flats or estates",
-      "Budgeting for the purchase but not the first year of ownership"
+      "Budgeting for the purchase but not the first year of ownership",
+      "Leaving furnishing and setup costs out of the early ownership budget"
     ],
     checklist: [
       "Model monthly running costs before committing to the purchase",
       "Check the council tax band and likely utility profile",
       "Set up a maintenance reserve from the start",
       "Include insurance and service charge where relevant",
-      "Review ownership affordability separately from the upfront buying total"
+      "Review ownership affordability separately from the upfront buying total",
+      "Use the hidden costs of buying a house guide to separate purchase costs from ongoing owner costs"
     ]
   }),
   ...[250_000, 300_000, 350_000, 400_000, 450_000, 500_000].map((price) => createPriceGuide(price))
