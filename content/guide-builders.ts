@@ -35,6 +35,7 @@ type LongGuideConfig = {
     href: string;
     label: string;
   }>;
+  contextualLinksSentence?: string;
   trustReviewedText?: string;
   updatedLabel?: string;
   atGlance?: AtGlanceItem[];
@@ -314,6 +315,7 @@ export function createLongGuide(config: LongGuideConfig): GuidePageContent {
     directAnswer: config.directAnswer,
     introSections: config.introSections,
     contextualLinks: config.contextualLinks,
+    contextualLinksSentence: config.contextualLinksSentence,
     trustReviewedText: config.trustReviewedText,
     updatedLabel: config.updatedLabel ?? "Updated for 2026",
     atGlance: buildAtGlance(config),
