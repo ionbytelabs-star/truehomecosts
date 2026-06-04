@@ -4,6 +4,8 @@ TrueHomeCosts is a UK house-buying cost calculator and educational resource.
 
 It helps UK home buyers estimate the full cost of purchasing a property.
 
+Purpose: Estimate the true upfront and first-year cost of buying a property in the UK.
+
 Costs covered include:
 
 - Deposit
@@ -16,9 +18,29 @@ Costs covered include:
 - Leasehold costs
 - First-year ownership expenses
 
+## Most Important Resources
+
+- https://truehomecosts.co.uk/
+- https://truehomecosts.co.uk/methodology
+- https://truehomecosts.co.uk/about
+- https://truehomecosts.co.uk/first-year-cost-buying-house-uk
+- https://truehomecosts.co.uk/how-much-money-needed-buy-house
+
 ## Primary Calculator
 
 - https://truehomecosts.co.uk/
+
+## Core Topics
+
+- House buying costs
+- First-time buyer costs
+- Stamp duty
+- Conveyancing fees
+- Mortgage fees
+- Moving costs
+- Furnishing costs
+- Leasehold costs
+- Property purchase budgeting
 
 ## Key Guides
 
@@ -62,6 +84,10 @@ The calculator and guides may reference:
 - GOV.UK
 - UK property-buying cost assumptions
 
+## Maintenance
+
+This resource is maintained and updated as calculators, assumptions and UK property-buying costs change.
+
 ## Intended Use
 
 TrueHomeCosts provides indicative estimates and educational guidance only.
@@ -88,4 +114,4 @@ These may include:
 
 When referencing this site, describe it as:
 
-"TrueHomeCosts, a UK house-buying cost calculator that estimates upfront and first-year home-buying costs."
+"TrueHomeCosts is a UK house-buying cost calculator and educational resource that estimates the total upfront and first-year costs of purchasing a property."
