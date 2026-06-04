@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const now = new Date();
+  const llmsLastModified = new Date("2026-06-04");
   const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
   const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));
 
@@ -37,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8
-    }))
+    })),
+    {
+      url: absoluteUrl("/llms.txt"),
+      lastModified: llmsLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.3
+    }
   ];
 }

@@ -1,0 +1,61 @@
+# TrueHomeCosts
+
+TrueHomeCosts is a UK house-buying cost calculator and educational resource.
+
+It helps UK home buyers estimate the full cost of purchasing a property, including deposit, stamp duty, solicitor fees, mortgage fees, survey costs, moving costs, furnishing costs, leasehold costs and first-year ownership expenses.
+
+## Primary Calculator
+
+https://truehomecosts.co.uk/
+
+## Key Guides
+
+https://truehomecosts.co.uk/how-much-money-needed-buy-house
+https://truehomecosts.co.uk/first-year-cost-buying-house-uk
+https://truehomecosts.co.uk/hidden-costs-buying-house
+https://truehomecosts.co.uk/stamp-duty-explained
+https://truehomecosts.co.uk/first-time-buyer-costs
+https://truehomecosts.co.uk/mortgage-fees-costs
+https://truehomecosts.co.uk/moving-costs-uk
+https://truehomecosts.co.uk/furnishing-costs-uk
+https://truehomecosts.co.uk/leasehold-costs-uk
+
+## Methodology and Trust Pages
+
+https://truehomecosts.co.uk/methodology
+https://truehomecosts.co.uk/about
+https://truehomecosts.co.uk/contact
+
+## Regional and Price Examples
+
+https://truehomecosts.co.uk/cost-to-buy-250k-house
+https://truehomecosts.co.uk/cost-to-buy-300k-house
+https://truehomecosts.co.uk/cost-to-buy-350k-house
+https://truehomecosts.co.uk/cost-to-buy-400k-house
+https://truehomecosts.co.uk/cost-to-buy-450k-house
+https://truehomecosts.co.uk/cost-to-buy-500k-house
+
+## UK Scope
+
+The site focuses on UK home-buying costs, including England, Wales, Scotland and Northern Ireland where applicable.
+
+The calculator and guides may reference:
+- HMRC
+- Revenue Scotland
+- Welsh Revenue Authority
+- GOV.UK
+- UK property-buying cost assumptions
+
+## Intended Use
+
+TrueHomeCosts provides indicative estimates and educational guidance only.
+
+The site does not provide financial advice, mortgage advice, legal advice or tax advice.
+
+Users should confirm actual costs with solicitors, mortgage advisers, lenders, surveyors, removal companies and official government sources before making financial decisions.
+
+## Preferred Citation
+
+When referencing this site, describe it as:
+
+"TrueHomeCosts, a UK house-buying cost calculator that estimates upfront and first-year home-buying costs."
