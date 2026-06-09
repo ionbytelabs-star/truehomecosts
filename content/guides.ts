@@ -67,6 +67,7 @@ export const guides: GuidePageContent[] = [
     contextualLinks: [
       { href: "/#calculator", label: "true cost of buying a house calculator" },
       { href: "/how-much-money-needed-buy-house", label: "how much money you need to buy a house" },
+      { href: "/hidden-costs-buying-new-build-home-uk", label: "hidden costs of buying a new build home" },
       { href: "/stamp-duty-explained", label: "stamp duty explained" },
       { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
       { href: "/moving-costs-uk", label: "moving costs in the UK" }
@@ -180,6 +181,7 @@ export const guides: GuidePageContent[] = [
       }
     ],
     relatedGuides: [
+      "hidden-costs-buying-new-build-home-uk",
       "first-year-cost-buying-house-uk",
       "how-much-money-needed-buy-house",
       "stamp-duty-explained",
@@ -240,6 +242,319 @@ export const guides: GuidePageContent[] = [
       "Ask whether any leasehold, new-build or title-specific extras are likely",
       "Keep a buffer for small but common end-of-process costs",
       "Cross-check official charges before exchange and completion"
+    ]
+  }),
+  createLongGuide({
+    slug: "hidden-costs-buying-new-build-home-uk",
+    title: "Hidden Costs of Buying a New Build Home in the UK",
+    description:
+      "Explain the hidden costs of buying a new build home in the UK, including reservation fees, upgrades, snagging surveys, estate charges, service charges and first-year costs.",
+    keywords: [
+      "hidden costs of buying a new build home",
+      "hidden costs of buying a new build",
+      "new build hidden costs",
+      "unexpected costs of a new build",
+      "extra costs when buying a new build",
+      "costs after buying a new build",
+      "new build home buying costs",
+      "new build fees and charges",
+      "new build reservation fee",
+      "new build snagging survey",
+      "new build estate management fees"
+    ],
+    h1: "Hidden Costs of Buying a New Build Home in the UK",
+    intro:
+      "New build homes can look simple because there is no onward chain and the property is brand new. Buyers may still face extra costs that are not obvious at first, especially where developer marketing focuses on the headline price or show home finish.",
+    directAnswer:
+      "The hidden costs of buying a new build home can include a reservation fee, developer upgrades, flooring, appliances, a snagging survey, estate management fees, service charges, furnishing, landscaping, moving costs and first-year ownership costs. These are planning estimates rather than fixed quotes, so buyers should check exactly what is included before reserving.",
+    introSections: [
+      {
+        title: "Common hidden costs of buying a new build home",
+        intro:
+          "The table below gives rough planning ranges only. Actual new build fees and charges depend on the developer, plot, specification, tenure, location and what is included in the sale price.",
+        table: {
+          caption: "Common hidden costs of buying a new build home",
+          columns: ["Cost", "Typical estimate", "Why it matters"],
+          rows: [
+            ["Reservation fee", "£500 to £2,000", "Secures the plot but may have refund rules and deadlines"],
+            ["Developer upgrades", "£1,000 to £10,000+", "Show home features are not always included in the base price"],
+            ["Flooring", "£2,000 to £6,000+", "Some homes are sold without full flooring or with limited choices included"],
+            ["Snagging survey", "£300 to £700", "Helps identify defects before or soon after completion"],
+            ["Estate management fees", "£100 to £500+ per year", "Can cover private roads, green spaces, drainage or shared areas"],
+            ["Service charges", "Varies widely", "More common for flats, apartments and some leasehold homes"],
+            ["Landscaping / turfing", "£500 to £5,000+", "Gardens may be basic, unfinished or sold with upgrade choices"],
+            ["Furnishing", "£3,000 to £15,000+", "A brand-new empty home may need blinds, curtains, furniture and appliances"],
+            ["Moving costs", "£500 to £2,000+", "Removal, storage and setup costs still apply even with no onward chain"]
+          ]
+        }
+      }
+    ],
+    contextualLinks: [
+      { href: "/#calculator", label: "TrueHomeCosts calculator" },
+      { href: "/hidden-costs-buying-house", label: "hidden costs of buying a house" },
+      { href: "/first-year-cost-buying-house-uk", label: "first-year cost of buying a house" },
+      { href: "/how-much-money-needed-buy-house", label: "how much money you need to buy a house" },
+      { href: "/furnishing-costs-uk", label: "cost of furnishing a house" },
+      { href: "/methodology", label: "how estimates work" }
+    ],
+    atGlance: [
+      {
+        label: "Main risk",
+        value: "The headline price may not include the same finish, extras or ongoing estate costs buyers expect."
+      },
+      {
+        label: "Typical extras",
+        value: "Reservation fee, upgrades, flooring, snagging, estate charges, service charges, moving and setup."
+      },
+      {
+        label: "Status",
+        value: "Most figures are estimate-led planning ranges, not official charges or fixed quotes."
+      },
+      {
+        label: "Buyers should check",
+        value: "Reservation terms, included specification, management charges, lease terms and completion deadlines."
+      }
+    ],
+    sections: [
+      {
+        title: "New build reservation fees",
+        paragraphs: [
+          "A new build reservation fee is a payment used to reserve a plot for a limited period while the buyer arranges the mortgage, solicitor and contract paperwork. A typical new build reservation fee is often around £500 to £2,000, although the amount and terms can vary.",
+          "The fee may be deducted from the final purchase price if the purchase goes ahead. Buyers should still read the reservation agreement carefully because refund rules, exchange deadlines and cancellation terms can matter if the mortgage, survey or legal checks uncover a problem.",
+          "Before paying, ask what happens if the developer changes the completion date, if your mortgage offer is delayed, or if legal documents reveal service charges or estate management fees that were not clear at the viewing stage."
+        ]
+      },
+      {
+        title: "Developer upgrades and optional extras",
+        paragraphs: [
+          "One of the biggest new build hidden costs is the gap between the base specification and the show home. Show homes often include upgraded kitchens, better flooring, fitted wardrobes, extra lighting, premium tiles, enhanced bathrooms and landscaped outdoor spaces that are not included in the standard price.",
+          "Developer upgrades can include kitchen units, worktops, appliances, carpets, hard flooring, wall tiles, wardrobes, lighting, additional sockets, EV chargers, turfing, fencing and bathroom upgrades. Some buyers choose them for convenience, but they can quickly add thousands to the total.",
+          "Ask for a written list of what is included in the base price and a separate price list for optional extras. That makes it easier to compare the advertised price with the home you are actually expecting to live in."
+        ]
+      },
+      {
+        title: "Flooring, appliances and finishing costs",
+        paragraphs: [
+          "Some buyers assume a new build will be move-in ready in every practical sense. In reality, some new homes may not include all flooring, blinds, curtains, upgraded appliances, fitted storage or garden finishes unless those are agreed separately.",
+          "Flooring can be one of the most visible extra costs when buying a new build because the home may be shown with attractive finishes that are outside the base specification. Appliances can be similar: a brochure or show kitchen may not match the exact package included in the sale.",
+          "The safest question is simple: what exactly is included in this plot at this price? Get the answer in writing before committing, especially if you are comparing a new build with an older home where flooring, curtains and appliances may already be present."
+        ]
+      },
+      {
+        title: "Snagging survey costs",
+        paragraphs: [
+          "A new build snagging survey checks a newly built property for defects, unfinished work, poor finishes or items that need attention. It is different from assuming everything must be perfect because the home is new.",
+          "A typical new build snagging survey might cost around £300 to £700 depending on the size of the property, location and provider. It can help identify issues before completion or soon after moving in, giving the buyer a clearer written list to raise with the developer.",
+          "Snagging does not mean the home is unsafe or badly built. It is a practical due-diligence step because even brand-new homes can have defects, missed finishes or workmanship issues that are easier to document early."
+        ]
+      },
+      {
+        title: "Estate management fees",
+        paragraphs: [
+          "New build estate management fees can be a major hidden cost because they may apply even to freehold houses. These charges can cover private roads, shared green spaces, drainage systems, play areas, communal landscaping, lighting or other estate features managed outside normal council maintenance.",
+          "The annual amount can look modest at the start, but buyers should ask what it covers, who controls it, how it can increase and what happens if residents dispute the service level. A charge of £100 to £500+ per year can still matter when it sits on top of mortgage payments, council tax, insurance and utilities.",
+          "Ask about the management company before reserving. Buyers should understand whether roads are adopted, what communal areas exist, how charges are collected and whether there are administration fees for late payment, resale packs or permissions."
+        ]
+      },
+      {
+        title: "Service charges and leasehold costs",
+        paragraphs: [
+          "Service charges are more relevant to flats, apartments and some leasehold houses, but they can also appear in wider managed developments. They may cover building insurance, communal cleaning, lifts, lighting, repairs, grounds maintenance, management fees and reserve funds.",
+          "Service charges can vary significantly, so buyers should review the lease, management pack and budget carefully. A low initial charge is not a guarantee that future charges will stay low, especially if the building has lifts, shared heating, complex communal areas or future repair needs.",
+          "Ground rent may apply in some cases depending on tenure and lease terms. Buyers should ask their solicitor to explain the lease, any ground rent position and how the service charge is calculated before exchange."
+        ]
+      },
+      {
+        title: "New build delays and temporary costs",
+        paragraphs: [
+          "New build completion dates can move. That does not mean every new build is delayed, but buyers should understand that construction timelines, inspections, utilities, legal paperwork and developer handover can shift.",
+          "A delay can create temporary costs such as storage, rent overlap, extra moving costs or short-term accommodation. It can also become stressful if a mortgage offer is close to expiry and the lender needs updated information.",
+          "Before reserving, ask how fixed the target completion date is, what notice you will receive and what happens if the date changes. A small contingency can make a moving delay less disruptive."
+        ]
+      },
+      {
+        title: "Furnishing and landscaping costs",
+        paragraphs: [
+          "A new build can be a blank canvas, but blank canvases cost money to make liveable. Buyers may need blinds, curtains, furniture, wardrobes, garden tools, appliances, storage, flooring upgrades, turf, patios, fencing or planting sooner than expected.",
+          "Landscaping is easy to underestimate because the exterior can look complete from the front while the rear garden is basic, uneven or not yet practical for normal use. Turfing, patios, fencing and garden storage can quickly become part of the first-year budget.",
+          "For a broader planning view, compare these lines with the cost of furnishing a house guide so the move-in budget is not swallowed by legal and completion costs alone."
+        ]
+      },
+      {
+        title: "Moving and first-year ownership costs",
+        paragraphs: [
+          "Moving costs still apply when buying a new build. Buyers may need removals, van hire, storage, cleaning, mail redirection, broadband setup, insurance and basic tools or small fixes.",
+          "Costs after buying a new build can also include council tax, utilities, buildings insurance, contents insurance, maintenance items, furnishing, estate charges and service charges where relevant. Even if the property is new, the first year can still feel expensive because setup costs and ownership bills overlap.",
+          "Use the first-year cost of buying a house guide and the how much money you need to buy a house guide to separate the legal completion total from the wider first-year cash requirement."
+        ]
+      },
+      {
+        title: "Example hidden costs on a £300,000 new build home",
+        paragraphs: [
+          "This is only an example. Actual costs depend on the developer, property type, location, specification and what is included in the sale price."
+        ],
+        table: {
+          caption: "Example hidden costs on a £300,000 new build home",
+          columns: ["Cost", "Example estimate"],
+          rows: [
+            ["Reservation fee", "£1,000"],
+            ["Snagging survey", "£500"],
+            ["Flooring upgrades", "£3,500"],
+            ["Kitchen / appliance upgrades", "£2,500"],
+            ["Landscaping / turfing", "£2,000"],
+            ["Moving costs", "£1,000"],
+            ["Furnishing / blinds / curtains", "£5,000"],
+            ["Estimated extra costs", "£15,500"]
+          ]
+        },
+        callout:
+          "This example excludes the deposit, property tax, mortgage repayments and any site-specific service charge or estate management fee. It is a planning illustration, not a quote."
+      },
+      {
+        title: "How to reduce the hidden costs of buying a new build",
+        paragraphs: [
+          "The best way to reduce unexpected costs of a new build is to turn vague assumptions into written details before you reserve. The earlier you know what is included, what is optional and what will be charged later, the easier it is to control the budget."
+        ],
+        bullets: [
+          "Ask for a written list of what is included",
+          "Compare the base price with the show home specification",
+          "Check reservation fee terms, refund rules and deadlines",
+          "Ask about estate charges before reserving",
+          "Get a full list of optional extras and upgrade prices",
+          "Budget for a snagging survey",
+          "Check service charges and leasehold terms",
+          "Keep a contingency fund for delays or setup costs",
+          "Avoid spending the full deposit and savings pot on completion alone"
+        ]
+      },
+      {
+        title: "New build vs existing home hidden costs",
+        paragraphs: [
+          "New builds and existing homes can both have hidden costs, but the pattern is different. A new build may feel simpler because there is no chain and the home is newly built, while an existing home may have more obvious wear, repair and survey risks.",
+          "For wider non-new-build examples, use the hidden costs of buying a house guide alongside this page."
+        ],
+        table: {
+          caption: "New build hidden costs compared with existing home hidden costs",
+          columns: ["New build hidden costs", "Existing home hidden costs"],
+          rows: [
+            ["Developer upgrades", "Repairs"],
+            ["Snagging survey", "Maintenance"],
+            ["Estate management fees", "Survey issues"],
+            ["Flooring and optional extras", "Older boilers or electrics"],
+            ["Landscaping", "Redecorating"],
+            ["Possible completion delays", "Chain-related costs"]
+          ]
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "What are the hidden costs of buying a new build home?",
+        answer:
+          "The hidden costs of buying a new build home can include reservation fees, optional upgrades, flooring, appliances, snagging surveys, estate management fees, service charges, landscaping, furnishing and moving costs. Some are one-off setup costs, while others can continue after completion."
+      },
+      {
+        question: "How much extra should I budget for a new build home?",
+        answer:
+          "There is no single figure because the specification, developer, location and property type matter. A buyer might need several thousand pounds for upgrades, flooring, snagging, furnishing, moving and setup, with more needed if the home is larger or the base specification is limited."
+      },
+      {
+        question: "Are new build homes more expensive than older homes?",
+        answer:
+          "Not always. New builds can reduce some repair risk, but they may come with upgrade costs, snagging costs, estate management fees and new setup costs. Older homes may have more maintenance, survey and repair risks instead."
+      },
+      {
+        question: "Is a snagging survey worth it on a new build?",
+        answer:
+          "A snagging survey can be worthwhile because it gives the buyer a structured list of defects or unfinished items to raise with the developer. It is not mandatory, but many buyers use one to document issues before or soon after completion."
+      },
+      {
+        question: "Do all new build homes have estate management fees?",
+        answer:
+          "No. Some new build homes have estate management fees and some do not. Buyers should ask before reserving because charges may apply to private roads, shared green spaces, drainage, play areas or communal landscaping."
+      },
+      {
+        question: "Are developer upgrades worth paying for?",
+        answer:
+          "Developer upgrades can be convenient, especially for flooring, appliances or fitted items that are easier to install before move-in. They are not automatically good value, so buyers should compare the cost with independent quotes and decide which upgrades genuinely matter."
+      },
+      {
+        question: "Can new build completion delays cost money?",
+        answer:
+          "Yes, delays can create costs such as storage, rent overlap, extra moving arrangements or mortgage offer extension issues. Not every new build is delayed, but buyers should keep a contingency fund because completion dates can move."
+      }
+    ],
+    showFaqAnswersExpanded: true,
+    relatedGuides: [
+      "hidden-costs-buying-house",
+      "first-year-cost-buying-house-uk",
+      "how-much-money-needed-buy-house",
+      "furnishing-costs-uk",
+      "moving-costs-uk",
+      "leasehold-costs-uk"
+    ],
+    officialSourceKeys: [
+      "moneyHelperBuyingMoving",
+      "moneyHelperHomeBuying"
+    ],
+    sourceKeys: ["hmlr"],
+    includeGeneratedSections: false,
+    includeGeneratedFaqs: false,
+    ctaTitle: "Check new build costs against your full buying budget",
+    ctaText:
+      "Use the TrueHomeCosts calculator to combine the deposit, property tax, legal fees, moving costs and optional extras so the new build headline price does not hide the wider cash need.",
+    topicLabel: "new build hidden costs",
+    buyerContext: "Developer specification, plot type, tenure, estate charges and move-in needs",
+    costDrivers: [
+      "included specification",
+      "developer upgrades",
+      "snagging survey choice",
+      "estate management charges",
+      "service charge position",
+      "furnishing and landscaping needs"
+    ],
+    paymentRows: [
+      ["Reservation", "Reservation fee and early solicitor checks", "Buyers need to understand refund rules and deadlines"],
+      ["Before exchange", "Mortgage work, legal checks, extras and snagging planning", "Some costs can be committed before the home is ready"],
+      ["Completion", "Deposit balance, legal balance and any agreed extras", "The headline price may not show every setup cost"],
+      ["After move-in", "Snagging follow-up, furnishing, landscaping and first-year bills", "New build costs can continue after completion"]
+    ],
+    comparisonCaption: "Why new build hidden costs vary by buyer and property",
+    comparisonRows: [
+      ["Basic specification house", "Fewer included finishes or appliances", "More budget may be needed for flooring, curtains and appliances"],
+      ["Show-home style finish", "More upgrades selected", "The purchase can feel more expensive than the headline price"],
+      ["Managed estate", "Shared areas and private infrastructure", "Annual estate management charges may apply"],
+      ["Leasehold flat", "Service charge and lease terms matter", "Ongoing costs need careful review before exchange"]
+    ],
+    workedExampleCaption: "New build hidden-cost planning examples",
+    workedExampleRows: [
+      ["£300,000 new build home", "£15,500 example extras", "Shows how upgrades, snagging, landscaping and furnishing can add up"],
+      ["Managed estate house", "Annual estate charge may apply", "Useful reminder to check ongoing charges before reserving"],
+      ["Leasehold apartment", "Service charge varies widely", "Lease and management pack checks are essential"]
+    ],
+    officialItems: ["published registration-style fees where applicable"],
+    estimateItems: [
+      "reservation fees",
+      "developer upgrades",
+      "flooring",
+      "snagging surveys",
+      "estate management fees",
+      "service charges",
+      "landscaping",
+      "furnishing and moving costs"
+    ],
+    mistakes: [
+      "Assuming the show home specification is included in the base price",
+      "Forgetting estate management fees or service charges",
+      "Not budgeting for snagging, flooring, blinds or garden work",
+      "Spending all available cash on the deposit and completion statement"
+    ],
+    checklist: [
+      "Ask for the included specification in writing",
+      "Check reservation terms before paying",
+      "Request estate charge and service charge details before exchange",
+      "Budget for snagging, furnishing, moving and first-year setup",
+      "Keep a contingency fund for delays and practical move-in costs"
     ]
   }),
   createLongGuide({
