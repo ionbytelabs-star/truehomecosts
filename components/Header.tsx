@@ -7,9 +7,13 @@ export function Header() {
     <header className="border-b border-line/80 bg-white/85 backdrop-blur">
       <div className="shell flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-sm font-bold text-white shadow-soft">
-            TH
-          </div>
+          <img
+            src="/truehomecosts-logo.svg"
+            alt=""
+            width={52}
+            height={52}
+            className="h-12 w-12 shrink-0 object-contain"
+          />
           <div>
             <div className="font-semibold tracking-tight text-text">{siteConfig.name}</div>
             <div className="text-sm text-muted">UK home buying cost guide</div>

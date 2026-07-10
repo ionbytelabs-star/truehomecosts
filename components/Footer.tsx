@@ -6,6 +6,19 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-line bg-[#edf3f1]">
       <div className="shell py-12">
+        <Link href="/" className="mb-8 flex w-fit items-center gap-3">
+          <img
+            src="/truehomecosts-logo.svg"
+            alt=""
+            width={44}
+            height={44}
+            className="h-11 w-11 shrink-0 object-contain"
+          />
+          <div>
+            <div className="font-semibold tracking-tight text-text">{siteConfig.name}</div>
+            <div className="text-sm text-muted">UK home buying cost guide</div>
+          </div>
+        </Link>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {footerNav.map((item) => (
             <Link key={item.href} href={item.href} className="text-sm text-text underline decoration-line hover:text-brand-deep">

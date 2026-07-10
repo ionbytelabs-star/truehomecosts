@@ -6,6 +6,7 @@ const organizationId = `${rootUrl}#organization`;
 const websiteId = `${rootUrl}#website`;
 const calculatorApplicationId = `${rootUrl}#calculator`;
 const representativeImageUrl = absoluteUrl("/og-image.png");
+const organizationLogoUrl = absoluteUrl("/truehomecosts-logo.png");
 
 function canonicalUrl(path: string) {
   return path === "/" ? rootUrl : absoluteUrl(path);
@@ -49,7 +50,7 @@ export function organizationSchema() {
     "@id": organizationId,
     name: siteConfig.name,
     url: rootUrl,
-    logo: absoluteUrl("/icon.svg"),
+    logo: organizationLogoUrl,
     email: siteConfig.email,
     description: siteConfig.description,
     areaServed: "GB"
@@ -149,7 +150,7 @@ export function articleSchema({
       url: rootUrl,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/icon.svg")
+        url: organizationLogoUrl
       }
     }
   };

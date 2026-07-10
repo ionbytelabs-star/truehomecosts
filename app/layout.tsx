@@ -36,6 +36,16 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   alternates: {
     canonical: absoluteUrl("/")
+  },
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
@@ -44,6 +54,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en-GB">
       <head>
         <meta {...impactSiteVerificationMeta} />
+        <meta name="msapplication-TileColor" content="#a4cf7f" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="theme-color" content="#0f355e" />
       </head>
       <body className={`${manrope.variable} ${fraunces.variable} font-sans text-text antialiased`}>
         <Script
