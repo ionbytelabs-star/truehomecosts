@@ -20,7 +20,7 @@ export function Header() {
           </div>
         </Link>
 
-        <nav aria-label="Main navigation" className="flex flex-wrap items-center gap-2 text-sm">
+        <nav aria-label="Main navigation" className="flex w-full min-w-0 flex-wrap items-center gap-2 text-sm md:w-auto">
           {mainNav.map((item) => (
             <Link
               key={item.href}
