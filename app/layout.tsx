@@ -12,6 +12,7 @@ import { siteConfig } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 
 const googleAnalyticsId = "G-S898S4FM23";
+const googleAdSenseClient = "ca-pub-9018565465942454";
 const impactSiteVerificationMeta = {
   name: "impact-site-verification",
   value: "1988fada-ad1d-49a5-b3be-5a32d258be0a"
@@ -57,6 +58,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <meta name="msapplication-TileColor" content="#a4cf7f" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="theme-color" content="#0f355e" />
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdSenseClient}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`${manrope.variable} ${fraunces.variable} font-sans text-text antialiased`}>
         <Script
