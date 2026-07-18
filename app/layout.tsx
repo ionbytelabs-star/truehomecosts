@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
-import Script from "next/script";
 import type { ReactNode } from "react";
 
+import { CookieConsentBanner } from "@/components/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StructuredData } from "@/components/StructuredData";
@@ -11,7 +11,6 @@ import { absoluteUrl } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 
-const googleAnalyticsId = "G-S898S4FM23";
 const impactSiteVerificationMeta = {
   name: "impact-site-verification",
   value: "1988fada-ad1d-49a5-b3be-5a32d258be0a"
@@ -60,18 +59,6 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <meta name="google-adsense-account" content="ca-pub-9018565465942454" />
       </head>
       <body className={`${manrope.variable} ${fraunces.variable} font-sans text-text antialiased`}>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${googleAnalyticsId}');
-          `}
-        </Script>
         <StructuredData data={websiteSchema()} />
         <StructuredData data={organizationSchema()} />
         <div className="min-h-screen">
@@ -79,6 +66,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <main>{children}</main>
           <Footer />
         </div>
+        <CookieConsentBanner />
       </body>
     </html>
   );

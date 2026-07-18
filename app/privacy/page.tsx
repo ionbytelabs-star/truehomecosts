@@ -65,9 +65,10 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">Third-party services</h2>
           <p>
-            The site currently loads a basic analytics script to understand broad site usage. It does not
-            include a login, CRM, live chat tool or live advertising scripts in this build. If new services are
-            added, this policy should be updated before deployment.
+            The site can load Google Analytics to understand broad site usage, but this is controlled by the
+            cookie consent choice shown to visitors. It does not include a login, CRM, live chat tool or live
+            advertising scripts in this build. If new services are added, this policy should be updated before
+            deployment.
           </p>
         </section>
 
