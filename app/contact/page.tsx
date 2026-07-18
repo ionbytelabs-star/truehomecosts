@@ -4,9 +4,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CalloutBox } from "@/components/CalloutBox";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
-const contactEmail = "truehomecosts@proton.me";
+const contactEmail = siteConfig.email;
 const contactDescription =
   "Contact True Home Costs with questions about our calculators and guides, report an error or outdated information, or discuss media and partnership enquiries.";
 const helpTopics = [

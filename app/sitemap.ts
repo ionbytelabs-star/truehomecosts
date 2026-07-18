@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact"
   ];
 
-  const now = new Date();
+  const publicPagesLastModified = new Date("2026-07-18");
   const llmsLastModified = new Date("2026-06-04");
   const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
   const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));
@@ -23,19 +23,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes.map((route) => ({
       url: absoluteUrl(route),
-      lastModified: now,
+      lastModified: publicPagesLastModified,
       changeFrequency: (route === "/" ? "weekly" : "monthly") as "weekly" | "monthly",
       priority: route === "/" ? 1 : 0.7
     })),
     ...guideSummaries.map((guide) => ({
       url: absoluteUrl(guide.slug),
-      lastModified: now,
+      lastModified: publicPagesLastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8
     })),
     ...staticPriceRoutes.map((slug) => ({
       url: absoluteUrl(slug),
-      lastModified: now,
+      lastModified: publicPagesLastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8
     })),

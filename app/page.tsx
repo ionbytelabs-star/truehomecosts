@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { AtAGlance } from "@/components/AtAGlance";
 import { CalculatorForm } from "@/components/CalculatorForm";
 import { ContentSection } from "@/components/ContentSection";
@@ -180,10 +179,6 @@ export default function HomePage() {
             />
           </div>
         </div>
-      </section>
-
-      <section className="shell pb-8">
-        <AdPlaceholder label="Ad placeholder below calculator results" />
       </section>
 
       <section className="shell section-gap pt-0">

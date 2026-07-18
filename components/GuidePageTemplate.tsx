@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { AdPlaceholder } from "@/components/AdPlaceholder";
 import { AtAGlance } from "@/components/AtAGlance";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CalloutBox } from "@/components/CalloutBox";
@@ -226,9 +225,6 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 </section>
               ) : null}
 
-              {index === 1 && guide.slug !== "first-year-cost-buying-house-uk" ? (
-                <AdPlaceholder label="Mid-content ad placeholder" />
-              ) : null}
             </div>
           ))}
 

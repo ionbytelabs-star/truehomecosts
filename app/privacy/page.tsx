@@ -7,9 +7,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy | True Home Costs",
   description:
-    "Privacy policy for TrueHomeCosts, including calculator data, email contact and basic analytics on this static site.",
+    "Learn how True Home Costs handles personal information, analytics, cookies and future advertising services.",
   path: "/privacy"
 });
 
@@ -19,7 +19,8 @@ export default function PrivacyPage() {
       <StructuredData
         data={webpageSchema({
           title: "Privacy Policy",
-          description: "Privacy policy for the TrueHomeCosts site and calculator.",
+          description:
+            "How True Home Costs handles personal information, analytics, cookies and future advertising services.",
           path: "/privacy"
         })}
       />
@@ -32,8 +33,8 @@ export default function PrivacyPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy policy" }]} />
       <PageIntro
         title="Privacy Policy"
-        description="This privacy policy explains what TrueHomeCosts currently does with data."
-        summary="TrueHomeCosts does not require an account, login or database. The calculator runs in the browser and does not need you to submit personal financial information to use it."
+        description="This privacy policy explains what True Home Costs currently does with data."
+        summary="True Home Costs does not require an account, login or database. The calculator runs in the browser and does not need you to submit personal financial information to use it."
         badge="Plain-English policy"
       />
 
@@ -41,8 +42,8 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">What we collect</h2>
           <p>
-            In this static build, the site does not include a database, user accounts or a live contact form.
-            Calculator inputs stay in your browser session while you use the page.
+            The site does not include a database, user accounts or a live contact form. Calculator inputs stay
+            in your browser session while you use the page.
           </p>
         </section>
 
@@ -60,6 +61,13 @@ export default function PrivacyPage() {
             If you email the contact address shown on the site, your email provider and our inbox provider will
             process the message in the normal way so we can read and reply to it.
           </p>
+          <p>
+            The public contact address is{" "}
+            <a href="mailto:hello@truehomecosts.co.uk" className="font-medium underline hover:text-brand-deep">
+              hello@truehomecosts.co.uk
+            </a>
+            .
+          </p>
         </section>
 
         <section className="space-y-3">
@@ -67,8 +75,41 @@ export default function PrivacyPage() {
           <p>
             The site can load Google Analytics to understand broad site usage, but this is controlled by the
             cookie consent choice shown to visitors. It does not include a login, CRM, live chat tool or live
-            advertising scripts in this build. If new services are added, this policy should be updated before
-            deployment.
+            advertising scripts. If new services are added, this policy should be updated before deployment.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-serif text-3xl text-text">Future advertising services</h2>
+          <p>
+            True Home Costs may use Google AdSense to display advertising. If advertising is enabled, Google
+            and its advertising partners may use cookies, local storage or similar technologies to deliver and
+            measure ads, prevent fraud and, where permission has been granted, personalise advertising.
+          </p>
+          <p>
+            Advertising technologies are optional and are not strictly necessary for using the website.
+            Personalised advertising will depend on your consent choices and settings. Non-personalised
+            advertising may still use limited storage for purposes such as fraud prevention, frequency capping
+            and measurement where permitted.
+          </p>
+          <p>
+            You can manage optional cookie choices through the site's consent controls. The{" "}
+            <Link href="/cookies" className="font-medium underline hover:text-brand-deep">
+              Cookie Policy
+            </Link>{" "}
+            explains this in more detail.
+          </p>
+          <p>
+            Google explains how it uses information from sites and apps that use its services on{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline hover:text-brand-deep"
+            >
+              Google's partner-sites information page
+            </a>
+            .
           </p>
         </section>
 

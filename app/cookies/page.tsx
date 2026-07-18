@@ -7,11 +7,12 @@ import { PageIntro } from "@/components/PageIntro";
 import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
-const contactEmail = "truehomecosts@proton.me";
+const contactEmail = siteConfig.email;
 const cookieDescription =
-  "Learn how True Home Costs uses essential, analytics and advertising cookies, including your choices for managing optional cookies.";
+  "Learn how True Home Costs uses essential, analytics and advertising technologies, including how to manage your cookie choices.";
 const cookieStorageRows = [
   [
     "truehomecosts_cookie_consent",
@@ -127,8 +128,8 @@ export default function CookiesPage() {
               website may not work correctly without them.
             </p>
             <p>
-              The project code currently stores one verified local-storage item for cookie choices. No
-              first-party strictly necessary cookie names were found in the repository.
+              The website currently uses local storage to remember your cookie choices. It does not currently
+              set any additional first-party essential cookies that we have identified.
             </p>
           </section>
 
@@ -165,9 +166,10 @@ export default function CookiesPage() {
               <li>personalise advertisements where permission has been granted.</li>
             </ul>
             <p>
-              Advertising cookies are not treated as strictly necessary. The current repository contains the
-              Google AdSense account verification meta tag, but it does not load live AdSense ad scripts or
-              display live advertisements.
+              Advertising cookies are not treated as strictly necessary. The website currently includes the
+              Google AdSense account verification meta tag, but site verification is not the same as live
+              advertising. The site does not currently load live AdSense ad scripts or display live
+              advertisements.
             </p>
             <p>
               Visitors in the UK, EEA and Switzerland must be shown consent controls through a suitable
@@ -191,9 +193,9 @@ export default function CookiesPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Affiliate links</h2>
             <p>
-              No active affiliate tracking was found in the current repository. Some pages may contain
-              affiliate links in the future. An affiliate provider may use cookies or similar technologies to
-              record referrals and attribute a purchase or enquiry to True Home Costs.
+              True Home Costs does not currently use active affiliate tracking. Some pages may contain affiliate
+              links in the future. An affiliate provider may use cookies or similar technologies to record
+              referrals and attribute a purchase or enquiry to True Home Costs.
             </p>
             <p>
               Any such tracking should be disclosed and handled in accordance with the applicable consent
@@ -233,9 +235,9 @@ export default function CookiesPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Cookies used by this website</h2>
             <p>
-              The table lists verified storage used by the site code. Google Analytics may set its own cookies
-              after analytics consent is accepted, but exact names and durations are not hard-coded in this
-              repository and may vary depending on Google's service behaviour.
+              The table lists verified storage used by the website. Google Analytics may set its own cookies
+              after analytics consent is accepted, but exact names and durations can vary depending on Google's
+              service behaviour.
             </p>
             <ResponsiveTable
               caption="Verified cookies and storage"
@@ -286,7 +288,7 @@ export default function CookiesPage() {
               <li>Analytics is optional and consent-controlled.</li>
               <li>AdSense verification meta tag is present.</li>
               <li>Live AdSense scripts are not loaded.</li>
-              <li>No affiliate tracking was found.</li>
+              <li>No active affiliate tracking is used.</li>
             </ul>
           </div>
           <CalloutBox title="AdSense consent note">

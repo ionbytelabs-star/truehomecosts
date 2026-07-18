@@ -75,7 +75,7 @@ export default function TermsPage() {
             <Link href="/privacy" className="underline hover:text-brand-deep">
               privacy policy
             </Link>
-            {" "}for more detail about the current site build.
+            {" "}for more detail about how the site handles data.
           </p>
         </section>
 
