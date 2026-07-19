@@ -3,124 +3,118 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Disclaimer } from "@/components/Disclaimer";
 import { PageIntro } from "@/components/PageIntro";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
+import { calculatorMetadata } from "@/data/assumptions/calculator";
+import { officialSourceVerification } from "@/data/editorial/source-verification";
+import { classificationLabels, costScopeDefinitions, costTaxonomy } from "@/lib/cost-scopes";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
+const description =
+  "How TrueHomeCosts uses one sitewide set of UK home-buying assumptions, official rules, market estimates, calculation scopes, review dates and calculator versions.";
+
 export const metadata = buildMetadata({
   title: "How TrueHomeCosts Estimates Work",
-  description:
-    "How TrueHomeCosts builds UK home-buying cost estimates, separates official charges from market ranges, and explains calculator limits.",
+  description,
   path: "/methodology"
 });
 
 export default function MethodologyPage() {
   return (
     <>
-      <StructuredData
-        data={webpageSchema({
-          title: "How TrueHomeCosts estimates work",
-          description:
-            "How UK home-buying cost estimates are built and how buyers should use them for planning.",
-          path: "/methodology"
-        })}
-      />
-      <StructuredData
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "How estimates work", path: "/methodology" }
-        ])}
-      />
+      <StructuredData data={webpageSchema({ title: "How TrueHomeCosts estimates work", description, path: "/methodology", dateModified: calculatorMetadata.lastReviewed })} />
+      <StructuredData data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "How estimates work", path: "/methodology" }])} />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "How estimates work" }]} />
       <PageIntro
         title="How estimates work"
-        description="This page explains how TrueHomeCosts separates official charges from planning estimates, and how to use the calculator without treating it as a quote."
-        summary="The useful number is not just the deposit. It is the deposit plus tax, legal work, searches, surveys, lender fees, moving costs and a sensible buffer."
-        badge="Methodology"
+        description="TrueHomeCosts uses the same central assumptions and production calculation functions in the homepage calculator, core guides and every property-price example."
+        summary="Official calculations and charges are separated from market estimates, user-entered amounts and optional or adjustable allowances. Every headline total has a defined scope."
+        badge={`Calculator data ${calculatorMetadata.dataVersion}`}
       />
 
       <section className="shell grid gap-10 pb-16 lg:grid-cols-[1fr_320px]">
-        <article className="space-y-8">
+        <article className="min-w-0 space-y-8">
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">Official charges</h2>
-            <p>
-              Official charges are taken from public sources where available. This includes UK property tax
-              systems such as SDLT, LBTT and LTT, and relevant published registration fee information.
-            </p>
-            <p>
-              These figures are still time-sensitive. Tax bands, reliefs, supplements and fee tables can change,
-              so important numbers should be checked against the relevant official source before a buyer relies
-              on them.
-            </p>
+            <h2 className="font-serif text-3xl text-text">One sitewide cost taxonomy</h2>
+            <p>The calculator, guides and price pages use these twelve categories. Natural wording can vary in prose, but tables do not merge categories that are calculated separately.</p>
+            <ol className="grid gap-2 pl-5 sm:grid-cols-2">
+              {costTaxonomy.map((category) => <li key={category} className="list-decimal text-text">{category}</li>)}
+            </ol>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">Market estimates</h2>
-            <p>
-              Some buying costs are not fixed by a public table. Solicitor fees, search packs, surveys, mortgage
-              fees, removals, insurance and furnishing costs vary by provider and by property.
-            </p>
-            <p>
-              TrueHomeCosts treats these as indicative ranges. They are useful for early planning, but they are
-              not a substitute for a solicitor quote, lender illustration, survey quote, insurance quote or
-              removal quote.
-            </p>
+            <h2 className="font-serif text-3xl text-text">How figures are classified</h2>
+            <ResponsiveTable
+              caption="Classification labels used across calculator results and editorial content"
+              columns={["Classification", "Meaning"]}
+              rows={[
+                [classificationLabels["official-calculation"], "A result calculated from published jurisdiction-specific rules, such as property tax."],
+                [classificationLabels["official-charge"], "A charge taken from a published official fee scale for the applicable transaction."],
+                [classificationLabels["market-estimate"], "A planning amount based on the central estimate bands, not a statutory tariff."],
+                [classificationLabels["user-entered"], "An amount or percentage supplied by the user."],
+                [classificationLabels["optional-allowance"], "A selected planning allowance that can be excluded."],
+                [classificationLabels["adjustable-allowance"], "A centrally suggested amount that should be confirmed or replaced for the transaction."]
+              ]}
+            />
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">What can change the number</h2>
-            <p>
-              The same purchase price can produce a different total depending on region, buyer type, property
-              age, tenure, lender, solicitor, survey level, moving distance and whether the buyer wants a
-              realistic setup buffer.
-            </p>
-            <p>
-              Leasehold homes, older buildings, new-build purchases, unusual titles, cash purchases and complex
-              chains can all move the real cost away from a simple estimate.
-            </p>
+            <h2 className="font-serif text-3xl text-text">What each headline scope means</h2>
+            <ResponsiveTable
+              caption="Named total scopes used by TrueHomeCosts"
+              columns={["Scope", "Definition"]}
+              rows={Object.entries(costScopeDefinitions).map(([scope, definition]) => [scope.replaceAll("-", " "), definition])}
+            />
+            <p>First-year costs are discussed separately as purchase-completion costs, moving and setup, ongoing ownership costs and optional improvements. Ongoing mortgage payments and household bills are not silently added to the upfront calculator total.</p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">How to use the calculator</h2>
-            <p>
-              Start with the{" "}
-              <Link href="/#calculator" className="underline hover:text-brand-deep">
-                calculator
-              </Link>
-              {" "}to build a first version of the budget. Then change the buyer type, assumption level, moving
-              choices and deposit setting to see how much room the purchase really has.
-            </p>
-            <p>
-              Treat the result as a planning baseline. When real quotes arrive, compare them with the estimate
-              and update the budget instead of relying on the first number.
-            </p>
+            <h2 className="font-serif text-3xl text-text">Low, average and high assumptions</h2>
+            <p>Market-estimate categories have low, average and high planning values. The appropriate price band and jurisdiction are selected where relevant. The figures are judgement-based planning ranges, so a real quotation should replace the estimate as soon as it is available.</p>
+            <p>Derived ranges are calculated by summing named categories from the same calculator result. They are not separately maintained headline figures.</p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-serif text-3xl text-text">Before you rely on a figure</h2>
-            <p>
-              Check official tax and fee figures at source, read solicitor quotes with VAT and disbursements in
-              mind, and choose a survey level that fits the property. If the decision is material, use qualified
-              professional advice before committing.
-            </p>
+            <h2 className="font-serif text-3xl text-text">Jurisdiction handling</h2>
+            <p>England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. First-time buyer and additional-property treatment is selected from the relevant official rule set.</p>
+            <p>Registration is also jurisdiction-specific: HM Land Registry for qualifying England and Wales applications, Registers of Scotland for Scottish dispositions, and Land &amp; Property Services for Northern Ireland. Northern Ireland is never treated as an HM Land Registry jurisdiction.</p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Source and review practice</h2>
+            <p>Official tax and registration sources are checked when rules or fee tables change and during substantive factual reviews. Market estimates are reviewed for internal consistency and explainability; one commercial quote does not automatically replace the central range.</p>
+            <ResponsiveTable
+              caption={`Official sources checked for calculator data version ${calculatorMetadata.dataVersion}`}
+              columns={["Source", "Jurisdiction", "Checked", "Rule or fee verified"]}
+              rows={officialSourceVerification.map((source) => [source.sourceName, source.jurisdiction, source.dateChecked, source.verified])}
+            />
+            <p>A visible review date records a substantive factual review, not a build or formatting date. Article schema uses the same substantive date shown on the page.</p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="font-serif text-3xl text-text">Versioning, changes and corrections</h2>
+            <p>Calculator data version {calculatorMetadata.dataVersion} is separate from individual article review dates. Material tax, registration or market-assumption changes are recorded in the <Link href="/calculator-updates" className="underline hover:text-brand-deep">calculator data change log</Link>.</p>
+            <p>Report an incorrect tax result, outdated fee, broken source, misleading wording or calculator fault through the <Link href="/contact" className="underline hover:text-brand-deep">public corrections route</Link>.</p>
           </section>
 
           <Disclaimer />
         </article>
 
-        <aside className="space-y-4">
+        <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
           <div className="surface p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Useful checks</p>
+            <p className="eyebrow">Current data</p>
+            <dl className="mt-3 grid gap-3 text-sm">
+              <div><dt className="font-semibold">Version</dt><dd className="text-muted">{calculatorMetadata.dataVersion}</dd></div>
+              <div><dt className="font-semibold">Last verified</dt><dd className="text-muted">{calculatorMetadata.lastReviewedLabel}</dd></div>
+            </dl>
+          </div>
+          <div className="surface p-5">
+            <p className="eyebrow">Useful checks</p>
             <div className="mt-4 grid gap-2 text-sm">
-              <Link href="/stamp-duty-explained" className="underline hover:text-brand-deep">
-                Stamp duty and UK property tax
-              </Link>
-              <Link href="/hidden-costs-buying-house" className="underline hover:text-brand-deep">
-                Hidden costs of buying
-              </Link>
-              <Link href="/mortgage-fees-costs" className="underline hover:text-brand-deep">
-                Mortgage fees and costs
-              </Link>
+              <Link href="/#calculator" className="underline hover:text-brand-deep">Use the calculator</Link>
+              <Link href="/calculator-updates" className="underline hover:text-brand-deep">Data change log</Link>
+              <Link href="/contact" className="underline hover:text-brand-deep">Report a correction</Link>
             </div>
           </div>
         </aside>

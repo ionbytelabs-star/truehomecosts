@@ -43,6 +43,14 @@ export const sourceLinks = {
     label: "HM Land Registry registration service fees",
     href: "https://www.gov.uk/government/publications/registration-services-fees"
   },
+  ros: {
+    label: "Registers of Scotland registration fees",
+    href: "https://kb.ros.gov.uk/fees/registration-fees"
+  },
+  lpsNi: {
+    label: "Land & Property Services Northern Ireland fee guidance",
+    href: "https://www.finance-ni.gov.uk/publications/land-registry-and-registry-deeds-fees-guides"
+  },
   lisa: {
     label: "GOV.UK Lifetime ISA guidance",
     href: "https://www.gov.uk/lifetime-isa"

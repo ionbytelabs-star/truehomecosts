@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/about",
     "/methodology",
+    "/calculator-updates",
     "/privacy",
     "/terms",
     "/cookies",

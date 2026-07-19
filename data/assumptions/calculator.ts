@@ -5,15 +5,25 @@ import { movingCostBands } from "./moving";
 import { searchFeeByJurisdiction } from "./searches";
 import { solicitorFeeBands } from "./solicitors";
 import { surveyFeeBands } from "./surveys";
-import { registrationFallbackFee, telegraphicTransferFee } from "./transfers";
+import { telegraphicTransferFee } from "./transfers";
 import type { JurisdictionRangeMap, PriceBandRange, RangeByLevel } from "./types";
 import { hmlrSourceUrl } from "../fees/hmlr";
 import {
   northernIrelandLandRegistrySourceUrl,
   northernIrelandLandRegistryTransferFees
 } from "../fees/northern-ireland";
+import {
+  scotlandDispositionRegistrationFees,
+  scotlandRegistrationSourceUrl
+} from "../fees/scotland";
 
-export type CostClassification = "official" | "estimate" | "user-entered" | "optional";
+export type CostClassification =
+  | "official-calculation"
+  | "official-charge"
+  | "market-estimate"
+  | "user-entered"
+  | "optional-allowance"
+  | "adjustable-allowance";
 
 export type CostAssumption = {
   id: string;
@@ -27,6 +37,9 @@ export type CostAssumption = {
   sourceName?: string;
   sourceUrl?: string;
   lastVerified?: string;
+  optional: boolean;
+  jurisdictions: readonly ("england" | "scotland" | "wales" | "northern-ireland")[];
+  userOverride: boolean;
   notes: string;
 };
 
@@ -46,12 +59,15 @@ function rangeSummary(id: string, label: string, category: string, bands: PriceB
     id,
     label,
     category,
-    classification: "estimate" as const,
+    classification: "market-estimate" as const,
     minimum: Math.min(...bands.map((band) => band.low)),
     typical: bands.find((band) => band.upTo === 350_000)?.average ?? bands[0].average,
     maximum: Math.max(...bands.map((band) => band.high)),
     unit: "fixed" as const,
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"] as const,
+    userOverride: true,
     notes
   };
 }
@@ -68,12 +84,15 @@ function jurisdictionRangeSummary(
     id,
     label,
     category,
-    classification: "estimate" as const,
+    classification: "market-estimate" as const,
     minimum: Math.min(...values.map((range) => range.low)),
     typical: ranges.england.average,
     maximum: Math.max(...values.map((range) => range.high)),
     unit: "fixed" as const,
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"] as const,
+    userOverride: true,
     notes
   };
 }
@@ -89,12 +108,15 @@ function levelRangeSummary(
     id,
     label,
     category,
-    classification: "estimate" as const,
+    classification: "market-estimate" as const,
     minimum: range.low,
     typical: range.average,
     maximum: range.high,
     unit: "fixed" as const,
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"] as const,
+    userOverride: true,
     notes
   };
 }
@@ -106,17 +128,23 @@ export const calculatorCostAssumptions: CostAssumption[] = [
     category: "Deposit",
     classification: "user-entered",
     unit: "calculated",
+    optional: false,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"],
+    userOverride: true,
     notes: "The cash contribution paid towards the property price."
   },
   {
     id: "property-tax",
     label: "Property tax",
     category: "Property tax",
-    classification: "official",
+    classification: "official-calculation",
     unit: "calculated",
     sourceName: "HMRC, Revenue Scotland and Welsh Revenue Authority",
     sourceUrl: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates",
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"],
+    userOverride: false,
     notes: "SDLT in England and Northern Ireland, LBTT in Scotland or LTT in Wales."
   },
   rangeSummary(
@@ -151,27 +179,38 @@ export const calculatorCostAssumptions: CostAssumption[] = [
     id: "registration-england-wales",
     label: "Registration fee",
     category: "Registration fee or allowance",
-    classification: "official",
+    classification: "official-charge",
     unit: "calculated",
     sourceName: "HM Land Registry",
     sourceUrl: hmlrSourceUrl,
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["england", "wales"],
+    userOverride: true,
     notes: "Official HM Land Registry fee for a qualifying England or Wales application."
   },
   {
-    ...levelRangeSummary(
-      "registration-scotland",
-      "Scottish registration allowance",
-      "Registration fee or allowance",
-      registrationFallbackFee,
-      "Adjustable allowance for registration and filing; confirm the Registers of Scotland charge with your solicitor."
-    )
+    id: "registration-scotland",
+    label: "Scottish registration fee",
+    category: "Registration fee or allowance",
+    classification: "official-charge",
+    minimum: Math.min(...scotlandDispositionRegistrationFees.map((band) => band.fee)),
+    typical: scotlandDispositionRegistrationFees.find((band) => band.upTo === 500_000)?.fee,
+    maximum: Math.max(...scotlandDispositionRegistrationFees.map((band) => band.fee)),
+    unit: "calculated",
+    sourceName: "Registers of Scotland",
+    sourceUrl: scotlandRegistrationSourceUrl,
+    lastVerified: verified,
+    optional: false,
+    jurisdictions: ["scotland"],
+    userOverride: true,
+    notes: "Official fee for registering a disposition, based on the consideration or property value."
   },
   {
     id: "registration-northern-ireland",
     label: "Northern Ireland registration allowance",
     category: "Registration fee or allowance",
-    classification: "estimate",
+    classification: "adjustable-allowance",
     minimum: Math.min(...northernIrelandLandRegistryTransferFees.map((band) => band.electronic)),
     typical: northernIrelandLandRegistryTransferFees.at(-1)?.electronic,
     maximum: Math.max(...northernIrelandLandRegistryTransferFees.map((band) => band.electronic)),
@@ -179,6 +218,9 @@ export const calculatorCostAssumptions: CostAssumption[] = [
     sourceName: "Land & Property Services Northern Ireland",
     sourceUrl: northernIrelandLandRegistrySourceUrl,
     lastVerified: verified,
+    optional: false,
+    jurisdictions: ["northern-ireland"],
+    userOverride: true,
     notes:
       "Adjustable LPS Land Registry allowance; Registry of Deeds or other treatment can differ, so confirm the exact fee with your solicitor."
   },
@@ -197,18 +239,22 @@ export const calculatorCostAssumptions: CostAssumption[] = [
       movingCostBands,
       "Removal company, van hire, packing or related moving expenses."
     ),
-    classification: "optional"
+    classification: "optional-allowance",
+    optional: true
   },
   {
     id: "insurance",
     label: "Insurance",
     category: "Insurance",
-    classification: "optional",
+    classification: "optional-allowance",
     minimum: Math.min(...Object.values(insuranceAllowanceByJurisdiction).map((range) => range.low)),
     typical: insuranceAllowanceByJurisdiction.england.average,
     maximum: Math.max(...Object.values(insuranceAllowanceByJurisdiction).map((range) => range.high)),
     unit: "fixed",
     lastVerified: verified,
+    optional: true,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"],
+    userOverride: true,
     notes: "Buildings insurance and any initial home-insurance allowance included in the plan."
   },
   {
@@ -219,18 +265,22 @@ export const calculatorCostAssumptions: CostAssumption[] = [
       furnishingCostBands,
       "Optional allowance for furniture, appliances and initial household setup."
     ),
-    classification: "optional"
+    classification: "optional-allowance",
+    optional: true
   },
   {
     id: "contingency",
     label: "Contingency",
     category: "Contingency",
-    classification: "optional",
+    classification: "optional-allowance",
     minimum: 0,
     typical: 10,
     maximum: 25,
     unit: "percentage",
     lastVerified: verified,
+    optional: true,
+    jurisdictions: ["england", "scotland", "wales", "northern-ireland"],
+    userOverride: false,
     notes: "An optional buffer for unexpected or underestimated buying costs."
   }
 ];
@@ -333,7 +383,7 @@ export const homepageCostRows: HomepageCostRow[] = [
 ];
 
 export const calculatorMetadata = {
-  dataVersion: "2026.07",
+  dataVersion: "2026.07.1",
   lastReviewed: "2026-07-19",
   lastReviewedLabel: "19 July 2026",
   supportedJurisdictions: ["England", "Scotland", "Wales", "Northern Ireland"],
@@ -345,6 +395,7 @@ export const calculatorMetadata = {
     { name: "Revenue Scotland", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property" },
     { name: "Welsh Revenue Authority", href: "https://www.gov.wales/land-transaction-tax-rates-and-bands" },
     { name: "HM Land Registry", href: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees" },
+    { name: "Registers of Scotland", href: scotlandRegistrationSourceUrl },
     { name: "Land & Property Services Northern Ireland", href: "https://www.finance-ni.gov.uk/consultations/department-finance-land-registration-fees-orders-consultation" },
     { name: "MoneyHelper", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs" }
   ]
