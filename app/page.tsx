@@ -6,7 +6,12 @@ import { Hero } from "@/components/Hero";
 import { ResponsiveTable } from "@/components/ResponsiveTable";
 import { StructuredData } from "@/components/StructuredData";
 import { homePageFaqs, homepageGuides, homeScenarioInputs } from "@/content/home";
-import { calculatorCostAssumptions, calculatorMetadata } from "@/data/assumptions/calculator";
+import {
+  calculatorCostAssumptionById,
+  calculatorCostAssumptions,
+  calculatorMetadata,
+  homepageCostRows
+} from "@/data/assumptions/calculator";
 import { calculateUpfrontCosts } from "@/lib/calculator";
 import { formatCurrency } from "@/lib/format";
 import { buildMetadata } from "@/lib/metadata";
@@ -30,13 +35,6 @@ const scenarios = homeScenarioInputs.map((scenario) => ({
   result: calculateUpfrontCosts(scenario.input)
 }));
 
-const classificationLabels = {
-  official: "Official",
-  estimate: "Estimated",
-  "user-entered": "User-entered",
-  optional: "Optional"
-} as const;
-
 function planningRange(assumption: (typeof calculatorCostAssumptions)[number]) {
   if (assumption.unit === "calculated") return "Calculated from your inputs";
   if (assumption.unit === "percentage") {
@@ -45,6 +43,13 @@ function planningRange(assumption: (typeof calculatorCostAssumptions)[number]) {
   if (assumption.minimum === undefined || assumption.maximum === undefined) return "Varies";
   const range = `${formatCurrency(assumption.minimum)}–${formatCurrency(assumption.maximum)}`;
   return assumption.typical === undefined ? range : `${range} (typical default ${formatCurrency(assumption.typical)})`;
+}
+
+function homepagePlanningBasis(row: (typeof homepageCostRows)[number]) {
+  if (row.planningBasis) return row.planningBasis;
+  const assumption = calculatorCostAssumptionById.get(row.assumptionIds[0]);
+  if (!assumption) throw new Error(`Missing calculator assumption for homepage row: ${row.id}`);
+  return planningRange(assumption);
 }
 
 export default function HomePage() {
@@ -80,11 +85,11 @@ export default function HomePage() {
             caption="Buying-cost categories and planning basis"
             summary="Cost categories included in the calculator, how each is classified and the shared planning range or calculation method."
             columns={["Cost category", "What it covers", "Basis", "Planning range"]}
-            rows={calculatorCostAssumptions.map((assumption) => [
-              assumption.category,
-              assumption.notes,
-              classificationLabels[assumption.classification],
-              planningRange(assumption)
+            rows={homepageCostRows.map((row) => [
+              row.label,
+              row.description,
+              row.basis,
+              homepagePlanningBasis(row)
             ])}
           />
         </div>
