@@ -1,8 +1,10 @@
 import type { GuidePageContent } from "@/content/types";
 
-import { createLongGuide, createPriceGuide } from "./guide-builders";
+import { createLongGuide } from "./guide-builders";
+import { applyGuideConsistency } from "./guide-consistency";
+import { createConsistentPriceGuide } from "./price-guide-builder";
 
-export const guides: GuidePageContent[] = [
+const rawGuides: GuidePageContent[] = [
   createLongGuide({
     slug: "hidden-costs-buying-house",
     title: "Hidden Costs of Buying a House in the UK",
@@ -2861,8 +2863,10 @@ export const guides: GuidePageContent[] = [
       "Use the hidden costs of buying a house guide to separate purchase costs from ongoing owner costs"
     ]
   }),
-  ...[250_000, 300_000, 350_000, 400_000, 450_000, 500_000].map((price) => createPriceGuide(price))
+  ...[250_000, 300_000, 350_000, 400_000, 450_000, 500_000].map((price) => createConsistentPriceGuide(price))
 ];
+
+export const guides = rawGuides.map(applyGuideConsistency);
 
 export const guideMap = Object.fromEntries(guides.map((guide) => [guide.slug, guide])) as Record<
   string,

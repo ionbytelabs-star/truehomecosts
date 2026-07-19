@@ -87,13 +87,13 @@ test("Northern Ireland registration is an LPS-based estimate, never HMLR officia
   const result = calculateUpfrontCosts({ ...baseInput, jurisdiction: "northern-ireland" });
   const registration = result.breakdown.find((line) => line.key === "land-registry");
   assert.equal(registration?.value, 445);
-  assert.equal(registration?.classification, "estimate");
+  assert.equal(registration?.classification, "market-estimate");
   assert.doesNotMatch(registration?.detail ?? "", /HM Land Registry/i);
 });
 
 test("every official breakdown charge has a source and verification date", () => {
   const result = calculateUpfrontCosts(baseInput);
-  for (const line of result.breakdown.filter((item) => item.classification === "official")) {
+  for (const line of result.breakdown.filter((item) => item.classification.startsWith("official-"))) {
     assert.ok(line.sourceName);
     assert.ok(line.sourceUrl);
     assert.equal(line.lastVerified, "2026-07-19");

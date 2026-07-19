@@ -21,6 +21,7 @@ export const mainNav = [
 export const footerNav = [
   { href: "/about", label: "About" },
   { href: "/methodology", label: "Methodology" },
+  { href: "/calculator-updates", label: "Calculator updates" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms" },

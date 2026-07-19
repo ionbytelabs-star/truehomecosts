@@ -14,6 +14,7 @@ const helpTopics = [
   "Questions about using the home-buying cost calculator",
   "Feedback on our guides or cost estimates",
   "Reporting errors, broken links or outdated information",
+  "Reporting an incorrect tax result, outdated fee, misleading wording or calculator fault",
   "Suggestions for new topics, tools or calculators",
   "Media, partnership or business enquiries"
 ] as const;

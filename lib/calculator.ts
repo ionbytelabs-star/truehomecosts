@@ -5,11 +5,12 @@ import { movingCostBands } from "../data/assumptions/moving";
 import { searchFeeByJurisdiction } from "../data/assumptions/searches";
 import { solicitorFeeBands } from "../data/assumptions/solicitors";
 import { surveyFeeBands } from "../data/assumptions/surveys";
-import { registrationFallbackFee, telegraphicTransferFee } from "../data/assumptions/transfers";
+import { telegraphicTransferFee } from "../data/assumptions/transfers";
 import type { CostClassification } from "../data/assumptions/calculator";
 import type { PriceBandRange } from "../data/assumptions/types";
 import { hmlrElectronicScale1Fees } from "../data/fees/hmlr";
 import { getNorthernIrelandRegistrationAllowance } from "../data/fees/northern-ireland";
+import { getScotlandRegistrationFee, scotlandRegistrationSourceUrl } from "../data/fees/scotland";
 import { lbttAdsRate, lbttFirstTimeBuyerBands, lbttStandardBands } from "../data/tax/lbtt";
 import { lttHigherResidentialBands, lttMainResidentialBands } from "../data/tax/ltt";
 import {
@@ -140,7 +141,11 @@ function estimateLine(
     label,
     value: overriddenValue(input, key, fallback),
     sourceType: "estimate",
-    classification: hasOverride ? "user-entered" : optional ? "optional" : "estimate",
+    classification: hasOverride
+      ? "user-entered"
+      : optional
+        ? "optional-allowance"
+        : "market-estimate",
     detail: hasOverride ? `${detail} You replaced the planning default with your own amount.` : detail
   };
 }
@@ -156,7 +161,7 @@ function calculateRegistryFee(price: number, input: CalculatorInput): BreakdownL
       label: "Registration fee",
       value: override === undefined ? fee : Math.max(0, Math.round(override)),
       sourceType: override === undefined ? "official" : "estimate",
-      classification: override === undefined ? "official" : "user-entered",
+      classification: override === undefined ? "official-charge" : "user-entered",
       detail:
         override === undefined
           ? "HM Land Registry electronic Scale 1 fee for a transfer of a whole registered title in England or Wales."
@@ -181,13 +186,25 @@ function calculateRegistryFee(price: number, input: CalculatorInput): BreakdownL
     );
   }
 
-  return estimateLine(
-    input,
-    "land-registry",
-    "Scottish registration allowance",
-    registrationFallbackFee[input.assumptionLevel],
-    "Adjustable planning allowance for registration and filing; confirm the exact Registers of Scotland charge with your solicitor."
-  );
+  const override = input.costOverrides?.["land-registry"];
+  return {
+    key: "land-registry",
+    label: "Registers of Scotland fee",
+    value: override === undefined ? getScotlandRegistrationFee(price) : Math.max(0, Math.round(override)),
+    sourceType: override === undefined ? "official" : "estimate",
+    classification: override === undefined ? "official-charge" : "user-entered",
+    detail:
+      override === undefined
+        ? "Official fee for registering a disposition, based on the consideration or property value."
+        : "Your registration amount; confirm the deed and fee with your solicitor.",
+    ...(override === undefined
+      ? {
+          sourceName: "Registers of Scotland",
+          sourceUrl: scotlandRegistrationSourceUrl,
+          lastVerified: "2026-07-19"
+        }
+      : {})
+  };
 }
 
 function getDepositAmount(input: CalculatorInput): number {
@@ -219,7 +236,7 @@ export function calculateUpfrontCosts(input: CalculatorInput): CalculatorResult 
       label: input.jurisdiction === "scotland" ? "LBTT" : input.jurisdiction === "wales" ? "LTT" : "Stamp Duty Land Tax",
       value: propertyTaxAmount,
       sourceType: "official",
-      classification: "official",
+      classification: "official-calculation",
       detail: "Calculated from the official residential tax rules for the selected UK jurisdiction and buyer type.",
       sourceName:
         input.jurisdiction === "scotland"
@@ -248,7 +265,7 @@ export function calculateUpfrontCosts(input: CalculatorInput): CalculatorResult 
   if (input.includeFurnishing) breakdown.push(estimateLine(input, "furnishing", "Furnishing and setup", getRangeValue(furnishingCostBands, propertyPrice, level), "Optional move-in allowance for furniture, white goods and essentials.", true));
 
   const estimateBase = breakdown
-    .filter((line) => line.key !== "deposit" && line.classification !== "official")
+    .filter((line) => line.key !== "deposit" && !line.classification.startsWith("official-"))
     .reduce((sum, line) => sum + line.value, 0);
   const contingencyPercentage = clampNumber(input.contingencyPercentage ?? 10, 0, 25);
   const contingencyAmount = input.includeContingency !== false ? Math.round(estimateBase * (contingencyPercentage / 100)) : 0;
@@ -259,16 +276,16 @@ export function calculateUpfrontCosts(input: CalculatorInput): CalculatorResult 
       label: "Contingency",
       value: contingencyAmount,
       sourceType: "estimate",
-      classification: "optional",
+      classification: "optional-allowance",
       detail: `${contingencyPercentage}% of estimate-led costs as an optional budgeting cushion.`
     });
   }
 
   const officialSubtotal = breakdown
-    .filter((line) => line.classification === "official")
+    .filter((line) => line.classification.startsWith("official-"))
     .reduce((sum, line) => sum + line.value, 0);
   const estimatedSubtotal = breakdown
-    .filter((line) => line.key !== "deposit" && line.classification !== "official")
+    .filter((line) => line.key !== "deposit" && !line.classification.startsWith("official-"))
     .reduce((sum, line) => sum + line.value, 0);
 
   return {

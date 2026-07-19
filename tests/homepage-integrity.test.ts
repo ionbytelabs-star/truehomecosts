@@ -44,7 +44,7 @@ test("homepage ranges and review details come from central data", () => {
   assert.match(pageSource, /calculatorCostAssumptionById\.get/);
   assert.doesNotMatch(pageSource, /£\d/);
   assert.doesNotMatch(JSON.stringify(homepageCostRows), /£\d/);
-  assert.equal(calculatorMetadata.dataVersion, "2026.07");
+  assert.equal(calculatorMetadata.dataVersion, "2026.07.1");
   assert.equal(calculatorMetadata.lastReviewed, "2026-07-19");
 });
 
@@ -102,7 +102,14 @@ test("homepage table classifications match calculator result language", () => {
 });
 
 test("every homepage cost row resolves to centrally classified assumptions", () => {
-  const validClassifications = new Set(["official", "estimate", "user-entered", "optional"]);
+  const validClassifications = new Set([
+    "official-calculation",
+    "official-charge",
+    "market-estimate",
+    "user-entered",
+    "optional-allowance",
+    "adjustable-allowance"
+  ]);
 
   for (const row of homepageCostRows) {
     assert.ok(row.assumptionIds.length > 0);
@@ -125,7 +132,7 @@ test("registration wording preserves official and jurisdiction-specific safeguar
     jurisdiction: "england"
   });
   const englandRegistration = englandResult.breakdown.find((line) => line.key === "land-registry");
-  assert.equal(englandRegistration?.classification, "official");
+  assert.equal(englandRegistration?.classification, "official-charge");
 
   const northernIrelandResult = calculateUpfrontCosts({
     ...homeScenarioInputs[0].input,
@@ -134,18 +141,20 @@ test("registration wording preserves official and jurisdiction-specific safeguar
   const northernIrelandRegistration = northernIrelandResult.breakdown.find(
     (line) => line.key === "land-registry"
   );
-  assert.equal(northernIrelandRegistration?.classification, "estimate");
+  assert.equal(northernIrelandRegistration?.classification, "market-estimate");
   assert.doesNotMatch(northernIrelandRegistration?.detail ?? "", /HM Land Registry/i);
 });
 
 test("official assumptions have sources and dates and estimates are not official", () => {
   for (const assumption of calculatorCostAssumptions) {
-    if (assumption.classification === "official") {
+    if (assumption.classification.startsWith("official-")) {
       assert.ok(assumption.sourceName);
       assert.ok(assumption.sourceUrl);
       assert.ok(assumption.lastVerified);
     }
-    if (assumption.classification === "estimate") assert.notEqual(assumption.classification, "official");
+    if (assumption.classification === "market-estimate") {
+      assert.notEqual(assumption.classification, "official-charge");
+    }
   }
 });
 

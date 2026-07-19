@@ -47,6 +47,9 @@ export type GuidePageContent = {
   contextualLinksSentence?: string;
   trustReviewedText?: string;
   updatedLabel: string;
+  lastReviewed: string;
+  lastReviewedLabel: string;
+  calculatorDataVersion: string;
   atGlance: AtGlanceItem[];
   sections: GuideSection[];
   faqs: FAQItem[];

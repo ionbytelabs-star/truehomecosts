@@ -98,7 +98,8 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           title: guide.h1,
           description: guide.description,
           path: `/${guide.slug}`,
-          keywords: guide.keywords
+          keywords: guide.keywords,
+          dateModified: guide.lastReviewed
         })}
       />
       <StructuredData
@@ -106,7 +107,8 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           headline: guide.h1,
           description: guide.description,
           path: `/${guide.slug}`,
-          keywords: guide.keywords
+          keywords: guide.keywords,
+          dateModified: guide.lastReviewed
         })}
       />
       <StructuredData data={faqPageSchema(guide.faqs)} />
@@ -178,7 +180,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
       ) : null}
 
       <div className="shell grid gap-8 lg:grid-cols-[1fr_320px]">
-        <article className="space-y-8">
+        <article className="min-w-0 space-y-8">
           <TrustSignals
             updatedLabel={guide.updatedLabel}
             sourceKeys={guide.sourceKeys}
@@ -314,7 +316,10 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           ) : null}
 
           <OfficialSources sourceKeys={guide.officialSourceKeys ?? []} />
-          <ContentTrustPanel />
+          <ContentTrustPanel
+            lastReviewed={guide.lastReviewedLabel}
+            calculatorDataVersion={guide.calculatorDataVersion}
+          />
           <FAQSection items={guide.faqs} defaultOpen={guide.showFaqAnswersExpanded} />
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />
           <DataSources sourceKeys={guide.sourceKeys} />

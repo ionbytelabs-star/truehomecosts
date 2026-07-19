@@ -1,15 +1,9 @@
 import type { BreakdownLine } from "@/lib/calculator";
+import { classificationLabels } from "@/lib/cost-scopes";
 import { formatCurrency } from "@/lib/format";
 
 type CostBreakdownTableProps = {
   items: BreakdownLine[];
-};
-
-const classificationLabels = {
-  official: "Official charge",
-  estimate: "Market estimate",
-  "user-entered": "User-entered amount",
-  optional: "Optional allowance"
 };
 
 export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
