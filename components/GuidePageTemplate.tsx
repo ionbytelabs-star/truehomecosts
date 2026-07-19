@@ -67,6 +67,29 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     }
   };
   const crossSiteNote = crossSiteNoteBySlug[guide.slug];
+  const giftedDepositNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
+    "first-time-buyer-costs": {
+      before: "If family is helping with the deposit, check the ",
+      anchor: "gifted deposit evidence and letter requirements",
+      after: " before the money is transferred."
+    },
+    "how-much-money-needed-buy-house": {
+      before: "Your savings target can include family help, but read how ",
+      anchor: "using a family gift for your deposit",
+      after: " changes the lender and conveyancer checks."
+    },
+    "hidden-costs-buying-house": {
+      before: "A family contribution can cover more than the deposit. See how ",
+      anchor: "gifted deposits affect your buying budget",
+      after: " and what evidence is required for the full amount."
+    },
+    "first-year-cost-buying-house-uk": {
+      before: "Where parents are contributing upfront, review the rules on ",
+      anchor: "help from parents towards a house deposit",
+      after: " and keep enough cash back for first-year costs."
+    }
+  };
+  const giftedDepositNote = giftedDepositNoteBySlug[guide.slug];
 
   return (
     <>
@@ -186,6 +209,15 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
               ))}
               .
             </p>
+            {giftedDepositNote ? (
+              <p className="mt-3 max-w-prose text-sm text-muted">
+                {giftedDepositNote.before}
+                <Link href="/gifted-deposit-mortgage/" className="underline hover:text-brand-deep">
+                  {giftedDepositNote.anchor}
+                </Link>
+                {giftedDepositNote.after}
+              </p>
+            ) : null}
           </section>
 
           {guide.sections.map((section, index) => (

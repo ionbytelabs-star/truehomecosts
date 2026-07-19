@@ -305,6 +305,9 @@ export default function HomePage() {
                 <Link href="/first-time-buyer-costs" className="link-chip">
                   First-time buyer costs
                 </Link>
+                <Link href="/gifted-deposit-mortgage/" className="link-chip">
+                  Gifted deposit mortgage rules
+                </Link>
                 <Link href="/mortgage-fees-costs" className="link-chip">
                   Mortgage fees and costs
                 </Link>

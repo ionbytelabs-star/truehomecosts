@@ -12,10 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy",
     "/terms",
     "/cookies",
-    "/contact"
+    "/contact",
+    "/gifted-deposit-mortgage/"
   ];
 
-  const publicPagesLastModified = new Date("2026-07-18");
+  const publicPagesLastModified = new Date("2026-07-19");
   const llmsLastModified = new Date("2026-06-04");
   const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
   const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));

@@ -118,12 +118,14 @@ export function articleSchema({
   description,
   path,
   keywords,
+  datePublished,
   dateModified = "2026-04-23"
 }: {
   headline: string;
   description: string;
   path: string;
   keywords?: string[];
+  datePublished?: string;
   dateModified?: string;
 }) {
   const pageUrl = canonicalUrl(path);
@@ -135,6 +137,7 @@ export function articleSchema({
     headline,
     description,
     keywords,
+    ...(datePublished ? { datePublished } : {}),
     dateModified,
     inLanguage: "en-GB",
     image: representativeImageUrl,
