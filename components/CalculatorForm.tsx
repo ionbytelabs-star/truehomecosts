@@ -1,12 +1,17 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { CostBreakdownTable } from "@/components/CostBreakdownTable";
 import { ResultsCard } from "@/components/ResultsCard";
-import { calculateUpfrontCosts, type CalculatorInput, type DepositMode } from "@/lib/calculator";
+import {
+  calculateUpfrontCosts,
+  type AdjustableCostKey,
+  type CalculatorInput,
+  type DepositMode
+} from "@/lib/calculator";
+import { propertyPriceBand, trackEvent } from "@/lib/analytics";
 import { defaultCalculatorInput } from "@/lib/default-calculator-input";
-import { formatCurrency } from "@/lib/format";
 import {
   assumptionLevelLabels,
   buyerTypeLabels,
@@ -16,219 +21,207 @@ import {
   type Jurisdiction
 } from "@/lib/site";
 
+const optionalToggles = [
+  { key: "includeMoving", label: "Moving costs" },
+  { key: "includeInsurance", label: "Insurance" },
+  { key: "includeFurnishing", label: "Furnishing and setup" },
+  { key: "includeContingency", label: "Contingency" }
+] as const;
+
+const adjustableCosts: Array<{ key: AdjustableCostKey; label: string }> = [
+  { key: "solicitors", label: "Legal fees" },
+  { key: "searches", label: "Search fees" },
+  { key: "survey", label: "Survey" },
+  { key: "mortgage-fees", label: "Mortgage fees" },
+  { key: "land-registry", label: "Registration allowance / fee" },
+  { key: "telegraphic-transfer", label: "Bank transfer fee" },
+  { key: "moving", label: "Moving costs" },
+  { key: "insurance", label: "Insurance" },
+  { key: "furnishing", label: "Furnishing and setup" }
+];
+
 export function CalculatorForm() {
   const titleId = useId();
+  const propertyHelpId = useId();
+  const depositHelpId = useId();
   const [input, setInput] = useState<CalculatorInput>(defaultCalculatorInput);
+  const [hasStarted, setHasStarted] = useState(false);
   const result = calculateUpfrontCosts(input);
-  const toggleOptions: Array<{
-    key: "includeMoving" | "includeFurnishing" | "includeInsurance";
-    label: string;
-    value: boolean;
-  }> = [
-    {
-      key: "includeMoving",
-      label: "Include moving costs",
-      value: input.includeMoving
-    },
-    {
-      key: "includeFurnishing",
-      label: "Include furnishing costs",
-      value: input.includeFurnishing
-    },
-    {
-      key: "includeInsurance",
-      label: "Include insurance estimate",
-      value: input.includeInsurance
-    }
-  ];
+  const propertyPriceInvalid = input.propertyPrice < 50_000 || input.propertyPrice > 10_000_000;
+  const depositAmountInvalid =
+    input.depositMode === "amount" && (input.depositAmount ?? 0) > Math.max(0, input.propertyPrice);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    const timeout = window.setTimeout(() => {
+      const parameters = {
+        jurisdiction: input.jurisdiction,
+        buyer_type: input.buyerType,
+        property_price_band: propertyPriceBand(input.propertyPrice),
+        optional_costs_enabled: Boolean(
+          input.includeMoving || input.includeInsurance || input.includeFurnishing || input.includeContingency
+        )
+      };
+      trackEvent("calculator_calculate", parameters);
+      trackEvent("calculator_result_view", parameters);
+    }, 600);
+    return () => window.clearTimeout(timeout);
+  }, [hasStarted, input]);
 
   const update = <K extends keyof CalculatorInput>(key: K, value: CalculatorInput[K]) => {
+    setInput((current) => ({ ...current, [key]: value }));
+  };
+
+  const markStarted = () => {
+    if (hasStarted) return;
+    setHasStarted(true);
+    trackEvent("calculator_start", {
+      jurisdiction: input.jurisdiction,
+      buyer_type: input.buyerType,
+      property_price_band: propertyPriceBand(input.propertyPrice)
+    });
+  };
+
+  const updateOverride = (key: AdjustableCostKey, value: number) => {
     setInput((current) => ({
       ...current,
-      [key]: value
+      costOverrides: { ...current.costOverrides, [key]: Math.max(0, value || 0) }
     }));
   };
 
-  const updateToggle = (
-    key: "includeMoving" | "includeFurnishing" | "includeInsurance",
-    value: boolean
-  ) => {
-    setInput((current) => ({
-      ...current,
-      [key]: value
-    }));
-  };
-
-  const depositMode = input.depositMode;
+  const currentCostValue = (key: AdjustableCostKey) =>
+    input.costOverrides?.[key] ?? result.breakdown.find((line) => line.key === key)?.value ?? 0;
 
   return (
-    <section id="calculator" aria-labelledby={titleId} className="shell section-gap pt-0">
-      <div className="grid gap-8 xl:grid-cols-[0.92fr_1.08fr]">
-        <div className="surface p-6 sm:p-8">
-          <div className="space-y-3">
+    <section id="calculator" aria-labelledby={titleId} className="shell pb-10 sm:pb-12">
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[0.92fr_1.08fr] xl:items-start">
+        <div className="surface min-w-0 p-5 sm:p-7">
+          <div className="space-y-2">
             <p className="eyebrow">Calculator</p>
-            <h2 id={titleId} className="font-serif text-3xl text-text">
-              House buying costs calculator for the UK
-            </h2>
-            <p className="text-muted">
-              Use the calculator to estimate the total upfront cash needed before completion. Adjust the
-              property price, location, buyer type, deposit and optional costs to see how the total changes.
-            </p>
+            <h2 id={titleId} className="font-serif text-3xl text-text">Build your buying budget</h2>
+            <p className="text-muted">Defaults are planning estimates. Replace them with quotations whenever you have them.</p>
           </div>
 
-          <form className="mt-8 grid gap-5">
+          <form className="mt-6 grid gap-5" onFocusCapture={markStarted} onChange={markStarted} noValidate>
             <label className="grid gap-2">
-              <span className="text-sm font-medium text-text">Property price</span>
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">£</span>
+              <span className="text-sm font-semibold text-text">Property price</span>
+              <span className="relative">
+                <span aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">£</span>
                 <input
                   type="number"
+                  inputMode="decimal"
                   min={50000}
+                  max={10000000}
                   step={1000}
                   value={input.propertyPrice}
-                  onChange={(event) => update("propertyPrice", Number(event.target.value) || 0)}
-                  className="w-full rounded-2xl border border-line bg-white px-10 py-3 text-text"
+                  aria-invalid={propertyPriceInvalid}
+                  aria-describedby={propertyHelpId}
+                  onChange={(event) => update("propertyPrice", Number(event.target.value))}
+                  className="min-h-12 w-full rounded-2xl border border-line bg-white px-10 py-3 text-base text-text aria-[invalid=true]:border-warning"
                 />
-              </div>
+              </span>
+              <span id={propertyHelpId} className={`text-sm ${propertyPriceInvalid ? "font-medium text-warning" : "text-muted"}`}>
+                {propertyPriceInvalid ? "Enter a property price from £50,000 to £10,000,000." : "Enter the agreed or expected purchase price."}
+              </span>
             </label>
 
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               <label className="grid gap-2">
-                <span className="text-sm font-medium text-text">Location / jurisdiction</span>
-                <select
-                  value={input.jurisdiction}
-                  onChange={(event) => update("jurisdiction", event.target.value as Jurisdiction)}
-                  className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-text"
-                >
-                  {Object.entries(jurisdictionLabels).map(([value, label]) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
+                <span className="text-sm font-semibold text-text">UK jurisdiction</span>
+                <select value={input.jurisdiction} onChange={(event) => update("jurisdiction", event.target.value as Jurisdiction)} className="min-h-12 w-full rounded-2xl border border-line bg-white px-4 py-3 text-text">
+                  {Object.entries(jurisdictionLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select>
+                <span className="text-sm text-muted">Controls SDLT, LBTT or LTT and registration treatment.</span>
               </label>
-
               <label className="grid gap-2">
-                <span className="text-sm font-medium text-text">Buyer type</span>
-                <select
-                  value={input.buyerType}
-                  onChange={(event) => update("buyerType", event.target.value as BuyerType)}
-                  className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-text"
-                >
-                  {Object.entries(buyerTypeLabels).map(([value, label]) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
+                <span className="text-sm font-semibold text-text">Buyer type</span>
+                <select value={input.buyerType} onChange={(event) => update("buyerType", event.target.value as BuyerType)} className="min-h-12 w-full rounded-2xl border border-line bg-white px-4 py-3 text-text">
+                  {Object.entries(buyerTypeLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                 </select>
+                <span className="text-sm text-muted">Tax reliefs and supplements depend on eligibility.</span>
               </label>
             </div>
 
             <fieldset className="grid gap-3 rounded-3xl border border-line p-4">
-              <legend className="px-2 text-sm font-medium text-text">Deposit input mode</legend>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { value: "amount", label: "Deposit amount" },
-                  { value: "percentage", label: "Deposit percentage" }
-                ].map((option) => {
-                  const selected = depositMode === option.value;
-                  return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => update("depositMode", option.value as DepositMode)}
-                      className={`rounded-full px-4 py-2 text-sm font-medium ${
-                        selected ? "bg-brand text-white" : "border border-line bg-white text-text"
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  );
-                })}
+              <legend className="px-2 text-sm font-semibold text-text">Deposit</legend>
+              <div className="grid grid-cols-2 gap-2">
+                {(["percentage", "amount"] as DepositMode[]).map((mode) => (
+                  <button key={mode} type="button" aria-pressed={input.depositMode === mode} onClick={() => update("depositMode", mode)} className={`min-h-11 rounded-full px-3 py-2 text-sm font-semibold ${input.depositMode === mode ? "bg-brand text-white" : "border border-line bg-white text-text"}`}>
+                    {mode === "percentage" ? "Percentage" : "Amount"}
+                  </button>
+                ))}
               </div>
-
-              {depositMode === "amount" ? (
-                <label className="grid gap-2">
-                  <span className="text-sm font-medium text-text">Deposit amount</span>
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">£</span>
-                    <input
-                      type="number"
-                      min={0}
-                      step={1000}
-                      value={input.depositAmount ?? 0}
-                      onChange={(event) => update("depositAmount", Number(event.target.value) || 0)}
-                      className="w-full rounded-2xl border border-line bg-white px-10 py-3 text-text"
-                    />
-                  </div>
-                </label>
-              ) : (
-                <label className="grid gap-2">
-                  <span className="text-sm font-medium text-text">Deposit percentage</span>
-                  <div className="relative">
-                    <input
-                      type="number"
-                      min={0}
-                      max={100}
-                      step={1}
-                      value={input.depositPercentage ?? 0}
-                      onChange={(event) => update("depositPercentage", Number(event.target.value) || 0)}
-                      className="w-full rounded-2xl border border-line bg-white px-4 py-3 pr-10 text-text"
-                    />
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted">%</span>
-                  </div>
-                </label>
-              )}
+              <label className="grid gap-2">
+                <span className="text-sm font-medium text-text">{input.depositMode === "percentage" ? "Deposit percentage" : "Deposit amount"}</span>
+                <span className="relative">
+                  {input.depositMode === "amount" ? <span aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">£</span> : null}
+                  <input
+                    type="number"
+                    inputMode="decimal"
+                    min={0}
+                    max={input.depositMode === "percentage" ? 100 : Math.max(0, input.propertyPrice)}
+                    step={input.depositMode === "percentage" ? 0.5 : 1000}
+                    value={input.depositMode === "percentage" ? input.depositPercentage ?? 0 : input.depositAmount ?? 0}
+                    aria-invalid={depositAmountInvalid}
+                    aria-describedby={depositHelpId}
+                    onChange={(event) => update(input.depositMode === "percentage" ? "depositPercentage" : "depositAmount", Number(event.target.value))}
+                    className={`min-h-12 w-full rounded-2xl border border-line bg-white py-3 text-base text-text ${input.depositMode === "amount" ? "px-10" : "px-4 pr-10"}`}
+                  />
+                  {input.depositMode === "percentage" ? <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted">%</span> : null}
+                </span>
+                <span id={depositHelpId} className={`text-sm ${depositAmountInvalid ? "font-medium text-warning" : "text-muted"}`}>
+                  {depositAmountInvalid ? "The deposit cannot exceed the property price." : "Use the cash amount or percentage you plan to contribute."}
+                </span>
+              </label>
             </fieldset>
 
             <label className="grid gap-2">
-              <span className="text-sm font-medium text-text">Cost assumption level</span>
-              <select
-                value={input.assumptionLevel}
-                onChange={(event) => update("assumptionLevel", event.target.value as AssumptionLevel)}
-                className="w-full rounded-2xl border border-line bg-white px-4 py-3 text-text"
-              >
-                {Object.entries(assumptionLevelLabels).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
+              <span className="text-sm font-semibold text-text">Planning estimate level</span>
+              <select value={input.assumptionLevel} onChange={(event) => update("assumptionLevel", event.target.value as AssumptionLevel)} className="min-h-12 w-full rounded-2xl border border-line bg-white px-4 py-3 text-text">
+                {Object.entries(assumptionLevelLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
+              <span className="text-sm text-muted">Changes market estimates, not official tax rates.</span>
             </label>
 
-            <fieldset className="grid gap-3 rounded-3xl border border-line p-4">
-              <legend className="px-2 text-sm font-medium text-text">Optional planning costs</legend>
-              {toggleOptions.map((option) => (
-                <label key={option.key} className="flex items-center justify-between gap-4 rounded-2xl bg-panel-strong px-4 py-3">
-                  <span className="text-sm font-medium text-text">{option.label}</span>
-                  <input
-                    type="checkbox"
-                    checked={option.value}
-                    onChange={(event) => updateToggle(option.key, event.target.checked)}
-                    className="h-5 w-5 rounded border-line text-brand"
-                  />
+            <fieldset className="grid gap-2 rounded-3xl border border-line p-4">
+              <legend className="px-2 text-sm font-semibold text-text">Optional allowances</legend>
+              {optionalToggles.map(({ key, label }) => (
+                <label key={key} className="flex min-h-12 items-center justify-between gap-4 rounded-2xl bg-panel-strong px-4 py-3">
+                  <span className="text-sm font-medium text-text">Include {label.toLowerCase()}</span>
+                  <input type="checkbox" checked={Boolean(input[key])} onChange={(event) => update(key, event.target.checked)} className="h-5 w-5 rounded border-line text-brand" />
                 </label>
               ))}
+              {input.includeContingency ? (
+                <label className="mt-2 grid gap-2">
+                  <span className="text-sm font-medium text-text">Contingency percentage</span>
+                  <span className="relative">
+                    <input type="number" inputMode="decimal" min={0} max={25} step={1} value={input.contingencyPercentage ?? 10} onChange={(event) => update("contingencyPercentage", Number(event.target.value))} className="min-h-12 w-full rounded-2xl border border-line bg-white px-4 py-3 pr-10 text-text" />
+                    <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted">%</span>
+                  </span>
+                </label>
+              ) : null}
             </fieldset>
+
+            <details className="rounded-3xl border border-line bg-white p-4">
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold text-text">Replace estimates with your quotes</summary>
+              <p className="mt-2 text-sm text-muted">Values you change are labelled as user-entered in the result.</p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {adjustableCosts.map(({ key, label }) => (
+                  <label key={key} className="grid gap-2">
+                    <span className="text-sm font-medium text-text">{label}</span>
+                    <span className="relative">
+                      <span aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted">£</span>
+                      <input type="number" inputMode="decimal" min={0} step={10} value={currentCostValue(key)} onChange={(event) => updateOverride(key, Number(event.target.value))} className="min-h-11 w-full rounded-xl border border-line bg-white px-8 py-2 text-text" />
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </details>
           </form>
         </div>
 
-        <div className="space-y-6" aria-live="polite">
-          <ResultsCard
-            total={result.totalUpfrontCash}
-            deposit={result.depositAmount}
-            tax={result.propertyTaxAmount}
-            notes={result.notes}
-          />
-
-          <div className="surface p-5 text-sm text-muted">
-            <p className="font-semibold text-text">Snapshot</p>
-            <p className="mt-2">
-              At the current settings, the calculator suggests a total upfront cash target of{" "}
-              <span className="font-semibold text-text">{formatCurrency(result.totalUpfrontCash)}</span>.
-            </p>
-          </div>
-
+        <div className="min-w-0 space-y-5 xl:sticky xl:top-4" aria-live="polite" aria-atomic="false">
+          <ResultsCard total={result.totalUpfrontCash} deposit={result.depositAmount} tax={result.propertyTaxAmount} notes={result.notes} />
           <CostBreakdownTable items={result.breakdown} />
         </div>
       </div>

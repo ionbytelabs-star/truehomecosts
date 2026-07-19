@@ -2,7 +2,7 @@ import type { CalculatorInput } from "@/lib/calculator";
 
 export const defaultCalculatorInput: CalculatorInput = {
   propertyPrice: 300_000,
-  jurisdiction: "england-ni",
+  jurisdiction: "england",
   buyerType: "first-time-buyer",
   depositMode: "percentage",
   depositPercentage: 10,
@@ -10,5 +10,7 @@ export const defaultCalculatorInput: CalculatorInput = {
   assumptionLevel: "average",
   includeMoving: true,
   includeFurnishing: false,
-  includeInsurance: true
+  includeInsurance: true,
+  includeContingency: true,
+  contingencyPercentage: 10
 };

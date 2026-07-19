@@ -5,7 +5,8 @@ import type { JurisdictionRangeMap } from "./types";
  * This is not an official fee and not every buyer pays it upfront in one lump sum.
  */
 export const insuranceAllowanceByJurisdiction: JurisdictionRangeMap = {
-  "england-ni": { low: 180, average: 320, high: 520 },
+  england: { low: 180, average: 320, high: 520 },
   scotland: { low: 170, average: 300, high: 500 },
-  wales: { low: 180, average: 320, high: 520 }
+  wales: { low: 180, average: 320, high: 520 },
+  "northern-ireland": { low: 180, average: 320, high: 520 }
 };

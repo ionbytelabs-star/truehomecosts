@@ -1,6 +1,6 @@
 /**
  * Official LBTT residential bands for Scotland.
- * Source reviewed April 2026:
+ * Source verified 19 July 2026:
  * https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property
  */
 export const lbttStandardBands = [

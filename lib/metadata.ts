@@ -7,6 +7,7 @@ type MetadataOptions = {
   description: string;
   path?: string;
   keywords?: string[];
+  absoluteTitle?: boolean;
 };
 
 export function absoluteUrl(path = "/"): string {
@@ -14,11 +15,12 @@ export function absoluteUrl(path = "/"): string {
   return new URL(normalisedPath, siteConfig.url).toString();
 }
 
-export function buildMetadata({ title, description, path = "/", keywords }: MetadataOptions): Metadata {
+export function buildMetadata({ title, description, path = "/", keywords, absoluteTitle = false }: MetadataOptions): Metadata {
   const url = absoluteUrl(path);
+  const socialTitle = absoluteTitle ? title : `${title} | ${siteConfig.name}`;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords,
     metadataBase: new URL(siteConfig.url),
@@ -28,7 +30,7 @@ export function buildMetadata({ title, description, path = "/", keywords }: Meta
     openGraph: {
       type: "website",
       url,
-      title: `${title} | ${siteConfig.name}`,
+      title: socialTitle,
       description,
       siteName: siteConfig.name,
       images: [
@@ -42,7 +44,7 @@ export function buildMetadata({ title, description, path = "/", keywords }: Meta
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteConfig.name}`,
+      title: socialTitle,
       description,
       images: [absoluteUrl("/og-image.png")]
     }

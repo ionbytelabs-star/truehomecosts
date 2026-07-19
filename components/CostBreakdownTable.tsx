@@ -5,19 +5,11 @@ type CostBreakdownTableProps = {
   items: BreakdownLine[];
 };
 
-const breakdownTypeLabels: Record<string, string> = {
-  deposit: "Buyer cash contribution",
-  "property-tax": "Official charge",
-  solicitors: "Solicitor / conveyancing estimate",
-  searches: "Solicitor / conveyancing estimate",
-  survey: "Market estimate",
-  "mortgage-fees": "Lender charge",
-  "land-registry": "Official charge",
-  "telegraphic-transfer": "Solicitor / conveyancing estimate",
-  moving: "Optional cost",
-  insurance: "Optional cost",
-  furnishing: "Optional cost",
-  contingency: "Situation-dependent cost"
+const classificationLabels = {
+  official: "Official charge",
+  estimate: "Market estimate",
+  "user-entered": "User-entered amount",
+  optional: "Optional allowance"
 };
 
 export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
@@ -28,8 +20,7 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           Cost breakdown
         </h3>
         <p className="mt-1 text-sm text-muted">
-          The table below shows the current calculator result by cost item, separating official charges from
-          lender, conveyancing, market and optional estimates so the total is easier to sense-check.
+          Official charges, market estimates, your amounts and optional allowances are labelled consistently.
         </p>
       </div>
 
@@ -56,7 +47,7 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
                   {item.label}
                 </th>
                 <td className="px-6 py-4 text-sm text-muted">
-                  {breakdownTypeLabels[item.key] ?? (item.sourceType === "official" ? "Official charge" : "Estimate")}
+                  {classificationLabels[item.classification]}
                 </td>
                 <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
                   {formatCurrency(item.value)}
@@ -70,7 +61,7 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
         </table>
       </div>
       <p className="border-t border-line bg-[#fcfcf9] px-6 py-3 text-xs text-muted">
-        On smaller screens, scroll sideways to read the amount and explanation columns in full.
+        This is a planning estimate, not a quotation. Confirm taxes, legal fees, mortgage charges and other costs before committing to a purchase. On smaller screens, scroll sideways for all columns.
       </p>
     </div>
   );

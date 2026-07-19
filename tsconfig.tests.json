@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "incremental": false,
+    "isolatedModules": false,
+    "outDir": ".test-build",
+    "rootDir": "."
+  },
+  "include": [
+    "tests/**/*.ts",
+    "lib/calculator.ts",
+    "lib/format.ts",
+    "lib/site.ts",
+    "lib/price-guide-links.ts",
+    "content/home.ts",
+    "data/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

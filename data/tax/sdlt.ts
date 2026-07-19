@@ -1,6 +1,6 @@
 /**
  * Official SDLT residential bands for England and Northern Ireland.
- * Source reviewed April 2026:
+ * Source verified 19 July 2026:
  * https://www.gov.uk/stamp-duty-land-tax/residential-property-rates
  */
 export const sdltStandardBands = [

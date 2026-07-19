@@ -1,10 +1,12 @@
 import Link from "next/link";
 
+import { calculatorMetadata } from "@/data/assumptions/calculator";
+
 type ContentTrustPanelProps = {
   lastReviewed?: string;
 };
 
-export function ContentTrustPanel({ lastReviewed = "April 2026" }: ContentTrustPanelProps) {
+export function ContentTrustPanel({ lastReviewed = calculatorMetadata.lastReviewedLabel }: ContentTrustPanelProps) {
   return (
     <section className="rounded-3xl border border-line bg-white p-5">
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Content notes</p>

@@ -2,7 +2,7 @@
  * Official HM Land Registry Scale 1 transfer fees for electronic whole-title applications.
  * This is the common route used by conveyancers for standard residential purchases in England and Wales.
  * Northern Ireland uses a separate registration system, so this file is most directly applicable to England and Wales.
- * Source reviewed April 2026:
+ * Source verified 19 July 2026:
  * https://www.gov.uk/government/publications/registration-services-fees
  */
 export const hmlrElectronicScale1Fees = [

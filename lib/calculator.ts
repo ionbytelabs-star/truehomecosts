@@ -1,24 +1,37 @@
-import { furnishingCostBands } from "@/data/assumptions/furnishing";
-import { insuranceAllowanceByJurisdiction } from "@/data/assumptions/insurance";
-import { mortgageFeeBands } from "@/data/assumptions/mortgageFees";
-import { movingCostBands } from "@/data/assumptions/moving";
-import { searchFeeByJurisdiction } from "@/data/assumptions/searches";
-import { solicitorFeeBands } from "@/data/assumptions/solicitors";
-import { surveyFeeBands } from "@/data/assumptions/surveys";
-import { registrationFallbackFee, telegraphicTransferFee } from "@/data/assumptions/transfers";
-import type { PriceBandRange } from "@/data/assumptions/types";
-import { hmlrElectronicScale1Fees } from "@/data/fees/hmlr";
-import { lbttAdsRate, lbttFirstTimeBuyerBands, lbttStandardBands } from "@/data/tax/lbtt";
-import { lttHigherResidentialBands, lttMainResidentialBands } from "@/data/tax/ltt";
+import { furnishingCostBands } from "../data/assumptions/furnishing";
+import { insuranceAllowanceByJurisdiction } from "../data/assumptions/insurance";
+import { mortgageFeeBands } from "../data/assumptions/mortgageFees";
+import { movingCostBands } from "../data/assumptions/moving";
+import { searchFeeByJurisdiction } from "../data/assumptions/searches";
+import { solicitorFeeBands } from "../data/assumptions/solicitors";
+import { surveyFeeBands } from "../data/assumptions/surveys";
+import { registrationFallbackFee, telegraphicTransferFee } from "../data/assumptions/transfers";
+import type { CostClassification } from "../data/assumptions/calculator";
+import type { PriceBandRange } from "../data/assumptions/types";
+import { hmlrElectronicScale1Fees } from "../data/fees/hmlr";
+import { getNorthernIrelandRegistrationAllowance } from "../data/fees/northern-ireland";
+import { lbttAdsRate, lbttFirstTimeBuyerBands, lbttStandardBands } from "../data/tax/lbtt";
+import { lttHigherResidentialBands, lttMainResidentialBands } from "../data/tax/ltt";
 import {
   sdltAdditionalPropertySurchargeRate,
   sdltFirstTimeBuyerBands,
   sdltStandardBands
-} from "@/data/tax/sdlt";
-import { clampNumber } from "@/lib/format";
-import type { AssumptionLevel, BuyerType, Jurisdiction } from "@/lib/site";
+} from "../data/tax/sdlt";
+import { clampNumber } from "./format";
+import type { AssumptionLevel, BuyerType, Jurisdiction } from "./site";
 
 export type DepositMode = "amount" | "percentage";
+
+export type AdjustableCostKey =
+  | "solicitors"
+  | "searches"
+  | "survey"
+  | "mortgage-fees"
+  | "land-registry"
+  | "telegraphic-transfer"
+  | "moving"
+  | "insurance"
+  | "furnishing";
 
 export type CalculatorInput = {
   propertyPrice: number;
@@ -31,6 +44,9 @@ export type CalculatorInput = {
   includeMoving: boolean;
   includeFurnishing: boolean;
   includeInsurance: boolean;
+  includeContingency?: boolean;
+  contingencyPercentage?: number;
+  costOverrides?: Partial<Record<AdjustableCostKey, number>>;
 };
 
 export type BreakdownLine = {
@@ -38,7 +54,11 @@ export type BreakdownLine = {
   label: string;
   value: number;
   sourceType: "official" | "estimate";
+  classification: CostClassification;
   detail: string;
+  sourceName?: string;
+  sourceUrl?: string;
+  lastVerified?: string;
 };
 
 export type CalculatorResult = {
@@ -53,10 +73,7 @@ export type CalculatorResult = {
   notes: string[];
 };
 
-type ProgressiveBand = {
-  upTo: number | null;
-  rate: number;
-};
+type ProgressiveBand = { upTo: number | null; rate: number };
 
 function getRangeValue(bands: PriceBandRange[], price: number, level: AssumptionLevel): number {
   const match = bands.find((band) => band.upTo === null || price <= band.upTo) ?? bands[bands.length - 1];
@@ -64,214 +81,211 @@ function getRangeValue(bands: PriceBandRange[], price: number, level: Assumption
 }
 
 function calculateProgressiveTax(price: number, bands: readonly ProgressiveBand[]): number {
-  let remaining = price;
   let previousThreshold = 0;
   let total = 0;
 
   for (const band of bands) {
-    if (remaining <= 0) {
-      break;
-    }
-
+    if (price <= previousThreshold) break;
     const upperBound = band.upTo ?? Number.POSITIVE_INFINITY;
     const taxableWithinBand = Math.min(price, upperBound) - previousThreshold;
-
-    if (taxableWithinBand > 0) {
-      total += taxableWithinBand * band.rate;
-    }
-
+    if (taxableWithinBand > 0) total += taxableWithinBand * band.rate;
     previousThreshold = upperBound;
-    remaining = price - previousThreshold;
   }
 
   return Math.max(0, Math.round(total));
 }
 
-function calculatePropertyTax(price: number, jurisdiction: Jurisdiction, buyerType: BuyerType): number {
-  if (jurisdiction === "england-ni") {
-    if (buyerType === "first-time-buyer" && price <= 500_000) {
-      return calculateProgressiveTax(price, sdltFirstTimeBuyerBands);
+export function calculatePropertyTax(price: number, jurisdiction: Jurisdiction, buyerType: BuyerType): number {
+  const safePrice = Math.max(0, price);
+  if (jurisdiction === "england" || jurisdiction === "northern-ireland") {
+    if (buyerType === "first-time-buyer" && safePrice <= 500_000) {
+      return calculateProgressiveTax(safePrice, sdltFirstTimeBuyerBands);
     }
-
-    const standardTax = calculateProgressiveTax(price, sdltStandardBands);
+    const standardTax = calculateProgressiveTax(safePrice, sdltStandardBands);
     return buyerType === "additional-property"
-      ? standardTax + Math.round(price * sdltAdditionalPropertySurchargeRate)
+      ? standardTax + Math.round(safePrice * sdltAdditionalPropertySurchargeRate)
       : standardTax;
   }
 
   if (jurisdiction === "scotland") {
     const baseTax = calculateProgressiveTax(
-      price,
+      safePrice,
       buyerType === "first-time-buyer" ? lbttFirstTimeBuyerBands : lbttStandardBands
     );
-
-    return buyerType === "additional-property" ? baseTax + Math.round(price * lbttAdsRate) : baseTax;
+    return buyerType === "additional-property" ? baseTax + Math.round(safePrice * lbttAdsRate) : baseTax;
   }
 
   return calculateProgressiveTax(
-    price,
+    safePrice,
     buyerType === "additional-property" ? lttHigherResidentialBands : lttMainResidentialBands
   );
 }
 
-function calculateRegistryFee(price: number, jurisdiction: Jurisdiction, level: AssumptionLevel): BreakdownLine {
-  if (jurisdiction === "wales" || jurisdiction === "england-ni") {
+function overriddenValue(input: CalculatorInput, key: AdjustableCostKey, fallback: number) {
+  const override = input.costOverrides?.[key];
+  return override === undefined ? fallback : Math.max(0, Math.round(override));
+}
+
+function estimateLine(
+  input: CalculatorInput,
+  key: AdjustableCostKey,
+  label: string,
+  fallback: number,
+  detail: string,
+  optional = false
+): BreakdownLine {
+  const hasOverride = input.costOverrides?.[key] !== undefined;
+  return {
+    key,
+    label,
+    value: overriddenValue(input, key, fallback),
+    sourceType: "estimate",
+    classification: hasOverride ? "user-entered" : optional ? "optional" : "estimate",
+    detail: hasOverride ? `${detail} You replaced the planning default with your own amount.` : detail
+  };
+}
+
+function calculateRegistryFee(price: number, input: CalculatorInput): BreakdownLine {
+  if (input.jurisdiction === "england" || input.jurisdiction === "wales") {
     const fee =
       hmlrElectronicScale1Fees.find((band) => band.upTo === null || price <= band.upTo)?.fee ??
       hmlrElectronicScale1Fees[hmlrElectronicScale1Fees.length - 1].fee;
-
+    const override = input.costOverrides?.["land-registry"];
     return {
       key: "land-registry",
-      label: "Land registry / registration",
-      value: fee,
-      sourceType: "official",
+      label: "Registration fee",
+      value: override === undefined ? fee : Math.max(0, Math.round(override)),
+      sourceType: override === undefined ? "official" : "estimate",
+      classification: override === undefined ? "official" : "user-entered",
       detail:
-        "Uses current HM Land Registry electronic Scale 1 fee bands, which are directly relevant to England and Wales and a planning proxy for Northern Ireland."
+        override === undefined
+          ? "HM Land Registry electronic Scale 1 fee for a transfer of a whole registered title in England or Wales."
+          : "Your registration allowance; confirm the application type and fee with your solicitor.",
+      ...(override === undefined
+        ? {
+            sourceName: "HM Land Registry",
+            sourceUrl: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees",
+            lastVerified: "2026-07-19"
+          }
+        : {})
     };
   }
 
-  return {
-    key: "land-registry",
-    label: "Land registry / registration",
-    value: registrationFallbackFee[level],
-    sourceType: "estimate",
-    detail: "Planning estimate for Scottish registration and solicitor filing costs."
-  };
+  if (input.jurisdiction === "northern-ireland") {
+    return estimateLine(
+      input,
+      "land-registry",
+      "Northern Ireland registration allowance",
+      getNorthernIrelandRegistrationAllowance(price),
+      "Adjustable allowance based on the current LPS electronic Land Registry transfer scale. Registry of Deeds or other treatment can differ, so confirm the exact fee with your solicitor."
+    );
+  }
+
+  return estimateLine(
+    input,
+    "land-registry",
+    "Scottish registration allowance",
+    registrationFallbackFee[input.assumptionLevel],
+    "Adjustable planning allowance for registration and filing; confirm the exact Registers of Scotland charge with your solicitor."
+  );
 }
 
 function getDepositAmount(input: CalculatorInput): number {
   if (input.depositMode === "amount") {
-    return clampNumber(input.depositAmount ?? input.propertyPrice * 0.1, 0, input.propertyPrice);
+    return Math.round(clampNumber(input.depositAmount ?? input.propertyPrice * 0.1, 0, input.propertyPrice));
   }
-
   const percentage = clampNumber(input.depositPercentage ?? 10, 0, 100);
   return Math.round(input.propertyPrice * (percentage / 100));
 }
 
 export function calculateUpfrontCosts(input: CalculatorInput): CalculatorResult {
-  const propertyPrice = Math.max(50_000, Math.round(input.propertyPrice));
-  const depositAmount = getDepositAmount({ ...input, propertyPrice });
+  const propertyPrice = Math.max(50_000, Math.round(input.propertyPrice || 0));
+  const normalisedInput = { ...input, propertyPrice };
+  const depositAmount = getDepositAmount(normalisedInput);
   const propertyTaxAmount = calculatePropertyTax(propertyPrice, input.jurisdiction, input.buyerType);
+  const level = input.assumptionLevel;
 
   const breakdown: BreakdownLine[] = [
     {
       key: "deposit",
       label: "Deposit",
       value: depositAmount,
-      sourceType: "official",
-      detail: "Based on the deposit amount or percentage you entered."
+      sourceType: "estimate",
+      classification: "user-entered",
+      detail: "Calculated from the deposit amount or percentage you entered."
     },
     {
       key: "property-tax",
-      label: "Property tax",
+      label: input.jurisdiction === "scotland" ? "LBTT" : input.jurisdiction === "wales" ? "LTT" : "Stamp Duty Land Tax",
       value: propertyTaxAmount,
       sourceType: "official",
-      detail: "Calculated using current 2026 residential tax rules for the selected UK nation."
+      classification: "official",
+      detail: "Calculated from the official residential tax rules for the selected UK jurisdiction and buyer type.",
+      sourceName:
+        input.jurisdiction === "scotland"
+          ? "Revenue Scotland"
+          : input.jurisdiction === "wales"
+            ? "Welsh Revenue Authority"
+            : "HM Revenue & Customs",
+      sourceUrl:
+        input.jurisdiction === "scotland"
+          ? "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property"
+          : input.jurisdiction === "wales"
+            ? "https://www.gov.wales/land-transaction-tax-rates-and-bands"
+            : "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates",
+      lastVerified: "2026-07-19"
     },
-    {
-      key: "solicitors",
-      label: "Solicitor / conveyancing",
-      value: getRangeValue(solicitorFeeBands, propertyPrice, input.assumptionLevel),
-      sourceType: "estimate",
-      detail: "Legal fee estimate excluding searches and bank transfer fees."
-    },
-    {
-      key: "searches",
-      label: "Search fees",
-      value: searchFeeByJurisdiction[input.jurisdiction][input.assumptionLevel],
-      sourceType: "estimate",
-      detail: "Typical local authority, drainage and environmental search pack."
-    },
-    {
-      key: "survey",
-      label: "Survey",
-      value: getRangeValue(surveyFeeBands, propertyPrice, input.assumptionLevel),
-      sourceType: "estimate",
-      detail: "Allowance for a basic survey through to a fuller structural survey."
-    },
-    {
-      key: "mortgage-fees",
-      label: "Mortgage fees",
-      value: getRangeValue(mortgageFeeBands, propertyPrice, input.assumptionLevel),
-      sourceType: "estimate",
-      detail: "Bundle for likely broker, valuation, booking or arrangement fees if using a mortgage."
-    },
-    calculateRegistryFee(propertyPrice, input.jurisdiction, input.assumptionLevel),
-    {
-      key: "telegraphic-transfer",
-      label: "Telegraphic transfer fee",
-      value: telegraphicTransferFee[input.assumptionLevel],
-      sourceType: "estimate",
-      detail: "Typical solicitor bank transfer charge for sending completion money."
-    }
+    estimateLine(input, "solicitors", "Solicitor / conveyancing", getRangeValue(solicitorFeeBands, propertyPrice, level), "Planning estimate for standard legal work; searches and transfer fees are separate."),
+    estimateLine(input, "searches", "Search fees", searchFeeByJurisdiction[input.jurisdiction][level], "Planning estimate for the usual search pack."),
+    estimateLine(input, "survey", "Survey", getRangeValue(surveyFeeBands, propertyPrice, level), "Planning estimate; survey level and property condition affect the quote."),
+    estimateLine(input, "mortgage-fees", "Mortgage fees", getRangeValue(mortgageFeeBands, propertyPrice, level), "Planning estimate for possible lender, valuation, arrangement or broker charges."),
+    calculateRegistryFee(propertyPrice, input),
+    estimateLine(input, "telegraphic-transfer", "Bank transfer fee", telegraphicTransferFee[level], "Typical solicitor charge for sending completion money.")
   ];
 
-  if (input.includeMoving) {
-    breakdown.push({
-      key: "moving",
-      label: "Moving costs",
-      value: getRangeValue(movingCostBands, propertyPrice, input.assumptionLevel),
-      sourceType: "estimate",
-      detail: "Removal van, packing help and moving-day practicals."
-    });
-  }
+  if (input.includeMoving) breakdown.push(estimateLine(input, "moving", "Moving costs", getRangeValue(movingCostBands, propertyPrice, level), "Optional allowance for removals, packing and moving-day practicals.", true));
+  if (input.includeInsurance) breakdown.push(estimateLine(input, "insurance", "Insurance", insuranceAllowanceByJurisdiction[input.jurisdiction][level], "Optional planning allowance for cover around exchange or completion.", true));
+  if (input.includeFurnishing) breakdown.push(estimateLine(input, "furnishing", "Furnishing and setup", getRangeValue(furnishingCostBands, propertyPrice, level), "Optional move-in allowance for furniture, white goods and essentials.", true));
 
-  if (input.includeInsurance) {
-    breakdown.push({
-      key: "insurance",
-      label: "Insurance estimate",
-      value: insuranceAllowanceByJurisdiction[input.jurisdiction][input.assumptionLevel],
-      sourceType: "estimate",
-      detail: "Planning allowance for insurance that may start before or at completion."
-    });
-  }
-
-  if (input.includeFurnishing) {
-    breakdown.push({
-      key: "furnishing",
-      label: "Furnishing estimate",
-      value: getRangeValue(furnishingCostBands, propertyPrice, input.assumptionLevel),
-      sourceType: "estimate",
-      detail: "Optional move-in budget for furniture, white goods and first-home essentials."
-    });
-  }
-
-  const estimatedSubtotal = breakdown
-    .filter((line) => line.sourceType === "estimate")
+  const estimateBase = breakdown
+    .filter((line) => line.key !== "deposit" && line.classification !== "official")
     .reduce((sum, line) => sum + line.value, 0);
+  const contingencyPercentage = clampNumber(input.contingencyPercentage ?? 10, 0, 25);
+  const contingencyAmount = input.includeContingency !== false ? Math.round(estimateBase * (contingencyPercentage / 100)) : 0;
+
+  if (input.includeContingency !== false) {
+    breakdown.push({
+      key: "contingency",
+      label: "Contingency",
+      value: contingencyAmount,
+      sourceType: "estimate",
+      classification: "optional",
+      detail: `${contingencyPercentage}% of estimate-led costs as an optional budgeting cushion.`
+    });
+  }
+
   const officialSubtotal = breakdown
-    .filter((line) => line.sourceType === "official")
+    .filter((line) => line.classification === "official")
     .reduce((sum, line) => sum + line.value, 0);
-
-  const contingencyMultiplier = {
-    low: 0.08,
-    average: 0.1,
-    high: 0.12
-  }[input.assumptionLevel];
-
-  const contingencyAmount = Math.max(500, Math.round(estimatedSubtotal * contingencyMultiplier));
-
-  breakdown.push({
-    key: "contingency",
-    label: "Recommended buffer",
-    value: contingencyAmount,
-    sourceType: "estimate",
-    detail: "A practical cushion for quote changes, minor repairs, extra disbursements or move-in surprises."
-  });
+  const estimatedSubtotal = breakdown
+    .filter((line) => line.key !== "deposit" && line.classification !== "official")
+    .reduce((sum, line) => sum + line.value, 0);
 
   return {
     propertyPrice,
     depositAmount,
     propertyTaxAmount,
     contingencyAmount,
-    estimatedSubtotal: estimatedSubtotal + contingencyAmount,
+    estimatedSubtotal,
     officialSubtotal,
-    totalUpfrontCash: officialSubtotal + estimatedSubtotal + contingencyAmount,
+    totalUpfrontCash: breakdown.reduce((sum, line) => sum + line.value, 0),
     breakdown,
     notes: [
-      "Property tax and HM Land Registry fees are based on official published bands reviewed in April 2026.",
-      "Searches, surveys, legal fees, mortgage costs, moving budgets and optional extras are planning estimates only.",
-      "Northern Ireland, Scotland, leasehold, new-build and complex transactions can create extra costs not shown in the headline total."
+      "Taxes use official jurisdiction-specific rules verified on 19 July 2026.",
+      "Legal, survey, mortgage, moving and setup figures are adjustable planning estimates.",
+      input.jurisdiction === "northern-ireland"
+        ? "Northern Ireland registration is an adjustable allowance, not an HM Land Registry charge."
+        : "Registration treatment depends on the application; confirm the final charge with your solicitor."
     ]
   };
 }

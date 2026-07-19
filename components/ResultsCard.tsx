@@ -12,7 +12,7 @@ export function ResultsCard({ total, deposit, tax, notes }: ResultsCardProps) {
     <div className="surface overflow-hidden">
       <div className="bg-gradient-to-r from-brand-deep via-brand to-[#178c82] px-6 py-5 text-white">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/80">Total upfront cash needed</p>
-        <p className="mt-3 font-serif text-5xl">{formatCurrency(total)}</p>
+        <p className="mt-3 break-words font-serif text-4xl tabular-nums sm:text-5xl">{formatCurrency(total)}</p>
       </div>
 
       <div className="grid gap-4 p-6 sm:grid-cols-2">

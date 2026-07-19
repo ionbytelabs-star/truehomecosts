@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
     "/cookies",
     "/contact",
+    "/house-buying-cost-by-property-price",
     "/gifted-deposit-mortgage"
   ];
 
