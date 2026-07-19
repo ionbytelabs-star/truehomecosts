@@ -10,7 +10,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildMetadata } from "@/lib/metadata";
 import { articleSchema, breadcrumbSchema, faqPageSchema, webpageSchema } from "@/lib/structured-data";
 
-const path = "/gifted-deposit-mortgage/";
+const path = "/gifted-deposit-mortgage";
 const title = "Gifted Deposit Mortgage UK: Rules, Letter and Rejection Risks";
 const description =
   "Learn how gifted deposit mortgages work, who can gift a deposit, evidence lenders require, tax rules, rejection risks and how to write a gifted deposit letter.";

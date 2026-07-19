@@ -212,7 +212,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             {giftedDepositNote ? (
               <p className="mt-3 max-w-prose text-sm text-muted">
                 {giftedDepositNote.before}
-                <Link href="/gifted-deposit-mortgage/" className="underline hover:text-brand-deep">
+                <Link href="/gifted-deposit-mortgage" className="underline hover:text-brand-deep">
                   {giftedDepositNote.anchor}
                 </Link>
                 {giftedDepositNote.after}

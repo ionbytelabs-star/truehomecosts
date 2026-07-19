@@ -27,7 +27,7 @@ export const footerNav = [
   { href: "/cookies", label: "Cookie Policy" },
   { href: "/hidden-costs-buying-house", label: "Hidden costs guide" },
   { href: "/how-much-money-needed-buy-house", label: "How much cash do I need?" },
-  { href: "/gifted-deposit-mortgage/", label: "Gifted deposit guide" },
+  { href: "/gifted-deposit-mortgage", label: "Gifted deposit guide" },
   { href: "/stamp-duty-explained", label: "Stamp duty explained" },
   { href: "/regional-property-costs-uk", label: "Regional costs" }
 ] as const;

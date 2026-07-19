@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
     "/cookies",
     "/contact",
-    "/gifted-deposit-mortgage/"
+    "/gifted-deposit-mortgage"
   ];
 
   const publicPagesLastModified = new Date("2026-07-19");
