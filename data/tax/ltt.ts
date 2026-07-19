@@ -1,6 +1,6 @@
 /**
  * Official Land Transaction Tax bands for Wales.
- * Main residential and higher residential rates reviewed April 2026.
+ * Main residential and higher residential rates verified 19 July 2026.
  * Source:
  * https://www.gov.wales/land-transaction-tax-rates-and-bands
  */

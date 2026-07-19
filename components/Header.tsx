@@ -20,12 +20,12 @@ export function Header() {
           </div>
         </Link>
 
-        <nav aria-label="Main navigation" className="flex w-full min-w-0 flex-wrap items-center gap-2 text-sm md:w-auto">
+        <nav aria-label="Main navigation" className="mobile-nav flex w-full min-w-0 flex-nowrap items-center gap-1 overflow-x-auto pb-1 text-sm md:w-auto md:flex-wrap md:gap-2 md:overflow-visible md:pb-0">
           {mainNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-3 py-2 font-medium text-text transition hover:bg-brand-soft hover:text-brand-deep"
+              className="shrink-0 rounded-full px-3 py-2 font-medium text-text transition hover:bg-brand-soft hover:text-brand-deep"
             >
               {item.label}
             </Link>

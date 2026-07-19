@@ -1,5 +1,6 @@
 import type { CalculatorResult } from "@/lib/calculator";
 import { formatCurrency } from "@/lib/format";
+import { AnalyticsLink } from "@/components/AnalyticsLink";
 
 type ExampleScenario = {
   title: string;
@@ -50,6 +51,9 @@ export function ExampleScenarios({ scenarios }: ExampleScenariosProps) {
                 </dd>
               </div>
             </dl>
+            <AnalyticsLink href="#calculator" eventName="calculator_example_select" eventParameters={{ example: scenario.title }} className="mt-4 inline-flex min-h-11 items-center font-semibold text-brand-deep underline">
+              Use the calculator for your figures
+            </AnalyticsLink>
           </article>
         ))}
       </div>

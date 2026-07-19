@@ -36,6 +36,7 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": websiteId,
     name: siteConfig.name,
+    alternateName: "True Home Costs",
     url: rootUrl,
     description: siteConfig.description,
     inLanguage: "en-GB",
@@ -62,13 +63,17 @@ export function webpageSchema({
   description,
   path,
   keywords,
-  mainEntity
+  mainEntity,
+  dateModified,
+  about
 }: {
   title: string;
   description: string;
   path: string;
   keywords?: string[];
   mainEntity?: Record<string, unknown>;
+  dateModified?: string;
+  about?: Record<string, unknown>[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -79,6 +84,8 @@ export function webpageSchema({
     url: canonicalUrl(path),
     keywords,
     inLanguage: "en-GB",
+    ...(dateModified ? { dateModified } : {}),
+    ...(about ? { about } : {}),
     publisher: organizationReference(),
     isPartOf: {
       "@type": "WebSite",

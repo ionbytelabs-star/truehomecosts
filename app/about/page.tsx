@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Disclaimer } from "@/components/Disclaimer";
 import { StructuredData } from "@/components/StructuredData";
+import { calculatorMetadata } from "@/data/assumptions/calculator";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
@@ -118,8 +119,8 @@ export default function AboutPage() {
             <h2 className="font-serif text-3xl text-text">Review and update process</h2>
             <p>
               Pages are reviewed when tax rules, fee tables or assumptions change. Where a page does not show a
-              specific review date, it follows the current shared review cycle, April 2026 at the time of
-              writing.
+              specific review date, it follows the current shared review cycle, {calculatorMetadata.lastReviewedLabel}{" "}
+              at the time of writing.
             </p>
             <p>
               Official-rate data is maintained separately from estimate-led assumptions so changes can be made

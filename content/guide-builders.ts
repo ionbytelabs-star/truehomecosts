@@ -545,7 +545,7 @@ export function createPriceGuide(price: number): GuidePageContent {
 
   const englandFtb = scenarioResult({
     propertyPrice: price,
-    jurisdiction: "england-ni",
+    jurisdiction: "england",
     buyerType: "first-time-buyer",
     depositMode: "percentage",
     depositPercentage: 10,
@@ -557,7 +557,7 @@ export function createPriceGuide(price: number): GuidePageContent {
 
   const englandMover = scenarioResult({
     propertyPrice: price,
-    jurisdiction: "england-ni",
+    jurisdiction: "england",
     buyerType: "home-mover",
     depositMode: "percentage",
     depositPercentage: 10,
@@ -593,7 +593,7 @@ export function createPriceGuide(price: number): GuidePageContent {
 
   const additionalProperty = scenarioResult({
     propertyPrice: price,
-    jurisdiction: "england-ni",
+    jurisdiction: "england",
     buyerType: "additional-property",
     depositMode: "percentage",
     depositPercentage: 25,

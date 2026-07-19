@@ -32,14 +32,15 @@ export const footerNav = [
   { href: "/regional-property-costs-uk", label: "Regional costs" }
 ] as const;
 
-export type Jurisdiction = "england-ni" | "scotland" | "wales";
+export type Jurisdiction = "england" | "scotland" | "wales" | "northern-ireland";
 export type BuyerType = "first-time-buyer" | "home-mover" | "additional-property";
 export type AssumptionLevel = "low" | "average" | "high";
 
 export const jurisdictionLabels: Record<Jurisdiction, string> = {
-  "england-ni": "England / Northern Ireland",
+  england: "England",
   scotland: "Scotland",
-  wales: "Wales"
+  wales: "Wales",
+  "northern-ireland": "Northern Ireland"
 };
 
 export const buyerTypeLabels: Record<BuyerType, string> = {
