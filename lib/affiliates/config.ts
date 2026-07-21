@@ -48,6 +48,7 @@ export type AffiliatePlacement = {
   placementType: AffiliatePlacementType;
   pagePath: string;
   afterSectionTitle?: string;
+  afterSectionTitleAliases?: readonly string[];
   presentation: AffiliatePresentation;
   heading?: string;
   body?: string;
@@ -101,6 +102,7 @@ export const affiliatePlacements = {
     placementType: "recommendation_card",
     pagePath: "/moving-costs-uk",
     afterSectionTitle: "Removal company costs for a typical UK move",
+    afterSectionTitleAliases: ["What can change the quotation"],
     presentation: "card",
     heading: "Compare removal quotes",
     body: "AnyVan provides instant prices for UK home removals and man-and-van services.",
@@ -112,6 +114,7 @@ export const affiliatePlacements = {
     placementType: "recommendation_card",
     pagePath: "/moving-costs-uk",
     afterSectionTitle: "Removal company costs for a typical UK move",
+    afterSectionTitleAliases: ["What can change the quotation"],
     presentation: "card",
     heading: "Need temporary storage during your move?",
     body: "Safestore offers personal storage for people moving home, renovating or waiting between completion dates.",
@@ -123,6 +126,7 @@ export const affiliatePlacements = {
     placementType: "banner",
     pagePath: "/moving-costs-uk",
     afterSectionTitle: "Packing services, storage and mail redirection",
+    afterSectionTitleAliases: ["How to use a real quote"],
     presentation: "banner"
   },
   calculatorAnyVanRemovals: {
@@ -235,7 +239,10 @@ export function getAffiliatePlacementUrl(key: AffiliatePlacementKey) {
 export function getAffiliateGuidePlacements(pagePath: string, sectionTitle: string) {
   return affiliatePlacementKeys.filter((key) => {
     const placement = getAffiliatePlacement(key);
-    return placement.pagePath === pagePath && placement.afterSectionTitle === sectionTitle;
+    return (
+      placement.pagePath === pagePath &&
+      (placement.afterSectionTitle === sectionTitle || placement.afterSectionTitleAliases?.includes(sectionTitle))
+    );
   });
 }
 

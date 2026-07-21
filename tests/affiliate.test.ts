@@ -120,6 +120,11 @@ test("guide placements are scoped to removal, storage and completion-delay conte
     "movingGuideSafestoreCard"
   ]);
   assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "Packing services, storage and mail redirection"), ["movingGuideAnyVanBanner"]);
+  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "What can change the quotation"), [
+    "movingGuideAnyVanCard",
+    "movingGuideSafestoreCard"
+  ]);
+  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "How to use a real quote"), ["movingGuideAnyVanBanner"]);
   assert.deepEqual(getAffiliateGuidePlacements("/first-year-cost-buying-house-uk", "Four first-year cost scopes"), [
     "firstYearAnyVan",
     "firstYearSafestore"
