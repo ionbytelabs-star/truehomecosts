@@ -45,6 +45,8 @@ test("affiliate links use the required rel, tab, accessibility and banner attrib
   assert.match(affiliateComponentSource, /height="250"/);
   assert.match(affiliateComponentSource, /loading="lazy"/);
   assert.match(affiliateComponentSource, /decoding="async"/);
+  assert.match(affiliateComponentSource, /onError=\{\(\) => setImageLoaded\(false\)\}/);
+  assert.match(affiliateComponentSource, /Compare removal quotes/);
   assert.match(affiliateComponentSource, /<img/);
   assert.doesNotMatch(affiliateComponentSource, /next\/image/);
   assert.equal(

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import {
   anyVanAffiliate,
@@ -79,25 +79,52 @@ export function AnyVanRecommendation({ placement }: { placement: AnyVanPlacement
 }
 
 export function AnyVanBanner() {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete) setImageLoaded(image.naturalWidth > 0);
+  }, []);
+
   return (
     <aside aria-label="AnyVan advertisement" className="surface mx-auto w-full max-w-[332px] p-4 text-center">
       <AffiliateDisclosure className="mb-3 text-left" />
-      <div className="mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl">
+      <div className="relative mx-auto aspect-[6/5] w-full max-w-[300px] overflow-hidden rounded-2xl bg-brand-deep">
         <AnyVanAffiliateLink
           placement="movingGuideBanner"
           ariaLabel="Visit AnyVan to compare home removal quotes (opens in a new tab)"
-          className="block w-full max-w-[300px] focus-visible:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+          className="relative block h-full w-full max-w-[300px] focus-visible:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
         >
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 flex flex-col justify-between bg-brand-deep p-6 text-left text-white"
+          >
+            <span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-white/70">AnyVan</span>
+              <span className="mt-3 block font-serif text-2xl font-semibold leading-tight">Compare removal quotes</span>
+              <span className="mt-3 block text-sm leading-6 text-white/85">
+                Home removals and man-and-van services across the UK.
+              </span>
+            </span>
+            <span className="inline-flex min-h-11 w-fit items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand-deep">
+              Get a removal quote
+            </span>
+          </span>
           {/* The Awin-hosted creative must remain a normal img with its supplied remote URL. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            ref={imageRef}
             src={anyVanAffiliate.banner.imageSrc}
             alt="Compare home removal and man-and-van quotes with AnyVan"
             width="300"
             height="250"
             loading="lazy"
             decoding="async"
-            className="block h-auto w-full max-w-[300px]"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(false)}
+            data-image-loaded={imageLoaded}
+            className={`absolute inset-0 block h-full w-full max-w-[300px] object-cover transition-opacity ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           />
         </AnyVanAffiliateLink>
       </div>
