@@ -100,7 +100,7 @@ export const affiliatePlacements = {
     clickReference: "moving-costs-guide-anyvan-card",
     placementType: "recommendation_card",
     pagePath: "/moving-costs-uk",
-    afterSectionTitle: "What moving costs include",
+    afterSectionTitle: "Removal company costs for a typical UK move",
     presentation: "card",
     heading: "Compare removal quotes",
     body: "AnyVan provides instant prices for UK home removals and man-and-van services.",
@@ -111,7 +111,7 @@ export const affiliatePlacements = {
     clickReference: "moving-costs-guide-safestore-card",
     placementType: "recommendation_card",
     pagePath: "/moving-costs-uk",
-    afterSectionTitle: "What moving costs include",
+    afterSectionTitle: "Removal company costs for a typical UK move",
     presentation: "card",
     heading: "Need temporary storage during your move?",
     body: "Safestore offers personal storage for people moving home, renovating or waiting between completion dates.",
@@ -122,7 +122,7 @@ export const affiliatePlacements = {
     clickReference: "moving-costs-guide-anyvan-banner",
     placementType: "banner",
     pagePath: "/moving-costs-uk",
-    afterSectionTitle: "What can change the quotation",
+    afterSectionTitle: "Packing services, storage and mail redirection",
     presentation: "banner"
   },
   calculatorAnyVanRemovals: {

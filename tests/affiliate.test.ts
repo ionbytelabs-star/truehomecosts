@@ -16,6 +16,7 @@ const affiliateComponentSource = readFileSync("components/affiliates/Affiliate.t
 const affiliateConfigSource = readFileSync("lib/affiliates/config.ts", "utf8");
 const calculatorSource = readFileSync("components/CalculatorForm.tsx", "utf8");
 const guideTemplateSource = readFileSync("components/GuidePageTemplate.tsx", "utf8");
+const movingGuideSource = readFileSync("content/guides.ts", "utf8");
 const cookiePolicySource = readFileSync("app/cookies/page.tsx", "utf8");
 const privacyPolicySource = readFileSync("app/privacy/page.tsx", "utf8");
 
@@ -114,11 +115,11 @@ test("calculator placement is limited to a relevant moving result", () => {
 });
 
 test("guide placements are scoped to removal, storage and completion-delay content", () => {
-  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "What moving costs include"), [
+  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "Removal company costs for a typical UK move"), [
     "movingGuideAnyVanCard",
     "movingGuideSafestoreCard"
   ]);
-  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "What can change the quotation"), ["movingGuideAnyVanBanner"]);
+  assert.deepEqual(getAffiliateGuidePlacements("/moving-costs-uk", "Packing services, storage and mail redirection"), ["movingGuideAnyVanBanner"]);
   assert.deepEqual(getAffiliateGuidePlacements("/first-year-cost-buying-house-uk", "Four first-year cost scopes"), [
     "firstYearAnyVan",
     "firstYearSafestore"
@@ -126,6 +127,8 @@ test("guide placements are scoped to removal, storage and completion-delay conte
   assert.deepEqual(getAffiliateGuidePlacements("/hidden-costs-buying-new-build-home-uk", "New build delays and temporary costs"), ["newBuildSafestoreDelays"]);
   assert.deepEqual(getAffiliateGuidePlacements("/hidden-costs-buying-new-build-home-uk", "Moving and first-year ownership costs"), ["newBuildAnyVanMoving"]);
   assert.deepEqual(getAffiliateGuidePlacements("/stamp-duty-explained", "Registration is a separate charge"), []);
+  assert.match(movingGuideSource, /title: "Removal company costs for a typical UK move"/);
+  assert.match(movingGuideSource, /title: "Packing services, storage and mail redirection"/);
   assert.match(guideTemplateSource, /getAffiliateGuidePlacements/);
   assert.match(guideTemplateSource, /AffiliateRecommendationGroup/);
 });
