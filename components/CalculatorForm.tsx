@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 
-import { AnyVanRecommendation } from "@/components/affiliates/AnyVanAffiliate";
+import { AffiliateRecommendationCard } from "@/components/affiliates/Affiliate";
 import { CostBreakdownTable } from "@/components/CostBreakdownTable";
 import { ResultsCard } from "@/components/ResultsCard";
 import {
@@ -230,7 +230,7 @@ export function CalculatorForm() {
               hasMovingCost
                 ? {
                     key: "moving",
-                    content: <AnyVanRecommendation placement="calculatorRemovalsResult" />
+                    content: <AffiliateRecommendationCard placement="calculatorAnyVanRemovals" />
                   }
                 : undefined
             }

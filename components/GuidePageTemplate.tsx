@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { AnyVanBanner, AnyVanRecommendation } from "@/components/affiliates/AnyVanAffiliate";
+import {
+  AffiliateBanner,
+  AffiliateRecommendationGroup
+} from "@/components/affiliates/Affiliate";
 import { AtAGlance } from "@/components/AtAGlance";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CalloutBox } from "@/components/CalloutBox";
@@ -17,7 +20,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { TrustSignals } from "@/components/TrustSignals";
 import { guideMap } from "@/content/guides";
 import type { GuidePageContent } from "@/content/types";
-import { getAnyVanGuidePlacements, getAnyVanPlacement } from "@/lib/affiliates/anyvan";
+import { getAffiliateGuidePlacements, getAffiliatePlacement } from "@/lib/affiliates/config";
 import { getStrategicGuideSlugs, headingToId } from "@/lib/guide-links";
 import {
   guidePagesForPopularExamples,
@@ -244,14 +247,22 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
               </ContentSection>
 
-              {getAnyVanGuidePlacements(`/${guide.slug}`, section.title).map((placementKey) => {
-                const placement = getAnyVanPlacement(placementKey);
-                return placement.presentation === "banner" ? (
-                  <AnyVanBanner key={placementKey} />
-                ) : (
-                  <AnyVanRecommendation key={placementKey} placement={placementKey} />
+              {(() => {
+                const placementKeys = getAffiliateGuidePlacements(`/${guide.slug}`, section.title);
+                const bannerKeys = placementKeys.filter(
+                  (placementKey) => getAffiliatePlacement(placementKey).presentation === "banner"
                 );
-              })}
+                const recommendationKeys = placementKeys.filter(
+                  (placementKey) => getAffiliatePlacement(placementKey).presentation !== "banner"
+                );
+
+                return (
+                  <>
+                    <AffiliateRecommendationGroup placements={recommendationKeys} />
+                    {bannerKeys.map((placementKey) => <AffiliateBanner key={placementKey} placement={placementKey} />)}
+                  </>
+                );
+              })()}
 
               {index === 2 ? (
                 <section className="surface p-5">

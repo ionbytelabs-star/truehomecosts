@@ -193,15 +193,15 @@ export default function CookiesPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Affiliate links</h2>
             <p>
-              Relevant pages may contain clearly labelled AnyVan affiliate links supplied through the Awin
-              affiliate network. If you click one of these links and later book, True Home Costs may earn a
-              commission at no extra cost to you.
+              Relevant pages may contain clearly labelled AnyVan or Safestore affiliate links supplied through
+              the Awin affiliate network. If you click one of these links and later book, True Home Costs may
+              earn a commission at no extra cost to you.
             </p>
             <p>
-              Clicking an Awin affiliate link takes you directly through Awin to AnyVan. Awin or AnyVan may use
-              cookies or similar technologies to record the referral and attribute a booking. The AnyVan
-              programme has a 30-day tracking period. True Home Costs does not cloak these links or route them
-              through an internal redirect.
+              Clicking an Awin affiliate link takes you directly through Awin to AnyVan or Safestore. Awin or
+              the relevant advertiser may use cookies or similar technologies to record the referral and
+              attribute a booking. The AnyVan programme has a 30-day tracking period. True Home Costs does not
+              cloak these links or route them through an internal redirect.
             </p>
             <p>
               Affiliate click measurement in Google Analytics is separate and only occurs if you have accepted
@@ -303,7 +303,7 @@ export default function CookiesPage() {
               <li>Analytics is optional and consent-controlled.</li>
               <li>AdSense verification meta tag is present.</li>
               <li>Live AdSense scripts are not loaded.</li>
-              <li>AnyVan affiliate links use Awin and are disclosed beside each promotion.</li>
+              <li>AnyVan and Safestore affiliate links use Awin and are disclosed beside each promotion.</li>
             </ul>
           </div>
           <CalloutBox title="AdSense consent note">
