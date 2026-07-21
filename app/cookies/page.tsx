@@ -35,8 +35,8 @@ const cookieCategories = [
   },
   {
     title: "Advertising",
-    status: "Preparing for AdSense",
-    text: "The site has an AdSense ownership-verification meta tag, but live AdSense ad scripts are not loaded."
+    status: "Affiliate links active",
+    text: "Relevant pages may contain clearly disclosed AnyVan affiliate links provided through the Awin network. Live AdSense ad scripts are not loaded."
   },
   {
     title: "Preferences or functionality",
@@ -71,7 +71,7 @@ export default function CookiesPage() {
       <PageIntro
         title="Cookie Policy"
         description="This Cookie Policy explains how True Home Costs uses cookies and similar technologies when you visit truehomecosts.co.uk."
-        summary="It should be read alongside our Privacy Policy. Last updated: 18 July 2026."
+        summary="It should be read alongside our Privacy Policy. Last updated: 21 July 2026."
         badge="Cookies and consent"
       />
 
@@ -193,13 +193,28 @@ export default function CookiesPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Affiliate links</h2>
             <p>
-              True Home Costs does not currently use active affiliate tracking. Some pages may contain affiliate
-              links in the future. An affiliate provider may use cookies or similar technologies to record
-              referrals and attribute a purchase or enquiry to True Home Costs.
+              Relevant pages may contain clearly labelled AnyVan affiliate links supplied through the Awin
+              affiliate network. If you click one of these links and later book, True Home Costs may earn a
+              commission at no extra cost to you.
             </p>
             <p>
-              Any such tracking should be disclosed and handled in accordance with the applicable consent
-              requirements before it is enabled.
+              Clicking an Awin affiliate link takes you directly through Awin to AnyVan. Awin or AnyVan may use
+              cookies or similar technologies to record the referral and attribute a booking. The AnyVan
+              programme has a 30-day tracking period. True Home Costs does not cloak these links or route them
+              through an internal redirect.
+            </p>
+            <p>
+              Affiliate click measurement in Google Analytics is separate and only occurs if you have accepted
+              optional analytics cookies. You can review Awin's own information on its{" "}
+              <a
+                href="https://www.awin.com/gb/privacy"
+                target="_blank"
+                rel="nofollow noopener"
+                className="font-medium underline hover:text-brand-deep"
+              >
+                privacy page
+              </a>
+              .
             </p>
           </section>
 
@@ -288,7 +303,7 @@ export default function CookiesPage() {
               <li>Analytics is optional and consent-controlled.</li>
               <li>AdSense verification meta tag is present.</li>
               <li>Live AdSense scripts are not loaded.</li>
-              <li>No active affiliate tracking is used.</li>
+              <li>AnyVan affiliate links use Awin and are disclosed beside each promotion.</li>
             </ul>
           </div>
           <CalloutBox title="AdSense consent note">

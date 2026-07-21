@@ -13,6 +13,8 @@
   "include": [
     "tests/**/*.ts",
     "lib/calculator.ts",
+    "lib/analytics.ts",
+    "lib/affiliates/anyvan.ts",
     "lib/format.ts",
     "lib/site.ts",
     "lib/price-guide-links.ts",

@@ -1,12 +1,18 @@
+import { Fragment, type ReactNode } from "react";
+
 import type { BreakdownLine } from "@/lib/calculator";
 import { classificationLabels } from "@/lib/cost-scopes";
 import { formatCurrency } from "@/lib/format";
 
 type CostBreakdownTableProps = {
   items: BreakdownLine[];
+  rowSupplement?: {
+    key: BreakdownLine["key"];
+    content: ReactNode;
+  };
 };
 
-export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
+export function CostBreakdownTable({ items, rowSupplement }: CostBreakdownTableProps) {
   return (
     <div className="surface overflow-hidden" role="region" aria-labelledby="cost-breakdown-title">
       <div className="border-b border-line px-6 py-4">
@@ -36,20 +42,29 @@ export function CostBreakdownTable({ items }: CostBreakdownTableProps) {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item.key} className="border-t border-line align-top">
-                <th scope="row" className="min-w-[10rem] px-6 py-4 font-medium text-text">
-                  {item.label}
-                </th>
-                <td className="px-6 py-4 text-sm text-muted">
-                  {classificationLabels[item.classification]}
-                </td>
-                <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
-                  {formatCurrency(item.value)}
-                </td>
-                <td className="min-w-[14rem] px-6 py-4 text-sm text-muted">
-                  {item.detail}
-                </td>
-              </tr>
+              <Fragment key={item.key}>
+                <tr className="border-t border-line align-top">
+                  <th scope="row" className="min-w-[10rem] px-6 py-4 font-medium text-text">
+                    {item.label}
+                  </th>
+                  <td className="px-6 py-4 text-sm text-muted">
+                    {classificationLabels[item.classification]}
+                  </td>
+                  <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
+                    {formatCurrency(item.value)}
+                  </td>
+                  <td className="min-w-[14rem] px-6 py-4 text-sm text-muted">
+                    {item.detail}
+                  </td>
+                </tr>
+                {rowSupplement?.key === item.key ? (
+                  <tr className="border-t border-brand/15 bg-[#fbfdf9]">
+                    <td colSpan={4} className="px-4 py-4 sm:px-6">
+                      {rowSupplement.content}
+                    </td>
+                  </tr>
+                ) : null}
+              </Fragment>
             ))}
           </tbody>
         </table>

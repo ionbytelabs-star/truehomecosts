@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
@@ -193,12 +194,12 @@ export function CookieConsentBanner() {
                     Analytics to understand broad website usage. Advertising cookies are not active yet.
                   </p>
                   <div className="flex flex-wrap gap-3 text-sm">
-                    <a href="/cookies" className="underline hover:text-brand-deep">
+                    <Link href="/cookies" className="underline hover:text-brand-deep">
                       Cookie Policy
-                    </a>
-                    <a href="/privacy" className="underline hover:text-brand-deep">
+                    </Link>
+                    <Link href="/privacy" className="underline hover:text-brand-deep">
                       Privacy Policy
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row">

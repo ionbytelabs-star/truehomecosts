@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 
+import { AnyVanRecommendation } from "@/components/affiliates/AnyVanAffiliate";
 import { CostBreakdownTable } from "@/components/CostBreakdownTable";
 import { ResultsCard } from "@/components/ResultsCard";
 import {
@@ -47,6 +48,7 @@ export function CalculatorForm() {
   const [input, setInput] = useState<CalculatorInput>(defaultCalculatorInput);
   const [hasStarted, setHasStarted] = useState(false);
   const result = calculateUpfrontCosts(input);
+  const hasMovingCost = result.breakdown.some((line) => line.key === "moving");
   const propertyPriceInvalid = input.propertyPrice < 50_000 || input.propertyPrice > 10_000_000;
   const depositAmountInvalid =
     input.depositMode === "amount" && (input.depositAmount ?? 0) > Math.max(0, input.propertyPrice);
@@ -222,7 +224,17 @@ export function CalculatorForm() {
 
         <div className="min-w-0 space-y-5 xl:sticky xl:top-4" aria-live="polite" aria-atomic="false">
           <ResultsCard total={result.totalUpfrontCash} deposit={result.depositAmount} tax={result.propertyTaxAmount} notes={result.notes} />
-          <CostBreakdownTable items={result.breakdown} />
+          <CostBreakdownTable
+            items={result.breakdown}
+            rowSupplement={
+              hasMovingCost
+                ? {
+                    key: "moving",
+                    content: <AnyVanRecommendation placement="calculatorRemovalsResult" />
+                  }
+                : undefined
+            }
+          />
         </div>
       </div>
     </section>

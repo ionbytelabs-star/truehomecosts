@@ -74,8 +74,10 @@ export default function PrivacyPage() {
           <h2 className="font-serif text-3xl text-text">Third-party services</h2>
           <p>
             The site can load Google Analytics to understand broad site usage, but this is controlled by the
-            cookie consent choice shown to visitors. It does not include a login, CRM, live chat tool or live
-            advertising scripts. If new services are added, this policy should be updated before deployment.
+            cookie consent choice shown to visitors. Relevant editorial pages may also link to AnyVan through
+            the Awin affiliate network. Those links are labelled, and clicking one takes you to third-party
+            websites governed by their own privacy policies. The site does not include a login, CRM, live chat
+            tool or live advertising scripts.
           </p>
         </section>
 
