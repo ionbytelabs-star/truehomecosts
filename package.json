@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate:report-data": "tsc -p tsconfig.report.json && node .report-build/scripts/generate-report-data.js",
+    "prebuild": "npm run generate:report-data",
     "build": "next build",
     "lint": "next lint",
     "start": "next start",

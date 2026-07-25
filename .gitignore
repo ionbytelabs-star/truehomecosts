@@ -5,6 +5,7 @@ out
 dist
 coverage
 .test-build
+.report-build
 *.log
 *.tsbuildinfo
 .DS_Store

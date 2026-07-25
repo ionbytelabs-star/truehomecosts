@@ -4,7 +4,7 @@ import { mainNav, siteConfig } from "@/lib/site";
 
 export function Header() {
   return (
-    <header className="border-b border-line/80 bg-white/85 backdrop-blur">
+    <header className="site-header border-b border-line/80 bg-white/85 backdrop-blur">
       <div className="shell flex flex-col gap-4 py-4 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="flex items-center gap-3">
           <img

@@ -22,6 +22,8 @@ export const footerNav = [
   { href: "/about", label: "About" },
   { href: "/methodology", label: "Methodology" },
   { href: "/calculator-updates", label: "Calculator updates" },
+  { href: "/reports/true-cost-buying-home-uk-2026", label: "2026 cost report" },
+  { href: "/press-and-data", label: "Press & Data" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms" },

@@ -1,4 +1,4 @@
-import type { CalculatorInput } from "@/lib/calculator";
+import type { CalculatorInput } from "./calculator";
 
 export const defaultCalculatorInput: CalculatorInput = {
   propertyPrice: 300_000,

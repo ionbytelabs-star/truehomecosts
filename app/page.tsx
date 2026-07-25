@@ -156,6 +156,45 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="shell pb-10 sm:pb-12" aria-labelledby="report-heading">
+        <div className="rounded-3xl border border-brand/25 bg-panel-strong p-5 sm:p-7">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="max-w-3xl space-y-3">
+              <p className="eyebrow">New 2026 data report</p>
+              <h2 id="report-heading" className="font-serif text-3xl text-text">
+                Compare 156 UK home-buying scenarios
+              </h2>
+              <p className="text-muted">
+                The True Cost of Buying a Home UK 2026 report turns the central calculator data into downloadable
+                tables for first-time buyers, home movers and additional-property buyers across the UK.
+              </p>
+              <p className="text-sm text-muted">
+                Journalists and publishers can also access citation guidance, chart assets and an embeddable
+                calculator through the press and data resources.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <AnalyticsLink
+                href="/reports/true-cost-buying-home-uk-2026"
+                eventName="homepage_guide_click"
+                eventParameters={{ guide: "2026_cost_report" }}
+                className="inline-flex min-h-12 items-center rounded-full bg-brand px-5 py-3 font-semibold text-white hover:bg-brand-deep"
+              >
+                Read the 2026 report
+              </AnalyticsLink>
+              <AnalyticsLink
+                href="/press-and-data"
+                eventName="homepage_guide_click"
+                eventParameters={{ guide: "press_and_data" }}
+                className="inline-flex min-h-12 items-center rounded-full border border-line bg-white px-5 py-3 font-semibold text-text hover:border-brand"
+              >
+                Press &amp; Data
+              </AnalyticsLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="shell pb-10 sm:pb-12" aria-labelledby="review-heading">
         <div className="rounded-3xl border border-brand/25 bg-panel-strong p-5 sm:p-7">
           <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">

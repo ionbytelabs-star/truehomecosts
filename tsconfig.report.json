@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "incremental": false,
+    "isolatedModules": false,
+    "outDir": ".report-build",
+    "rootDir": "."
+  },
+  "include": [
+    "scripts/generate-report-data.ts",
+    "lib/calculator.ts",
+    "lib/default-calculator-input.ts",
+    "lib/format.ts",
+    "lib/report-data.ts",
+    "lib/site.ts",
+    "data/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

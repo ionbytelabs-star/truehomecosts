@@ -73,6 +73,7 @@ export default function MethodologyPage() {
             <h2 className="font-serif text-3xl text-text">Low, average and high assumptions</h2>
             <p>Market-estimate categories have low, average and high planning values. The appropriate price band and jurisdiction are selected where relevant. The figures are judgement-based planning ranges, so a real quotation should replace the estimate as soon as it is available.</p>
             <p>Derived ranges are calculated by summing named categories from the same calculator result. They are not separately maintained headline figures.</p>
+            <p>The <Link href="/reports/true-cost-buying-home-uk-2026" className="underline hover:text-brand-deep">True Cost of Buying a Home UK 2026 report</Link> applies this same method to 156 reusable scenarios. Its CSV, JSON and chart are generated from the production calculator rather than maintained as separate tables.</p>
           </section>
 
           <section className="space-y-4">
@@ -114,6 +115,7 @@ export default function MethodologyPage() {
             <div className="mt-4 grid gap-2 text-sm">
               <Link href="/#calculator" className="underline hover:text-brand-deep">Use the calculator</Link>
               <Link href="/calculator-updates" className="underline hover:text-brand-deep">Data change log</Link>
+              <Link href="/press-and-data" className="underline hover:text-brand-deep">Press and data resources</Link>
               <Link href="/contact" className="underline hover:text-brand-deep">Report a correction</Link>
             </div>
           </div>

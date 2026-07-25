@@ -4,7 +4,7 @@ import { footerNav, siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-line bg-[#edf3f1]">
+    <footer className="site-footer mt-16 border-t border-line bg-[#edf3f1]">
       <div className="shell py-12">
         <Link href="/" className="mb-8 flex w-fit items-center gap-3">
           <img

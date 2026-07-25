@@ -35,6 +35,16 @@ a {
   text-underline-offset: 0.18em;
 }
 
+body:has(.embed-calculator-page) .site-header,
+body:has(.embed-calculator-page) .site-footer,
+body:has(.embed-calculator-page) .site-cookie-banner {
+  display: none;
+}
+
+body:has(.embed-calculator-page) {
+  background: #faf8f3;
+}
+
 .mobile-nav {
   scrollbar-width: none;
 }

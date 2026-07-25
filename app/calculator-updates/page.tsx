@@ -13,6 +13,12 @@ export const metadata = buildMetadata({ title: "Calculator Data Updates", descri
 
 const updates = [
   {
+    version: "Report 2026.1",
+    date: "25 July 2026",
+    categories: "Reusable report data and publisher resources",
+    details: "Added a calculator-generated 2026 report dataset covering 156 price, jurisdiction and buyer-type scenarios, with CSV, JSON, chart and embeddable calculator outputs."
+  },
+  {
     version: "2026.07.1",
     date: "19 July 2026",
     categories: "Registration, sitewide examples and editorial scopes",
@@ -46,7 +52,7 @@ export default function CalculatorUpdatesPage() {
             </article>
           ))}
         </div>
-        <p className="mt-8 text-muted">Read the <Link href="/methodology" className="underline hover:text-brand-deep">methodology</Link> or <Link href="/contact" className="underline hover:text-brand-deep">report a correction</Link>.</p>
+        <p className="mt-8 text-muted">Read the <Link href="/methodology" className="underline hover:text-brand-deep">methodology</Link>, explore the <Link href="/reports/true-cost-buying-home-uk-2026" className="underline hover:text-brand-deep">2026 home-buying cost report</Link>, download <Link href="/press-and-data" className="underline hover:text-brand-deep">press and data resources</Link> or <Link href="/contact" className="underline hover:text-brand-deep">report a correction</Link>.</p>
       </section>
     </>
   );

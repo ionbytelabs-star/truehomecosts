@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
+  <title id="title">Total upfront cash for a £300,000 home-mover purchase by UK jurisdiction</title>
+  <desc id="desc">A bar chart generated from True Home Costs calculator data using a 10% deposit and the report's central assumptions.</desc>
+  <style>
+    .title { font: 700 34px Arial, sans-serif; fill: #17324d; }
+    .subtitle { font: 400 18px Arial, sans-serif; fill: #526774; }
+    .label { font: 600 19px Arial, sans-serif; fill: #17324d; }
+    .value { font: 700 19px Arial, sans-serif; fill: white; }
+    .source { font: 400 15px Arial, sans-serif; fill: #526774; }
+  </style>
+  <rect width="100%" height="100%" fill="#fffdf8"/>
+  <text x="40" y="55" class="title">£300,000 home-mover scenarios</text>
+  <text x="40" y="88" class="subtitle">Total upfront cash, including a 10% deposit and report-basis allowances</text>
+  <text x="40" y="186" class="label">England</text>
+  <rect x="250" y="150" width="700" height="56" rx="14" fill="#edf3f1"/>
+  <rect x="250" y="150" width="694" height="56" rx="14" fill="#0d7a6f"/>
+  <text x="268" y="186" class="value">£40,320</text>
+  <text x="40" y="294" class="label">Northern Ireland</text>
+  <rect x="250" y="258" width="700" height="56" rx="14" fill="#edf3f1"/>
+  <rect x="250" y="258" width="700" height="56" rx="14" fill="#0d7a6f"/>
+  <text x="268" y="294" class="value">£40,660</text>
+  <text x="40" y="402" class="label">Scotland</text>
+  <rect x="250" y="366" width="700" height="56" rx="14" fill="#edf3f1"/>
+  <rect x="250" y="366" width="692" height="56" rx="14" fill="#0d7a6f"/>
+  <text x="268" y="402" class="value">£40,168</text>
+  <text x="40" y="510" class="label">Wales</text>
+  <rect x="250" y="474" width="700" height="56" rx="14" fill="#edf3f1"/>
+  <rect x="250" y="474" width="685" height="56" rx="14" fill="#0d7a6f"/>
+  <text x="268" y="510" class="value">£39,809</text>
+  <text x="40" y="535" class="source">Source: True Home Costs · Calculator data 2026.07.1</text>
+</svg>

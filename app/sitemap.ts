@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/methodology",
     "/calculator-updates",
+    "/reports/true-cost-buying-home-uk-2026",
+    "/press-and-data",
     "/privacy",
     "/terms",
     "/cookies",

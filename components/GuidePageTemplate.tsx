@@ -95,6 +95,14 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     }
   };
   const giftedDepositNote = giftedDepositNoteBySlug[guide.slug];
+  const reportLinkGuideSlugs = new Set([
+    "hidden-costs-buying-house",
+    "stamp-duty-explained",
+    "mortgage-fees-costs",
+    "moving-costs-uk",
+    "cost-of-owning-home-uk"
+  ]);
+  const showReportLink = reportLinkGuideSlugs.has(guide.slug);
 
   return (
     <>
@@ -192,6 +200,26 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             reviewedText={guide.trustReviewedText}
           />
           <AtAGlance items={guide.atGlance} />
+          {showReportLink ? (
+            <section className="surface p-5">
+              <p className="eyebrow">Calculator data</p>
+              <h2 className="mt-3 font-serif text-3xl text-text">Compare this cost in the 2026 report</h2>
+              <p className="mt-3 max-w-prose text-muted">
+                The{" "}
+                <Link
+                  href="/reports/true-cost-buying-home-uk-2026"
+                  className="underline hover:text-brand-deep"
+                >
+                  True Cost of Buying a Home UK 2026 report
+                </Link>{" "}
+                compares 156 calculator-generated scenarios. You can also{" "}
+                <Link href="/press-and-data" className="underline hover:text-brand-deep">
+                  download the home-buying cost data
+                </Link>{" "}
+                as CSV or JSON.
+              </p>
+            </section>
+          ) : null}
           <RateTypeSplit officialItems={guide.officialItems} estimateItems={guide.estimateItems} />
           <section className="surface p-5">
             <p className="eyebrow">Plan the full picture</p>
