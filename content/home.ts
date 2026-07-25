@@ -66,7 +66,10 @@ export const homepageGuides = [
   { slug: "hidden-costs-buying-house", title: "Hidden costs of buying a house", description: "See the extra legal, survey, lender and setup costs buyers commonly overlook." },
   { slug: "how-much-money-needed-buy-house", title: "How much money is needed?", description: "Build a savings target that includes more than the deposit." },
   { slug: "first-time-buyer-costs", title: "First-time buyer costs", description: "Understand the fees and cash timing around a first purchase." },
+  { slug: "conveyancing-costs-uk", title: "Conveyancing costs", description: "Separate professional legal fees from searches, registration and other disbursements." },
+  { slug: "property-survey-costs-uk", title: "Property survey costs", description: "Compare Level 1, Level 2 and Level 3-style survey choices and planning amounts." },
   { slug: "stamp-duty-explained", title: "Stamp duty and UK property taxes", description: "Compare SDLT, LBTT and LTT and learn when different rates may apply." },
   { slug: "mortgage-fees-costs", title: "Mortgage fees", description: "Plan for lender, valuation, arrangement and possible broker charges." },
-  { slug: "moving-costs-uk", title: "Moving costs", description: "Budget for removals, packing, storage and moving-day practicalities." }
+  { slug: "moving-costs-uk", title: "Moving costs", description: "Budget for removals, packing, storage and moving-day practicalities." },
+  { slug: "first-month-costs-after-buying-house", title: "First-month costs", description: "Prepare for the first mortgage payment, household bills, urgent repairs and move-in setup." }
 ] as const;

@@ -13,6 +13,12 @@ export const metadata = buildMetadata({ title: "Calculator Data Updates", descri
 
 const updates = [
   {
+    version: "Guides 2026.1",
+    date: "25 July 2026",
+    categories: "Priority 3 supporting cost guides",
+    details: "Added seven linked guides covering conveyancing, survey levels, registration fees, before-completion and after-exchange timing, first-month ownership costs, and simultaneous buying and selling. Examples reuse the central calculator assumptions and official registration modules."
+  },
+  {
     version: "Report 2026.1",
     date: "25 July 2026",
     categories: "Reusable report data and publisher resources",

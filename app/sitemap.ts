@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/gifted-deposit-mortgage"
   ];
 
-  const publicPagesLastModified = new Date("2026-07-19");
+  const publicPagesLastModified = new Date("2026-07-25");
   const llmsLastModified = new Date("2026-06-04");
   const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
   const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...guideSummaries.map((guide) => ({
       url: absoluteUrl(guide.slug),
-      lastModified: publicPagesLastModified,
+      lastModified: new Date(guide.lastReviewed),
       changeFrequency: "monthly" as const,
       priority: 0.8
     })),

@@ -25,6 +25,59 @@ const centralGuideSlugs = new Set([
   "taxes-and-fees-uk"
 ]);
 
+const priorityThreeBacklinks: Record<string, Array<{ href: string; label: string }>> = {
+  "hidden-costs-buying-house": [
+    { href: "/conveyancing-costs-uk", label: "UK conveyancing costs" },
+    { href: "/property-survey-costs-uk", label: "property survey levels and costs" },
+    { href: "/first-month-costs-after-buying-house", label: "first-month costs after completion" }
+  ],
+  "hidden-costs-buying-new-build-home-uk": [
+    { href: "/conveyancing-costs-uk", label: "conveyancing costs and new-build extras" },
+    { href: "/costs-before-completion", label: "payments due before completion" }
+  ],
+  "stamp-duty-explained": [
+    { href: "/land-registry-fees-uk", label: "Land Registry and registration fees" },
+    { href: "/costs-before-completion", label: "when completion funds are needed" }
+  ],
+  "taxes-and-fees-uk": [
+    { href: "/land-registry-fees-uk", label: "UK registration fees by jurisdiction" }
+  ],
+  "mortgage-fees-costs": [
+    { href: "/costs-before-completion", label: "costs payable before completion" },
+    { href: "/buying-and-selling-house-same-time", label: "home-mover buying and selling costs" }
+  ],
+  "moving-costs-uk": [
+    { href: "/costs-after-exchange", label: "costs after exchange" },
+    { href: "/first-month-costs-after-buying-house", label: "first-month move-in costs" },
+    { href: "/buying-and-selling-house-same-time", label: "costs when buying and selling together" }
+  ],
+  "insurance-costs-uk": [
+    { href: "/costs-after-exchange", label: "insurance and other costs after exchange" },
+    { href: "/first-month-costs-after-buying-house", label: "first-month ownership costs" }
+  ],
+  "first-year-cost-buying-house-uk": [
+    { href: "/property-survey-costs-uk", label: "survey costs by level" },
+    { href: "/first-month-costs-after-buying-house", label: "the first month after buying" }
+  ],
+  "cost-of-owning-home-uk": [
+    { href: "/first-month-costs-after-buying-house", label: "first-month homeowner costs" },
+    { href: "/buying-and-selling-house-same-time", label: "home-mover costs" }
+  ]
+};
+
+function addPriorityThreeBacklinks(guide: GuidePageContent): GuidePageContent {
+  const additions = priorityThreeBacklinks[guide.slug] ?? [];
+  if (additions.length === 0) return guide;
+
+  const contextualLinks = [...(guide.contextualLinks ?? [])];
+  const existingHrefs = new Set(contextualLinks.map((link) => link.href));
+  for (const link of additions) {
+    if (!existingHrefs.has(link.href)) contextualLinks.push(link);
+  }
+
+  return { ...guide, contextualLinks };
+}
+
 function baseInput(overrides: Partial<CalculatorInput> = {}): CalculatorInput {
   return {
     propertyPrice: 300_000,
@@ -459,14 +512,18 @@ function firstYear(guide: GuidePageContent): GuidePageContent {
 }
 
 export function applyGuideConsistency(guide: GuidePageContent): GuidePageContent {
-  if (!centralGuideSlugs.has(guide.slug)) return guide;
-  if (guide.slug === "hidden-costs-buying-house") return hiddenCosts(guide);
-  if (guide.slug === "how-much-money-needed-buy-house") return cashNeeded(guide);
-  if (guide.slug === "first-time-buyer-costs") return firstTimeBuyer(guide);
-  if (guide.slug === "mortgage-fees-costs") return singleCategoryGuide(guide, "mortgage-fees");
-  if (guide.slug === "moving-costs-uk") return singleCategoryGuide(guide, "moving");
-  if (guide.slug === "insurance-costs-uk") return singleCategoryGuide(guide, "insurance");
-  if (guide.slug === "furnishing-costs-uk") return singleCategoryGuide(guide, "furnishing");
-  if (guide.slug === "first-year-cost-buying-house-uk") return firstYear(guide);
-  return taxGuide(guide);
+  let consistentGuide = guide;
+  if (centralGuideSlugs.has(guide.slug)) {
+    if (guide.slug === "hidden-costs-buying-house") consistentGuide = hiddenCosts(guide);
+    else if (guide.slug === "how-much-money-needed-buy-house") consistentGuide = cashNeeded(guide);
+    else if (guide.slug === "first-time-buyer-costs") consistentGuide = firstTimeBuyer(guide);
+    else if (guide.slug === "mortgage-fees-costs") consistentGuide = singleCategoryGuide(guide, "mortgage-fees");
+    else if (guide.slug === "moving-costs-uk") consistentGuide = singleCategoryGuide(guide, "moving");
+    else if (guide.slug === "insurance-costs-uk") consistentGuide = singleCategoryGuide(guide, "insurance");
+    else if (guide.slug === "furnishing-costs-uk") consistentGuide = singleCategoryGuide(guide, "furnishing");
+    else if (guide.slug === "first-year-cost-buying-house-uk") consistentGuide = firstYear(guide);
+    else consistentGuide = taxGuide(guide);
+  }
+
+  return addPriorityThreeBacklinks(consistentGuide);
 }

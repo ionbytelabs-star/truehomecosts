@@ -74,6 +74,7 @@ export default function MethodologyPage() {
             <p>Market-estimate categories have low, average and high planning values. The appropriate price band and jurisdiction are selected where relevant. The figures are judgement-based planning ranges, so a real quotation should replace the estimate as soon as it is available.</p>
             <p>Derived ranges are calculated by summing named categories from the same calculator result. They are not separately maintained headline figures.</p>
             <p>The <Link href="/reports/true-cost-buying-home-uk-2026" className="underline hover:text-brand-deep">True Cost of Buying a Home UK 2026 report</Link> applies this same method to 156 reusable scenarios. Its CSV, JSON and chart are generated from the production calculator rather than maintained as separate tables.</p>
+            <p>The supporting guides use the same layers: for example, <Link href="/conveyancing-costs-uk" className="underline hover:text-brand-deep">conveyancing planning figures</Link> reuse the solicitor, search and transfer assumptions, <Link href="/property-survey-costs-uk" className="underline hover:text-brand-deep">survey-level examples</Link> reuse the survey bands, and <Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">registration tables</Link> come from the verified jurisdiction modules.</p>
           </section>
 
           <section className="space-y-4">

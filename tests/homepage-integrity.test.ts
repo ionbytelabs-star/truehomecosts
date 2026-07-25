@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
+import { guideMap } from "../content/guides";
 import { homePageFaqs, homepageGuides, homeScenarioInputs } from "../content/home";
 import {
   calculatorCostAssumptionById,
@@ -14,7 +15,6 @@ import { popularBuyingCostExampleSlugs, priceGuideLinks } from "../lib/price-gui
 
 const pageSource = readFileSync("app/page.tsx", "utf8");
 const heroSource = readFileSync("components/Hero.tsx", "utf8");
-const guidesSource = readFileSync("content/guides.ts", "utf8");
 
 test("homepage has exactly one approved H1", () => {
   assert.equal((heroSource.match(/<h1\b/g) ?? []).length + (pageSource.match(/<h1\b/g) ?? []).length, 1);
@@ -171,7 +171,7 @@ test("five visible FAQs share the schema source", () => {
 });
 
 test("every homepage guide resolves through the existing guide catalogue", () => {
-  for (const guide of homepageGuides) assert.match(guidesSource, new RegExp(`slug: "${guide.slug}"`));
+  for (const guide of homepageGuides) assert.ok(guideMap[guide.slug], `Missing homepage guide ${guide.slug}`);
 });
 
 test("review date drives visible copy and structured data", () => {

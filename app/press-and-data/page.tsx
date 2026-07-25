@@ -164,6 +164,12 @@ export default function PressAndDataPage() {
               Link to the report methodology so readers can inspect the assumptions and verification date.
             </li>
           </ul>
+          <p className="mt-4 text-sm text-muted">
+            Supporting explainers cover{" "}
+            <Link href="/conveyancing-costs-uk" className="underline hover:text-brand-deep">legal fees and disbursements</Link>,{" "}
+            <Link href="/property-survey-costs-uk" className="underline hover:text-brand-deep">survey levels</Link> and{" "}
+            <Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">the conditions behind registration-fee tables</Link>.
+          </p>
         </article>
       </section>
 

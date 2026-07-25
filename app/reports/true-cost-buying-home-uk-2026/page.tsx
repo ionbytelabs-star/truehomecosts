@@ -270,6 +270,13 @@ export default function HomeBuyingReportPage() {
               Read the full <Link href="/methodology" className="underline hover:text-brand-deep">calculator methodology</Link>{" "}
               and <Link href="/calculator-updates" className="underline hover:text-brand-deep">data change log</Link>.
             </p>
+            <p>
+              For the detail behind individual lines, use the guides to{" "}
+              <Link href="/conveyancing-costs-uk" className="underline hover:text-brand-deep">UK conveyancing costs</Link>,{" "}
+              <Link href="/property-survey-costs-uk" className="underline hover:text-brand-deep">survey levels and costs</Link>,{" "}
+              <Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">registration fees by jurisdiction</Link>{" "}
+              and <Link href="/first-month-costs-after-buying-house" className="underline hover:text-brand-deep">first-month ownership costs</Link>.
+            </p>
           </div>
         </article>
 
