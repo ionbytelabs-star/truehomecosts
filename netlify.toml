@@ -2,5 +2,11 @@
   command = "npm run build"
   publish = ".next"
 
+[[redirects]]
+  from = "/hidden-costs-new-build"
+  to = "/hidden-costs-buying-new-build-home-uk"
+  status = 301
+  force = true
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
