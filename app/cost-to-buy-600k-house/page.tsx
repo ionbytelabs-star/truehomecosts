@@ -8,7 +8,8 @@ export const metadata = buildMetadata({
   title: guide.title,
   description: guide.description,
   path: `/${guide.slug}`,
-  keywords: guide.keywords
+  keywords: guide.keywords,
+  absoluteTitle: true
 });
 
 export default function CostToBuy600kHousePage() {

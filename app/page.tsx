@@ -150,6 +150,14 @@ export default function HomePage() {
               </AnalyticsLink>
             ))}
           </nav>
+          <AnalyticsLink
+            href="/cost-to-buy-600k-house"
+            eventName="property_price_example_click"
+            eventParameters={{ price_page: "cost-to-buy-600k-house" }}
+            className="mt-5 inline-flex min-h-11 items-center font-semibold text-brand-deep underline"
+          >
+            {priceGuideLabelMap["cost-to-buy-600k-house"]}: deposit, SDLT and upfront cash
+          </AnalyticsLink>
           <AnalyticsLink href="/house-buying-cost-by-property-price" eventName="property_price_example_click" eventParameters={{ price_page: "all_prices_hub" }} className="mt-5 inline-flex min-h-12 items-center rounded-full bg-brand px-5 py-3 font-semibold text-white hover:bg-brand-deep">
             View buying costs for all property prices
           </AnalyticsLink>

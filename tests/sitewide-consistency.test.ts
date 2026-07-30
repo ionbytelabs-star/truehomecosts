@@ -62,7 +62,12 @@ test("every price page declares a visible scenario and production-calculated tot
   for (const [slug, guide] of Object.entries(allPriceGuides)) {
     const price = Number(slug.match(/(\d+)k/)?.[1]) * 1_000;
     const expected = calculateUpfrontCosts({ ...baseInput, propertyPrice: price });
-    assert.match(guide.directAnswer, /England home-mover example/i);
+    if (slug === "cost-to-buy-600k-house") {
+      assert.match(guide.directAnswer, /England or Northern Ireland/i);
+      assert.match(guide.directAnswer, /core upfront cash required/i);
+    } else {
+      assert.match(guide.directAnswer, /England home-mover example/i);
+    }
     assert.match(guide.directAnswer, /10% deposit/i);
     assert.ok(guide.directAnswer.includes(expected.totalUpfrontCash.toLocaleString("en-GB")));
   }
@@ -80,7 +85,11 @@ test("price-page titles, H1s, reviews and data versions are unique and complete"
   const titles = Object.values(allPriceGuides).map((guide) => guide.title);
   assert.equal(new Set(titles).size, 16);
   for (const guide of Object.values(allPriceGuides)) {
-    assert.match(guide.h1, /Cost to buy a £[\d,]+ house in the UK/);
+    if (guide.slug === "cost-to-buy-600k-house") {
+      assert.equal(guide.h1, "How much does it cost to buy a £600,000 house in the UK?");
+    } else {
+      assert.match(guide.h1, /Cost to buy a £[\d,]+ house in the UK/);
+    }
     assert.equal(guide.lastReviewed, "2026-07-19");
     assert.equal(guide.calculatorDataVersion, calculatorMetadata.dataVersion);
   }

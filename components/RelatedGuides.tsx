@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { extraPriceGuides } from "@/content/extra-price-guides";
 import { guideMap } from "@/content/guides";
 
 type RelatedGuidesProps = {
@@ -16,7 +17,7 @@ export function RelatedGuides({ slugs }: RelatedGuidesProps) {
 
       <div className="grid gap-3 md:grid-cols-2">
         {slugs.map((slug) => {
-          const guide = guideMap[slug];
+          const guide = guideMap[slug] ?? extraPriceGuides[slug];
 
           if (!guide) {
             return null;

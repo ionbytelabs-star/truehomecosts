@@ -76,24 +76,48 @@ export type CalculatorResult = {
 
 type ProgressiveBand = { upTo: number | null; rate: number };
 
+export type ProgressiveTaxBandResult = {
+  lowerBound: number;
+  upperBound: number;
+  rate: number;
+  taxableAmount: number;
+  tax: number;
+};
+
 function getRangeValue(bands: PriceBandRange[], price: number, level: AssumptionLevel): number {
   const match = bands.find((band) => band.upTo === null || price <= band.upTo) ?? bands[bands.length - 1];
   return match[level];
 }
 
-function calculateProgressiveTax(price: number, bands: readonly ProgressiveBand[]): number {
+export function calculateProgressiveTaxBreakdown(
+  price: number,
+  bands: readonly ProgressiveBand[]
+): ProgressiveTaxBandResult[] {
+  const safePrice = Math.max(0, price);
   let previousThreshold = 0;
-  let total = 0;
+  const breakdown: ProgressiveTaxBandResult[] = [];
 
   for (const band of bands) {
-    if (price <= previousThreshold) break;
+    if (safePrice <= previousThreshold) break;
     const upperBound = band.upTo ?? Number.POSITIVE_INFINITY;
-    const taxableWithinBand = Math.min(price, upperBound) - previousThreshold;
-    if (taxableWithinBand > 0) total += taxableWithinBand * band.rate;
+    const taxableWithinBand = Math.min(safePrice, upperBound) - previousThreshold;
+    if (taxableWithinBand > 0) {
+      breakdown.push({
+        lowerBound: previousThreshold,
+        upperBound: Math.min(safePrice, upperBound),
+        rate: band.rate,
+        taxableAmount: taxableWithinBand,
+        tax: Math.round(taxableWithinBand * band.rate)
+      });
+    }
     previousThreshold = upperBound;
   }
 
-  return Math.max(0, Math.round(total));
+  return breakdown;
+}
+
+function calculateProgressiveTax(price: number, bands: readonly ProgressiveBand[]): number {
+  return calculateProgressiveTaxBreakdown(price, bands).reduce((total, band) => total + band.tax, 0);
 }
 
 export function calculatePropertyTax(price: number, jurisdiction: Jurisdiction, buyerType: BuyerType): number {

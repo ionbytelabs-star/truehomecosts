@@ -29,6 +29,15 @@ export type GuideSection = {
   }>;
   afterParagraphs?: string[];
   callout?: string;
+  links?: Array<{
+    href: string;
+    label: string;
+  }>;
+  cta?: {
+    href: string;
+    label: string;
+    description?: string;
+  };
 };
 
 export type GuidePageContent = {
@@ -54,6 +63,10 @@ export type GuidePageContent = {
   sections: GuideSection[];
   faqs: FAQItem[];
   showFaqAnswersExpanded?: boolean;
+  faqBeforeSources?: boolean;
+  deferTrustSignals?: boolean;
+  showInlineCalculatorCta?: boolean;
+  calculatorHref?: string;
   relatedGuides: string[];
   officialSourceKeys?: SourceKey[];
   sourceKeys: SourceKey[];

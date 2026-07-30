@@ -35,6 +35,7 @@ type GuidePageTemplateProps = {
 };
 
 export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
+  const calculatorHref = guide.calculatorHref ?? "/#calculator";
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: guide.h1 }
@@ -95,6 +96,15 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     }
   };
   const giftedDepositNote = giftedDepositNoteBySlug[guide.slug];
+  const sixHundredKLinkBySlug: Record<string, string> = {
+    "how-much-money-needed-buy-house": "cash needed for a £600,000 house",
+    "stamp-duty-explained": "Stamp Duty and fees on a £600,000 property",
+    "first-time-buyer-costs": "first-time buyer costs on a £600,000 home",
+    "mortgage-fees-costs": "deposit and mortgage needed for a £600,000 house",
+    "taxes-and-fees-uk": "taxes and upfront costs on a £600,000 home",
+    "regional-property-costs-uk": "UK cost comparison for a £600,000 property"
+  };
+  const sixHundredKLinkLabel = sixHundredKLinkBySlug[guide.slug];
 
   return (
     <>
@@ -152,6 +162,32 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 {section.tables?.map((table) => <ResponsiveTable key={table.caption ?? table.summary} {...table} />)}
                 {section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
+                {section.links ? (
+                  <p className="text-sm text-muted">
+                    Sources and further reading:{" "}
+                    {section.links.map((link, index) => (
+                      <span key={link.href}>
+                        <Link href={link.href} className="underline hover:text-brand-deep">
+                          {link.label}
+                        </Link>
+                        {index < section.links!.length - 1 ? " · " : ""}
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
+                {section.cta ? (
+                  <div className="rounded-3xl border border-brand/20 bg-panel-strong p-4">
+                    {section.cta.description ? (
+                      <p className="mb-3 max-w-prose text-sm text-muted">{section.cta.description}</p>
+                    ) : null}
+                    <Link
+                      href={section.cta.href}
+                      className="inline-flex min-h-12 items-center rounded-full bg-brand px-5 py-3 font-semibold text-white transition hover:bg-brand-deep"
+                    >
+                      {section.cta.label}
+                    </Link>
+                  </div>
+                ) : null}
               </ContentSection>
             ))}
 
@@ -186,11 +222,13 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
       <div className="shell grid gap-8 lg:grid-cols-[1fr_320px]">
         <article className="min-w-0 space-y-8">
-          <TrustSignals
-            updatedLabel={guide.updatedLabel}
-            sourceKeys={guide.sourceKeys}
-            reviewedText={guide.trustReviewedText}
-          />
+          {!guide.deferTrustSignals ? (
+            <TrustSignals
+              updatedLabel={guide.updatedLabel}
+              sourceKeys={guide.sourceKeys}
+              reviewedText={guide.trustReviewedText}
+            />
+          ) : null}
           <AtAGlance items={guide.atGlance} />
           <RateTypeSplit officialItems={guide.officialItems} estimateItems={guide.estimateItems} />
           <section className="surface p-5">
@@ -198,14 +236,14 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             <h2 className="mt-3 font-serif text-3xl text-text">Use this guide with the right follow-up pages</h2>
             <p className="mt-3 max-w-prose text-muted">
               Start with the{" "}
-              <Link href="/#calculator" className="underline hover:text-brand-deep">
+              <Link href={calculatorHref} className="underline hover:text-brand-deep">
                 homepage calculator
               </Link>{" "}
               to test your own numbers, then compare this topic with{" "}
               {combinedGuideLinks.slice(0, 4).map((slug, index) => (
                 <span key={slug}>
                   <Link href={`/${slug}`} className="underline hover:text-brand-deep">
-                    {guideMap[slug]?.h1 ?? slug}
+                    {guideMap[slug]?.h1 ?? priceGuideLabelMap[slug] ?? slug}
                   </Link>
                   {index < Math.min(combinedGuideLinks.length, 4) - 2
                     ? ", "
@@ -223,6 +261,18 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                   {giftedDepositNote.anchor}
                 </Link>
                 {giftedDepositNote.after}
+              </p>
+            ) : null}
+            {sixHundredKLinkLabel ? (
+              <p className="mt-3 max-w-prose text-sm text-muted">
+                For a calculation-backed higher-price example, see{" "}
+                <Link
+                  href="/cost-to-buy-600k-house"
+                  className="font-semibold underline hover:text-brand-deep"
+                >
+                  {sixHundredKLinkLabel}
+                </Link>
+                .
               </p>
             ) : null}
           </section>
@@ -245,6 +295,32 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 {section.tables?.map((table) => <ResponsiveTable key={table.caption ?? table.summary} {...table} />)}
                 {section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.callout ? <CalloutBox>{section.callout}</CalloutBox> : null}
+                {section.links ? (
+                  <p className="text-sm text-muted">
+                    Sources and further reading:{" "}
+                    {section.links.map((link, linkIndex) => (
+                      <span key={link.href}>
+                        <Link href={link.href} className="underline hover:text-brand-deep">
+                          {link.label}
+                        </Link>
+                        {linkIndex < section.links!.length - 1 ? " · " : ""}
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
+                {section.cta ? (
+                  <div className="rounded-3xl border border-brand/20 bg-panel-strong p-4">
+                    {section.cta.description ? (
+                      <p className="mb-3 max-w-prose text-sm text-muted">{section.cta.description}</p>
+                    ) : null}
+                    <Link
+                      href={section.cta.href}
+                      className="inline-flex min-h-12 items-center rounded-full bg-brand px-5 py-3 font-semibold text-white transition hover:bg-brand-deep"
+                    >
+                      {section.cta.label}
+                    </Link>
+                  </div>
+                ) : null}
               </ContentSection>
 
               {(() => {
@@ -264,7 +340,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 );
               })()}
 
-              {index === 2 ? (
+              {index === 2 && guide.showInlineCalculatorCta !== false ? (
                 <section className="surface p-5">
                   <p className="eyebrow">Try this in the calculator</p>
                   <h2 className="mt-3 font-serif text-3xl text-text">Run your own version of this scenario</h2>
@@ -273,7 +349,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                     level so you can compare the simple version of the budget with a more realistic one.
                   </p>
                   <Link
-                    href="/#calculator"
+                    href={calculatorHref}
                     className="mt-5 inline-flex rounded-full bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand-deep"
                   >
                     Open the calculator
@@ -299,7 +375,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                 {crossSiteNote.after}
               </p>
             ) : null}
-            <Link href="/#calculator" className="mt-5 inline-flex rounded-full bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand-deep">
+            <Link href={calculatorHref} className="mt-5 inline-flex rounded-full bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand-deep">
               Go to the calculator
             </Link>
           </section>
@@ -337,12 +413,24 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
             </section>
           ) : null}
 
+          {guide.faqBeforeSources ? (
+            <FAQSection items={guide.faqs} defaultOpen={guide.showFaqAnswersExpanded} />
+          ) : null}
+          {guide.deferTrustSignals ? (
+            <TrustSignals
+              updatedLabel={guide.updatedLabel}
+              sourceKeys={guide.sourceKeys}
+              reviewedText={guide.trustReviewedText}
+            />
+          ) : null}
           <OfficialSources sourceKeys={guide.officialSourceKeys ?? []} />
           <ContentTrustPanel
             lastReviewed={guide.lastReviewedLabel}
             calculatorDataVersion={guide.calculatorDataVersion}
           />
-          <FAQSection items={guide.faqs} defaultOpen={guide.showFaqAnswersExpanded} />
+          {!guide.faqBeforeSources ? (
+            <FAQSection items={guide.faqs} defaultOpen={guide.showFaqAnswersExpanded} />
+          ) : null}
           <RelatedGuides slugs={combinedGuideLinks.slice(0, 5)} />
           <DataSources sourceKeys={guide.sourceKeys} />
         </article>
@@ -351,12 +439,12 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
           <div className="surface p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Quick links</p>
             <div className="mt-4 grid gap-3 text-sm">
-              <Link href="/#calculator" className="link-chip justify-center">
+              <Link href={calculatorHref} className="link-chip justify-center">
                 Use the calculator
               </Link>
               {combinedGuideLinks.slice(0, 4).map((slug) => (
                 <Link key={slug} href={`/${slug}`} className="link-chip justify-center">
-                  {guideMap[slug]?.h1 ?? "Related guide"}
+                  {guideMap[slug]?.h1 ?? priceGuideLabelMap[slug] ?? "Related guide"}
                 </Link>
               ))}
             </div>

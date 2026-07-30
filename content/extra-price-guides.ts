@@ -1,4 +1,5 @@
 import { createConsistentPriceGuide } from "./price-guide-builder";
+import { create600kPriceGuide } from "./price-guide-600k";
 import type { GuidePageContent } from "./types";
 
 const extraPricePoints = [
@@ -16,7 +17,7 @@ const extraPricePoints = [
 
 export const extraPriceGuides = Object.fromEntries(
   extraPricePoints.map((price) => {
-    const guide = createConsistentPriceGuide(price);
+    const guide = price === 600_000 ? create600kPriceGuide() : createConsistentPriceGuide(price);
     return [guide.slug, guide];
   })
 ) as Record<string, GuidePageContent>;

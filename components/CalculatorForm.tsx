@@ -11,6 +11,7 @@ import {
   type CalculatorInput,
   type DepositMode
 } from "@/lib/calculator";
+import { calculatorInputFromSearchParams } from "@/lib/calculator-query";
 import { propertyPriceBand, trackEvent } from "@/lib/analytics";
 import { defaultCalculatorInput } from "@/lib/default-calculator-input";
 import {
@@ -41,17 +42,29 @@ const adjustableCosts: Array<{ key: AdjustableCostKey; label: string }> = [
   { key: "furnishing", label: "Furnishing and setup" }
 ];
 
-export function CalculatorForm() {
+type CalculatorFormProps = {
+  initialInput?: CalculatorInput;
+};
+
+export function CalculatorForm({ initialInput = defaultCalculatorInput }: CalculatorFormProps) {
   const titleId = useId();
   const propertyHelpId = useId();
   const depositHelpId = useId();
-  const [input, setInput] = useState<CalculatorInput>(defaultCalculatorInput);
+  const [input, setInput] = useState<CalculatorInput>(initialInput);
   const [hasStarted, setHasStarted] = useState(false);
   const result = calculateUpfrontCosts(input);
   const hasMovingCost = result.breakdown.some((line) => line.key === "moving");
   const propertyPriceInvalid = input.propertyPrice < 50_000 || input.propertyPrice > 10_000_000;
   const depositAmountInvalid =
     input.depositMode === "amount" && (input.depositAmount ?? 0) > Math.max(0, input.propertyPrice);
+
+  useEffect(() => {
+    const queryInput = calculatorInputFromSearchParams(
+      new URLSearchParams(window.location.search),
+      initialInput
+    );
+    setInput(queryInput);
+  }, [initialInput]);
 
   useEffect(() => {
     if (!hasStarted) return;

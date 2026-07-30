@@ -127,7 +127,7 @@ export const popularBuyingCostExampleSlugs = [
   "cost-to-buy-500k-house"
 ] as const;
 
-export const guidePagesForPopularExamples = new Set([
+export const guidePagesForPopularExamples = new Set<string>([
   "hidden-costs-buying-house",
   "how-much-money-needed-buy-house",
   "stamp-duty-explained",
