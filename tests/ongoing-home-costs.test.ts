@@ -75,6 +75,7 @@ test("visible FAQ content and FAQ schema use the same shared array", () => {
   assert.equal(ongoingHomeCostFaqs.length, 9);
   assert.match(pageSource, /faqPageSchema\(ongoingHomeCostFaqs\)/);
   assert.match(pageSource, /ongoingHomeCostFaqs\.map/);
+  assert.match(pageSource, /<details key=\{faq\.question\} open/);
 });
 
 test("Article schema contains the editorial-team author, dates and ImageObject", () => {

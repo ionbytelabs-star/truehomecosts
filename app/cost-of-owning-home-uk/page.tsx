@@ -443,7 +443,7 @@ export default function CostOfOwningHomeUkPage() {
             </div>
             <div className="grid gap-3">
               {ongoingHomeCostFaqs.map((faq) => (
-                <details key={faq.question} className="surface group p-4">
+                <details key={faq.question} open className="surface group p-4">
                   <summary className="cursor-pointer list-none pr-6 text-lg font-semibold text-text marker:hidden">
                     {faq.question}
                   </summary>
