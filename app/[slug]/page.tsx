@@ -11,7 +11,7 @@ type GuidePageProps = {
 };
 
 export async function generateStaticParams() {
-  return guideSummaries.map((guide) => ({
+  return guideSummaries.filter((guide) => guide.slug !== "cost-of-owning-home-uk").map((guide) => ({
     slug: guide.slug
   }));
 }

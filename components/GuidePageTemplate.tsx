@@ -73,6 +73,54 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     }
   };
   const crossSiteNote = crossSiteNoteBySlug[guide.slug];
+  const ownershipCostNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
+    "hidden-costs-buying-house": {
+      before: "Once the purchase costs are covered, keep a separate allowance for the ",
+      anchor: "regular costs after buying a home",
+      after: "."
+    },
+    "how-much-money-needed-buy-house": {
+      before: "Your savings plan should leave room for the ",
+      anchor: "monthly costs of owning a home",
+      after: " after completion."
+    },
+    "first-year-cost-buying-house-uk": {
+      before: "For a bill-by-bill monthly plan, compare the first-year total with the ",
+      anchor: "ongoing costs of homeownership",
+      after: "."
+    },
+    "insurance-costs-uk": {
+      before: "Insurance is one line within the wider ",
+      anchor: "bills homeowners need to budget for",
+      after: "."
+    },
+    "leasehold-costs-uk": {
+      before: "Add service charges to the other ",
+      anchor: "monthly costs of owning a house or flat",
+      after: ", taking care not to count included buildings insurance twice."
+    },
+    "furnishing-costs-uk": {
+      before: "Keep one-off furnishing separate from the ",
+      anchor: "cost of owning a house after completion",
+      after: "."
+    },
+    "regional-property-costs-uk": {
+      before: "Regional comparison should also include ",
+      anchor: "monthly ownership costs across the UK",
+      after: ", not only transaction tax."
+    },
+    "cost-to-buy-300k-house": {
+      before: "After the £300,000 purchase completes, plan the ",
+      anchor: "regular costs of homeownership",
+      after: " separately from the upfront total."
+    },
+    "cost-to-buy-400k-house": {
+      before: "The buying total does not include the ",
+      anchor: "bills homeowners need to budget for each month",
+      after: " after completion."
+    }
+  };
+  const ownershipCostNote = ownershipCostNoteBySlug[guide.slug];
   const giftedDepositNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
     "first-time-buyer-costs": {
       before: "If family is helping with the deposit, check the ",
@@ -373,6 +421,15 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
                   {crossSiteNote.anchor}
                 </a>
                 {crossSiteNote.after}
+              </p>
+            ) : null}
+            {ownershipCostNote ? (
+              <p className="mt-3 max-w-prose text-sm text-muted">
+                {ownershipCostNote.before}
+                <Link href="/cost-of-owning-home-uk" className="font-semibold underline hover:text-brand-deep">
+                  {ownershipCostNote.anchor}
+                </Link>
+                {ownershipCostNote.after}
               </p>
             ) : null}
             <Link href={calculatorHref} className="mt-5 inline-flex rounded-full bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand-deep">

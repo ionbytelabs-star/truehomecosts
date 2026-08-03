@@ -80,6 +80,18 @@ export default function HomePage() {
             <p className="eyebrow">What the result includes</p>
             <h2 id="included-heading" className="font-serif text-3xl text-text">One complete upfront-cost view</h2>
             <p className="text-muted">The ranges below come from the same central assumptions used by the calculator.</p>
+            <p className="text-sm text-muted">
+              This calculator covers the purchase and move. After completion, use our{" "}
+              <AnalyticsLink
+                href="/cost-of-owning-home-uk"
+                eventName="homepage_guide_click"
+                eventParameters={{ guide: "cost-of-owning-home-uk" }}
+                className="font-semibold underline hover:text-brand-deep"
+              >
+                monthly costs of owning a home
+              </AnalyticsLink>{" "}
+              guide to plan council tax, utilities, insurance, maintenance and property-specific charges.
+            </p>
           </div>
           <ResponsiveTable
             caption="Buying-cost categories and planning basis"

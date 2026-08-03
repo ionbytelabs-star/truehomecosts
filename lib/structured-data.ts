@@ -126,7 +126,10 @@ export function articleSchema({
   path,
   keywords,
   datePublished,
-  dateModified = "2026-04-23"
+  dateModified = "2026-04-23",
+  authorName,
+  authorUrl,
+  imagePath
 }: {
   headline: string;
   description: string;
@@ -134,8 +137,12 @@ export function articleSchema({
   keywords?: string[];
   datePublished?: string;
   dateModified?: string;
+  authorName?: string;
+  authorUrl?: string;
+  imagePath?: string;
 }) {
   const pageUrl = canonicalUrl(path);
+  const imageUrl = imagePath ? absoluteUrl(imagePath) : representativeImageUrl;
 
   return {
     "@context": "https://schema.org",
@@ -147,12 +154,26 @@ export function articleSchema({
     ...(datePublished ? { datePublished } : {}),
     dateModified,
     inLanguage: "en-GB",
-    image: representativeImageUrl,
+    image: {
+      "@type": "ImageObject",
+      "@id": `${pageUrl}#primaryimage`,
+      url: imageUrl,
+      width: 1200,
+      height: 630,
+      caption: headline
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": webPageId(path)
     },
-    author: organizationReference(),
+    author: authorName
+      ? {
+          "@type": "Organization",
+          "@id": `${rootUrl}#editorial-team`,
+          name: authorName,
+          url: absoluteUrl(authorUrl ?? "/methodology")
+        }
+      : organizationReference(),
     publisher: {
       "@type": "Organization",
       "@id": organizationId,

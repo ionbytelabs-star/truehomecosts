@@ -2671,9 +2671,9 @@ const rawGuides: GuidePageContent[] = [
   }),
   createLongGuide({
     slug: "cost-of-owning-home-uk",
-    title: "Ongoing Costs of Owning a Home in the UK (Monthly Cost Breakdown)",
+    title: "Cost of Owning a Home UK: Monthly Bills & Budget 2026",
     description:
-      "See the ongoing costs of owning a home in the UK, including mortgage payments, council tax, utilities, insurance, maintenance and leasehold charges.",
+      "See the monthly cost of owning a home in the UK, including council tax, energy, water, insurance, maintenance and leasehold charges, with a worked 2026 budget.",
     keywords: [
       "ongoing costs of owning a home",
       "cost of owning a home",
@@ -2685,7 +2685,7 @@ const rawGuides: GuidePageContent[] = [
     intro:
       "The ongoing costs of owning a home in the UK are the regular bills, maintenance allowances and property-specific charges that continue after completion. Buyers who only plan for the purchase day can still feel caught short once mortgage payments, council tax, utilities, insurance and repairs start landing.",
     directAnswer:
-      "The monthly cost of owning a home usually includes the mortgage plus council tax, gas and electricity, water, broadband, insurance and a maintenance reserve. Mortgage payments vary too much to give one useful universal figure, but for many homeowners, non-mortgage ownership costs can easily add several hundred pounds per month before larger repairs, annual bills or service charges are included.",
+      "A practical non-mortgage homeowner budget is about £625 a month, or £7,500 a year, using the worked example in this guide. A £200 monthly leasehold or estate charge would increase that to about £825 a month, or £9,900 a year. Mortgage repayments are additional, and these are illustrative planning figures rather than a UK average.",
     introSections: [
       {
         title: "Typical monthly costs of owning a home in the UK",

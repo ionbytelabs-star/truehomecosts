@@ -8,6 +8,8 @@ type MetadataOptions = {
   path?: string;
   keywords?: string[];
   absoluteTitle?: boolean;
+  socialImage?: string;
+  socialImageAlt?: string;
 };
 
 export function absoluteUrl(path = "/"): string {
@@ -15,7 +17,15 @@ export function absoluteUrl(path = "/"): string {
   return new URL(normalisedPath, siteConfig.url).toString();
 }
 
-export function buildMetadata({ title, description, path = "/", keywords, absoluteTitle = false }: MetadataOptions): Metadata {
+export function buildMetadata({
+  title,
+  description,
+  path = "/",
+  keywords,
+  absoluteTitle = false,
+  socialImage = "/og-image.png",
+  socialImageAlt = `${siteConfig.name} preview`
+}: MetadataOptions): Metadata {
   const url = absoluteUrl(path);
   const socialTitle = absoluteTitle ? title : `${title} | ${siteConfig.name}`;
 
@@ -35,10 +45,10 @@ export function buildMetadata({ title, description, path = "/", keywords, absolu
       siteName: siteConfig.name,
       images: [
         {
-          url: absoluteUrl("/og-image.png"),
+          url: absoluteUrl(socialImage),
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} preview`
+          alt: socialImageAlt
         }
       ]
     },
@@ -46,7 +56,7 @@ export function buildMetadata({ title, description, path = "/", keywords, absolu
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [absoluteUrl("/og-image.png")]
+      images: [absoluteUrl(socialImage)]
     }
   };
 }
