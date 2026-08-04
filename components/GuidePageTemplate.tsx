@@ -50,6 +50,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
   );
   const nearbyPriceLinks = nearbyPriceGuideMap[guide.slug] ?? [];
   const showPopularExamples = guidePagesForPopularExamples.has(guide.slug);
+  const hasIntroContent = Boolean(guide.introSections?.length || guide.contextualLinks?.length);
   const crossSiteNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
     "how-much-money-needed-buy-house": {
       before:
@@ -190,7 +191,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
         badge={guide.updatedLabel}
       />
 
-      {guide.introSections || guide.contextualLinks ? (
+      {hasIntroContent ? (
         <section className="shell pb-8">
           <div className="surface space-y-6 p-5 sm:p-6">
             {guide.introSections?.map((section) => (

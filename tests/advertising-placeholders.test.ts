@@ -41,3 +41,13 @@ test("inactive advertising placeholders stay out of rendered source", () => {
 test("retired advertising placeholder component is not present", () => {
   assert.equal(existsSync("components/AdPlaceholder.tsx"), false);
 });
+
+test("shared guide template skips the intro wrapper when its content arrays are empty", () => {
+  const templateSource = readFileSync("components/GuidePageTemplate.tsx", "utf8");
+
+  assert.match(
+    templateSource,
+    /const hasIntroContent = Boolean\(guide\.introSections\?\.length \|\| guide\.contextualLinks\?\.length\)/
+  );
+  assert.match(templateSource, /\{hasIntroContent \? \(/);
+});
