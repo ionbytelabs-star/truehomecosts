@@ -349,8 +349,15 @@ function taxGuide(guide: GuidePageContent): GuidePageContent {
     [formatCurrency(price), "Scotland home mover", formatCurrency(calculatePropertyTax(price, "scotland", "home-mover")), "LBTT"],
     [formatCurrency(price), "Wales home mover", formatCurrency(calculatePropertyTax(price, "wales", "home-mover")), "LTT"]
   ]);
+  const registrationLink = guide.slug === "stamp-duty-explained"
+    ? { href: "/land-registry-fees-uk", label: "Land Registry and registration fees" }
+    : { href: "/land-registry-fees-uk", label: "UK registration fees by jurisdiction" };
 
   return reviewedGuide(guide, {
+    contextualLinks: [
+      ...(guide.contextualLinks ?? []).filter((link) => link.href !== registrationLink.href),
+      registrationLink
+    ],
     intro: "UK property tax depends on jurisdiction and buyer type. England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT; the production calculator applies the appropriate shared rule set.",
     directAnswer: "There is no single UK stamp-duty table. Use SDLT for England and Northern Ireland, LBTT for Scotland and LTT for Wales, then apply the relevant first-time buyer or additional-property treatment.",
     introSections: [],

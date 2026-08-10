@@ -78,7 +78,7 @@ export default function MethodologyPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Jurisdiction handling</h2>
             <p>England and Northern Ireland use SDLT, Scotland uses LBTT and Wales uses LTT. First-time buyer and additional-property treatment is selected from the relevant official rule set.</p>
-            <p>Registration is also jurisdiction-specific: HM Land Registry for qualifying England and Wales applications, Registers of Scotland for Scottish dispositions, and Land &amp; Property Services for Northern Ireland. Northern Ireland is never treated as an HM Land Registry jurisdiction.</p>
+            <p><Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">Registration is also jurisdiction-specific</Link>: HM Land Registry for qualifying England and Wales applications, Registers of Scotland for Scottish dispositions, and Land &amp; Property Services for Northern Ireland. Northern Ireland is never treated as an HM Land Registry jurisdiction.</p>
           </section>
 
           <section className="space-y-4">
