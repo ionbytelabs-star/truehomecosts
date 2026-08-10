@@ -57,6 +57,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="theme-color" content="#0f355e" />
         <meta name="google-adsense-account" content="ca-pub-9018565465942454" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9018565465942454"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${manrope.variable} ${fraunces.variable} font-sans text-text antialiased`}>
         <StructuredData data={websiteSchema()} />
