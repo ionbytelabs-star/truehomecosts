@@ -35,8 +35,8 @@ const cookieCategories = [
   },
   {
     title: "Advertising",
-    status: "Affiliate links active",
-    text: "Relevant pages may contain clearly disclosed AnyVan affiliate links provided through the Awin network. Live AdSense ad scripts are not loaded."
+    status: "AdSense technology implemented",
+    text: "Google AdSense code may load across the site, although advertisement display depends on Google's approval, account status and advertising availability. Relevant pages may also contain clearly disclosed affiliate links provided through the Awin network."
   },
   {
     title: "Preferences or functionality",
@@ -71,7 +71,7 @@ export default function CookiesPage() {
       <PageIntro
         title="Cookie Policy"
         description="This Cookie Policy explains how True Home Costs uses cookies and similar technologies when you visit truehomecosts.co.uk."
-        summary="It should be read alongside our Privacy Policy. Last updated: 21 July 2026."
+        summary="It should be read alongside our Privacy Policy. Last updated: 10 August 2026."
         badge="Cookies and consent"
       />
 
@@ -153,9 +153,13 @@ export default function CookiesPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Google AdSense and advertising cookies</h2>
             <p>
-              True Home Costs is preparing to use Google AdSense. Google and its advertising partners may use
-              cookies, local storage or similar technologies to deliver, measure and personalise advertising,
-              subject to your consent choices and applicable law.
+              True Home Costs uses Google AdSense advertising technology. The AdSense script may load on pages
+              across the website, although the display of advertisements depends on Google's approval, account
+              status and advertising availability.
+            </p>
+            <p>
+              Where permitted, Google and its advertising partners may use cookies, local storage or similar
+              technologies for advertising purposes, subject to your consent choices and applicable law.
             </p>
             <p>Advertising technologies may be used to:</p>
             <ul className="list-disc space-y-2 pl-5 text-text/95">
@@ -163,18 +167,25 @@ export default function CookiesPage() {
               <li>limit how often an advertisement is shown;</li>
               <li>measure advertisement performance;</li>
               <li>detect fraud and abuse;</li>
-              <li>personalise advertisements where permission has been granted.</li>
+              <li>understand advertising interactions; and</li>
+              <li>
+                provide personalised or non-personalised advertising depending on your consent choices and
+                applicable law.
+              </li>
             </ul>
             <p>
-              Advertising cookies are not treated as strictly necessary. The website currently includes the
-              Google AdSense account verification meta tag, but site verification is not the same as live
-              advertising. The site does not currently load live AdSense ad scripts or display live
-              advertisements.
+              Advertising cookies are not treated as strictly necessary. The website includes both the Google
+              AdSense account verification meta tag and the global AdSense script. Their technical presence is
+              separate from whether an advertisement is displayed. AdSense is still being reviewed and
+              configured, so advertisements may not be available until Google approves the site and the account
+              is ready to serve them.
             </p>
             <p>
-              Visitors in the UK, EEA and Switzerland must be shown consent controls through a suitable
-              Google-certified Consent Management Platform before relevant advertising technologies are used.
-              The current first-party cookie banner is not a Google-certified CMP.
+              For visitors in the UK, EEA and Switzerland, True Home Costs uses Google's European regulations
+              consent message and certified consent-management functionality to request and manage advertising
+              consent where required. That Google interface allows visitors to accept, reject or manage relevant
+              advertising choices. It operates alongside the site's own cookie settings, which separately manage
+              optional Google Analytics consent; neither interface replaces or overrides the other.
             </p>
             <p>
               Google explains how it uses information from sites and apps that use its services at{" "}
@@ -226,6 +237,11 @@ export default function CookiesPage() {
               banner as accepting them.
             </p>
             <p>
+              Where Google's European regulations consent message is shown, you can use that interface to accept,
+              reject or manage relevant advertising choices. The site's cookie settings manage optional analytics
+              separately and do not replace Google's advertising-consent interface.
+            </p>
+            <p>
               You can also change your browser settings to block or delete cookies and storage. Blocking
               strictly necessary storage may affect site functionality, including the ability to remember your
               cookie choice.
@@ -252,7 +268,9 @@ export default function CookiesPage() {
             <p>
               The table lists verified storage used by the website. Google Analytics may set its own cookies
               after analytics consent is accepted, but exact names and durations can vary depending on Google's
-              service behaviour.
+              service behaviour. Where permitted, Google AdSense and its advertising partners may also use
+              cookies, local storage or similar technologies; exact storage can vary by consent choice, region and
+              Google's service behaviour.
             </p>
             <ResponsiveTable
               caption="Verified cookies and storage"
@@ -302,14 +320,15 @@ export default function CookiesPage() {
             <ul className="mt-3 space-y-2 text-sm text-muted">
               <li>Analytics is optional and consent-controlled.</li>
               <li>AdSense verification meta tag is present.</li>
-              <li>Live AdSense scripts are not loaded.</li>
+              <li>The global AdSense script is implemented; advertisement display depends on Google.</li>
               <li>AnyVan and Safestore affiliate links use Awin and are disclosed beside each promotion.</li>
             </ul>
           </div>
           <CalloutBox title="AdSense consent note">
             <p className="text-sm">
-              A Google-certified CMP still needs to be configured before AdSense advertising is enabled for
-              visitors in the UK, EEA and Switzerland.
+              Google's European regulations consent message and certified consent-management functionality are
+              used for relevant advertising choices in the UK, EEA and Switzerland. This is separate from the
+              site's optional analytics settings.
             </p>
           </CalloutBox>
         </aside>
