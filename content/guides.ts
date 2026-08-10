@@ -2,10 +2,13 @@ import type { GuidePageContent } from "@/content/types";
 
 import { createLongGuide } from "./guide-builders";
 import { applyGuideConsistency } from "./guide-consistency";
+import { buyingAndSellingHouseGuide } from "./buying-and-selling-house-same-time";
 import { conveyancingCostsGuide } from "./conveyancing-costs-uk";
+import { costsAfterExchangeGuide } from "./costs-after-exchange";
 import { costsBeforeCompletionGuide } from "./costs-before-completion";
 import { landRegistryFeesGuide } from "./land-registry-fees-uk";
 import { createConsistentPriceGuide } from "./price-guide-builder";
+import { propertySurveyCostsGuide } from "./property-survey-costs-uk";
 
 const rawGuides: GuidePageContent[] = [
   createLongGuide({
@@ -2866,9 +2869,12 @@ const rawGuides: GuidePageContent[] = [
       "Use the hidden costs of buying a house guide to separate purchase costs from ongoing owner costs"
     ]
   }),
+  buyingAndSellingHouseGuide,
   conveyancingCostsGuide,
+  costsAfterExchangeGuide,
   costsBeforeCompletionGuide,
   landRegistryFeesGuide,
+  propertySurveyCostsGuide,
   ...[250_000, 300_000, 350_000, 400_000, 450_000, 500_000].map((price) => createConsistentPriceGuide(price))
 ];
 

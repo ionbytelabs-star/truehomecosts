@@ -52,9 +52,6 @@ test("historical contextual backlinks are restored without missing sibling route
   assert.match(giftedDepositSource, /href="\/costs-before-completion"/);
 
   for (const missingSibling of [
-    "/buying-and-selling-house-same-time",
-    "/property-survey-costs-uk",
-    "/costs-after-exchange",
     "/first-month-costs-after-buying-house"
   ]) {
     assert.ok(!guide.contextualLinks?.some((link) => link.href === missingSibling));

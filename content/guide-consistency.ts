@@ -27,7 +27,8 @@ const centralGuideSlugs = new Set([
 
 const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> = {
   "hidden-costs-buying-house": [
-    { href: "/conveyancing-costs-uk", label: "UK conveyancing costs" }
+    { href: "/conveyancing-costs-uk", label: "UK conveyancing costs" },
+    { href: "/property-survey-costs-uk", label: "property survey levels and costs" }
   ],
   "hidden-costs-buying-new-build-home-uk": [
     { href: "/conveyancing-costs-uk", label: "conveyancing costs and new-build extras" },
@@ -37,7 +38,21 @@ const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> 
     { href: "/costs-before-completion", label: "when completion funds are needed" }
   ],
   "mortgage-fees-costs": [
-    { href: "/costs-before-completion", label: "costs payable before completion" }
+    { href: "/costs-before-completion", label: "costs payable before completion" },
+    { href: "/buying-and-selling-house-same-time", label: "home-mover buying and selling costs" }
+  ],
+  "moving-costs-uk": [
+    { href: "/costs-after-exchange", label: "costs after exchange" },
+    { href: "/buying-and-selling-house-same-time", label: "costs when buying and selling together" }
+  ],
+  "insurance-costs-uk": [
+    { href: "/costs-after-exchange", label: "insurance and other costs after exchange" }
+  ],
+  "first-year-cost-buying-house-uk": [
+    { href: "/property-survey-costs-uk", label: "survey costs by level" }
+  ],
+  "cost-of-owning-home-uk": [
+    { href: "/buying-and-selling-house-same-time", label: "home-mover costs" }
   ]
 };
 

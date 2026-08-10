@@ -73,7 +73,7 @@ export default function MethodologyPage() {
             <h2 className="font-serif text-3xl text-text">Low, average and high assumptions</h2>
             <p>Market-estimate categories have low, average and high planning values. The appropriate price band and jurisdiction are selected where relevant. The figures are judgement-based planning ranges, so a real quotation should replace the estimate as soon as it is available.</p>
             <p>Derived ranges are calculated by summing named categories from the same calculator result. They are not separately maintained headline figures.</p>
-            <p>The supporting guides use the same layers: for example, <Link href="/conveyancing-costs-uk" className="underline hover:text-brand-deep">conveyancing planning figures</Link> reuse the solicitor, search and transfer assumptions, while <Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">registration tables</Link> come from the verified jurisdiction modules.</p>
+            <p>The supporting guides use the same layers: for example, <Link href="/conveyancing-costs-uk" className="underline hover:text-brand-deep">conveyancing planning figures</Link> reuse the solicitor, search and transfer assumptions, <Link href="/property-survey-costs-uk" className="underline hover:text-brand-deep">survey-level examples</Link> reuse the survey bands, and <Link href="/land-registry-fees-uk" className="underline hover:text-brand-deep">registration tables</Link> come from the verified jurisdiction modules.</p>
           </section>
 
           <section className="space-y-4">

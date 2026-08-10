@@ -461,6 +461,7 @@ export default function CostOfOwningHomeUkPage() {
                 ["/leasehold-costs-uk", "Leasehold costs"],
                 ["/furnishing-costs-uk", "Furnishing costs"],
                 ["/hidden-costs-buying-house", "Hidden buying costs"],
+                ["/buying-and-selling-house-same-time", "Home-mover buying and selling costs"],
                 ["/regional-property-costs-uk", "Regional property costs"]
               ].map(([href, label]) => (
                 <Link key={href} href={href} className="link-chip min-h-11">{label}</Link>

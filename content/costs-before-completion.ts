@@ -59,6 +59,7 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
   contextualLinks: [
     { href: "/#calculator", label: "home-buying cost calculator" },
     { href: "/conveyancing-costs-uk", label: "conveyancing costs guide" },
+    { href: "/property-survey-costs-uk", label: "survey costs guide" },
     { href: "/stamp-duty-explained", label: "stamp duty and property tax guide" },
     { href: "/hidden-costs-buying-new-build-home-uk", label: "new-build hidden costs guide" },
     { href: "/gifted-deposit-mortgage", label: "gifted deposit guide" }
@@ -150,7 +151,9 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
     }
   ],
   relatedGuides: [
+    "costs-after-exchange",
     "conveyancing-costs-uk",
+    "property-survey-costs-uk",
     "stamp-duty-explained",
     "hidden-costs-buying-new-build-home-uk"
   ],
