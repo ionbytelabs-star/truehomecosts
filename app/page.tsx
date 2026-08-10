@@ -104,6 +104,18 @@ export default function HomePage() {
               homepagePlanningBasis(row)
             ])}
           />
+          <p className="mt-4 text-sm text-muted">
+            The survey line is a planning allowance rather than a quotation. Compare{" "}
+            <AnalyticsLink
+              href="/property-survey-costs-uk"
+              eventName="homepage_guide_click"
+              eventParameters={{ guide: "property-survey-costs-uk" }}
+              className="font-semibold underline hover:text-brand-deep"
+            >
+              house survey costs for Level 1, Level 2 and Level 3
+            </AnalyticsLink>{" "}
+            before replacing it with a property-specific quote.
+          </p>
         </div>
       </section>
 

@@ -9,19 +9,25 @@ const recovered = [
     slug: "costs-after-exchange",
     title: "Costs After Exchange of Contracts: UK Buyer Guide",
     h1: "Costs after exchange of contracts",
-    firstSection: "After-exchange cost timeline"
+    firstSection: "After-exchange cost timeline",
+    lastReviewed: "2026-07-25",
+    faqCount: 3
   },
   {
     slug: "property-survey-costs-uk",
-    title: "UK Property Survey Costs: Level 1, 2 and 3",
-    h1: "Property survey costs by survey level",
-    firstSection: "Survey level comparison"
+    title: "House Survey Cost UK 2026: Level 1, 2 & 3",
+    h1: "House Survey Costs UK 2026: Level 1, Level 2 and Level 3",
+    firstSection: "What is a house survey?",
+    lastReviewed: "2026-08-10",
+    faqCount: 6
   },
   {
     slug: "buying-and-selling-house-same-time",
     title: "Cost of Buying and Selling a House at the Same Time",
     h1: "Buying and selling a house at the same time",
-    firstSection: "One move, two cost schedules"
+    firstSection: "One move, two cost schedules",
+    lastReviewed: "2026-07-25",
+    faqCount: 3
   }
 ] as const;
 
@@ -32,8 +38,8 @@ test("remaining historical guides are restored once at their exact indexed slugs
     assert.equal(guide.title, expected.title);
     assert.equal(guide.h1, expected.h1);
     assert.equal(guide.sections[0].title, expected.firstSection);
-    assert.equal(guide.lastReviewed, "2026-07-25");
-    assert.equal(guide.faqs.length, 3);
+    assert.equal(guide.lastReviewed, expected.lastReviewed);
+    assert.equal(guide.faqs.length, expected.faqCount);
     assert.equal(
       guideSummaries.filter((entry) => entry.slug === expected.slug).length,
       1,
@@ -44,7 +50,7 @@ test("remaining historical guides are restored once at their exact indexed slugs
 
 test("recovered guides retain distinct intent and structured-data inputs", () => {
   assert.equal(guideMap["costs-after-exchange"].sections[2].title, "Buildings insurance timing");
-  assert.equal(guideMap["property-survey-costs-uk"].sections[3].title, "Lender valuation versus buyer survey");
+  assert.equal(guideMap["property-survey-costs-uk"].sections[5].title, "Mortgage valuation vs house survey");
   assert.equal(guideMap["buying-and-selling-house-same-time"].sections[3].title, "Chain timing and completion risk");
 
   const templateSource = readFileSync("components/GuidePageTemplate.tsx", "utf8");

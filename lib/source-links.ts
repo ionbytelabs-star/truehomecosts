@@ -11,6 +11,14 @@ export const sourceLinks = {
     label: "MoneyHelper home buying guidance",
     href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home"
   },
+  ricsHouseSurveys: {
+    label: "RICS consumer guide to house surveys",
+    href: "https://www.rics.org/consumer-guides/house-surveys-uk-the-costs-types-and-benefits-of-an-rics-home-survey"
+  },
+  ricsHomeSurveyStandard: {
+    label: "RICS Home Survey Standard and current survey levels",
+    href: "https://www.rics.org/profession-standards/rics-standards-and-guidance/sector-standards/building-surveying-standards/home-surveys"
+  },
   revenueScotlandLbttGuide: {
     label: "Revenue Scotland LBTT guidance",
     href: "https://revenue.scot/taxes/land-buildings-transaction-tax"

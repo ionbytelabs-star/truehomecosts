@@ -39,7 +39,8 @@ const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> 
   ],
   "mortgage-fees-costs": [
     { href: "/costs-before-completion", label: "costs payable before completion" },
-    { href: "/buying-and-selling-house-same-time", label: "home-mover buying and selling costs" }
+    { href: "/buying-and-selling-house-same-time", label: "home-mover buying and selling costs" },
+    { href: "/property-survey-costs-uk", label: "house survey costs and lender valuation differences" }
   ],
   "moving-costs-uk": [
     { href: "/costs-after-exchange", label: "costs after exchange" },
