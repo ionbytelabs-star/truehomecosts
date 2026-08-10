@@ -58,7 +58,8 @@ export const landRegistryFeesGuide: GuidePageContent = {
   contextualLinks: [
     { href: "/#calculator", label: "home-buying cost calculator" },
     { href: "/stamp-duty-explained", label: "UK property tax guide" },
-    { href: "/taxes-and-fees-uk", label: "taxes and fees comparison" }
+    { href: "/taxes-and-fees-uk", label: "taxes and fees comparison" },
+    { href: "/costs-before-completion", label: "costs due before completion" }
   ],
   officialItems: [
     "HM Land Registry electronic Scale 1 whole-title transfer fees for qualifying England and Wales applications",
@@ -156,7 +157,12 @@ export const landRegistryFeesGuide: GuidePageContent = {
         "No. Northern Ireland has separate Land Registry and Registry of Deeds arrangements administered by Land & Property Services."
     }
   ],
-  relatedGuides: ["stamp-duty-explained", "taxes-and-fees-uk", "hidden-costs-buying-house"],
+  relatedGuides: [
+    "stamp-duty-explained",
+    "taxes-and-fees-uk",
+    "hidden-costs-buying-house",
+    "costs-before-completion"
+  ],
   officialSourceKeys: ["hmlr", "ros", "lpsNi"],
   sourceKeys: ["hmlr", "ros", "lpsNi", "sdlt", "lbtt", "ltt"],
   ctaTitle: "Calculate the applicable registration line",

@@ -71,7 +71,8 @@ export const conveyancingCostsGuide: GuidePageContent = {
   contextualLinks: [
     { href: "/#calculator", label: "home-buying cost calculator" },
     { href: "/stamp-duty-explained", label: "stamp duty and UK property tax guide" },
-    { href: "/land-registry-fees-uk", label: "registration fee guide" }
+    { href: "/land-registry-fees-uk", label: "registration fee guide" },
+    { href: "/costs-before-completion", label: "costs due before completion" }
   ],
   officialItems: [
     "property tax calculated from the applicable SDLT, LBTT or LTT rules",
@@ -166,7 +167,8 @@ export const conveyancingCostsGuide: GuidePageContent = {
   relatedGuides: [
     "land-registry-fees-uk",
     "stamp-duty-explained",
-    "hidden-costs-buying-house"
+    "hidden-costs-buying-house",
+    "costs-before-completion"
   ],
   officialSourceKeys: ["hmlr", "ros", "lpsNi"],
   sourceKeys: ["moneyHelperBuyingMoving", "hmlr", "ros", "lpsNi"],

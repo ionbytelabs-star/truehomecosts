@@ -25,26 +25,33 @@ const centralGuideSlugs = new Set([
   "taxes-and-fees-uk"
 ]);
 
-const conveyancingBacklinks: Record<string, { href: string; label: string }> = {
-  "hidden-costs-buying-house": {
-    href: "/conveyancing-costs-uk",
-    label: "UK conveyancing costs"
-  },
-  "hidden-costs-buying-new-build-home-uk": {
-    href: "/conveyancing-costs-uk",
-    label: "conveyancing costs and new-build extras"
-  }
+const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> = {
+  "hidden-costs-buying-house": [
+    { href: "/conveyancing-costs-uk", label: "UK conveyancing costs" }
+  ],
+  "hidden-costs-buying-new-build-home-uk": [
+    { href: "/conveyancing-costs-uk", label: "conveyancing costs and new-build extras" },
+    { href: "/costs-before-completion", label: "payments due before completion" }
+  ],
+  "stamp-duty-explained": [
+    { href: "/costs-before-completion", label: "when completion funds are needed" }
+  ],
+  "mortgage-fees-costs": [
+    { href: "/costs-before-completion", label: "costs payable before completion" }
+  ]
 };
 
-function addConveyancingBacklink(guide: GuidePageContent): GuidePageContent {
-  const addition = conveyancingBacklinks[guide.slug];
-  if (!addition) return guide;
+function addRecoveryBacklinks(guide: GuidePageContent): GuidePageContent {
+  const additions = recoveryBacklinks[guide.slug] ?? [];
+  if (additions.length === 0) return guide;
 
   return {
     ...guide,
     contextualLinks: [
-      ...(guide.contextualLinks ?? []).filter((link) => link.href !== addition.href),
-      addition
+      ...(guide.contextualLinks ?? []).filter(
+        (link) => !additions.some((addition) => addition.href === link.href)
+      ),
+      ...additions
     ]
   };
 }
@@ -490,14 +497,14 @@ function firstYear(guide: GuidePageContent): GuidePageContent {
 }
 
 export function applyGuideConsistency(guide: GuidePageContent): GuidePageContent {
-  if (!centralGuideSlugs.has(guide.slug)) return addConveyancingBacklink(guide);
-  if (guide.slug === "hidden-costs-buying-house") return addConveyancingBacklink(hiddenCosts(guide));
-  if (guide.slug === "how-much-money-needed-buy-house") return addConveyancingBacklink(cashNeeded(guide));
-  if (guide.slug === "first-time-buyer-costs") return addConveyancingBacklink(firstTimeBuyer(guide));
-  if (guide.slug === "mortgage-fees-costs") return addConveyancingBacklink(singleCategoryGuide(guide, "mortgage-fees"));
-  if (guide.slug === "moving-costs-uk") return addConveyancingBacklink(singleCategoryGuide(guide, "moving"));
-  if (guide.slug === "insurance-costs-uk") return addConveyancingBacklink(singleCategoryGuide(guide, "insurance"));
-  if (guide.slug === "furnishing-costs-uk") return addConveyancingBacklink(singleCategoryGuide(guide, "furnishing"));
-  if (guide.slug === "first-year-cost-buying-house-uk") return addConveyancingBacklink(firstYear(guide));
-  return addConveyancingBacklink(taxGuide(guide));
+  if (!centralGuideSlugs.has(guide.slug)) return addRecoveryBacklinks(guide);
+  if (guide.slug === "hidden-costs-buying-house") return addRecoveryBacklinks(hiddenCosts(guide));
+  if (guide.slug === "how-much-money-needed-buy-house") return addRecoveryBacklinks(cashNeeded(guide));
+  if (guide.slug === "first-time-buyer-costs") return addRecoveryBacklinks(firstTimeBuyer(guide));
+  if (guide.slug === "mortgage-fees-costs") return addRecoveryBacklinks(singleCategoryGuide(guide, "mortgage-fees"));
+  if (guide.slug === "moving-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "moving"));
+  if (guide.slug === "insurance-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "insurance"));
+  if (guide.slug === "furnishing-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "furnishing"));
+  if (guide.slug === "first-year-cost-buying-house-uk") return addRecoveryBacklinks(firstYear(guide));
+  return addRecoveryBacklinks(taxGuide(guide));
 }

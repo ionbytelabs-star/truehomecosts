@@ -44,7 +44,7 @@ test("historical contextual backlinks are restored without broken sibling-route 
   assert.match(methodologySource, /href="\/conveyancing-costs-uk"/);
   assert.match(giftedDepositSource, /href="\/conveyancing-costs-uk"/);
 
-  for (const missingSibling of ["/costs-before-completion", "/buying-and-selling-house-same-time"]) {
+  for (const missingSibling of ["/buying-and-selling-house-same-time"]) {
     assert.ok(!guide.contextualLinks?.some((link) => link.href === missingSibling));
     assert.ok(!guide.relatedGuides.includes(missingSibling.slice(1)));
   }
@@ -54,6 +54,7 @@ test("critical indexed SEO routes remain registered exactly once", () => {
   const criticalSlugs = [
     "land-registry-fees-uk",
     "conveyancing-costs-uk",
+    "costs-before-completion",
     "hidden-costs-buying-new-build-home-uk",
     "cost-of-owning-home-uk",
     "stamp-duty-explained"
