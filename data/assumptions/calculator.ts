@@ -3,7 +3,7 @@ import { insuranceAllowanceByJurisdiction } from "./insurance";
 import { mortgageFeeBands } from "./mortgageFees";
 import { movingCostBands } from "./moving";
 import { searchFeeByJurisdiction } from "./searches";
-import { solicitorFeeBands } from "./solicitors";
+import { solicitorFeeBands, solicitorFeeVatTreatment } from "./solicitors";
 import { surveyFeeBands } from "./surveys";
 import { telegraphicTransferFee } from "./transfers";
 import type { JurisdictionRangeMap, PriceBandRange, RangeByLevel } from "./types";
@@ -147,13 +147,18 @@ export const calculatorCostAssumptions: CostAssumption[] = [
     userOverride: false,
     notes: "SDLT in England and Northern Ireland, LBTT in Scotland or LTT in Wales."
   },
-  rangeSummary(
-    "solicitors",
-    "Solicitor/conveyancing",
-    "Solicitor/conveyancing",
-    solicitorFeeBands,
-    "Legal work required to complete the purchase."
-  ),
+  {
+    ...rangeSummary(
+      "solicitors",
+      "Solicitor/conveyancing",
+      "Solicitor/conveyancing",
+      solicitorFeeBands,
+      solicitorFeeVatTreatment.note
+    ),
+    sourceName: "MoneyHelper and SRA price-transparency guidance",
+    sourceUrl: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/find-the-right-solicitor-or-conveyancer",
+    lastVerified: solicitorFeeVatTreatment.lastVerified
+  },
   jurisdictionRangeSummary(
     "searches",
     "Search fees",
@@ -307,7 +312,7 @@ export const homepageCostRows: HomepageCostRow[] = [
   {
     id: "solicitors",
     label: "Solicitor/conveyancing",
-    description: "Legal work required to complete the purchase.",
+    description: "VAT-inclusive planning estimate for standard purchase legal work; searches and transfer fees are separate.",
     basis: "Market estimate or user-entered amount",
     assumptionIds: ["solicitors"]
   },

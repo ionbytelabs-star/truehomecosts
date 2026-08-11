@@ -175,7 +175,7 @@ const rawGuides: GuidePageContent[] = [
       {
         question: "How much should I budget for solicitor fees when buying a house in the UK?",
         answer:
-          "A straightforward purchase often lands around £950 to £1,950 or more for legal fees, with disbursements and VAT on top."
+          "A straightforward purchase often lands around £950 to £1,950 or more for VAT-inclusive legal fees, with disbursements on top."
       },
       {
         question: "What is the difference between a HomeBuyer report and a structural survey?",

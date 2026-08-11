@@ -7,6 +7,18 @@ export const sourceLinks = {
     label: "MoneyHelper guide to buying and moving costs",
     href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs"
   },
+  moneyHelperConveyancing: {
+    label: "MoneyHelper guide to comparing solicitors and conveyancers",
+    href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/find-the-right-solicitor-or-conveyancer"
+  },
+  sraPriceTransparency: {
+    label: "Solicitors Regulation Authority price-transparency guidance",
+    href: "https://www.sra.org.uk/price/"
+  },
+  govUkBuyingConveyancing: {
+    label: "GOV.UK home-buying conveyancing guidance",
+    href: "https://www.gov.uk/buying-a-home/transferring-ownership"
+  },
   moneyHelperHomeBuying: {
     label: "MoneyHelper home buying guidance",
     href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home"

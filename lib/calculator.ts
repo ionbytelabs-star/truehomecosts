@@ -276,7 +276,7 @@ export function calculateUpfrontCosts(input: CalculatorInput): CalculatorResult 
             : "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates",
       lastVerified: "2026-07-19"
     },
-    estimateLine(input, "solicitors", "Solicitor / conveyancing", getRangeValue(solicitorFeeBands, propertyPrice, level), "Planning estimate for standard legal work; searches and transfer fees are separate."),
+    estimateLine(input, "solicitors", "Solicitor / conveyancing", getRangeValue(solicitorFeeBands, propertyPrice, level), "VAT-inclusive planning estimate for standard legal work; searches and transfer fees are separate."),
     estimateLine(input, "searches", "Search fees", searchFeeByJurisdiction[input.jurisdiction][level], "Planning estimate for the usual search pack."),
     estimateLine(input, "survey", "Survey", getRangeValue(surveyFeeBands, propertyPrice, level), "Planning estimate; survey level and property condition affect the quote."),
     estimateLine(input, "mortgage-fees", "Mortgage fees", getRangeValue(mortgageFeeBands, propertyPrice, level), "Planning estimate for possible lender, valuation, arrangement or broker charges."),

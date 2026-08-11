@@ -38,6 +38,7 @@ const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> 
     { href: "/costs-before-completion", label: "when completion funds are needed" }
   ],
   "mortgage-fees-costs": [
+    { href: "/conveyancing-costs-uk", label: "lender-related conveyancing fees" },
     { href: "/costs-before-completion", label: "costs payable before completion" },
     { href: "/buying-and-selling-house-same-time", label: "home-mover buying and selling costs" },
     { href: "/property-survey-costs-uk", label: "house survey costs and lender valuation differences" }
@@ -51,6 +52,9 @@ const recoveryBacklinks: Record<string, Array<{ href: string; label: string }>> 
   ],
   "first-year-cost-buying-house-uk": [
     { href: "/property-survey-costs-uk", label: "survey costs by level" }
+  ],
+  "first-time-buyer-costs": [
+    { href: "/conveyancing-costs-uk", label: "legal costs when buying a first home" }
   ],
   "cost-of-owning-home-uk": [
     { href: "/buying-and-selling-house-same-time", label: "home-mover costs" }

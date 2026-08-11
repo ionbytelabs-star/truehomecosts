@@ -1,9 +1,17 @@
 import type { PriceBandRange } from "./types";
 
 /**
- * Estimated solicitor and conveyancing legal fees for standard residential purchases.
+ * Estimated VAT-inclusive solicitor and conveyancing legal fees for standard residential purchases.
  * Disbursements such as searches and bank transfer fees are modelled separately.
+ * VAT scope reviewed against MoneyHelper and SRA consumer price-transparency guidance on 11 August 2026.
  */
+export const solicitorFeeVatTreatment = {
+  included: true,
+  rate: 0.2,
+  lastVerified: "2026-08-11",
+  note: "The TrueHomeCosts professional legal-fee planning ranges include VAT; searches, registration and transfer fees remain separate lines."
+} as const;
+
 export const solicitorFeeBands: PriceBandRange[] = [
   { upTo: 200_000, low: 950, average: 1_250, high: 1_650 },
   { upTo: 350_000, low: 1_050, average: 1_400, high: 1_800 },

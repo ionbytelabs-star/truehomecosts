@@ -105,6 +105,19 @@ export default function HomePage() {
             ])}
           />
           <p className="mt-4 text-sm text-muted">
+            The solicitor/conveyancing line is a VAT-inclusive planning estimate for standard purchase legal work.
+            Compare the full breakdown of{" "}
+            <AnalyticsLink
+              href="/conveyancing-costs-uk"
+              eventName="homepage_guide_click"
+              eventParameters={{ guide: "conveyancing-costs-uk" }}
+              className="font-semibold underline hover:text-brand-deep"
+            >
+              solicitor and conveyancing fees
+            </AnalyticsLink>{" "}
+            before replacing it with an itemised quote.
+          </p>
+          <p className="mt-4 text-sm text-muted">
             The survey line is a planning allowance rather than a quotation. Compare{" "}
             <AnalyticsLink
               href="/property-survey-costs-uk"
