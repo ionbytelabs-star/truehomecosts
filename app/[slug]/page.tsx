@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: GuidePageProps) {
     title: guide.title,
     description: guide.description,
     path: `/${guide.slug}`,
-    keywords: guide.keywords
+    keywords: guide.keywords,
+    absoluteTitle: guide.slug === "mortgage-fees-costs"
   });
 }
 

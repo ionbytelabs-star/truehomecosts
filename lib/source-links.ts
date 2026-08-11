@@ -23,6 +23,30 @@ export const sourceLinks = {
     label: "MoneyHelper home buying guidance",
     href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home"
   },
+  moneyHelperMortgageAdvice: {
+    label: "MoneyHelper guidance on using a mortgage adviser",
+    href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/choosing-a-mortgage-shop-around-or-get-advice"
+  },
+  fcaFirmChecker: {
+    label: "FCA guidance on checking a financial firm is authorised",
+    href: "https://www.fca.org.uk/consumers/how-check-firm-individual-authorised"
+  },
+  fcaMortgageAprc: {
+    label: "FCA explanation of mortgage APRC and relevant charges",
+    href: "https://www.fca.org.uk/news/statements/annual-percentage-rate-charge-aprc-calculations"
+  },
+  fcaMortgageBrokerAuthorisation: {
+    label: "FCA mortgage broker authorisation and disclosure requirements",
+    href: "https://www.fca.org.uk/firms/authorisation/mortgage-brokers"
+  },
+  govUkBuyingAHome: {
+    label: "GOV.UK guide to buying a home, valuations and surveys",
+    href: "https://www.gov.uk/government/publications/how-to-buy-a-home/how-to-buy"
+  },
+  moneySavingExpertMortgageFees: {
+    label: "MoneySavingExpert guide to mortgage and home-buying fees",
+    href: "https://www.moneysavingexpert.com/mortgages/mortgage-fees-stamp-duty/"
+  },
   ricsHouseSurveys: {
     label: "RICS consumer guide to house surveys",
     href: "https://www.rics.org/consumer-guides/house-surveys-uk-the-costs-types-and-benefits-of-an-rics-home-survey"

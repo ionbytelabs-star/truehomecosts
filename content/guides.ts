@@ -1204,21 +1204,23 @@ const rawGuides: GuidePageContent[] = [
   }),
   createLongGuide({
     slug: "mortgage-fees-costs",
-    title: "Mortgage Fees and Costs in the UK",
+    title: "Mortgage Fees UK 2026: Arrangement, Booking & Valuation | TrueHomeCosts",
     description:
-      "A practical guide to mortgage fees and costs in the UK, including broker fees, advice charges, booking fees, arrangement fees, valuation costs, ERCs and exit fees.",
+      "Mortgage fees in the UK explained, including arrangement and booking fees, lender valuations, broker charges, fee-free deals and when mortgage costs are paid.",
     keywords: [
-      "mortgage broker fees UK",
-      "mortgage advice cost UK",
-      "mortgage booking fee UK",
-      "mortgage arrangement fees UK",
-      "mortgage valuation fee UK",
-      "valuation fee vs survey fee UK",
-      "mortgage valuation fee vs home survey cost UK",
-      "early repayment charge mortgage UK calculator",
-      "mortgage exit fees UK"
+      "mortgage fees UK",
+      "mortgage application fee",
+      "mortgage booking fee",
+      "mortgage arrangement fee",
+      "mortgage product fee",
+      "mortgage lender fees",
+      "mortgage valuation fee",
+      "mortgage broker fees",
+      "mortgage legal fees",
+      "mortgage account fee",
+      "fee-free mortgages"
     ],
-    h1: "Mortgage fees and costs in the UK",
+    h1: "Mortgage Fees UK 2026: Arrangement, Booking, Broker and Valuation Costs",
     intro:
       "The mortgage interest rate is only part of the story. Mortgage costs can also include broker fees, lender product fees, valuation charges and later charges such as early repayment fees or exit fees.",
     directAnswer:

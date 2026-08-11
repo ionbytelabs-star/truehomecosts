@@ -126,7 +126,11 @@ test("first-time buyer guide contains calculator-derived jurisdiction examples",
 });
 
 test("mortgage, moving, insurance and furnishing guides share central category values", () => {
-  for (const slug of ["mortgage-fees-costs", "moving-costs-uk", "insurance-costs-uk", "furnishing-costs-uk"]) {
+  const mortgageGuide = guideMap["mortgage-fees-costs"];
+  assert.match(mortgageGuide.directAnswer, /combined planning allowance/i);
+  assert.match(JSON.stringify(mortgageGuide), /Replace the (?:calculator allowance|allowance)/i);
+
+  for (const slug of ["moving-costs-uk", "insurance-costs-uk", "furnishing-costs-uk"]) {
     const guide = guideMap[slug];
     assert.match(guide.directAnswer, /central low-to-high/i);
     assert.match(JSON.stringify(guide.sections), /Replace the planning amount with a current quotation|Enter the quotation/);

@@ -11,6 +11,7 @@ import {
 import { formatCurrency } from "../lib/format";
 
 import type { GuidePageContent, GuideSection } from "./types";
+import { mortgageFeesGuide } from "./mortgage-fees-guide";
 
 const centralGuideSlugs = new Set([
   "hidden-costs-buying-house",
@@ -521,7 +522,7 @@ export function applyGuideConsistency(guide: GuidePageContent): GuidePageContent
   if (guide.slug === "hidden-costs-buying-house") return addRecoveryBacklinks(hiddenCosts(guide));
   if (guide.slug === "how-much-money-needed-buy-house") return addRecoveryBacklinks(cashNeeded(guide));
   if (guide.slug === "first-time-buyer-costs") return addRecoveryBacklinks(firstTimeBuyer(guide));
-  if (guide.slug === "mortgage-fees-costs") return addRecoveryBacklinks(singleCategoryGuide(guide, "mortgage-fees"));
+  if (guide.slug === "mortgage-fees-costs") return addRecoveryBacklinks(mortgageFeesGuide(guide));
   if (guide.slug === "moving-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "moving"));
   if (guide.slug === "insurance-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "insurance"));
   if (guide.slug === "furnishing-costs-uk") return addRecoveryBacklinks(singleCategoryGuide(guide, "furnishing"));

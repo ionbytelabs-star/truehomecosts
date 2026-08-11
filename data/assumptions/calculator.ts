@@ -1,6 +1,6 @@
 import { furnishingCostBands } from "./furnishing";
 import { insuranceAllowanceByJurisdiction } from "./insurance";
-import { mortgageFeeBands } from "./mortgageFees";
+import { mortgageFeeBands, mortgageFeePlanningMetadata } from "./mortgageFees";
 import { movingCostBands } from "./moving";
 import { searchFeeByJurisdiction } from "./searches";
 import { solicitorFeeBands, solicitorFeeVatTreatment } from "./solicitors";
@@ -173,13 +173,18 @@ export const calculatorCostAssumptions: CostAssumption[] = [
     surveyFeeBands,
     "The buyer's survey and any separate lender valuation charge."
   ),
-  rangeSummary(
-    "mortgage-fees",
-    "Mortgage fees",
-    "Mortgage fees",
-    mortgageFeeBands,
-    "Arrangement, booking, broker or other mortgage-related charges where applicable."
-  ),
+  {
+    ...rangeSummary(
+      "mortgage-fees",
+      "Mortgage fees",
+      "Mortgage fees",
+      mortgageFeeBands,
+      mortgageFeePlanningMetadata.scope
+    ),
+    sourceName: mortgageFeePlanningMetadata.sourceName,
+    sourceUrl: mortgageFeePlanningMetadata.sourceUrl,
+    lastVerified: mortgageFeePlanningMetadata.lastVerified
+  },
   {
     id: "registration-england-wales",
     label: "Registration fee",
@@ -333,7 +338,7 @@ export const homepageCostRows: HomepageCostRow[] = [
   {
     id: "mortgage-fees",
     label: "Mortgage fees",
-    description: "Arrangement, booking, broker or other mortgage-related charges where applicable.",
+    description: "One adjustable allowance for possible lender, product, valuation or broker charges; actual fees vary by mortgage.",
     basis: "Market estimate or user-entered amount",
     assumptionIds: ["mortgage-fees"]
   },
