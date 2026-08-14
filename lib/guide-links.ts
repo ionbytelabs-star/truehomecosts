@@ -1,11 +1,4 @@
-const priceGuideSlugs = [
-  "cost-to-buy-250k-house",
-  "cost-to-buy-300k-house",
-  "cost-to-buy-350k-house",
-  "cost-to-buy-400k-house",
-  "cost-to-buy-450k-house",
-  "cost-to-buy-500k-house"
-] as const;
+import { priceGuideSlugs } from "./price-guide-links";
 
 const strategicGuideMap: Record<string, string[]> = {
   "hidden-costs-buying-house": [

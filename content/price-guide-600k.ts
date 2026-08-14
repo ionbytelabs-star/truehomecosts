@@ -12,7 +12,7 @@ import {
 } from "../lib/cost-scopes";
 import { formatCurrency } from "../lib/format";
 
-import { createConsistentPriceGuide } from "./price-guide-builder";
+import { createPriceGuideFoundation } from "./price-guide-builder";
 import type { GuidePageContent } from "./types";
 
 const propertyPrice = 600_000;
@@ -62,7 +62,7 @@ function lineValue(result: ReturnType<typeof calculateUpfrontCosts>, key: string
 }
 
 export function create600kPriceGuide(): GuidePageContent {
-  const base = createConsistentPriceGuide(propertyPrice);
+  const base = createPriceGuideFoundation(propertyPrice);
   const currentYear = new Date().getUTCFullYear();
   const lowCore = scenarioResult(10, "low");
   const averageCore = scenarioResult(10, "average");
@@ -319,6 +319,16 @@ export function create600kPriceGuide(): GuidePageContent {
     trustReviewedText: `Calculations were last checked against the shared calculator rules and official sources on ${base.lastReviewedLabel}. The statutory charges, typical market estimates and user-selected assumptions are labelled separately.`,
     ctaTitle: "Calculate your £600,000 buying costs",
     ctaText:
-      "Open the full calculator with this scenario prefilled, then replace planning estimates with your own quotations and optional-cost choices."
+      "Open the full calculator with this scenario prefilled, then replace planning estimates with your own quotations and optional-cost choices.",
+    mistakes: [
+      "Assuming first-time buyer SDLT relief applies above £500,000",
+      "Treating the £60,000 deposit as the entire cash requirement",
+      "Using England SDLT for a Scottish or Welsh purchase"
+    ],
+    checklist: [
+      "Confirm the nation and buyer type before using the tax result",
+      "Separate the core transaction range from moving, insurance and furnishing",
+      "Replace market estimates with transaction-specific quotations"
+    ]
   };
 }

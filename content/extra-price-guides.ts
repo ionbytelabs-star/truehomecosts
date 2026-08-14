@@ -1,23 +1,17 @@
-import { createConsistentPriceGuide } from "./price-guide-builder";
-import { create600kPriceGuide } from "./price-guide-600k";
+import { createRetainedPriceGuide } from "./price-guides";
+import type { RetainedPropertyPrice } from "./price-guide-builder";
 import type { GuidePageContent } from "./types";
 
-const extraPricePoints = [
+const extraPricePoints: RetainedPropertyPrice[] = [
   150_000,
   200_000,
-  225_000,
-  275_000,
-  325_000,
-  375_000,
-  425_000,
-  475_000,
   600_000,
   750_000
 ];
 
 export const extraPriceGuides = Object.fromEntries(
   extraPricePoints.map((price) => {
-    const guide = price === 600_000 ? create600kPriceGuide() : createConsistentPriceGuide(price);
+    const guide = createRetainedPriceGuide(price);
     return [guide.slug, guide];
   })
 ) as Record<string, GuidePageContent>;

@@ -7,7 +7,7 @@ import { conveyancingCostsGuide } from "./conveyancing-costs-uk";
 import { costsAfterExchangeGuide } from "./costs-after-exchange";
 import { costsBeforeCompletionGuide } from "./costs-before-completion";
 import { landRegistryFeesGuide } from "./land-registry-fees-uk";
-import { createConsistentPriceGuide } from "./price-guide-builder";
+import { createRetainedPriceGuide } from "./price-guides";
 import { propertySurveyCostsGuide } from "./property-survey-costs-uk";
 
 const rawGuides: GuidePageContent[] = [
@@ -2877,7 +2877,7 @@ const rawGuides: GuidePageContent[] = [
   costsBeforeCompletionGuide,
   landRegistryFeesGuide,
   propertySurveyCostsGuide,
-  ...[250_000, 300_000, 350_000, 400_000, 450_000, 500_000].map((price) => createConsistentPriceGuide(price))
+  ...([250_000, 300_000, 400_000, 500_000] as const).map((price) => createRetainedPriceGuide(price))
 ];
 
 export const guides = rawGuides.map(applyGuideConsistency);

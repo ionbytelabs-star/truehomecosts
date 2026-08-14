@@ -35,7 +35,7 @@ test("homepage displays exactly six price examples and links to the hub", () => 
   assert.equal(popularBuyingCostExampleSlugs.length, 6);
   assert.match(pageSource, /View buying costs for all property prices/);
   assert.match(pageSource, /house-buying-cost-by-property-price/);
-  assert.equal(priceGuideLinks.length, 16);
+  assert.equal(priceGuideLinks.length, 8);
 });
 
 test("homepage ranges and review details come from central data", () => {

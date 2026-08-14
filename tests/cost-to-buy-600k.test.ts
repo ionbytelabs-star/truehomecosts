@@ -131,9 +131,13 @@ test("internal discovery surfaces include the £600k guide", () => {
   assert.match(templateSource, /UK cost comparison for a £600,000 property/);
 });
 
-test("the specialised page does not change neighbouring generated guides", () => {
+test("the specialised page and its neighbour retain distinct price-specific editorial", () => {
   const neighbouring = extraPriceGuides["cost-to-buy-750k-house"];
-  assert.equal(neighbouring.h1, "Cost to buy a £750,000 house in the UK");
-  assert.match(neighbouring.directAnswer, /England home-mover example/i);
+  assert.equal(neighbouring.h1, "Buying a £750,000 house: the full cash picture");
+  assert.match(neighbouring.directAnswer, /higher progressive bands|Scotland and Wales/i);
   assert.equal(neighbouring.introSections, undefined);
+  assert.notDeepEqual(
+    neighbouring.sections.map((section) => section.title),
+    guide.sections.map((section) => section.title)
+  );
 });
