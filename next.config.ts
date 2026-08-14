@@ -44,6 +44,16 @@ const nextConfig: NextConfig = {
         source: "/hidden-costs-buying-house-uk",
         destination: "/hidden-costs-buying-house",
         permanent: true
+      },
+      {
+        source: "/taxes-and-fees-uk",
+        destination: "/stamp-duty-explained",
+        permanent: true
+      },
+      {
+        source: "/costs-after-exchange",
+        destination: "/costs-before-completion",
+        permanent: true
       }
     ];
   }

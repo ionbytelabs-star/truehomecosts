@@ -145,7 +145,6 @@ test("critical indexed routes, sitemap and crawlability wiring remain active", (
     "land-registry-fees-uk",
     "conveyancing-costs-uk",
     "costs-before-completion",
-    "costs-after-exchange",
     "property-survey-costs-uk",
     "buying-and-selling-house-same-time",
     "hidden-costs-buying-new-build-home-uk",

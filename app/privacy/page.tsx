@@ -9,7 +9,7 @@ import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Privacy Policy | True Home Costs",
   description:
-    "Learn how True Home Costs handles personal information, analytics, cookies and future advertising services.",
+    "Learn how True Home Costs handles personal information, analytics, cookies and advertising services.",
   path: "/privacy"
 });
 
@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         data={webpageSchema({
           title: "Privacy Policy",
           description:
-            "How True Home Costs handles personal information, analytics, cookies and future advertising services.",
+            "How True Home Costs handles personal information, analytics, cookies and advertising services.",
           path: "/privacy"
         })}
       />
@@ -39,6 +39,8 @@ export default function PrivacyPage() {
       />
 
       <section className="shell max-w-prose space-y-6 pb-16">
+        <p className="text-sm text-muted">Last updated: 14 August 2026</p>
+
         <section className="space-y-3">
           <h2 className="font-serif text-3xl text-text">What we collect</h2>
           <p>
@@ -77,16 +79,22 @@ export default function PrivacyPage() {
             cookie consent choice shown to visitors. Relevant editorial pages may also link to AnyVan or
             Safestore through the Awin affiliate network. Those links are labelled, and clicking one takes you
             to third-party websites governed by their own privacy policies. The site does not include a login,
-            CRM, live chat tool or live advertising scripts.
+            CRM or live chat tool. Google AdSense technology is implemented as described below.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-serif text-3xl text-text">Future advertising services</h2>
+          <h2 className="font-serif text-3xl text-text">Advertising services</h2>
           <p>
-            True Home Costs may use Google AdSense to display advertising. If advertising is enabled, Google
-            and its advertising partners may use cookies, local storage or similar technologies to deliver and
-            measure ads, prevent fraud and, where permission has been granted, personalise advertising.
+            True Home Costs has implemented Google AdSense technology. Whether ads actually appear depends on
+            AdSense approval, account status and available advertising inventory; implementation does not
+            guarantee that an advertisement will be served on every page or visit.
+          </p>
+          <p>
+            Where advertising services operate, Google and its advertising partners may process relevant
+            information and use cookies, local storage or similar technologies to deliver and measure ads,
+            prevent fraud and, where permission has been granted, personalise advertising. This processing is
+            limited by applicable law and the visitor's consent choices where consent is required.
           </p>
           <p>
             Advertising technologies are optional and are not strictly necessary for using the website.

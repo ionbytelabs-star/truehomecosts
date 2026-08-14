@@ -59,7 +59,6 @@ export const landRegistryFeesGuide: GuidePageContent = {
     { href: "/#calculator", label: "home-buying cost calculator" },
     { href: "/conveyancing-costs-uk", label: "solicitor and conveyancing fees" },
     { href: "/stamp-duty-explained", label: "UK property tax guide" },
-    { href: "/taxes-and-fees-uk", label: "taxes and fees comparison" },
     { href: "/costs-before-completion", label: "costs due before completion" }
   ],
   officialItems: [
@@ -160,7 +159,6 @@ export const landRegistryFeesGuide: GuidePageContent = {
   ],
   relatedGuides: [
     "stamp-duty-explained",
-    "taxes-and-fees-uk",
     "hidden-costs-buying-house",
     "costs-before-completion"
   ],

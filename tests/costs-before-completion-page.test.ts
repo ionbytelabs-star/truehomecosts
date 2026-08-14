@@ -10,22 +10,25 @@ const guide = guideMap[slug];
 test("historical Costs Before Completion guide is restored at its indexed slug", () => {
   assert.ok(guide);
   assert.equal(guide.slug, slug);
-  assert.equal(guide.title, "Costs Before Completion When Buying a House");
-  assert.equal(guide.h1, "Costs payable before completion");
+  assert.equal(guide.title, "When Home-Buying Costs Are Paid Before Completion");
+  assert.equal(guide.h1, "When home-buying costs are paid before completion");
   assert.equal(guide.lastReviewed, "2026-07-25");
   assert.equal(guideSummaries.filter((entry) => entry.slug === slug).length, 1);
 });
 
 test("historical content, FAQs and structured-data inputs are preserved", () => {
   assert.equal(guide.sections[0].title, "Before-completion payment timeline");
-  assert.equal(guide.sections[4].title, "When property tax is paid");
-  assert.equal(guide.faqs.length, 3);
+  assert.equal(guide.sections[4].title, "Between exchange and completion");
+  assert.equal(guide.sections[5].title, "When property tax is paid");
+  assert.equal(guide.faqs.length, 5);
   assert.deepEqual(
     guide.faqs.map((faq) => faq.question),
     [
       "What do I pay before completion when buying a house?",
       "Are stamp duty, LBTT or LTT paid before completion?",
-      "What happens to survey and search costs if the purchase fails?"
+      "What happens to survey and search costs if the purchase fails?",
+      "What costs usually arise after exchange but before completion?",
+      "When should buildings insurance start?"
     ]
   );
 

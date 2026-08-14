@@ -19,7 +19,7 @@ const strategicGuideMap: Record<string, string[]> = {
   ],
   "stamp-duty-explained": [
     "regional-property-costs-uk",
-    "taxes-and-fees-uk",
+    "land-registry-fees-uk",
     "first-time-buyer-costs",
     "cost-to-buy-300k-house",
     "cost-to-buy-500k-house"
@@ -35,7 +35,7 @@ const strategicGuideMap: Record<string, string[]> = {
     "hidden-costs-buying-house",
     "how-much-money-needed-buy-house",
     "insurance-costs-uk",
-    "taxes-and-fees-uk",
+    "land-registry-fees-uk",
     "stamp-duty-explained"
   ],
   "moving-costs-uk": [
@@ -54,17 +54,10 @@ const strategicGuideMap: Record<string, string[]> = {
   ],
   "leasehold-costs-uk": [
     "hidden-costs-buying-house",
-    "taxes-and-fees-uk",
+    "stamp-duty-explained",
     "cost-of-owning-home-uk",
     "how-much-money-needed-buy-house",
     "first-time-buyer-costs"
-  ],
-  "taxes-and-fees-uk": [
-    "stamp-duty-explained",
-    "regional-property-costs-uk",
-    "hidden-costs-buying-house",
-    "cost-of-owning-home-uk",
-    "how-much-money-needed-buy-house"
   ],
   "home-buying-schemes-uk": [
     "first-time-buyer-costs",
@@ -74,7 +67,7 @@ const strategicGuideMap: Record<string, string[]> = {
   ],
   "regional-property-costs-uk": [
     "stamp-duty-explained",
-    "taxes-and-fees-uk",
+    "land-registry-fees-uk",
     "cost-to-buy-300k-house",
     "cost-to-buy-500k-house",
     "how-much-money-needed-buy-house"
@@ -90,7 +83,7 @@ const strategicGuideMap: Record<string, string[]> = {
     "moving-costs-uk",
     "insurance-costs-uk",
     "leasehold-costs-uk",
-    "taxes-and-fees-uk",
+    "stamp-duty-explained",
     "how-much-money-needed-buy-house"
   ],
   about: [

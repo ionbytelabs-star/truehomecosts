@@ -21,7 +21,6 @@ const reviewedGuideSlugs = [
   "moving-costs-uk",
   "insurance-costs-uk",
   "stamp-duty-explained",
-  "taxes-and-fees-uk",
   "furnishing-costs-uk",
   "first-year-cost-buying-house-uk"
 ] as const;

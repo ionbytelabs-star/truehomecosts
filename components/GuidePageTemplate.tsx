@@ -150,7 +150,6 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
     "stamp-duty-explained": "Stamp Duty and fees on a £600,000 property",
     "first-time-buyer-costs": "first-time buyer costs on a £600,000 home",
     "mortgage-fees-costs": "deposit and mortgage needed for a £600,000 house",
-    "taxes-and-fees-uk": "taxes and upfront costs on a £600,000 home",
     "regional-property-costs-uk": "UK cost comparison for a £600,000 property"
   };
   const sixHundredKLinkLabel = sixHundredKLinkBySlug[guide.slug];

@@ -9,7 +9,13 @@ import { breadcrumbSchema, webpageSchema } from "@/lib/structured-data";
 
 const description = "Material changes to TrueHomeCosts calculator tax rules, registration fees, planning assumptions and corrections.";
 
-export const metadata = buildMetadata({ title: "Calculator Data Updates", description, path: "/calculator-updates" });
+export const metadata = {
+  ...buildMetadata({ title: "Calculator Data Updates", description, path: "/calculator-updates" }),
+  robots: {
+    index: false,
+    follow: true
+  }
+};
 
 const updates = [
   {

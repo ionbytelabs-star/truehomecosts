@@ -48,8 +48,7 @@ const publicConsistencyContent = JSON.stringify([
     "insurance-costs-uk",
     "furnishing-costs-uk",
     "first-year-cost-buying-house-uk",
-    "stamp-duty-explained",
-    "taxes-and-fees-uk"
+    "stamp-duty-explained"
   ].map((slug) => guideMap[slug])
 ]);
 
@@ -95,40 +94,43 @@ test("known legacy ranges and deprecated combined labels are absent from generat
   }
 });
 
-test("hidden-cost guide states exactly what its headline range excludes", () => {
+test("hidden-cost guide covers transaction, move-in and post-completion risks", () => {
   const guide = guideMap["hidden-costs-buying-house"];
-  assert.match(guide.directAnswer, /excluding the deposit and property tax/i);
-  assert.match(JSON.stringify(guide.sections), /Moving and insurance/);
-  assert.match(JSON.stringify(guide.sections), /Optional furnishing and setup/);
-  assert.match(JSON.stringify(guide.sections), /Contingency/);
+  const content = JSON.stringify(guide);
+  assert.match(content, /Search fees/);
+  assert.match(content, /survey/i);
+  assert.match(content, /management-pack|management pack/i);
+  assert.match(content, /post-completion/i);
 });
 
-test("cash-needed guide separates affordability from upfront cash", () => {
+test("cash-needed guide separates minimum cash from a prudent target", () => {
   const content = JSON.stringify(guideMap["how-much-money-needed-buy-house"]);
-  assert.match(content, /Mortgage affordability is a different question/);
+  assert.match(content, /Minimum completion cash versus a prudent savings target/);
   assert.match(content, /Deposit/);
-  assert.match(content, /Property tax/);
-  assert.match(content, /Optional planning lines/);
+  assert.match(content, /insurance/i);
+  assert.match(content, /emergency reserve/i);
 });
 
-test("first-time buyer guide contains calculator-derived jurisdiction examples", () => {
+test("first-time buyer guide explains jurisdiction-specific relief", () => {
   const content = JSON.stringify(guideMap["first-time-buyer-costs"]);
-  assert.match(content, /England \/ Northern Ireland/);
+  assert.match(content, /England and Northern Ireland/);
   assert.match(content, /Scotland/);
   assert.match(content, /Wales/);
   assert.equal(calculatePropertyTax(300_000, "england", "first-time-buyer"), 0);
 });
 
-test("mortgage, moving, insurance and furnishing guides share central category values", () => {
+test("mortgage guide uses shared values while practical guides retain distinct editorial", () => {
   const mortgageGuide = guideMap["mortgage-fees-costs"];
   assert.match(mortgageGuide.directAnswer, /combined planning allowance/i);
   assert.match(JSON.stringify(mortgageGuide), /Replace the (?:calculator allowance|allowance)/i);
 
-  for (const slug of ["moving-costs-uk", "insurance-costs-uk", "furnishing-costs-uk"]) {
-    const guide = guideMap[slug];
-    assert.match(guide.directAnswer, /central low-to-high/i);
-    assert.match(JSON.stringify(guide.sections), /Replace the planning amount with a current quotation|Enter the quotation/);
-  }
+  assert.match(JSON.stringify(guideMap["moving-costs-uk"]), /DIY moving and van-hire budgets/);
+  assert.match(JSON.stringify(guideMap["insurance-costs-uk"]), /Rebuild value, contents cover/);
+  assert.match(JSON.stringify(guideMap["furnishing-costs-uk"]), /Room-by-room essentials/);
+  const signatures = ["moving-costs-uk", "insurance-costs-uk", "furnishing-costs-uk"].map((slug) =>
+    guideMap[slug].sections.map((section) => section.title).join("|")
+  );
+  assert.equal(new Set(signatures).size, 3);
 });
 
 test("every central assumption has a unique stable ID and classification", () => {
@@ -182,13 +184,12 @@ test("Northern Ireland public content never assigns HMLR registration treatment"
   assert.match(`${registration?.label} ${registration?.detail}`, /Northern Ireland|LPS/i);
 });
 
-test("tax guides preserve correct jurisdiction names", () => {
-  for (const slug of ["stamp-duty-explained", "taxes-and-fees-uk"]) {
-    const content = JSON.stringify(guideMap[slug]);
-    assert.match(content, /Scotland uses LBTT/);
-    assert.match(content, /Wales uses LTT/);
-    assert.match(content, /Northern Ireland is never described as an HM Land Registry charge/);
-  }
+test("the consolidated tax guide preserves correct jurisdiction names and registration context", () => {
+  const content = JSON.stringify(guideMap["stamp-duty-explained"]);
+  assert.match(content, /Scotland uses LBTT/);
+  assert.match(content, /Wales uses LTT/);
+  assert.match(content, /HM Land Registry covers England and Wales/);
+  assert.match(content, /Council tax and later tax context/);
 });
 
 test("guide template wires the visible review date into schema", () => {

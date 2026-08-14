@@ -19,19 +19,21 @@ function formatPlanningRange(range: RangeByLevel): string {
 const surveyBand = bandForPrice(surveyFeeBands, examplePrice);
 
 const beforeCompletionTimelineRows = [
-  ["Reservation / application", "Reservation fee on some new builds; mortgage booking, valuation or broker fee where charged"],
+  ["Before an offer", "Agreement-in-principle or broker work where charged, affordability checks and a protected fee buffer"],
+  ["Reservation / mortgage application", "Reservation fee on some new builds; mortgage booking, valuation or broker fee where charged"],
   ["Legal work begins", "Conveyancing payment on account and search pack"],
   ["Property checks", "Buyer survey or snagging inspection"],
   ["Exchange", "Exchange deposit, less any deposit already held under the agreed contract process"],
-  ["Immediately before completion", "Completion balance shown on the conveyancer's statement, plus tax and registration money handled through the legal process"],
-  ["Moving arrangements", "Removal deposit or balance, storage and insurance where needed"]
+  ["Between exchange and completion", "Buildings insurance where required, removal balance, storage, final mortgage and legal checks"],
+  ["Completion", "Cleared balance shown on the conveyancer's statement, plus tax and registration money handled through the legal process"],
+  ["Immediately after completion", "Locks, cleaning, utilities, council tax, urgent repairs and essential move-in spending"]
 ] as const;
 
 export const costsBeforeCompletionGuide: GuidePageContent = {
   slug: "costs-before-completion",
-  title: "Costs Before Completion When Buying a House",
+  title: "When Home-Buying Costs Are Paid Before Completion",
   description:
-    "Plan what UK home buyers may pay before completion, from reservations, mortgage and survey costs to searches, exchange deposit, tax and the completion balance.",
+    "A definitive UK home-buying payment timeline covering costs before exchange, at exchange, between exchange and completion, on completion and immediately after.",
   keywords: [
     "costs before completion",
     "what do I pay before completion",
@@ -39,9 +41,9 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
     "house purchase payment timeline",
     "exchange deposit completion balance"
   ],
-  h1: "Costs payable before completion",
+  h1: "When home-buying costs are paid before completion",
   intro:
-    "Before completion, buyers can pay several costs in stages: a reservation or mortgage charge where relevant, legal money on account, searches, a survey, the exchange deposit and finally the completion balance. The timing matters because some early costs are spent even if the purchase does not complete.",
+    "Home-buying costs arrive in stages before exchange, at exchange, between exchange and completion, on completion and immediately after. The timing matters because some early costs are non-refundable, while the largest cleared balance is usually needed shortly before the keys are released.",
   directAnswer:
     "Separate costs paid during the transaction from money needed on completion day. Ask each provider when the charge becomes non-refundable, and use the conveyancer's completion statement—not a general checklist—to determine the final cleared balance.",
   updatedLabel: "Reviewed 25 July 2026",
@@ -52,15 +54,17 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
     "Reviewed by the True Home Costs editorial team against the central calculator assumptions and the cited official sources.",
   atGlance: [
     { label: "Early checks", value: "Mortgage, legal, survey" },
-    { label: "Contract stage", value: "Exchange deposit" },
-    { label: "Final figure", value: "Completion statement" },
-    { label: "Tax timing", value: "Jurisdiction-specific" }
+    { label: "At exchange", value: "Contract deposit and insurance timing" },
+    { label: "At completion", value: "Verified completion statement" },
+    { label: "Immediately after", value: "Move-in, bills and urgent setup" }
   ],
   contextualLinks: [
     { href: "/#calculator", label: "home-buying cost calculator" },
     { href: "/conveyancing-costs-uk", label: "conveyancing costs guide" },
     { href: "/property-survey-costs-uk", label: "survey costs guide" },
     { href: "/stamp-duty-explained", label: "stamp duty and property tax guide" },
+    { href: "/moving-costs-uk", label: "moving and storage costs" },
+    { href: "/insurance-costs-uk", label: "buildings insurance timing" },
     { href: "/hidden-costs-buying-new-build-home-uk", label: "new-build hidden costs guide" },
     { href: "/gifted-deposit-mortgage", label: "gifted deposit guide" }
   ],
@@ -107,6 +111,14 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
         "Do not spend the entire savings pot on the exchange deposit. Ring-fence any remaining completion costs, moving money and a first-month emergency buffer."
     },
     {
+      title: "Between exchange and completion",
+      paragraphs: [
+        "Once contracts are exchanged, the purchase is normally binding and the practical work accelerates. Confirm when buildings insurance must begin: on many England and Wales purchases the buyer is advised to insure from exchange, but the contract, tenure, lender requirements and legal system can change the position. Follow the conveyancer's transaction-specific advice rather than a generic date.",
+        "This is also the point to confirm the removal booking, packing help, storage and access arrangements. Final mortgage conditions and legal checks may still need to be satisfied before lender funds and buyer funds can be released.",
+        "Treat every request for completion money as security-sensitive. Verify the completion statement and bank details through a trusted channel already agreed with the conveyancer, especially if an email appears to change payment instructions."
+      ]
+    },
+    {
       title: "When property tax is paid",
       table: {
         caption: "Tax regimes and practical funding",
@@ -122,13 +134,18 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
       ]
     },
     {
-      title: "Before completion versus after completion",
+      title: "Completion day and the immediate move-in period",
+      paragraphs: [
+        "On completion, the conveyancer sends the verified funds, the seller's side confirms receipt and the keys can be released. The first ownership costs then begin quickly, even though they are not part of the legal completion balance.",
+        "Keep accessible cash for removals or van hire, storage, cleaning, lock changes, council tax and utility setup, insurance, urgent repairs and essential furnishings. A separate emergency buffer prevents those predictable first-week costs from competing with the purchase money."
+      ],
       table: {
         caption: "Keep transaction and ownership budgets separate",
         columns: ["Budget", "Examples", "Why separate it"],
         rows: [
           ["Before / on completion", "Survey, searches, legal work, exchange deposit, completion balance, tax, registration, removals", "Required to reach completion"],
-          ["After completion", "First mortgage payment, council tax, utilities, repairs, furniture and setup", "Ownership starts with cash needs of its own"]
+          ["Immediately after completion", "Removals, storage, locks, cleaning, council tax, utilities, repairs, furniture and setup", "Ownership starts with cash needs of its own"],
+          ["First one to three months", "First mortgage payment, recurring bills, insurance and repair follow-up", "Early ownership needs a separate buffer after the transaction closes"]
         ]
       }
     }
@@ -148,14 +165,25 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
       question: "What happens to survey and search costs if the purchase fails?",
       answer:
         "Money already spent on a completed survey, searches or legal work may not be refundable. Check each provider's abortive and refund terms before paying."
+    },
+    {
+      question: "What costs usually arise after exchange but before completion?",
+      answer:
+        "Common items include buildings insurance where required, the removal balance, packing or storage, and the final mortgage, legal and completion-funding checks."
+    },
+    {
+      question: "When should buildings insurance start?",
+      answer:
+        "The contract, tenure, lender and jurisdiction determine the exact timing. Many buyers are advised to arrange cover from exchange, but the conveyancer should confirm the position for the purchase."
     }
   ],
   relatedGuides: [
-    "costs-after-exchange",
     "conveyancing-costs-uk",
     "property-survey-costs-uk",
     "stamp-duty-explained",
-    "hidden-costs-buying-new-build-home-uk"
+    "hidden-costs-buying-new-build-home-uk",
+    "moving-costs-uk",
+    "insurance-costs-uk"
   ],
   officialSourceKeys: ["sdlt", "lbtt", "ltt"],
   sourceKeys: ["moneyHelperBuyingMoving", "sdlt", "lbtt", "ltt"],

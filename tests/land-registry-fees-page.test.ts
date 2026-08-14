@@ -46,10 +46,10 @@ test("route metadata, crawlability, sitemap and structured data remain wired", (
 });
 
 test("historical contextual backlinks are restored without duplicates", () => {
-  for (const sourceSlug of ["stamp-duty-explained", "taxes-and-fees-uk"]) {
-    const links = guideMap[sourceSlug].contextualLinks?.filter((link) => link.href === `/${slug}`) ?? [];
-    assert.equal(links.length, 1, `Expected one backlink from ${sourceSlug}`);
-  }
+  const links = guideMap["stamp-duty-explained"].contextualLinks?.filter(
+    (link) => link.href === `/${slug}`
+  ) ?? [];
+  assert.equal(links.length, 1, "Expected one backlink from stamp-duty-explained");
 
   const methodologySource = readFileSync("app/methodology/page.tsx", "utf8");
   assert.match(methodologySource, /href="\/land-registry-fees-uk"/);

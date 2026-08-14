@@ -107,7 +107,6 @@ export const conveyancingCostsGuide: GuidePageContent = {
     { href: "/stamp-duty-explained", label: "stamp duty and UK property tax guide" },
     { href: "/buying-and-selling-house-same-time", label: "buying and selling a house at the same time" },
     { href: "/costs-before-completion", label: "costs due before completion" },
-    { href: "/costs-after-exchange", label: "costs and timing after exchange" },
     { href: "/hidden-costs-buying-new-build-home-uk", label: "hidden costs of buying a new-build home" }
   ],
   officialItems: [

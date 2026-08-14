@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/about",
     "/methodology",
-    "/calculator-updates",
     "/privacy",
     "/terms",
     "/cookies",
@@ -19,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const publicPagesLastModified = new Date("2026-07-19");
-  const llmsLastModified = new Date("2026-06-04");
   const guideSlugSet = new Set(guideSummaries.map((guide) => guide.slug));
   const staticPriceRoutes = priceGuideSlugs.filter((slug) => !guideSlugSet.has(slug));
 
@@ -41,12 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: publicPagesLastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8
-    })),
-    {
-      url: absoluteUrl("/llms.txt"),
-      lastModified: llmsLastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.3
-    }
+    }))
   ];
 }

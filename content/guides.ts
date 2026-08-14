@@ -4,13 +4,12 @@ import { createLongGuide } from "./guide-builders";
 import { applyGuideConsistency } from "./guide-consistency";
 import { buyingAndSellingHouseGuide } from "./buying-and-selling-house-same-time";
 import { conveyancingCostsGuide } from "./conveyancing-costs-uk";
-import { costsAfterExchangeGuide } from "./costs-after-exchange";
 import { costsBeforeCompletionGuide } from "./costs-before-completion";
 import { landRegistryFeesGuide } from "./land-registry-fees-uk";
 import { createRetainedPriceGuide } from "./price-guides";
 import { propertySurveyCostsGuide } from "./property-survey-costs-uk";
 
-const rawGuides: GuidePageContent[] = [
+const rawGuideCandidates: GuidePageContent[] = [
   createLongGuide({
     slug: "hidden-costs-buying-house",
     title: "Hidden Costs of Buying a House in the UK",
@@ -163,6 +162,14 @@ const rawGuides: GuidePageContent[] = [
           "Indemnity insurance costs UK property can appear suddenly if a title or paperwork issue needs a quick solution. Building regulations indemnity insurance cost UK and chancel repair liability insurance cost UK are examples of the niche-looking policies buyers may meet when paperwork is incomplete or a specific historic risk needs to be insured rather than solved in a slower way.",
           "These policies are not universal. Some buyers never see them. Others are offered one because an extension lacks the right certificate, a title issue needs to be covered, or a lender wants extra comfort. The key point is not to assume that every indemnity policy is a scam or that every title issue means disaster. Often it is just another line item that should be understood and costed.",
           "The same principle applies to move-in practicalities. Cost of moving house UK, lock changes, cleaning, storage or broadband setup may not sit on the solicitor's statement, but they still affect the true budget needed to complete and settle into the property safely."
+        ]
+      },
+      {
+        title: "Leasehold paperwork, repairs and post-completion costs",
+        paragraphs: [
+          "Leasehold and managed-estate purchases can add management-pack work, notices, certificates, deed fees or other administration around the legal process. The buyer should ask which items are included in the conveyancing quote and which depend on the managing agent or the lease.",
+          "Survey findings can also move hidden spending beyond the transaction itself. Immediate roof, damp, heating or electrical work should sit in a repair reserve rather than being disguised inside the legal-cost estimate.",
+          "After completion, council tax, utilities, insurance, essential furnishing and smaller setup jobs begin quickly. Keeping those post-completion lines visible makes the guide a complete cash-flow checklist rather than a list of solicitor fees."
         ]
       }
     ],
@@ -707,6 +714,19 @@ const rawGuides: GuidePageContent[] = [
         },
         callout:
           "Most buyers need more than the deposit. A safer savings target allows for legal fees, searches, surveys, mortgage charges, tax where applicable, moving costs and a buffer for early ownership expenses."
+      },
+      {
+        title: "Minimum completion cash versus a prudent savings target",
+        paragraphs: [
+          "The minimum completion figure is the amount needed to satisfy the deposit, tax, legal statement and any other charges due to complete. It is not the same as a prudent savings target because it leaves no room for removals, insurance, essential furnishing or an unexpected first repair.",
+          "A stronger target keeps three pots: the deposit, confirmed transaction costs, and a post-completion reserve. The reserve can cover moving and storage, the first insurance premium, basic appliances or furniture, and an emergency buffer that remains after the keys are collected.",
+          "Timing matters as much as the total. Surveys, searches and mortgage charges can be spent before exchange; completion funds must be cleared on the conveyancer's schedule; move-in and ownership costs begin immediately afterwards."
+        ],
+        bullets: [
+          "Minimum: deposit plus the confirmed completion statement and earlier non-refundable costs",
+          "Prudent: minimum cash plus moving, insurance and essential furnishing",
+          "Resilient: prudent cash plus an emergency reserve left untouched after completion"
+        ]
       }
     ],
     faqs: [
@@ -920,6 +940,41 @@ const rawGuides: GuidePageContent[] = [
         }
       },
       {
+        title: "Registration fees and other official charges",
+        paragraphs: [
+          "Property purchase tax is not the only published charge in a buying budget. Registration is a separate legal step with its own official fee, and the body and scale depend on where the property is located. HM Land Registry covers England and Wales, while Scotland and Northern Ireland use separate registration systems.",
+          "For a common electronic whole-title application in England or Wales, the fee is selected from the published HM Land Registry Scale 1 bands. Other application types, paper submissions, transfers of part and first registrations can produce a different charge, so the conveyancer should confirm the route rather than treating one table as universal.",
+          "Keep property tax, registration and the conveyancer's professional fee as separate lines. All three may appear on the same completion statement, but they are calculated for different reasons."
+        ],
+        table: {
+          caption: "Selected HM Land Registry electronic Scale 1 fees used by the calculator",
+          columns: ["Transaction value", "Official fee", "Scope"],
+          rows: [
+            ["Up to £80,000", "£20", "Qualifying electronic whole-title application"],
+            ["£80,001 to £100,000", "£40", "Qualifying electronic whole-title application"],
+            ["£100,001 to £200,000", "£100", "Qualifying electronic whole-title application"],
+            ["£200,001 to £500,000", "£150", "Qualifying electronic whole-title application"],
+            ["£500,001 to £1 million", "£295", "Qualifying electronic whole-title application"],
+            ["Over £1 million", "£500", "Qualifying electronic whole-title application"]
+          ]
+        }
+      },
+      {
+        title: "Council tax and later tax context",
+        paragraphs: [
+          "Council tax is not a purchase tax and is not part of the legal buying bill, but liability can begin quickly after completion. Check the property's band and the relevant council's treatment, particularly if the home will be empty or renovated, rather than relying on a previous occupier's bill.",
+          "Capital gains tax is also different from SDLT, LBTT or LTT. It is not normally a completion-day buying cost; it may become relevant later when an additional property or second home is sold, depending on ownership and use. Buyers considering that scenario should keep future tax planning separate from the cash needed to complete.",
+          "The practical distinction is timing: purchase tax and registration belong in the transaction budget, council tax belongs in the immediate ownership budget, and possible future taxes belong in longer-term planning."
+        ]
+      },
+      {
+        title: "Official charges versus planning estimates",
+        paragraphs: [
+          "Published tax bands and registration scales can be checked against an authority. Legal quotes, surveys, removals and similar market-priced costs still need a range until a provider confirms them.",
+          "A complete budget uses both: verify the official core, then keep enough room for the estimate-led lines rather than assuming a precise tax figure makes the whole purchase predictable."
+        ]
+      },
+      {
         title: "Want an exact figure?",
         paragraphs: [
           "A cleaner way to budget is to calculate the tax alongside the deposit, solicitor fees, survey, mortgage costs and moving budget rather than treating tax as a separate afterthought.",
@@ -979,20 +1034,31 @@ const rawGuides: GuidePageContent[] = [
         question: "How is stamp duty calculated UK?",
         answer:
           "It is usually worked out in bands, with different slices of the purchase price taxed at different rates. The final answer also depends on the nation and the buyer type, so SDLT, LBTT and LTT should not be treated as interchangeable."
+      },
+      {
+        question: "Is the registration fee the same as property tax?",
+        answer:
+          "No. Registration is a separate official charge based on the jurisdiction and application type, while SDLT, LBTT or LTT is the property purchase tax."
+      },
+      {
+        question: "Is council tax part of the completion bill?",
+        answer:
+          "Not in the same way as purchase tax or registration, but it is an immediate ownership cost and should be planned before moving in."
       }
     ],
     relatedGuides: [
       "regional-property-costs-uk",
       "how-much-money-needed-buy-house",
       "first-time-buyer-costs",
-      "taxes-and-fees-uk"
+      "land-registry-fees-uk"
     ],
     officialSourceKeys: [
       "govUkSdltGuide",
       "revenueScotlandLbttGuide",
-      "govWalesLttGuide"
+      "govWalesLttGuide",
+      "hmlr"
     ],
-    sourceKeys: [],
+    sourceKeys: ["hmlr", "councilTax"],
     ctaTitle: "Check the tax within your full buying budget",
     ctaText:
       "Run the true cost of buying a house calculator to estimate SDLT, LBTT or LTT alongside deposit, legal fees, surveys and the other upfront costs buyers face.",
@@ -1045,7 +1111,7 @@ const rawGuides: GuidePageContent[] = [
 
     return {
       ...guide,
-      faqs: guide.faqs.slice(0, 5)
+      faqs: guide.faqs.slice(0, 7)
     };
   })(),
   createLongGuide({
@@ -1115,6 +1181,14 @@ const rawGuides: GuidePageContent[] = [
           "LISA house purchase rules 2026 matter because a Lifetime ISA can be a powerful first-time buyer tool, but only when the purchase fits the rules and the money is withdrawn correctly through the conveyancing process. The bonus helps, but it should not create false confidence that the whole purchase budget is covered.",
           "A LISA is best thought of as deposit support. It does not replace the need for cash for surveys, legal fees, mortgage charges and the move-in period. Buyers who rely on it as if it solves every cash need can still find themselves under pressure later in the process.",
           "It is also worth speaking to your solicitor early about timing so the withdrawal works smoothly with the transaction."
+        ]
+      },
+      {
+        title: "First-time buyer relief, thresholds and UK differences",
+        paragraphs: [
+          "First-time buyer tax treatment is not UK-wide. England and Northern Ireland use SDLT relief rules, Scotland has first-time buyer treatment within LBTT, and Wales uses LTT without a separate first-time buyer residential rate in the same way. Use the property's nation before relying on any threshold example.",
+          "Relief can reduce tax within the relevant rules, but it may be limited or unavailable above a price ceiling or where every buyer does not meet the eligibility conditions. A purchase above a relief threshold can therefore create a much larger completion bill than a cheaper first home.",
+          "Tax relief does not remove the mortgage application, solicitor, searches, survey, moving or furnishing costs. Check the current official rules and ask the conveyancer to confirm eligibility for the actual transaction."
         ]
       },
       {
@@ -1383,6 +1457,14 @@ const rawGuides: GuidePageContent[] = [
         ]
       },
       {
+        title: "DIY moving and van-hire budgets",
+        paragraphs: [
+          "A DIY move can cut labour costs, especially for a small local household, but the budget still needs van hire, fuel, mileage, insurance or excess terms, parking, packing materials and help for heavy items. More than one van trip can erase some of the apparent saving.",
+          "Compare a DIY plan with a removal quote on the same scope. Include boxes, tape, protective covers, dismantling, stair or lift access and the time needed to collect and return the van.",
+          "Distance, property size, access and timing drive both options. Weekend and month-end slots can be busier, while flexible dates, decluttering early, sourcing reusable boxes and packing yourself can reduce the final cost."
+        ]
+      },
+      {
         title: "Packing services, storage and mail redirection",
         paragraphs: [
           "Packing services cost UK removals can be worth considering where time is tight, the household is large, or fragile items need professional packing. They add cost, but they can also reduce the stress and disruption of the move itself.",
@@ -1524,6 +1606,14 @@ const rawGuides: GuidePageContent[] = [
           "The amount depends on the property, the rebuild cost, claims history, location, flood risk and the terms of the policy. That is why insurance is harder to summarise with one universal quote than tax or registry fees.",
           "MoneyHelper provides consumer guidance on the home-buying process, while the FCA regulates insurance firms and other financial services in the UK. Those two angles are useful when a buyer is weighing timing, cover type and affordability.",
           "Even so, it deserves a place in the budget because the timing can matter as much as the price."
+        ]
+      },
+      {
+        title: "Rebuild value, contents cover and what is actually required",
+        paragraphs: [
+          "Buildings insurance is based on the cost of rebuilding the property, not simply the price paid for it. The rebuild figure can be lower or higher than the market value because it reflects construction, demolition, professional work and site-specific risks rather than location demand alone.",
+          "Contents insurance protects belongings rather than the structure and is usually optional. On a leasehold flat, the freeholder or management arrangement may insure the building, but the buyer should check the policy, excesses and exclusions instead of assuming every part of the home is covered.",
+          "A mortgage lender commonly requires adequate buildings cover, while life, critical illness, income or mortgage protection are normally personal risk choices rather than universal purchase requirements. This guide explains categories and budgeting context; it is not a personal recommendation about which regulated product to buy."
         ]
       },
       {
@@ -1724,7 +1814,7 @@ const rawGuides: GuidePageContent[] = [
     ],
     relatedGuides: [
       "hidden-costs-buying-house",
-      "taxes-and-fees-uk",
+      "stamp-duty-explained",
       "how-much-money-needed-buy-house"
     ],
     sourceKeys: [],
@@ -2119,7 +2209,7 @@ const rawGuides: GuidePageContent[] = [
           "Yes. Tax is the biggest regional difference, but legal, survey and moving costs still matter everywhere."
       }
     ],
-    relatedGuides: ["stamp-duty-explained", "how-much-money-needed-buy-house", "taxes-and-fees-uk"],
+    relatedGuides: ["stamp-duty-explained", "how-much-money-needed-buy-house", "land-registry-fees-uk"],
     sourceKeys: ["sdlt", "lbtt", "lbttAds", "ltt"],
     ctaTitle: "Compare regions on one calculator",
     ctaText:
@@ -2211,6 +2301,20 @@ const rawGuides: GuidePageContent[] = [
             ["Faster full-home setup", "£4,500+", "More rooms completed quickly and more new furniture bought upfront"]
           ]
         }
+      },
+      {
+        title: "Room-by-room essentials and new versus used",
+        paragraphs: [
+          "Start with the rooms needed for normal daily life. A bedroom needs a safe bed and privacy; the kitchen needs any missing appliance plus basic cookware; the living area needs functional seating and lighting; the bathroom needs storage and simple safety items; and the whole home may need curtains, blinds, lamps, cleaning equipment and basic tools.",
+          "Second-hand tables, storage and solid furniture can keep the first-home budget low. Buyers may prefer new mattresses, upholstered items or appliances where condition, hygiene, warranty or energy use matters more. The best mix depends on risk and how quickly the home must function.",
+          "Low, middle and higher budgets should describe pace and scope rather than status. A low budget equips essential rooms first, a middle budget mixes new and used items across more rooms, and a higher budget completes more of the home immediately."
+        ],
+        bullets: [
+          "Bedroom: bed, mattress, privacy covering and basic lighting",
+          "Kitchen: missing appliances, cookware, crockery and cleaning supplies",
+          "Living space: seating, lighting and essential storage",
+          "Whole home: curtains or blinds, lamps, tools and safety basics"
+        ]
       },
       {
         title: "Worked furnishing examples",
@@ -2418,11 +2522,12 @@ const rawGuides: GuidePageContent[] = [
           caption: "First-year cost timeline for a UK home buyer",
           columns: ["Stage", "Typical costs", "Why it matters"],
           rows: [
-            ["Before completion", "Survey, mortgage fees, valuation fee where charged, solicitor account payment, searches and disbursements", "These costs can be paid before the purchase is legally complete, so buyers need cash ready early."],
-            ["Completion day", "Deposit balance, property tax where applicable, final legal balance, registration-style fees and lender fees not added to the mortgage", "This is usually the largest single cash point in the buying process."],
+            ["Before an offer", "Deposit and fee saving, agreement-in-principle work, price research and an emergency reserve", "A realistic ceiling should include more than the deposit before a property is chosen."],
+            ["Mortgage and legal stage", "Survey, mortgage fees, valuation fee where charged, solicitor account payment, searches and disbursements", "These costs can be paid before the purchase is legally complete, so buyers need cash ready early."],
+            ["Exchange and completion", "Exchange deposit, completion balance, property tax, final legal balance, registration-style fees and lender fees not added to the mortgage", "This is usually the largest concentrated cash point in the buying process."],
             ["Moving-in period", "Removals, van hire, storage, cleaning, locksmiths, small repairs and immediate setup costs", "These costs may not appear on the solicitor statement but still affect the first-year budget."],
-            ["First month", "Council tax setup, utilities, water, broadband, insurance and essential furnishing", "Household bills begin quickly and can overlap with move-in spending."],
-            ["Months 2-12", "Ongoing bills, maintenance reserve, contents insurance, service charge or estate charge where relevant", "The first-year home ownership costs continue long after completion day."]
+            ["Months 1-3", "Council tax, utilities, water, broadband, insurance, essential furnishing and early repairs", "Household bills begin quickly and can overlap with move-in spending."],
+            ["Rest of year one", "Mortgage payments, recurring bills, maintenance reserve, contents insurance, service charge or estate charge where relevant", "The first-year home ownership costs continue long after completion day."]
           ]
         }
       },
@@ -2723,7 +2828,7 @@ const rawGuides: GuidePageContent[] = [
       { href: "/insurance-costs-uk", label: "home insurance costs" },
       { href: "/leasehold-costs-uk", label: "leasehold costs" },
       { href: "/furnishing-costs-uk", label: "cost to furnish a house" },
-      { href: "/taxes-and-fees-uk", label: "property taxes and fees" }
+      { href: "/stamp-duty-explained", label: "property taxes and official fees" }
     ],
     sections: [
       {
@@ -2816,7 +2921,7 @@ const rawGuides: GuidePageContent[] = [
       "insurance-costs-uk",
       "leasehold-costs-uk",
       "furnishing-costs-uk",
-      "taxes-and-fees-uk"
+      "stamp-duty-explained"
     ],
     sourceKeys: ["councilTax"],
     includeGeneratedSections: false,
@@ -2873,12 +2978,15 @@ const rawGuides: GuidePageContent[] = [
   }),
   buyingAndSellingHouseGuide,
   conveyancingCostsGuide,
-  costsAfterExchangeGuide,
   costsBeforeCompletionGuide,
   landRegistryFeesGuide,
   propertySurveyCostsGuide,
   ...([250_000, 300_000, 400_000, 500_000] as const).map((price) => createRetainedPriceGuide(price))
 ];
+
+const rawGuides = rawGuideCandidates.filter(
+  (guide) => guide.slug !== "taxes-and-fees-uk"
+);
 
 export const guides = rawGuides.map(applyGuideConsistency);
 
