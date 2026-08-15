@@ -54,7 +54,7 @@ export const buyingAndSellingHouseGuide: GuidePageContent = {
   lastReviewedLabel: "25 July 2026",
   calculatorDataVersion: calculatorMetadata.dataVersion,
   trustReviewedText:
-    "Reviewed by the True Home Costs editorial team against the central calculator assumptions and the cited official sources.",
+    "Reviewed by True Home Costs against the central calculator assumptions and the cited official sources.",
   atGlance: [
     { label: "Transactions", value: "Sale + purchase" },
     { label: "Buyer legal range example", value: simultaneousMovePlanning.buyerLegalRange },

@@ -127,8 +127,6 @@ export function articleSchema({
   keywords,
   datePublished,
   dateModified = "2026-04-23",
-  authorName,
-  authorUrl,
   imagePath
 }: {
   headline: string;
@@ -137,8 +135,6 @@ export function articleSchema({
   keywords?: string[];
   datePublished?: string;
   dateModified?: string;
-  authorName?: string;
-  authorUrl?: string;
   imagePath?: string;
 }) {
   const pageUrl = canonicalUrl(path);
@@ -166,14 +162,7 @@ export function articleSchema({
       "@type": "WebPage",
       "@id": webPageId(path)
     },
-    author: authorName
-      ? {
-          "@type": "Organization",
-          "@id": `${rootUrl}#editorial-team`,
-          name: authorName,
-          url: absoluteUrl(authorUrl ?? "/methodology")
-        }
-      : organizationReference(),
+    author: organizationReference(),
     publisher: {
       "@type": "Organization",
       "@id": organizationId,

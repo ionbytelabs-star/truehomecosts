@@ -64,8 +64,7 @@ export default function AboutPage() {
               how costs can change across England, Northern Ireland, Scotland and Wales.
             </p>
             <p>
-              Reviewed and maintained by the TrueHomeCosts research team, using official UK sources and current
-              market cost ranges.
+              Reviewed and maintained by TrueHomeCosts using official UK sources and current market cost ranges.
             </p>
           </section>
 

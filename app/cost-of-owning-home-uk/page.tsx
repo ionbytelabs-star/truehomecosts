@@ -112,8 +112,6 @@ export default function CostOfOwningHomeUkPage() {
           path,
           datePublished: "2026-04-24",
           dateModified: ongoingHomeCostReview.date,
-          authorName: "TrueHomeCosts Editorial Team",
-          authorUrl: "/methodology",
           imagePath: `${path}/opengraph-image`
         })}
       />
@@ -153,10 +151,11 @@ export default function CostOfOwningHomeUkPage() {
             </p>
           </section>
           <p className="text-sm text-muted">
-            Written by the{" "}
+            Reviewed and maintained by{" "}
             <Link href="/methodology" className="font-semibold underline hover:text-brand-deep">
-              TrueHomeCosts Editorial Team
+              TrueHomeCosts
             </Link>
+            .
           </p>
         </div>
       </header>

@@ -78,11 +78,12 @@ test("visible FAQ content and FAQ schema use the same shared array", () => {
   assert.match(pageSource, /<details key=\{faq\.question\} open/);
 });
 
-test("Article schema contains the editorial-team author, dates and ImageObject", () => {
+test("Article schema uses the TrueHomeCosts organization author, dates and ImageObject", () => {
   const schemaSource = readFileSync("lib/structured-data.ts", "utf8");
   assert.match(pageSource, /datePublished: "2026-04-24"/);
   assert.match(pageSource, /dateModified: ongoingHomeCostReview\.date/);
-  assert.match(pageSource, /authorName: "TrueHomeCosts Editorial Team"/);
+  assert.doesNotMatch(pageSource, /authorName:/);
+  assert.match(schemaSource, /author: organizationReference\(\)/);
   assert.match(schemaSource, /"@type": "ImageObject"/);
 });
 

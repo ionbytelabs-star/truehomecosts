@@ -404,7 +404,7 @@ export default function GiftedDepositMortgagePage() {
 
           <Section id="sources-and-methodology" title="Sources and methodology">
             <p>
-              This guide was prepared by the TrueHomeCosts editorial team using official lender guidance, GOV.UK inheritance-tax guidance and practical mortgage and conveyancing evidence requirements available on 19 July 2026. Policy statements are attributed to the lender rather than presented as market-wide rules. Worked examples use purchase price minus deposit equals mortgage, with loan-to-value calculated as mortgage divided by price.
+              This guide was prepared by TrueHomeCosts using official lender guidance, GOV.UK inheritance-tax guidance and practical mortgage and conveyancing evidence requirements available on 19 July 2026. Policy statements are attributed to the lender rather than presented as market-wide rules. Worked examples use purchase price minus deposit equals mortgage, with loan-to-value calculated as mortgage divided by price.
             </p>
             <ul className="grid gap-2 pl-5">
               <li className="list-disc"><a href="https://www.santander.co.uk/personal/mortgages/gifted-deposits" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-deep">Santander: gifted deposit mortgages and common problems</a></li>

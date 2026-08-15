@@ -15,9 +15,7 @@ export function ContentTrustPanel({
     <section className="rounded-3xl border border-line bg-white p-5">
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Content notes</p>
       <div className="mt-3 space-y-3 text-sm text-muted">
-        <p>
-          Reviewed and maintained by the TrueHomeCosts research team.
-        </p>
+        <p>Reviewed and maintained by TrueHomeCosts.</p>
         <p>
           Our guides are built from official UK tax sources, public cost information and typical market price
           ranges. We separate fixed official charges from variable market estimates so buyers can see which

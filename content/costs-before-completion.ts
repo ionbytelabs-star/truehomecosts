@@ -51,7 +51,7 @@ export const costsBeforeCompletionGuide: GuidePageContent = {
   lastReviewedLabel: "25 July 2026",
   calculatorDataVersion: calculatorMetadata.dataVersion,
   trustReviewedText:
-    "Reviewed by the True Home Costs editorial team against the central calculator assumptions and the cited official sources.",
+    "Reviewed by True Home Costs against the central calculator assumptions and the cited official sources.",
   atGlance: [
     { label: "Early checks", value: "Mortgage, legal, survey" },
     { label: "At exchange", value: "Contract deposit and insurance timing" },
