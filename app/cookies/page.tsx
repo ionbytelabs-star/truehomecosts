@@ -145,8 +145,8 @@ export default function CookiesPage() {
               this data as completely anonymous.
             </p>
             <p>
-              The code loads Google Analytics through Google Tag Manager only after analytics consent is stored
-              as accepted. If optional cookies are rejected, the analytics script is not loaded by the site.
+              The site loads the Google Analytics Google tag only after analytics consent is accepted. If
+              optional cookies are rejected, the analytics script is not loaded by the site.
             </p>
           </section>
 

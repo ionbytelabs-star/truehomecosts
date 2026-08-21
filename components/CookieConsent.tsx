@@ -149,9 +149,10 @@ export function CookieConsentBanner() {
                     Cookie settings
                   </h2>
                   <p className="max-w-3xl text-sm text-muted">
-                    True Home Costs can use optional analytics cookies to understand broad website usage.
-                    Advertising cookies are not currently active; AdSense advertising still needs a
-                    Google-certified consent platform before relevant ad technologies are enabled.
+                    These settings control optional analytics cookies used to understand broad website usage.
+                    Advertising consent, where required, is managed separately through Google&apos;s European
+                    regulations consent message. AdSense technology is implemented, but whether ads appear
+                    depends on Google&apos;s approval, account status and advertising availability.
                   </p>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-line bg-panel-strong p-4">
@@ -191,7 +192,10 @@ export function CookieConsentBanner() {
                   <p className="font-semibold text-text">Cookies on True Home Costs</p>
                   <p className="max-w-3xl text-sm text-muted">
                     We use necessary storage to remember your choice. With your permission, we also use Google
-                    Analytics to understand broad website usage. Advertising cookies are not active yet.
+                    Analytics to understand broad website usage. Advertising consent, where required, is managed
+                    separately through Google&apos;s European regulations consent message. AdSense technology is
+                    implemented, but whether ads appear depends on Google&apos;s approval, account status and
+                    advertising availability.
                   </p>
                   <div className="flex flex-wrap gap-3 text-sm">
                     <Link href="/cookies" className="underline hover:text-brand-deep">

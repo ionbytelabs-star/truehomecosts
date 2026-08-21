@@ -38,9 +38,10 @@ export default function AboutPage() {
           <div className="space-y-2">
             <h1 className="font-serif text-4xl text-text sm:text-5xl">About TrueHomeCosts</h1>
             <p className="max-w-prose text-lg text-muted">
-              TrueHomeCosts is not a broker, lender or lead-generation site. It does not recommend products or
-              providers. The focus is on explaining costs clearly so buyers can plan before speaking to
-              professionals.
+              TrueHomeCosts is not a mortgage broker, lender or regulated advice service. It does not provide
+              personalised product or provider recommendations. Some pages may include clearly disclosed
+              affiliate links to relevant third-party services. The focus is on explaining costs clearly so
+              buyers can plan before speaking to professionals.
             </p>
           </div>
           <div className="surface max-w-prose border-brand/20 bg-panel-strong p-4">

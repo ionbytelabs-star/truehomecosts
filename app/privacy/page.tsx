@@ -103,7 +103,8 @@ export default function PrivacyPage() {
             and measurement where permitted.
           </p>
           <p>
-            You can manage optional cookie choices through the site's consent controls. The{" "}
+            The site's consent controls manage optional analytics cookies. Where Google's European regulations
+            consent message is shown, that separate interface manages advertising consent where required. The{" "}
             <Link href="/cookies" className="font-medium underline hover:text-brand-deep">
               Cookie Policy
             </Link>{" "}
