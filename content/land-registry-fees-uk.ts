@@ -6,6 +6,53 @@ import { formatCurrency } from "../lib/format";
 
 import type { GuidePageContent } from "./types";
 
+export const landRegistryPageTitle =
+  "Land Registry Fees 2026: HMLR Scale 1 & 2 Calculator | TrueHomeCosts";
+export const landRegistryGuideTitle = "Land Registry Fees 2026: HMLR Scale 1 & 2 Calculator";
+export const landRegistryMetaDescription =
+  "Calculate HM Land Registry fees for England and Wales using current Scale 1 and Scale 2 rates, with guidance for Scotland and Northern Ireland.";
+export const landRegistryH1 = "Land Registry Fees 2026: Calculate HM Land Registry Costs";
+export const landRegistryReviewDate = "2026-08-25";
+export const landRegistryReviewLabel = "25 August 2026";
+
+export const landRegistryFaqs = [
+  {
+    question: "How much are Land Registry fees when buying a house?",
+    answer:
+      "For a typical electronic transfer of the whole of an already registered title in England or Wales, Scale 1 fees currently range from £20 to £500. The exact fee depends on the purchase price or value, application type and submission route."
+  },
+  {
+    question: "What is Land Registry Scale 1?",
+    answer:
+      "Scale 1 broadly covers first registrations and transfers of registered land for monetary consideration, as well as certain leases, surrenders and large-scale applications."
+  },
+  {
+    question: "What is Land Registry Scale 2?",
+    answer:
+      "Scale 2 applies to a range of other applications, including various transfers or assents not for monetary consideration, registered charges and other applications affecting registered estates."
+  },
+  {
+    question: "Does my mortgage have a separate Land Registry fee?",
+    answer:
+      "On a typical purchase where the mortgage charge accompanies the transfer, HM Land Registry says only the transfer fee is payable. A separate Scale 2 fee can apply if the charge is lodged as a separate application after the transfer has completed or in other circumstances."
+  },
+  {
+    question: "Does Wales use HM Land Registry?",
+    answer:
+      "Yes. HM Land Registry covers England and Wales. Welsh property transaction tax is separate and uses Land Transaction Tax rather than SDLT."
+  },
+  {
+    question: "Are Land Registry fees the same in Scotland?",
+    answer:
+      "No. Scotland uses Registers of Scotland and its own registration-fee schedule. Those charges are not HM Land Registry fees."
+  },
+  {
+    question: "Is Northern Ireland covered by HM Land Registry?",
+    answer:
+      "No. Land & Property Services administers Northern Ireland's Land Registry and Registry of Deeds under separate rules and fee arrangements."
+  }
+] as const;
+
 function bandLabel(upTo: number | null): string {
   return upTo === null ? "Above the previous band" : `Up to ${formatCurrency(upTo)}`;
 }
@@ -28,9 +75,8 @@ const northernIrelandRegistrationRows = northernIrelandLandRegistryTransferFees.
 
 export const landRegistryFeesGuide: GuidePageContent = {
   slug: "land-registry-fees-uk",
-  title: "UK Land Registry and Registration Fees Explained",
-  description:
-    "Understand HM Land Registry fees in England and Wales, Registers of Scotland fees and Northern Ireland arrangements without treating one charge as universal.",
+  title: landRegistryGuideTitle,
+  description: landRegistryMetaDescription,
   keywords: [
     "Land Registry fees UK",
     "HM Land Registry fee",
@@ -38,14 +84,14 @@ export const landRegistryFeesGuide: GuidePageContent = {
     "Registers of Scotland registration fee",
     "Northern Ireland Land Registry fees"
   ],
-  h1: "Land Registry and registration fees in the UK",
+  h1: landRegistryH1,
   intro:
-    "There is no single UK Land Registry fee. England and Wales use HM Land Registry, Scotland uses Registers of Scotland, and Northern Ireland has separate Land Registry and Registry of Deeds arrangements administered by Land & Property Services.",
+    "Use the calculator for England and Wales, then check the separate registration systems for Scotland and Northern Ireland where relevant.",
   directAnswer:
-    "Registration fees depend on the jurisdiction and application. Price band is only one input: registered or unregistered land, transfer of whole or part, electronic or paper submission and the type of application can all change the charge. Use the applicable official scale and have the conveyancer confirm the exact route.",
-  updatedLabel: "Reviewed 25 July 2026",
-  lastReviewed: "2026-07-25",
-  lastReviewedLabel: "25 July 2026",
+    "HM Land Registry fees in England and Wales depend on the property value, application type and how the application is submitted. For a typical electronic transfer of the whole of an already registered title, current Scale 1 fees range from £20 to £500.",
+  updatedLabel: `Reviewed ${landRegistryReviewLabel}`,
+  lastReviewed: landRegistryReviewDate,
+  lastReviewedLabel: landRegistryReviewLabel,
   calculatorDataVersion: calculatorMetadata.dataVersion,
   trustReviewedText:
     "Reviewed by True Home Costs against the central calculator assumptions and the cited official sources.",
@@ -140,26 +186,10 @@ export const landRegistryFeesGuide: GuidePageContent = {
       }
     }
   ],
-  faqs: [
-    {
-      question: "How much is the Land Registry fee when buying a house?",
-      answer:
-        "It depends on the jurisdiction, value band and application. A qualifying electronic transfer of a whole registered title in England or Wales uses HM Land Registry Scale 1; Scotland and Northern Ireland use separate arrangements."
-    },
-    {
-      question: "Does Wales have its own Land Registry?",
-      answer:
-        "Wales uses HM Land Registry for registration. Its property tax is nevertheless separate: Welsh transactions use Land Transaction Tax."
-    },
-    {
-      question: "Is Northern Ireland covered by HM Land Registry?",
-      answer:
-        "No. Northern Ireland has separate Land Registry and Registry of Deeds arrangements administered by Land & Property Services."
-    }
-  ],
+  faqs: [...landRegistryFaqs],
   relatedGuides: [
+    "conveyancing-costs-uk",
     "stamp-duty-explained",
-    "hidden-costs-buying-house",
     "costs-before-completion"
   ],
   officialSourceKeys: ["hmlr", "ros", "lpsNi"],

@@ -194,7 +194,7 @@ function calculateRegistryFee(price: number, input: CalculatorInput): BreakdownL
         ? {
             sourceName: "HM Land Registry",
             sourceUrl: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees",
-            lastVerified: "2026-07-19"
+            lastVerified: "2026-08-25"
           }
         : {})
     };

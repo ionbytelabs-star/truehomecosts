@@ -2,6 +2,7 @@
  * Current Land Registry transfer scale under the Land Registry (Fees) Order
  * (Northern Ireland) 2014. The 2026 Department of Finance consultation confirms
  * this order remains in force until the proposed 2027 fees commence.
+ * Sources rechecked 25 August 2026.
  */
 export const northernIrelandLandRegistryTransferFees = [
   { upTo: 20_000, electronic: 80, other: 100 },

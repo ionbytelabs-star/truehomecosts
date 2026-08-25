@@ -96,6 +96,6 @@ test("every official breakdown charge has a source and verification date", () =>
   for (const line of result.breakdown.filter((item) => item.classification.startsWith("official-"))) {
     assert.ok(line.sourceName);
     assert.ok(line.sourceUrl);
-    assert.equal(line.lastVerified, "2026-07-19");
+    assert.equal(line.lastVerified, line.key === "land-registry" ? "2026-08-25" : "2026-07-19");
   }
 });

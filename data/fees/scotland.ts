@@ -1,7 +1,7 @@
 /**
  * Official Registers of Scotland fee for registering a disposition.
  * The fee is based on the consideration or property value, whichever is greater.
- * Source verified 19 July 2026:
+ * Source verified 25 August 2026:
  * https://kb.ros.gov.uk/fees/registration-fees
  */
 export const scotlandDispositionRegistrationFees = [

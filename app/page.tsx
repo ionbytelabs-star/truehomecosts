@@ -138,7 +138,16 @@ export default function HomePage() {
             <p className="eyebrow">How the figures are calculated</p>
             <h2 id="method-heading" className="font-serif text-3xl text-text">Official rules where possible, estimates where necessary</h2>
             <p className="text-text">
-              Property tax uses rules for the selected jurisdiction. HM Land Registry fees for qualifying England and Wales applications are official; legal fees, surveys, mortgage charges, moving costs and jurisdiction-dependent registration allowances are estimates. You can replace estimates with quotations and remove optional costs.
+              Property tax uses rules for the selected jurisdiction. The{" "}
+              <AnalyticsLink
+                href="/land-registry-fees-uk"
+                eventName="homepage_guide_click"
+                eventParameters={{ guide: "land-registry-fees-uk" }}
+                className="font-semibold underline hover:text-brand-deep"
+              >
+                HM Land Registry fee for a qualifying England or Wales application
+              </AnalyticsLink>{" "}
+              is official; legal fees, surveys, mortgage charges, moving costs and jurisdiction-dependent registration allowances are estimates. You can replace estimates with quotations and remove optional costs.
             </p>
             <p className="text-sm text-muted">The calculator is for budgeting, not regulated financial, legal or tax advice.</p>
           </div>

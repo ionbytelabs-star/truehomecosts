@@ -76,6 +76,7 @@ const rawGuideCandidates: GuidePageContent[] = [
       { href: "/how-much-money-needed-buy-house", label: "how much money you need to buy a house" },
       { href: "/hidden-costs-buying-new-build-home-uk", label: "hidden costs of buying a new build home" },
       { href: "/stamp-duty-explained", label: "stamp duty explained" },
+      { href: "/land-registry-fees-uk", label: "HM Land Registry fee calculator and tables" },
       { href: "/mortgage-fees-costs", label: "mortgage fees and costs" },
       { href: "/moving-costs-uk", label: "moving costs in the UK" }
     ],

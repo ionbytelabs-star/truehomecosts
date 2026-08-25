@@ -85,7 +85,7 @@ export const sourceLinks = {
   },
   hmlr: {
     label: "HM Land Registry registration service fees",
-    href: "https://www.gov.uk/government/publications/registration-services-fees"
+    href: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees"
   },
   ros: {
     label: "Registers of Scotland registration fees",

@@ -30,21 +30,21 @@ export const officialSourceVerification = [
   {
     sourceName: "HM Land Registry",
     sourceUrl: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees",
-    dateChecked: "2026-07-19",
+    dateChecked: "2026-08-25",
     jurisdiction: "England and Wales",
-    verified: "Electronic Scale 1 whole-title transfer fees"
+    verified: "Scale 1 and Scale 2 registration fee bands and supported submission routes"
   },
   {
     sourceName: "Registers of Scotland",
     sourceUrl: "https://kb.ros.gov.uk/fees/registration-fees",
-    dateChecked: "2026-07-19",
+    dateChecked: "2026-08-25",
     jurisdiction: "Scotland",
     verified: "Disposition registration fee bands"
   },
   {
     sourceName: "Land & Property Services Northern Ireland",
     sourceUrl: "https://www.finance-ni.gov.uk/publications/land-registry-and-registry-deeds-fees-guides",
-    dateChecked: "2026-07-19",
+    dateChecked: "2026-08-25",
     jurisdiction: "Northern Ireland",
     verified: "2014 Land Registry electronic transfer scale; proposed 2027 changes are not yet in force"
   }

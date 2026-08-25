@@ -11,9 +11,13 @@ type GuidePageProps = {
 };
 
 export async function generateStaticParams() {
-  return guideSummaries.filter((guide) => guide.slug !== "cost-of-owning-home-uk").map((guide) => ({
-    slug: guide.slug
-  }));
+  return guideSummaries
+    .filter(
+      (guide) => guide.slug !== "cost-of-owning-home-uk" && guide.slug !== "land-registry-fees-uk"
+    )
+    .map((guide) => ({
+      slug: guide.slug
+    }));
 }
 
 export async function generateMetadata({ params }: GuidePageProps) {
