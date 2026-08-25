@@ -38,10 +38,11 @@ export default function AboutPage() {
           <div className="space-y-2">
             <h1 className="font-serif text-4xl text-text sm:text-5xl">About TrueHomeCosts</h1>
             <p className="max-w-prose text-lg text-muted">
-              TrueHomeCosts is not a mortgage broker, lender or regulated advice service. It does not provide
-              personalised product or provider recommendations. Some pages may include clearly disclosed
-              affiliate links to relevant third-party services. The focus is on explaining costs clearly so
-              buyers can plan before speaking to professionals.
+              TrueHomeCosts is not a broker or lender and does not provide personalised financial, mortgage, tax
+              or legal recommendations. The site focuses on explaining home-buying costs clearly so buyers can
+              plan before speaking to professionals. Some pages contain clearly labelled affiliate links to
+              relevant services. TrueHomeCosts may earn a commission if a reader uses one, at no extra cost to
+              the reader. Affiliate relationships do not change the figures, methodology or editorial content.
             </p>
           </div>
           <div className="surface max-w-prose border-brand/20 bg-panel-strong p-4">
@@ -131,9 +132,9 @@ export default function AboutPage() {
           <section className="space-y-4">
             <h2 className="font-serif text-3xl text-text">Important note</h2>
             <p>
-              TrueHomeCosts is built for early-stage planning, not quotes or recommendations. It brings
-              together deposit, tax and additional costs so buyers can understand the full cash requirement
-              before committing to a purchase.
+              TrueHomeCosts is built for early-stage planning rather than personalised financial, mortgage, tax or
+              legal advice. It brings together deposit, tax and additional costs so buyers can understand the full
+              cash requirement before committing to a purchase.
             </p>
           </section>
 
