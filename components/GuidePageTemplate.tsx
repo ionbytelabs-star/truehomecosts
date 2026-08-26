@@ -494,16 +494,11 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
         <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
           <div className="surface p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Quick links</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Calculator</p>
             <div className="mt-4 grid gap-3 text-sm">
               <Link href={calculatorHref} className="link-chip justify-center">
                 Use the calculator
               </Link>
-              {combinedGuideLinks.slice(0, 4).map((slug) => (
-                <Link key={slug} href={`/${slug}`} className="link-chip justify-center">
-                  {guideMap[slug]?.h1 ?? priceGuideLabelMap[slug] ?? "Related guide"}
-                </Link>
-              ))}
             </div>
           </div>
           <div className="surface p-5">

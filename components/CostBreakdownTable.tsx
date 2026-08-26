@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 
 import type { BreakdownLine } from "@/lib/calculator";
+import { calculatorGuideLinks } from "@/lib/calculator-guide-links";
 import { classificationLabels } from "@/lib/cost-scopes";
 import { formatCurrency } from "@/lib/format";
 
@@ -41,31 +43,45 @@ export function CostBreakdownTable({ items, rowSupplement }: CostBreakdownTableP
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
-              <Fragment key={item.key}>
-                <tr className="border-t border-line align-top">
-                  <th scope="row" className="min-w-[10rem] px-6 py-4 font-medium text-text">
-                    {item.label}
-                  </th>
-                  <td className="px-6 py-4 text-sm text-muted">
-                    {classificationLabels[item.classification]}
-                  </td>
-                  <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
-                    {formatCurrency(item.value)}
-                  </td>
-                  <td className="min-w-[14rem] px-6 py-4 text-sm text-muted">
-                    {item.detail}
-                  </td>
-                </tr>
-                {rowSupplement?.key === item.key ? (
-                  <tr className="border-t border-brand/15 bg-[#fbfdf9]">
-                    <td colSpan={4} className="px-4 py-4 sm:px-6">
-                      {rowSupplement.content}
+            {items.map((item) => {
+              const guideLink = calculatorGuideLinks[item.key];
+
+              return (
+                <Fragment key={item.key}>
+                  <tr className="border-t border-line align-top">
+                    <th scope="row" className="min-w-[10rem] px-6 py-4 font-medium text-text">
+                      {item.label}
+                    </th>
+                    <td className="px-6 py-4 text-sm text-muted">
+                      {classificationLabels[item.classification]}
+                    </td>
+                    <td className="px-6 py-4 text-right font-semibold text-text whitespace-nowrap tabular-nums">
+                      {formatCurrency(item.value)}
+                    </td>
+                    <td className="min-w-[14rem] px-6 py-4 text-sm text-muted">
+                      {item.detail}
+                      {guideLink ? (
+                        <p className="mt-2 leading-6">
+                          <Link
+                            href={guideLink.href}
+                            className="rounded-sm font-semibold text-brand-deep underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                          >
+                            {guideLink.label}
+                          </Link>
+                        </p>
+                      ) : null}
                     </td>
                   </tr>
-                ) : null}
-              </Fragment>
-            ))}
+                  {rowSupplement?.key === item.key ? (
+                    <tr className="border-t border-brand/15 bg-[#fbfdf9]">
+                      <td colSpan={4} className="px-4 py-4 sm:px-6">
+                        {rowSupplement.content}
+                      </td>
+                    </tr>
+                  ) : null}
+                </Fragment>
+              );
+            })}
           </tbody>
         </table>
       </div>
