@@ -36,12 +36,16 @@ test("calculator guide links render as crawlable hrefs with visible focus treatm
   assert.doesNotMatch(source, /onClick=|role="link"/);
 });
 
-test("the sticky sidebar no longer repeats the same related-guide destinations", () => {
+test("the sticky sidebar removes repeated guides except on protected observed pages", () => {
   const source = readFileSync("components/GuidePageTemplate.tsx", "utf8");
   const sidebarSource = source.slice(source.indexOf("<aside"));
 
-  assert.match(sidebarSource, />Calculator<\/p>/);
+  assert.match(source, /protectedSidebarGuideSlugs/);
+  assert.match(source, /"conveyancing-costs-uk"/);
+  assert.match(source, /"mortgage-fees-costs"/);
+  assert.match(sidebarSource, /preserveProtectedSidebar \? "Quick links" : "Calculator"/);
   assert.match(sidebarSource, />\s*Use the calculator\s*<\/Link>/);
-  assert.doesNotMatch(sidebarSource, /combinedGuideLinks\.slice/);
+  assert.match(sidebarSource, /preserveProtectedSidebar/);
+  assert.match(sidebarSource, /combinedGuideLinks\.slice\(0, 4\)/);
   assert.match(source, /<RelatedGuides slugs=\{combinedGuideLinks\.slice\(0, 5\)\}/);
 });

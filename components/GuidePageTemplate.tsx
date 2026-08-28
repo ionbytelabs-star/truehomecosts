@@ -34,6 +34,11 @@ type GuidePageTemplateProps = {
   guide: GuidePageContent;
 };
 
+const protectedSidebarGuideSlugs = new Set([
+  "conveyancing-costs-uk",
+  "mortgage-fees-costs"
+]);
+
 export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
   const calculatorHref = guide.calculatorHref ?? "/#calculator";
   const breadcrumbItems = [
@@ -51,6 +56,7 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
   const nearbyPriceLinks = nearbyPriceGuideMap[guide.slug] ?? [];
   const showPopularExamples = guidePagesForPopularExamples.has(guide.slug);
   const hasIntroContent = Boolean(guide.introSections?.length || guide.contextualLinks?.length);
+  const preserveProtectedSidebar = protectedSidebarGuideSlugs.has(guide.slug);
   const crossSiteNoteBySlug: Record<string, { before: string; anchor: string; after: string }> = {
     "how-much-money-needed-buy-house": {
       before:
@@ -494,11 +500,20 @@ export function GuidePageTemplate({ guide }: GuidePageTemplateProps) {
 
         <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
           <div className="surface p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">Calculator</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-deep">
+              {preserveProtectedSidebar ? "Quick links" : "Calculator"}
+            </p>
             <div className="mt-4 grid gap-3 text-sm">
               <Link href={calculatorHref} className="link-chip justify-center">
                 Use the calculator
               </Link>
+              {preserveProtectedSidebar
+                ? combinedGuideLinks.slice(0, 4).map((slug) => (
+                    <Link key={slug} href={`/${slug}`} className="link-chip justify-center">
+                      {guideMap[slug]?.h1 ?? priceGuideLabelMap[slug] ?? "Related guide"}
+                    </Link>
+                  ))
+                : null}
             </div>
           </div>
           <div className="surface p-5">
