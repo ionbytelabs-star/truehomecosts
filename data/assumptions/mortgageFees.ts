@@ -22,5 +22,57 @@ export const mortgageFeePlanningMetadata = {
   sourceName: "MoneyHelper mortgage-fee guidance and MoneySavingExpert market context",
   sourceUrl:
     "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
-  lastVerified: "2026-08-11"
+  lastVerified: "2026-08-30"
+} as const;
+
+/**
+ * Time-sensitive consumer reference points used on /mortgage-fees-costs.
+ * These are conditional category benchmarks, not a combined UK average.
+ */
+export const mortgageFeeConsumerReferences = {
+  booking: {
+    value: "£100–£200",
+    description: "Booking fee where charged",
+    sourceOrganisation: "MoneyHelper",
+    sourceUrl:
+      "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
+    dateVerified: "2026-08-30",
+    usedOn: "/mortgage-fees-costs"
+  },
+  product: {
+    value: "£1,000–£2,000+",
+    description: "Arrangement or product fee where charged",
+    sourceOrganisation: "MoneyHelper",
+    sourceUrl:
+      "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
+    dateVerified: "2026-08-30",
+    usedOn: "/mortgage-fees-costs"
+  },
+  account: {
+    value: "£100–£300",
+    description: "Mortgage account fee where charged",
+    sourceOrganisation: "MoneyHelper",
+    sourceUrl:
+      "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
+    dateVerified: "2026-08-30",
+    usedOn: "/mortgage-fees-costs"
+  },
+  valuation: {
+    value: "£150–£800",
+    description: "Borrower-paid mortgage valuation where charged; lenders usually cover the basic valuation",
+    sourceOrganisation: "MoneyHelper",
+    sourceUrl:
+      "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
+    dateVerified: "2026-08-30",
+    usedOn: "/mortgage-fees-costs"
+  },
+  electronicTransfer: {
+    value: "£25–£50",
+    description: "Electronic transfer fee where charged",
+    sourceOrganisation: "MoneyHelper",
+    sourceUrl:
+      "https://www.moneyhelper.org.uk/en/homes/buying-a-home/estimate-your-overall-buying-and-moving-costs",
+    dateVerified: "2026-08-30",
+    usedOn: "/mortgage-fees-costs"
+  }
 } as const;

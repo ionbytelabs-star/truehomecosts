@@ -4,14 +4,19 @@ import test from "node:test";
 
 import { guideMap, guideSummaries } from "../content/guides";
 import { calculatorCostAssumptionById, homepageCostRows } from "../data/assumptions/calculator";
-import { mortgageFeeBands, mortgageFeePlanningMetadata } from "../data/assumptions/mortgageFees";
+import {
+  mortgageFeeBands,
+  mortgageFeeConsumerReferences,
+  mortgageFeePlanningMetadata
+} from "../data/assumptions/mortgageFees";
 import { calculateUpfrontCosts, type CalculatorInput } from "../lib/calculator";
 import { sourceLinks } from "../lib/source-links";
 
 const guide = guideMap["mortgage-fees-costs"];
 const sectionTitles = new Set(guide.sections.map((section) => section.title));
 const routeSource = readFileSync("app/[slug]/page.tsx", "utf8");
-const templateSource = readFileSync("components/GuidePageTemplate.tsx", "utf8");
+const mortgagePageSource = readFileSync("components/MortgageFeesPage.tsx", "utf8");
+const calculatorSource = readFileSync("components/MortgageFeeComparisonCalculator.tsx", "utf8");
 const sitemapSource = readFileSync("app/sitemap.ts", "utf8");
 const metadataSource = readFileSync("lib/metadata.ts", "utf8");
 const siteSource = readFileSync("lib/site.ts", "utf8");
@@ -46,7 +51,7 @@ test("mortgage-fee route stays unique, indexable and exactly canonical", () => {
   assert.equal((sitemapSource.match(/\.\.\.guideSummaries\.map/g) ?? []).length, 1);
   assert.match(sitemapSource, /url: absoluteUrl\(guide\.slug\)/);
 });
-test("title, H1, description and review date match the GSC-led brief", () => {
+test("the established title and H1 are preserved while the review is truthful", () => {
   assert.equal(
     guide.title,
     "Mortgage Fees UK 2026: Arrangement, Booking & Valuation | TrueHomeCosts"
@@ -55,10 +60,10 @@ test("title, H1, description and review date match the GSC-led brief", () => {
     guide.h1,
     "Mortgage Fees UK 2026: Arrangement, Booking, Broker and Valuation Costs"
   );
-  assert.equal(guide.lastReviewed, "2026-08-11");
-  assert.equal(guide.lastReviewedLabel, "11 August 2026");
-  assert.match(guide.description, /arrangement and booking fees/i);
-  assert.match(guide.description, /lender valuations/i);
+  assert.equal(guide.lastReviewed, "2026-08-30");
+  assert.equal(guide.lastReviewedLabel, "30 August 2026");
+  assert.match(guide.description, /arrangement, product, booking, valuation and broker fees/i);
+  assert.match(guide.description, /fee-paying or fee-free/i);
 });
 
 test("homepage and guide read the same shared mortgage-fee source", () => {
@@ -69,7 +74,7 @@ test("homepage and guide read the same shared mortgage-fee source", () => {
   assert.equal(assumption.maximum, 2_300);
   assert.equal(mortgageFeeBands.at(0)?.low, assumption.minimum);
   assert.equal(mortgageFeeBands.at(-1)?.high, assumption.maximum);
-  assert.equal(mortgageFeePlanningMetadata.lastVerified, "2026-08-11");
+  assert.equal(mortgageFeePlanningMetadata.lastVerified, "2026-08-30");
   assert.match(mortgageFeePlanningMetadata.scope, /one combined/i);
 
   const homepageRow = homepageCostRows.find((row) => row.id === "mortgage-fees");
@@ -88,6 +93,13 @@ test("homepage and guide read the same shared mortgage-fee source", () => {
   assert.doesNotMatch(renderedGuide, /average planning amount/i);
   assert.match(renderedGuide, /typical default/i);
   assert.match(renderedGuide, /not (?:a |an )?(?:observed|measured|statistically measured).*average/i);
+
+  for (const reference of Object.values(mortgageFeeConsumerReferences)) {
+    assert.equal(reference.sourceOrganisation, "MoneyHelper");
+    assert.equal(reference.dateVerified, "2026-08-30");
+    assert.equal(reference.usedOn, "/mortgage-fees-costs");
+    assert.match(reference.sourceUrl, /^https:\/\/www\.moneyhelper\.org\.uk\//);
+  }
 });
 
 test("near-top fee table is cost-first, conditional and source-aligned", () => {
@@ -96,22 +108,21 @@ test("near-top fee table is cost-first, conditional and source-aligned", () => {
   );
   assert.ok(summary?.table);
   assert.deepEqual(summary.table.columns, [
-    "Fee type",
-    "Current consumer reference / treatment",
+    "Fee",
+    "Published reference or treatment",
     "Who charges it",
-    "When it may apply",
-    "Notes"
+    "What to check"
   ]);
 
   const rows = JSON.stringify(summary.table.rows);
   for (const fee of [
     "Arrangement / product fee",
-    "Booking / reservation / application fee",
+    "Booking / application / reservation fee",
     "Mortgage account fee",
     "Lender valuation",
-    "Mortgage broker / adviser fee",
-    "Lender-related legal / funds-transfer fee",
-    "Exit fee / early repayment charge (ERC)"
+    "Broker / adviser fee",
+    "Funds transfer / lender administration",
+    "Exit fee / early repayment charge"
   ]) {
     assert.ok(rows.includes(fee), `Missing fee row: ${fee}`);
   }
@@ -119,19 +130,21 @@ test("near-top fee table is cost-first, conditional and source-aligned", () => {
   assert.match(summary.callout ?? "", /do not total every row/i);
 });
 
-test("all required mortgage-fee sub-intents and internal links are covered", () => {
+test("all required mortgage-fee decisions and contextual links are covered", () => {
   for (const title of [
-    "How much are mortgage fees in the UK?",
-    "Mortgage application, booking and arrangement fees: what's the difference?",
-    "How much is a mortgage valuation fee?",
-    "Mortgage broker fees",
-    "Is a mortgage with a fee cheaper than a fee-free mortgage?",
-    "Should you pay the mortgage fee upfront or add it to the loan?",
-    "Interest rate vs APRC vs mortgage fees",
+    "Arrangement or product fees",
+    "Booking, application and reservation fees",
+    "Mortgage account and other lender charges",
+    "Mortgage valuation vs a buyer's survey",
+    "Mortgage broker or adviser fees",
+    "Is a fee-paying mortgage cheaper than a fee-free mortgage?",
+    "Paying the fee upfront vs adding it to borrowing",
+    "What to check in your mortgage illustration",
+    "Interest rate vs APRC vs this calculator",
     "Are mortgage fees refundable if the purchase falls through?",
-    "Are legal fees included in mortgage fees?",
-    "Remortgage, early repayment and exit fees",
-    "Worked £300,000 mortgage-fee planning example"
+    "Legal costs are separate from mortgage fees",
+    "Remortgage, exit and early repayment charges",
+    "TrueHomeCosts mortgage-fee planning allowance"
   ]) {
     assert.ok(sectionTitles.has(title), `Missing section: ${title}`);
   }
@@ -139,57 +152,70 @@ test("all required mortgage-fee sub-intents and internal links are covered", () 
   const content = JSON.stringify(guide);
   for (const href of [
     "/#calculator",
-    "/hidden-costs-buying-house",
-    "/costs-before-completion",
     "/property-survey-costs-uk",
     "/conveyancing-costs-uk"
   ]) {
     assert.ok(content.includes(`\"href\":\"${href}\"`), `Missing internal link: ${href}`);
   }
+  assert.ok(guide.relatedGuides.includes("costs-before-completion"));
   assert.doesNotMatch(content, /closing costs/i);
 });
 
-test("visible FAQs and FAQ schema are exactly consistent", () => {
-  assert.equal(guide.faqs.length, 7);
-  assert.deepEqual(
-    guide.faqs.map((faq) => faq.question),
-    [
-      "How much are mortgage fees in the UK?",
-      "What is a mortgage arrangement or product fee?",
-      "Is a mortgage application fee the same as a booking fee?",
-      "How much is a mortgage valuation fee?",
-      "Can you add a mortgage arrangement fee to the mortgage?",
-      "Are mortgage fees refundable if the purchase falls through?",
-      "Is a fee-free mortgage always cheaper?"
-    ]
-  );
-
-  assert.equal((templateSource.match(/faqPageSchema\(guide\.faqs\)/g) ?? []).length, 1);
+test("the mortgage page removes duplicated FAQs and FAQPage schema", () => {
+  assert.deepEqual(guide.faqs, []);
+  assert.doesNotMatch(mortgagePageSource, /FAQSection|faqPageSchema|FAQPage/);
+  assert.match(routeSource, /return <MortgageFeesPage guide={guide} \/>/);
 });
 
-test("authoritative current sources and all four preserved schemas are wired", () => {
-  for (const key of [
-    "moneyHelperBuyingMoving",
-    "moneyHelperMortgageAdvice",
-    "moneySavingExpertMortgageFees"
-  ] as const) {
+test("authoritative current sources and appropriate schemas are wired", () => {
+  for (const key of ["moneyHelperBuyingMoving", "moneyHelperMortgageAdvice"] as const) {
     assert.ok(guide.sourceKeys.includes(key));
     assert.match(sourceLinks[key].href, /^https:\/\//);
   }
 
   for (const key of [
+    "fcaMortgageIllustration",
     "fcaMortgageAprc",
     "fcaMortgageBrokerAuthorisation",
     "fcaFirmChecker",
-    "govUkBuyingAHome",
-    "ricsHouseSurveys"
+    "govUkBuyingAHome"
   ] as const) {
     assert.ok(guide.officialSourceKeys?.includes(key));
   }
 
-  assert.match(templateSource, /webpageSchema\(/);
-  assert.match(templateSource, /articleSchema\(/);
-  assert.match(templateSource, /faqPageSchema\(guide\.faqs\)/);
-  assert.match(templateSource, /breadcrumbSchema\(/);
+  assert.match(mortgagePageSource, /webpageSchema\(/);
+  assert.match(mortgagePageSource, /articleSchema\(/);
+  assert.match(mortgagePageSource, /breadcrumbSchema\(/);
+  assert.doesNotMatch(mortgagePageSource, /faqPageSchema/);
+});
+
+test("calculator controls, static example and privacy-safe analytics are present", () => {
+  for (const label of [
+    "Original mortgage amount",
+    "Remaining mortgage term",
+    "Comparison / deal period",
+    "Arrangement / product fee",
+    "How is the product fee paid?",
+    "Other one-off cost",
+    "Cashback / incentive",
+    "Load worked example",
+    "Compare deals",
+    "Reset"
+  ]) {
+    assert.ok(calculatorSource.includes(label), `Missing calculator control: ${label}`);
+  }
+
+  assert.match(calculatorSource, /aria-live="polite"/);
+  assert.match(calculatorSource, /mortgage_fee_comparison_calculated/);
+  const analyticsParameters = calculatorSource.match(
+    /trackEvent\("mortgage_fee_comparison_calculated",\s*\{([\s\S]*?)\}\);/
+  );
+  assert.ok(analyticsParameters);
+  assert.doesNotMatch(
+    analyticsParameters[1],
+    /originalMortgageAmount|annualRatePercent|productFee/
+  );
+  assert.match(mortgagePageSource, /Worked example: £999 fee vs a fee-free deal/);
+  assert.match(mortgagePageSource, /This is not an APRC calculation/);
 });
 

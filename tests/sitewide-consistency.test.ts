@@ -121,8 +121,8 @@ test("first-time buyer guide explains jurisdiction-specific relief", () => {
 
 test("mortgage guide uses shared values while practical guides retain distinct editorial", () => {
   const mortgageGuide = guideMap["mortgage-fees-costs"];
-  assert.match(mortgageGuide.directAnswer, /combined planning allowance/i);
-  assert.match(JSON.stringify(mortgageGuide), /Replace the (?:calculator allowance|allowance)/i);
+  assert.match(`${mortgageGuide.directAnswer} ${mortgageGuide.intro}`, /planning allowance/i);
+  assert.match(JSON.stringify(mortgageGuide), /Replace (?:planning figures|those values)/i);
 
   assert.match(JSON.stringify(guideMap["moving-costs-uk"]), /DIY moving and van-hire budgets/);
   assert.match(JSON.stringify(guideMap["insurance-costs-uk"]), /Rebuild value, contents cover/);

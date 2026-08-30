@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { GuidePageTemplate } from "@/components/GuidePageTemplate";
+import { MortgageFeesPage } from "@/components/MortgageFeesPage";
 import { guideMap, guideSummaries } from "@/content/guides";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -43,6 +44,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (!guide) {
     notFound();
+  }
+
+  if (guide.slug === "mortgage-fees-costs") {
+    return <MortgageFeesPage guide={guide} />;
   }
 
   return <GuidePageTemplate guide={guide} />;

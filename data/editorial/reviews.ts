@@ -8,8 +8,8 @@ const pageReviewOverrides: Record<
   { lastReviewed: string; lastReviewedLabel: string }
 > = {
   "mortgage-fees-costs": {
-    lastReviewed: "2026-08-11",
-    lastReviewedLabel: "11 August 2026"
+    lastReviewed: "2026-08-30",
+    lastReviewedLabel: "30 August 2026"
   }
 };
 

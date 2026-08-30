@@ -35,6 +35,10 @@ export const sourceLinks = {
     label: "FCA explanation of mortgage APRC and relevant charges",
     href: "https://www.fca.org.uk/news/statements/annual-percentage-rate-charge-aprc-calculations"
   },
+  fcaMortgageIllustration: {
+    label: "FCA Handbook requirements for mortgage illustrations and fees",
+    href: "https://handbook.fca.org.uk/handbook/mcob5/mcob5s6"
+  },
   fcaMortgageBrokerAuthorisation: {
     label: "FCA mortgage broker authorisation and disclosure requirements",
     href: "https://www.fca.org.uk/firms/authorisation/mortgage-brokers"

@@ -3,6 +3,7 @@ type ResponsiveTableProps = {
   caption?: string;
   columns: readonly string[];
   rows: readonly (readonly string[])[];
+  showMobileHint?: boolean;
 };
 
 function isNumericColumn(header: string | undefined): boolean {
@@ -53,7 +54,13 @@ function defaultSummary(caption?: string, columns: readonly string[] = []): stri
   )}, with columns for ${listColumns(columns)}.`;
 }
 
-export function ResponsiveTable({ caption, columns, rows, summary }: ResponsiveTableProps) {
+export function ResponsiveTable({
+  caption,
+  columns,
+  rows,
+  summary,
+  showMobileHint = true
+}: ResponsiveTableProps) {
   const tableSummary = summary ?? defaultSummary(caption, columns);
 
   return (
@@ -116,9 +123,11 @@ export function ResponsiveTable({ caption, columns, rows, summary }: ResponsiveT
             </tbody>
           </table>
         </div>
-        <p className="border-t border-line bg-[#fcfcf9] px-5 py-3 text-xs text-muted">
-          On smaller screens, scroll sideways to view every column clearly.
-        </p>
+        {showMobileHint ? (
+          <p className="border-t border-line bg-[#fcfcf9] px-5 py-3 text-xs text-muted">
+            On smaller screens, scroll sideways to view every column clearly.
+          </p>
+        ) : null}
       </div>
     </div>
   );
