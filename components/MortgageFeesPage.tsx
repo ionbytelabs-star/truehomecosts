@@ -157,7 +157,7 @@ export function MortgageFeesPage({ guide }: MortgageFeesPageProps) {
       />
 
       <div className="shell pb-14">
-        <article className="mx-auto max-w-4xl space-y-10">
+        <article className="max-w-4xl space-y-10">
           {feeSummary ? (
             <section className="surface space-y-5 p-5 sm:p-6" aria-labelledby="mortgage-fees-at-a-glance">
               <h2 id="mortgage-fees-at-a-glance" className="font-serif text-3xl text-text">{feeSummary.title}</h2>
