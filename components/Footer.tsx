@@ -30,6 +30,14 @@ export function Footer() {
             </Link>
           ))}
         </div>
+        <div className="mt-8 border-t border-line/70 pt-5">
+          <a
+            href="https://www.google.com/preferences/source?q=truehomecosts.co.uk"
+            className="rounded-sm text-sm text-muted underline decoration-line hover:text-brand-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#edf3f1]"
+          >
+            Add TrueHomeCosts as a Preferred Source on Google
+          </a>
+        </div>
       </div>
 
       <div className="border-t border-line/70">
